@@ -61,7 +61,7 @@ check_tools() {
 }
 
 echo "Check if wget is available..."
-check_wget || return
+check_tools || return
 
 echo "Downloading repository with wget..."
 REPO="https://github.com/nucbio/hpc-setup/archive/refs/heads/main.zip"
