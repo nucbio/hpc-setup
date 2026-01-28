@@ -60,7 +60,7 @@ check_tools() {
     echo "Required tools available, continuing with script..."
 }
 
-echo "Check if wget is available..."
+echo "Check if wget and zip is available..."
 check_tools || return
 
 echo "Downloading repository with wget..."
