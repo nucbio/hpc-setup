@@ -65,10 +65,10 @@ check_tools || return
 
 echo "Downloading repository with wget..."
 REPO="https://github.com/nucbio/hpc-setup/archive/refs/heads/main.zip"
-export REPO_DIR="$INSTALL_DIR/hpc-setup"
-wget "$REPO" -O "$INSTALL_DIR/hpc-setup.zip"
-unzip -q "$INSTALL_DIR/hpc-setup.zip" -d "$INSTALL_DIR"
-rm "$INSTALL_DIR/hpc-setup.zip"
+export REPO_DIR="$INSTALL_DIR/hpc-setup-main"
+wget "$REPO" -O "$INSTALL_DIR/hpc-setup-main.zip"
+unzip -q "$INSTALL_DIR/hpc-setup-main.zip" -d "$INSTALL_DIR"
+rm "$INSTALL_DIR/hpc-setup-main.zip"
 
 echo "Installation starting..."
 source "$REPO_DIR/install.sh"
