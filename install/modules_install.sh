@@ -2,6 +2,8 @@
 
 TCL_VERSION=8.6.13
 MODULE_VERSION=5.6.1
+# TRY IF WORKS TO LOAD THE LAST and make directory with version
+MODULES_VERSION=$(get_latest_github_release "cea-hpc/modules")
 
 # Install Tcl dependency
 cd /tmp

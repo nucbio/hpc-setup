@@ -9,4 +9,3 @@ else
     source $REPO_DIR/install/modules_install.sh 
 fi
 
-echo "SUCCESS UP TO THE LABLE!!!"
