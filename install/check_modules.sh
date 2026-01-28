@@ -10,6 +10,3 @@ else
 fi
 
 echo "SUCCESS UP TO THE LABLE!!!"
-
-
-/home/suvar/install_test/hpc-setup-main/install/check_modules.sh: line 9: /install/modules_install.sh: No such file or directory
