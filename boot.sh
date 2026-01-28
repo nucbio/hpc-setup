@@ -33,11 +33,15 @@ check_dir() {
     fi
     # 5. Check if directory is not empty
     if [ -d "$INSTALL_DIR" ] && [ "$(ls -A "$INSTALL_DIR" 2>/dev/null)" ]; then
-        echo "WARNING: Installation directory is not empty: $INSTALL_DIR"
+        echo "Warning: Directory is not empty: $INSTALL_DIR"
         echo "Existing files may be overwritten or cause conflicts."
-        echo "Consider using an empty directory for a clean installation."
+        read -p "Continue anyway? (y/N): " -n 1 -r
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            echo "Installation aborted by user."
+            return 1
+        fi
     fi
-
     echo "Environment check passed. Proceeding in: $INSTALL_DIR"
 }
 check_dir || return
