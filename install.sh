@@ -7,7 +7,10 @@ source ${REPO_DIR}/install/helpers.sh
 source ${REPO_DIR}/install/check_modules.sh
 
 # Install installers first
-# loop from installers
+for install_app in ${REPO_DIR}/installers/*.sh
+  do 
+    source $install_app
+  done
 
 # Install R_stack (dependencies)
 # loop from r_stack
