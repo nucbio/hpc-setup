@@ -8,6 +8,9 @@ MODULES_VERSION=$(get_latest_github_release "cea-hpc/modules")
 # Install Tcl dependency
 cd /tmp
 rm -rf tcl${TCL_VERSION}
+if [ -d "tcl${TCL_VERSION}" ]; then
+  rm -rf "tcl${TCL_VERSION}"
+fi
 wget https://prdownloads.sourceforge.net/tcl/tcl${TCL_VERSION}-src.tar.gz
 tar -xzf tcl${TCL_VERSION}-src.tar.gz
 cd tcl${TCL_VERSION}/unix
@@ -21,7 +24,9 @@ make install
 
 # Install modules
 cd /tmp
-rm -rf modules-${MODULES_VERSION}
+if [ -d "modules-${MODULES_VERSION}" ]; then
+  rm -rf "modules-${MODULES_VERSION}"
+fi
 wget https://github.com/cea-hpc/modules/releases/download/v${MODULES_VERSION}/modules-${MODULES_VERSION}.tar.gz
 tar xzf modules-${MODULES_VERSION}.tar.gz
 cd modules-${MODULES_VERSION}
@@ -34,4 +39,7 @@ mkdir -p $MODULES_INSTALL
     --with-tclsh=$TCL_INSTALL/bin/tclsh8.6
 make -j$(nproc)
 make install
+
+# Local modules
+source "$INSTALL_DIR/modules/modules-5.6.1/init/bash"
 
