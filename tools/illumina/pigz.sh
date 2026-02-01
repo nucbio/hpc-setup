@@ -1,8 +1,25 @@
 #!/bin/bash
 
-mkdir -p ${INSTALL_DIR}/tools/pigz/source && \
-  cd ${INSTALL_DIR}/tools/pigz/source
-wget https://www.zlib.net/pigz/pigz-2.8.tar.gz
-tar -C .. -xzvf pigz-2.8.tar.gz
-cd ../pigz-2.8
+# Variables
+TOOL_NAME="pigz"
+TOOL_VERSION="2.8"
+SOURCE_URL="https://zlib.net/pigz/pigz-$TOOL_VERSION.tar.gz"
+ARCHIVE_NAME="${TOOL_NAME}_v${TOOL_VERSION}.tar.gz"
+
+# Paths
+SOURCE_PATH="$INSTALL_DIR/sources/$ARCHIVE_NAME"
+TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$TOOL_VERSION"
+
+# Download to sources directory
+wget -q "$SOURCE_URL" -O "$SOURCE_PATH"
+
+# Create target directory and unpack
+mkdir -p "$TARGET_DIR"
+tar -xzf "$SOURCE_PATH" -C "$TARGET_DIR" --strip-components=1
+
+# Compile
+cd "$TARGET_DIR"
 make -j 8
+
+# Modules lua file
+make_lua_module "$TOOL_NAME" "$TOOL_VERSION" "$TARGET_DIR"
