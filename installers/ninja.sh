@@ -7,7 +7,7 @@ NINJA_VERSION=$(get_latest_github_release "ninja-build/ninja")
 # Fallback if the API parsing fails
 # FIXME: This can be replaced with a single line to set default if empty variable
 if [ -z "$NINJA_VERSION" ]; then
-    NINJA_VERSION="1.12.1" # Manually set a fallback version
+    NINJA_VERSION="1.13.2" # Manually set a fallback version
     echo "Could not detect latest version, falling back to $NINJA_VERSION"
 fi
 
@@ -27,3 +27,5 @@ wget -O ninja-linux.zip "$URL"
 unzip -o ninja-linux.zip -d "$TARGET_DIR"
 chmod +x "$TARGET_DIR/ninja"
 rm ninja-linux.zip
+
+make_lua_module ninja 1.13.2 "$INSTALL_DIR/ninja/ninja-1.13.2"

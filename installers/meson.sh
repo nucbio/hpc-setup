@@ -15,3 +15,5 @@ tar -xzf meson-1.10.1.tar.gz -C $SRC_DIR --strip-components=1
 # install
 cd $SRC_DIR
 python3 setup.py install --prefix $LIB_DIR --optimize=1
+
+make_lua_module meson 1.10.1 "$INSTALL_DIR/meson/meson-1.10.1/local/bin"
