@@ -1,13 +1,12 @@
 #!/bin/bash
 
 TCL_VERSION=8.6.13
-#MODULE_VERSION=5.6.1
+MODULES_VERSION=5.6.1
 # TRY IF WORKS TO LOAD THE LAST and make directory with version
-MODULES_VERSION=$(get_latest_github_release "cea-hpc/modules")
+#MODULES_VERSION=$(get_latest_github_release "cea-hpc/modules")
 
 # Install Tcl dependency
 cd /tmp
-rm -rf tcl${TCL_VERSION}
 if [ -d "tcl${TCL_VERSION}" ]; then
   rm -rf "tcl${TCL_VERSION}"
 fi
