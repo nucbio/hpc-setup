@@ -31,3 +31,4 @@ make install
 
 # Modules lua file
 make_lua_module "$TOOL_NAME" "$TOOL_VERSION" "$BUILD_DIR/bin"
+
