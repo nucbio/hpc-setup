@@ -19,3 +19,6 @@ make install INSTALL_TOP="$LUA_DIR"
 # Cleanup source folder
 cd ..
 rm -rf "lua-$LUA_VERSION"
+
+# Export
+export PATH="$LUA_DIR/bin:$PATH"

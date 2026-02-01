@@ -15,10 +15,19 @@ cd Lmod-${LMOD_VERSION}
 LMOD_INSTALL=$INSTALL_DIR/lmod/lmod-${LMOD_VERSION}
 mkdir -p $LMOD_INSTALL
 
-./configure \
+#./configure \
+#    --prefix=$LMOD_INSTALL \
+#    --with-lua=$LUA_INSTALL/bin/lua \
+#    --with-luac=$LUA_INSTALL/bin/luac \
+#    --with-tcl=yes \
+#    --with-tclConfig=$TCL_INSTALL/lib/tclConfig.sh \
+#    --with-module-root-path=$INSTALL_DIR/modulefiles \
+#    --with-updateSystemFn=no
+
+PATH="$LUA_DIR/bin:$PATH" ./configure \
     --prefix=$LMOD_INSTALL \
-    --with-lua=$LUA_INSTALL/bin/lua \
-    --with-luac=$LUA_INSTALL/bin/luac \
+    --with-lua=$LUA_DIR/bin/lua \
+    --with-luac=$LUA_DIR/bin/luac \
     --with-tcl=yes \
     --with-tclConfig=$TCL_INSTALL/lib/tclConfig.sh \
     --with-module-root-path=$INSTALL_DIR/modulefiles \
