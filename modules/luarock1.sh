@@ -1,10 +1,10 @@
 #!/bin/bash
 
-LUAROCKS_VERSION="3.13.1" # Latest stable
+LUAROCKS_VERSION="3.13.0" # Latest stable
 cd "$SOURCE_DIR"
 
 # Download source
-wget https://luarocks.org/releases/luarocks-${LUAROCKS_VERSION}.tar.gz
+wget https://luarocks.github.io/luarocks/releases/luarocks-${LUAROCKS_VERSION}.tar.gz
 tar -xzf luarocks-${LUAROCKS_VERSION}.tar.gz
 cd luarocks-${LUAROCKS_VERSION}
 
