@@ -19,10 +19,10 @@ mkdir -p $LMOD_INSTALL
     --prefix=$LMOD_INSTALL \
     --with-lua=$LUA_INSTALL/bin/lua \
     --with-luac=$LUA_INSTALL/bin/luac \
-    --with-tcl=$TCL_INSTALL/lib/tclConfig.sh \
+    --with-tcl=yes \
+    --with-tclConfig=$TCL_INSTALL/lib/tclConfig.sh \
     --with-module-root-path=$INSTALL_DIR/modulefiles \
     --with-updateSystemFn=no
-
 make install
 
 # Source Lmod
