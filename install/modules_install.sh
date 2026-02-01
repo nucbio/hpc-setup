@@ -12,8 +12,9 @@ tar -xzf tcl${TCL_VERSION}-src.tar.gz
 cd tcl${TCL_VERSION}/unix
 
 # Configure and Install Tcl locally
-mkdir -p $INSTALL_DIR/tcl-$TCL_VERSION
-./configure --prefix=$INSTALL_DIR/tcl-$TCL_VERSION
+TCL_INSTALL=$INSTALL_DIR/tcl/tcl-$TCL_VERSION
+mkdir -p $TCL_INSTALL
+./configure --prefix=$TCL_INSTALL
 make -j$(nproc)
 make install
 
@@ -21,9 +22,14 @@ make install
 cd /tmp
 wget https://github.com/cea-hpc/modules/releases/download/v${MODULES_VERSION}/modules-${MODULES_VERSION}.tar.gz
 tar xzf modules-${MODULES_VERSION}.tar.gz
-cd modules-${MODULES_VERSION}
-mkdir -p $INSTALL_DIR/modules/modules-$MODULES_VERSION
-./configure --prefix=$INSTALL_DIR/modules/modules-$MODULES_VERSION
+MODULES_INSTALL=$INSTALL_DIR/modules/modules-$MODULES_VERSION
+mkdir -p $MODULES_INSTALL
+#./configure --prefix=$INSTALL_DIR/modules/modules-$MODULES_VERSION
+./configure \
+    --prefix=$MODULES_INSTALL \
+    --with-tcl=$TCL_INSTALL/lib \
+    --with-tclsh=$TCL_INSTALL/bin/tclsh \
+    TCLSH=$TCL_INSTALL/bin/tclsh
 make -j$(nproc)
 make install
 
