@@ -8,6 +8,7 @@ source ${REPO_DIR}/install/check_modules.sh
 
 # Modulefiles
 mkdir -p $INSTALL_DIR/modulefiles
+
 # Archive collection
 mkdir -p $INSTALL_DIR/sources
 
