@@ -6,15 +6,25 @@ source ${REPO_DIR}/install/helpers.sh
 # Check if modules are installed
 source ${REPO_DIR}/install/check_modules.sh
 
+# Modulefiles
+mkdir -p $INSTALL_DIR/modulefiles
+
 # Install installers first
-for install_app in ${REPO_DIR}/installers/*.sh
+for install_tool in ${REPO_DIR}/installers/*.sh
   do 
-    source $install_app
+    source $install_tool
   done
 
 # Install R_stack (dependencies)
 # loop from r_stack
+#for install_tool in ${REPO_DIR}/r_stack/*.sh
+#  do 
+#    source $install_tool
+#  done
 
-# Install tools: R and other bioinformatic tools
-
+# Install bioinformatic tools
+for install_tool in ${REPO_DIR}/tools/*.sh
+  do 
+    source $install_tool
+  done
 # Install R libraries
