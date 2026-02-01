@@ -4,13 +4,11 @@ set -e
 
 source ${REPO_DIR}/install/helpers.sh
 # Check if modules are installed
+mkdir -p $INSTALL_DIR/sources
 source ${REPO_DIR}/install/check_modules.sh
 
 # Modulefiles
 mkdir -p $INSTALL_DIR/modulefiles
-
-# Archive collection
-mkdir -p $INSTALL_DIR/sources
 
 # Install installers first
 for install_tool in ${REPO_DIR}/installers/*.sh
