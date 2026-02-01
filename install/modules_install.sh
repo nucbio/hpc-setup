@@ -30,7 +30,7 @@ mkdir -p $MODULES_INSTALL
     --prefix=$MODULES_INSTALL \
     --with-tcl=$TCL_INSTALL/lib \
     --with-tclsh=$TCL_INSTALL/bin/tclsh \
-    TCLSH=$TCL_INSTALL/bin/tclsh
+    TCLSH=$TCL_INSTALL/bin/tclsh8.6
 make -j$(nproc)
 make install
 
