@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-LUA_VERSION="5.4.7"
+LUA_VERSION="5.4.8"
 LUA_DIR="$INSTALL_DIR/lua/lua-$LUA_VERSION"
 SOURCE_DIR="$INSTALL_DIR/sources"
 
