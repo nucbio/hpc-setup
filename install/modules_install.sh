@@ -19,7 +19,7 @@ make install
 
 # Install modules
 cd /tmp
-wget https://github.com/cea-hpc/modules/releases/download/v${MODULE_VERSION}/modules-${MODULE_VERSION}.tar.gz
+wget https://github.com/cea-hpc/modules/releases/download/v${MODULES_VERSION}/modules-${MODULES_VERSION}.tar.gz
 tar xzf modules-${MODULES_VERSION}.tar.gz
 cd modules-${MODULES_VERSION}
 mkdir $INSTALL_DIR/modules-$MODULES_VERSION
