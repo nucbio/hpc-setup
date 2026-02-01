@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install Lua
-source $INSTALL_DIR/install/lua.sh
+source $REPO_DIR/install/lua.sh
 
 # Install Lmod
 LMOD_VERSION=9.0.5

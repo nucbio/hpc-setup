@@ -1,7 +1,5 @@
 #!/bin/bash
 
-INSTALL_DIR=/home/suvar/test_install
-mkdir -p $INSTALL_DIR/sources
 # Variables
 LUA_VERSION="5.5.0"
 LUA_DIR="$INSTALL_DIR/lua/lua-$LUA_VERSION"
