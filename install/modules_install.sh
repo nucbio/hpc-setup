@@ -7,8 +7,8 @@ MODULES_VERSION=$(get_latest_github_release "cea-hpc/modules")
 
 # Install Tcl dependency
 cd /tmp
+rm -rf tcl${TCL_VERSION}
 wget https://prdownloads.sourceforge.net/tcl/tcl${TCL_VERSION}-src.tar.gz
-#FIXME: remove directory if previsously was created! Incorrect configuration
 tar -xzf tcl${TCL_VERSION}-src.tar.gz
 cd tcl${TCL_VERSION}/unix
 
@@ -21,8 +21,8 @@ make install
 
 # Install modules
 cd /tmp
+rm -rf modules-${MODULES_VERSION}
 wget https://github.com/cea-hpc/modules/releases/download/v${MODULES_VERSION}/modules-${MODULES_VERSION}.tar.gz
-#FIXME: need to remove directory if previously was created! Incorrect configuration
 tar xzf modules-${MODULES_VERSION}.tar.gz
 cd modules-${MODULES_VERSION}
 MODULES_INSTALL=$INSTALL_DIR/modules/modules-$MODULES_VERSION
