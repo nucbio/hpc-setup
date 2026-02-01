@@ -8,11 +8,7 @@ SOURCE_DIR="$INSTALL_DIR/sources"
 # Download Lua
 cd "$SOURCE_DIR"
 wget https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz
-tar -xzf lua-${LUA_VERSION}.tar.gz
-cd "lua-${LUA_VERSION}"
-
-# Extract and Build
-tar zxf "lua-$LUA_VERSION.tar.gz"
+tar -xzf "lua-${LUA_VERSION}.tar.gz"
 cd "lua-$LUA_VERSION"
 
 # Build for Linux and install to the local target
