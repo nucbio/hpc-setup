@@ -8,6 +8,6 @@ else
     echo "✗ Environment Modules not found"
     source "$REPO_DIR/modules/lua.sh"
     source "$REPO_DIR/modules/tcl.sh"
-    source "$REPO_DIR/install/modules_install.sh"
+    source "$REPO_DIR/modules/modules_install.sh"
 fi
 
