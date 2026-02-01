@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Install Lua
-source $REPO_DIR/install/lua.sh
-
 # Install Lmod
 LMOD_VERSION=9.0.5
 
@@ -21,14 +18,11 @@ mkdir -p $LMOD_INSTALL
 ./configure \
     --prefix=$LMOD_INSTALL \
     --with-lua=$LUA_INSTALL/bin/lua \
-    --with-luac=$LUA_INSTALL/bin/luac
-
-./configure \
-    --prefix=$INSTALL_DIR/lmod \
-    --with-lua=$INSTALL_DIR/lua/lua-5.5.0 \
-    --with-tcl=$INSTALL_DIR/tcl/tcl-x.y.z/lib/tclConfig.sh \
+    --with-luac=$LUA_INSTALL/bin/luac \
+    --with-tcl=$TCL_INSTALL/lib/tclConfig.sh \
     --with-module-root-path=$INSTALL_DIR/modulefiles \
     --with-updateSystemFn=no
+
 make install
 
 # Source Lmod
@@ -36,5 +30,4 @@ source "$LMOD_INSTALL/lmod/${LMOD_VERSION}/init/bash"
 
 # Optional: Add to your shell profile for persistence
 # echo "source $LMOD_INSTALL/lmod/${LMOD_VERSION}/init/bash" >> ~/.bashrc
-
 # use for tests: unset -f module
