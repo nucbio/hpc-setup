@@ -22,8 +22,8 @@ cd /tmp
 wget https://github.com/cea-hpc/modules/releases/download/v${MODULES_VERSION}/modules-${MODULES_VERSION}.tar.gz
 tar xzf modules-${MODULES_VERSION}.tar.gz
 cd modules-${MODULES_VERSION}
-mkdir $INSTALL_DIR/modules-$MODULES_VERSION
-./configure --prefix=$INSTALL_DIR/modules-$MODULES_VERSION
+mkdir $INSTALL_DIR/modules/modules-$MODULES_VERSION
+./configure --prefix=$INSTALL_DIR/modules/modules-$MODULES_VERSION
 make -j$(nproc)
 make install
 

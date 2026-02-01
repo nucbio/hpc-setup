@@ -9,7 +9,7 @@ else
     source "$REPO_DIR/install/modules_install.sh"
 
     # Make local modules available
-    MODULE_ROOT="/home/suvar/test_install/modules-5.6.1"
+    MODULE_ROOT="$INSTALL_DIR/modules/modules-5.6.1"
     if [ -f "$MODULE_ROOT/init/bash" ]; then
         source "$MODULE_ROOT/init/bash"
         echo "✓ Local 'module' function defined from $MODULE_ROOT"
