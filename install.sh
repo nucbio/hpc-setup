@@ -2,6 +2,7 @@
 
 set -e
 
+source ${REPO_DIR}/install/helpers.sh
 # Check if modules are installed
 source ${REPO_DIR}/install/check_modules.sh
 
