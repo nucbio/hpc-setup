@@ -28,4 +28,3 @@ $LUAROCKS=$LUA_DIR/bin/luarocks
 $LUAROCKS install luasocket
 $LUAROCKS install luaposix
 $LUAROCKS install luafilesystem
-
