@@ -18,7 +18,7 @@ mkdir -p ${BUILD_DIR}
 
 # Configure with Meson
 module use $INSTALL_DIR/modulefiles
-module load meson/1.8.5
+module load meson/1.10.1
 module load ninja/1.13.1
 
 cd ${SRC_DIR}
