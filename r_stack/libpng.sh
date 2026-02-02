@@ -8,7 +8,7 @@ BUILD_DIR=/tmp/libpng-build
 mkdir -p $SRC_DIR
 cd $LIB_DIR
 
-wget https://downloads.sourceforge.net/libpng/libpng-$LIBPNG_VERSION.tar.xz
+wget https://downloads.sourceforge.net/libpng/libpng-$LIBPNG_VERSION.tar.gz
 tar -xzf libpng-$LIBPNG_VERSION.tar.gz -C ${SRC_DIR} --strip-components=1
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
