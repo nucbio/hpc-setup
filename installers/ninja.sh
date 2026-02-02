@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Ninja
-
+#FIXME take defined version for the release
 NINJA_VERSION=$(get_latest_github_release "ninja-build/ninja")
 
 # Fallback if the API parsing fails
