@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$LIBCURL_VERSION="8.17.0"
+LIBCURL_VERSION="8.17.0"
 
 LIB_DIR=$INSTALL_DIR/libcurl/libcurl-$LIBCURL_VERSION
 BUILD_DIR=/tmp/libcurl-$LIBCURL_VERSION-build
