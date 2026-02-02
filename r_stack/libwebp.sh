@@ -13,10 +13,22 @@ tar -xzf libwebp-$LIBWEBP_VERSION.tar.gz -C ${SRC_DIR} --strip-components=1
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
-cmake -S $SRC_DIR -B $BUILD_DIR \
+
+#cmake -S $SRC_DIR -B $BUILD_DIR \
+#  -DCMAKE_INSTALL_PREFIX=$LIB_DIR \
+#  -DWEBP_ENABLE_SHARPYUV=ON \
+#  -DBUILD_SHARED_LIBS=ON
+
+# Disable AVX2 to avoid the intrinsics issue
+cmake ${SRC_DIR} \
+  -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=$LIB_DIR \
-  -DWEBP_ENABLE_SHARPYUV=ON \
-  -DBUILD_SHARED_LIBS=ON
+  -DWEBP_BUILD_ANIM_UTILS=OFF \
+  -DWEBP_BUILD_CWEBP=ON \
+  -DWEBP_BUILD_DWEBP=ON \
+  -DWEBP_ENABLE_SIMD=ON \
+  -DWEBP_ENABLE_AVX2=OFF
+
 cmake --build $BUILD_DIR -j 4
 cmake --install $BUILD_DIR
 rm -rf $BUILD_DIR
