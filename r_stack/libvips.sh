@@ -9,7 +9,7 @@ BUILD_DIR=/tmp/libvips-build
 mkdir -p $SRC_DIR
 cd $LIB_DIR
 
-wget https://github.com/libvips/build-win64-mxe/archive/refs/tags/v$LIBVIPS_VERSION.tar.gz \
+wget https://github.com/libvips/libvips/archive/refs/tags/v$LIBVIPS_VERSION.tar.gz \
   -O libvips-$LIBVIPS_VERSION.tar.gz
 tar -xzf libvips-$LIBVIPS_VERSION.tar.gz -C ${SRC_DIR} --strip-components=1
 rm -rf ${BUILD_DIR}
