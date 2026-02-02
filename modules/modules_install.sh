@@ -18,6 +18,10 @@ eval "$($LUA_DIR/bin/luarocks path)"
 # Verify it works
 $LUA_DIR/bin/lua -e 'require("posix")' && echo "✓ posix found"
 
+# Set up Tcl paths (fixes tcl.h detection)
+export TCL_INCLUDE="-I${TCL_INSTALL}/include"
+export TCL_LIBS="-L${TCL_INSTALL}/lib -ltcl8.6"
+
 # Now configure will succeed
 PATH="$LUA_DIR/bin:$PATH" ./configure \
     --prefix=$LMOD_INSTALL \
