@@ -13,3 +13,5 @@ wget https://gitlab.com/bzip2/bzip2/-/archive/bzip2-$BZIP_VERSION/bzip2-bzip2-$B
 tar -xzf bzip2-master.tar.gz
 mv bzip2-bzip2-$BZIP_VERSION bzip2-$BZIP_VERSION
 
+# Module file
+make_lua_module bzip2 $BZIP_VERSION "$INSTALL_DIR/bzip2/bzip2-$BZIP_VERSION"
