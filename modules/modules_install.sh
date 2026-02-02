@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# Install Lmod
 LMOD_VERSION=9.0.5
-
-# Install Lmod
 cd /tmp
 if [ -d "Lmod-${LMOD_VERSION}" ]; then
   rm -rf "Lmod-${LMOD_VERSION}"
@@ -15,15 +12,13 @@ cd Lmod-${LMOD_VERSION}
 LMOD_INSTALL=$INSTALL_DIR/lmod/lmod-${LMOD_VERSION}
 mkdir -p $LMOD_INSTALL
 
-#./configure \
-#    --prefix=$LMOD_INSTALL \
-#    --with-lua=$LUA_INSTALL/bin/lua \
-#    --with-luac=$LUA_INSTALL/bin/luac \
-#    --with-tcl=yes \
-#    --with-tclConfig=$TCL_INSTALL/lib/tclConfig.sh \
-#    --with-module-root-path=$INSTALL_DIR/modulefiles \
-#    --with-updateSystemFn=no
+#  FIX: Set up Lua paths
+eval "$($LUA_DIR/bin/luarocks path)"
 
+# Verify it works
+$LUA_DIR/bin/lua -e 'require("posix")' && echo "✓ posix found"
+
+# Now configure will succeed
 PATH="$LUA_DIR/bin:$PATH" ./configure \
     --prefix=$LMOD_INSTALL \
     --with-lua=$LUA_DIR/bin/lua \
@@ -32,6 +27,7 @@ PATH="$LUA_DIR/bin:$PATH" ./configure \
     --with-tclConfig=$TCL_INSTALL/lib/tclConfig.sh \
     --with-module-root-path=$INSTALL_DIR/modulefiles \
     --with-updateSystemFn=no
+
 make install
 
 # Source Lmod
