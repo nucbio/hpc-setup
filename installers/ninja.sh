@@ -2,14 +2,7 @@
 
 # Ninja
 #FIXME take defined version for the release
-NINJA_VERSION=$(get_latest_github_release "ninja-build/ninja")
-
-# Fallback if the API parsing fails
-# FIXME: This can be replaced with a single line to set default if empty variable
-if [ -z "$NINJA_VERSION" ]; then
-    NINJA_VERSION="1.13.2" # Manually set a fallback version
-    echo "Could not detect latest version, falling back to $NINJA_VERSION"
-fi
+NINJA_VERSION="1.13.2"
 
 # 2. Create the versioned directory
 TARGET_DIR="${INSTALL_DIR}/ninja/ninja-${NINJA_VERSION}"
@@ -28,4 +21,4 @@ unzip -o ninja-linux.zip -d "$TARGET_DIR"
 chmod +x "$TARGET_DIR/ninja"
 rm ninja-linux.zip
 
-make_lua_module ninja 1.13.2 "$INSTALL_DIR/ninja/ninja-1.13.2"
+make_lua_module ninja "$NINJA_VERSION" "$INSTALL_DIR/ninja/ninja-$NINJA_VERSION"
