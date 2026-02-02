@@ -1,29 +1,30 @@
 #!/bin/bash
 
-LUAROCK_VERSION="3.13.0"
-ROCKS_INSTALL_DIR="$INSTALL_DIR/lua/luarock-$LUAROCK_VERSION"
-SOURCE_DIR="$INSTALL_DIR/sources"
-
-# Download and Unpack
+LUAROCKS_VERSION="3.13.0" # Latest stable
 cd "$SOURCE_DIR"
-wget -N "https://luarocks.github.io/luarocks/releases/luarocks-$LUAROCK_VERSION-linux-x86_64.zip"
-unzip -oj "luarocks-$LUAROCK_VERSION-linux-x86_64.zip" -d "extracted_rocks"
 
-# 2. Move to target directory
-mkdir -p "$ROCKS_INSTALL_DIR/bin"
-mv extracted_rocks/luarocks extracted_rocks/luarocks-admin "$ROCKS_INSTALL_DIR/bin/"
-rm -rf extracted_rocks
+# Download source
+wget https://luarocks.github.io/luarocks/releases/luarocks-${LUAROCKS_VERSION}.tar.gz
+tar -xzf luarocks-${LUAROCKS_VERSION}.tar.gz
+cd luarocks-${LUAROCKS_VERSION}
 
-# Ensure PATH is set
-export PATH="$ROCKS_INSTALL_DIR/bin:$LUA_DIR/bin:$PATH"
+# Configure to point specifically to your local Lua
+./configure \
+    --prefix="$LUA_DIR" \
+    --with-lua="$LUA_DIR" \
+    --with-lua-include="$LUA_DIR/include" \
+    --with-lua-lib="$LUA_DIR/lib"
 
-# Configure luarocks to use the correct Lua installation
-luarocks --local config variables.LUA "$LUA_DIR/bin/lua"
-luarocks --local config variables.LUA_INCDIR "$LUA_DIR/include"
-luarocks --local config variables.LUA_LIBDIR "$LUA_DIR/lib"
+make
+make install
 
-# install luasocket
-luarocks --local install luasocket
+# Clean up
+cd ..
+rm -rf luarocks-${LUAROCKS_VERSION}
 
-$LUA_DIR/bin/luarocks install luaposix
-$LUA_DIR/bin/luarocks install luafilesystem
+# Install Lua Packages
+LUAROCKS=$LUA_DIR/bin/luarocks
+
+$LUAROCKS install luasocket
+$LUAROCKS install luaposix
+$LUAROCKS install luafilesystem

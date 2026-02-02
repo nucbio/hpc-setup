@@ -7,7 +7,7 @@ else
     # Module command not found - need to install
     echo "✗ Environment Modules not found"
     source "$REPO_DIR/modules/lua.sh"
-    source "$REPO_DIR/modules/luarock1.sh"
+    source "$REPO_DIR/modules/luarock.sh"
     source "$REPO_DIR/modules/tcl.sh"
     source "$REPO_DIR/modules/modules_install.sh"
 fi
