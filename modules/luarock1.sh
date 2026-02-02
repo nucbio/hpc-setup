@@ -22,7 +22,10 @@ make install
 cd ..
 rm -rf luarocks-${LUAROCKS_VERSION}
 
-luarocks --local install luasocket
+# Install Lua Packages
+$LUAROCKS=$LUA_DIR/bin/luarocks
 
-$LUA_DIR/bin/luarocks install luaposix
-$LUA_DIR/bin/luarocks install luafilesystem
+$LUAROCKS install luasocket
+$LUAROCKS install luaposix
+$LUAROCKS install luafilesystem
+
