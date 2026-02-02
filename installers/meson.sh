@@ -17,3 +17,6 @@ cd $SRC_DIR
 python3 setup.py install --prefix $LIB_DIR --optimize=1
 
 make_lua_module meson 1.10.1 "$INSTALL_DIR/meson/meson-1.10.1/local/bin"
+
+PYTHON_VERSION=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+echo "prepend_path(\"PYTHONPATH\", \"$INSTALL_DIR/meson/meson-1.10.1/lib/python$PYTHON_VERSION/site-packages\")" >> "$INSTALL_DIR/modulefiles/meson/1.10.1.lua"
