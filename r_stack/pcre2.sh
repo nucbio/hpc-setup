@@ -33,4 +33,4 @@ cmake --build $BUILD_DIR -j 4
 cmake --install $BUILD_DIR
 
 # Modules
-make_lua_module "pcre2" "$PCRE2_VERSION" "$LIB_DIR/bin"
+make_lua_module "pcre2" "$PCRE2_VERSION"

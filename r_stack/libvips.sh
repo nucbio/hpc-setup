@@ -21,4 +21,4 @@ meson install -C $BUILD_DIR
 rm -rf $BUILD_DIR
 
 # Modules
-make_lua_module "libvips" "$LIBVIPS_VERSION" "$LIB_DIR/bin"
+make_lua_module "libvips" "$LIBVIPS_VERSION"

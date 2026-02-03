@@ -18,4 +18,4 @@ cmake --build $BUILD_DIR -j$(nproc)
 cmake --install $BUILD_DIR
 
 # Modules
-make_lua_module "libjpeg" "$LIBJPEG_VERSION" "$LIB_DIR/bin"
+make_lua_module "libjpeg" "$LIBJPEG_VERSION"

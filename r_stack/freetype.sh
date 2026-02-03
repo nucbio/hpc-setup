@@ -19,4 +19,4 @@ rm -rf $BUILD_DIR
 
 # Modules
 
-make_lua_module "freetype" "$FREETYPE_VERSION" "$LIB_DIR/bin"
+make_lua_module "freetype" "$FREETYPE_VERSION"
