@@ -18,3 +18,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
     --no-modify-path \
     --profile complete
 
+# TEST: install packs
+for install_tool in ${REPO_DIR}/tools/test/*.sh
+  do 
+    source $install_tool
+  done
+
