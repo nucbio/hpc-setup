@@ -3,25 +3,38 @@
 TOOL_NAME="readline"
 READLINE_VERSION="8.2"
 SOURCE_URL="https://ftp.gnu.org/pub/gnu/readline/readline-${READLINE_VERSION}.tar.gz"
+# Keep the target directory clean (no version subfolders inside)
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME"
 NCURSES_DIR="$INSTALL_DIR/ncurses/ncurses-$NCURSES_VERSION"
+SOURCE_ARCHIVE="$INSTALL_DIR/sources"
 
-mkdir -p $TARGET_DIR
-cd $TARGET_DIR
-# Download and Unpack
-wget -q "$SOURCE_URL" -O readline-$READLINE_VERSION.tar.gz
-tar -xzf readline-$READLINE_VERSION.tar.gz
-cd readline-${READLINE_VERSION}
+# 1. Prepare Environment
+mkdir -p "$SOURCE_ARCHIVE"
+rm -rf /tmp/readline-build
+mkdir -p /tmp/readline-build
+cd /tmp/readline-build
 
-# Configure and Install
-# We link to ncurses so readline knows how to handle the terminal
-./configure --prefix="$TARGET_DIR/readline-$READLINE_VERSION" \
+# 2. Download and Archive
+wget -q "$SOURCE_URL" -O "readline-${READLINE_VERSION}.tar.gz"
+cp "readline-${READLINE_VERSION}.tar.gz" "$SOURCE_ARCHIVE/"
+
+# 3. Unpack and Build
+tar -xzf "readline-${READLINE_VERSION}.tar.gz"
+cd "readline-${READLINE_VERSION}"
+
+./configure --prefix="$TARGET_DIR" \
             --with-curses="$NCURSES_DIR" \
             CPPFLAGS="-I$NCURSES_DIR/include" \
-            LDFLAGS="-L$NCURSES_DIR/lib"
+            LDFLAGS="-L$NCURSES_DIR/lib" \
+            --enable-shared \
+            --enable-static
 
 make -j$(nproc)
 make install
 
-# Module
+# Cleanup Build Area
+rm -rf /tmp/readline-build
+
+# Module generation
 make_lua_module "readline" "$READLINE_VERSION"
+
