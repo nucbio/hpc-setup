@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-RUST_VERSION="1.91.1"
+RUST_VERSION="1.93.0"
 INSTALL_ROOT="$INSTALL_DIR/rust/rust-$RUST_VERSION"
 
 # Define local paths
