@@ -23,7 +23,7 @@ cd "$TARGET_DIR"
 mkdir -p "$BUILD_DIR"
 
 # Running configure with your specific requirement
-./configure --disable-bz2 --prefix="$BUILD_DIR"
+./configure --disable-bz2 --without-curses --prefix="$BUILD_DIR"
 
 # Build and install into the --prefix path
 make -j 8
