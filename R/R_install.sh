@@ -49,8 +49,6 @@ ${SRC_DIR}/configure \
   --with-cairo \
   --with-readline=no \
   --with-system-tre=no
-#  LDFLAGS="-L${INSTALL_DIR}/readline/readline-$READLINE_VERSION/lib" \
-#  CPPFLAGS="-I${INSTALL_DIR}/readline/readline-$READLINE_VERSION/include"
 
 make -j$(nproc) && make install
 rm -rf $BUILD
