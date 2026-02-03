@@ -23,20 +23,14 @@ for install_tool in ${REPO_DIR}/tools/illumina/*.sh
     source $install_tool
   done
 
-# Install bioinformatic tools
-for install_tool in ${REPO_DIR}/tools/illumina/*.sh
-  do 
-    source $install_tool
-  done
-
 # Install R dependencies
-for install_tool in ${REPO_DIR}/R_install/r_stack/*.sh
+for install_tool in ${REPO_DIR}/R/R_stack/*.sh
   do 
     source $install_tool
   done
 
 # Install R
-source ${REPO_DIR}/R_install/R/R.sh
+source ${REPO_DIR}/R/R_install.sh
 
 # Install R libraries
 
