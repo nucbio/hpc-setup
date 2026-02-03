@@ -18,4 +18,4 @@ make && make install
 rm -rf $BUILD_DIR
 
 # Modules
-make_lua_module "frebidi" "$FRIBIDI_VERSION"
+make_lua_module "fribidi" "$FRIBIDI_VERSION"
