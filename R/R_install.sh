@@ -30,15 +30,27 @@ module load xz/$XZ_VERSION
 module load ncurses/$NCURSES_VERSION
 module load readline/$READLINE_VERSION
 
-# Check if loaded
-echo "CHECK module load:\n"
+###############################################################################
+# TEST:Check modules
+if [ "$(type -t module)" = "function" ]; then
+    echo "SUCCESS: Module function is defined."
+else
+    echo "ERROR: Module function is NOT defined. Check your 'source .../init/bash' line."
+    exit 1
+fi
+module list 
+# This will show the environment variables for a specific module
+module show readline/$READLINE_VERSION
+echo "Testing environment variables..."
+echo "LD_LIBRARY_PATH is: $LD_LIBRARY_PATH"
 
-libcurl --version
-ncurses --version
-readline --version
-
-echo "R configure"
-
+# Check for a specific file from your new install
+if [ -f "$INSTALL_DIR/readline/readline-8.2/lib/libreadline.so" ]; then
+    echo "Readline library found on disk."
+else
+    echo "Readline library NOT found at expected path."
+fi
+===============================================================================
 ${SRC_DIR}/configure \
   --prefix=$RDIR \
   --enable-memory-profiling \

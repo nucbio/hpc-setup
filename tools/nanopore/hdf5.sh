@@ -1,0 +1,19 @@
+#!/bin/bash
+# Configuration
+HDF5_VERSION="1.14.6"
+
+BUILD_DIR="/tmp/hdf5-build-$$"
+
+# Create directories
+mkdir -p "$INSTALL_DIR"
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR"
+wget https://support.hdfgroup.org/releases/hdf5/v1_14/v1_14_6/downloads/hdf5-1.14.6.tar.gz
+tar -xzf "hdf5-${HDF5_VERSION}.tar.gz"
+cd "hdf5-${HDF5_VERSION}"
+./configure --prefix="$INSTALL_DIR" --enable-build-mode=production
+make -j$(nproc)
+make install
+
+cd /
+rm -rf "$BUILD_DIR"
