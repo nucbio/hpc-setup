@@ -32,4 +32,4 @@ rm -rf $BUILD_DIR
 rm -rf $SRC_DIR
 
 # Modules
-make_lua_module "libcurl" "$LIBCURL_VERSION" "$INSTALL_DIR/libcurl/libcurl-$LIBCURL_VERSION/bin"
+make_lua_module "libcurl" "$LIBCURL_VERSION"
