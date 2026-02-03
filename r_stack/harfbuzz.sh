@@ -19,4 +19,4 @@ meson install -C $BUILD_DIR
 rm -rf $BUILD_DIR
 
 # Modules
-make_lua_module "harfbuzz" "$HARFRBUZZ_VERSION"
+make_lua_module "harfbuzz" "$HARFBUZZ_VERSION"
