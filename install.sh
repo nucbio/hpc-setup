@@ -17,14 +17,11 @@ for install_tool in ${REPO_DIR}/installers/*.sh
     source $install_tool
   done
 
-# Install R_stack (dependencies)
-# loop from r_stack
-for install_tool in ${REPO_DIR}/r_stack/*.sh
+# Install bioinformatic tools
+for install_tool in ${REPO_DIR}/tools/illumina/*.sh
   do 
     source $install_tool
   done
-
-source ${REPO_DIR}/tools/R/R.sh
 
 # Install bioinformatic tools
 for install_tool in ${REPO_DIR}/tools/illumina/*.sh
@@ -32,4 +29,14 @@ for install_tool in ${REPO_DIR}/tools/illumina/*.sh
     source $install_tool
   done
 
+# Install R dependencies
+for install_tool in ${REPO_DIR}/R_install/r_stack/*.sh
+  do 
+    source $install_tool
+  done
+
+# Install R
+source ${REPO_DIR}/R_install/R/R.sh
+
 # Install R libraries
+
