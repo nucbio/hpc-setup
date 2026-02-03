@@ -27,7 +27,7 @@ make_lua_module "rust" "$RUST_VERSION"
 #rustup update
 #rustup default stable
 
-
+module use $INSTALL_DIR/modulefiles
 
 for install_tool in ${REPO_DIR}/tools/test/*.sh
   do 
