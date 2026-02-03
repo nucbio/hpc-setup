@@ -21,16 +21,3 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
 # Module
 make_lua_module "rust" "$RUST_VERSION"
 
-
-# TEST: install packs
-# FIX: lock problem
-#rustup update
-#rustup default stable
-
-module use $INSTALL_DIR/modulefiles
-
-for install_tool in ${REPO_DIR}/tools/test/*.sh
-  do 
-    source $install_tool
-  done
-
