@@ -44,3 +44,6 @@ ${SRC_DIR}/configure \
 
 make -j$(nproc) && make install
 rm -rf $BUILD
+
+# Module
+make_lua_module "R" "$R_VERSION"

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Variables
 TOOL_NAME="ncurses"
-NCURSES_VERSION="6.4" 
+NCURSES_VERSION="6.6" 
 SOURCE_URL="https://ftp.gnu.org/pub/gnu/ncurses/ncurses-${NCURSES_VERSION}.tar.gz"
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$NCURSES_VERSION"
 

@@ -4,7 +4,7 @@ TOOL_NAME="readline"
 READLINE_VERSION="8.2"
 SOURCE_URL="https://ftp.gnu.org/pub/gnu/readline/readline-${READLINE_VERSION}.tar.gz"
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$READLINE_VERSION"
-NCURSES_DIR="$INSTALL_DIR/ncurses/6.4"
+NCURSES_DIR="$INSTALL_DIR/ncurses/ncurses-$NCURSES_VERSION"
 
 # Download and Unpack
 wget -q "$SOURCE_URL" -O readline.tar.gz
