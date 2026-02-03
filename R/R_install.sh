@@ -26,7 +26,7 @@ module load freetype/$FREETYPE_VERSION
 module load bzip2/$BZIP_VERSION
 module load libwebp/$LIBWEBP_VERSION
 module load libvips/$LIBVIPS_VERSION
-module load lzma/$LZMA_VERSION
+module load xz/$XZ_VERSION
 module load ncurses/$NCURSES_VERSION
 module load readline/$READLINE_VERSION
 
