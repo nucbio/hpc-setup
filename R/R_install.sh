@@ -30,6 +30,14 @@ module load xz/$XZ_VERSION
 module load ncurses/$NCURSES_VERSION
 module load readline/$READLINE_VERSION
 
+# FIX: readline globals are not visible for R
+# Explicitly set flags for the R configure
+export LDFLAGS="-L$INSTALL_DIR/readline/readline-$READLINE_VERSION/lib \
+  -L$INSTALL_DIR/ncurses/ncurses-$NCURSES_VERSION/lib $LDFLAGS"
+export CPPFLAGS="-I$INSTALL_DIR/readline/readline-$READLINE_VERSION/include \
+  -I$INSTALL_DIR/ncurses/ncurses-$NCURSES_VERSION/include $CPPFLAGS"
+export LIBS="-lreadline -lncursesw"
+
 ${SRC_DIR}/configure \
   --prefix=$RDIR \
   --enable-memory-profiling \

@@ -1,10 +1,12 @@
 #!/bin/bash
 
+module load rust/$RUST_VERSION
+
 # eza - CLI tool
-cd $INSTALL_DIR
-mkdir eza
-cd eza
-VERSION=
-wget https://github.com/eza-community/eza/releases/download/v0.23.4/eza_x86_64-unknown-linux-gnu.tar.gz
-tar -xzf exa_x86_64*.tar.gz
-cd
+EZA_RELEASE_TAG="${EZA_RELEASE_TAG:-v0.23.4}"
+# Install eza
+cargo install \
+  --git https://github.com/eza-community/eza.git \
+  --tag "$EZA_RELEASE_TAG" \
+  --locked
+

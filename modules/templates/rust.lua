@@ -36,3 +36,9 @@ prepend_path("LD_LIBRARY_PATH", pathJoin(cargo_home, "lib"))
 -- Note: The toolchain path is often static even across versions, 
 -- but kept here as part of the Rust ecosystem setup.
 prepend_path("LD_LIBRARY_PATH", pathJoin(rustup_home, "toolchains/stable-x86_64-unknown-linux-gnu/lib"))
+
+-- Handle Libraries
+-- Note: Rust often bundles its own LLVM and dynamic libs. 
+-- We use a wildcard/variable approach for the toolchain path to ensure it finds the specific version installed.
+local toolchain_path = pathJoin(rustup_home, "toolchains", tool_ver .. "-x86_64-unknown-linux-gnu")
+prepend_path("LD_LIBRARY_PATH", pathJoin(toolchain_path, "lib"))
