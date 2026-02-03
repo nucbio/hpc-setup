@@ -33,7 +33,7 @@ make_lua_module() {
     # Check if template exists
     if [[ ! -f "$TEMPLATE" ]]; then
         echo "Template not found for $TOOL. Minimal template will be used."
-        TEMPLATE="$TEMPLATE_DIR/minimal.lua"
+        TEMPLATE="$REPO_DIR/modules/templates/minimal.lua"
     fi
 
     mkdir -p "$MODULE_DIR"
