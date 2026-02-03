@@ -1,4 +1,3 @@
---%Module
 -- ${TOOL} version ${TOOL_VERSION}
 
 whatis("${TOOL} ${TOOL_VERSION} installed locally without sudo")
