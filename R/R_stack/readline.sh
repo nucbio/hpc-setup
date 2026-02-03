@@ -4,7 +4,7 @@ TOOL_NAME="readline"
 READLINE_VERSION="8.2"
 SOURCE_URL="https://ftp.gnu.org/pub/gnu/readline/readline-${READLINE_VERSION}.tar.gz"
 # Keep the target directory clean (no version subfolders inside)
-TARGET_DIR="$INSTALL_DIR/$TOOL_NAME"
+TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$READLINE_VERSION"
 NCURSES_DIR="$INSTALL_DIR/ncurses/ncurses-$NCURSES_VERSION"
 SOURCE_ARCHIVE="$INSTALL_DIR/sources"
 
