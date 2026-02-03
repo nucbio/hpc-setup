@@ -22,8 +22,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
 
 # TEST: install packs
 # FIX: lock problem
-rustup update
-rustup default stable
+#rustup update
+#rustup default stable
+
+
 
 for install_tool in ${REPO_DIR}/tools/test/*.sh
   do 
