@@ -30,6 +30,15 @@ module load xz/$XZ_VERSION
 module load ncurses/$NCURSES_VERSION
 module load readline/$READLINE_VERSION
 
+# Check if loaded
+echo "CHECK module load:\n"
+
+libcurl --version
+ncurses --version
+readline --version
+
+echo "R configure"
+
 ${SRC_DIR}/configure \
   --prefix=$RDIR \
   --enable-memory-profiling \
