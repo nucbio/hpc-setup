@@ -18,6 +18,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
     --no-modify-path \
     --profile complete
 
+# Module
+make_lua_module "rust" "$RUST_VERSION"
 
 
 # TEST: install packs
