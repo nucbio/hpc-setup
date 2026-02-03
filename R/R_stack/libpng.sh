@@ -18,4 +18,4 @@ make && make install
 rm -rf $BUILD_DIR
 
 # Modules
-make_lua_module "$libpng" "$LIBPNG_VERSION"
+make_lua_module "libpng" "$LIBPNG_VERSION"
