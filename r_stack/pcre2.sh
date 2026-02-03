@@ -31,3 +31,6 @@ cmake -S $SRC_DIR -B $BUILD_DIR \
 
 cmake --build $BUILD_DIR -j 4
 cmake --install $BUILD_DIR
+
+# Modules
+make_lua_module "pcre2" "$PCRE2_VERSION" "$LIB_DIR/bin"

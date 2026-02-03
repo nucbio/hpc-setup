@@ -30,3 +30,6 @@ make -j$(nproc) && make install
 # Cleanup
 rm -rf $BUILD_DIR
 rm -rf $SRC_DIR
+
+# Modules
+make_lua_module "libcurl" "$LIBCURL_VERSION" "$INSTALL_DIR/libcurl/libcurl-$LIBCURL_VERSION/bin"

@@ -22,3 +22,6 @@ cmake ${SRC_DIR} \
 cmake --build $BUILD_DIR -j 4
 cmake --install $BUILD_DIR
 rm -rf $BUILD_DIR
+
+# Modules
+make_lua_module "libwebp" "$LIBWEBP_VERSION" "$LIB_DIR/bin"

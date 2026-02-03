@@ -16,3 +16,7 @@ meson setup $BUILD_DIR $SRC_DIR --prefix=$LIB_DIR
 meson compile -C $BUILD_DIR
 meson install -C $BUILD_DIR
 rm -rf $BUILD_DIR
+
+# Modules
+
+make_lua_module "freetype" "$FREETYPE_VERSION" "$LIB_DIR/bin"

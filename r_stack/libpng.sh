@@ -16,3 +16,6 @@ cd ${BUILD_DIR}
 ${SRC_DIR}/configure --prefix=$LIB_DIR
 make && make install
 rm -rf $BUILD_DIR
+
+# Modules
+make_lua_module "$libpng" "$LIBPNG_VERSION" "$LIB_DIR/bin"

@@ -16,3 +16,6 @@ cmake -S $SRC_DIR -B $BUILD_DIR \
   -DCMAKE_INSTALL_PREFIX=$LIB_DIR
 cmake --build $BUILD_DIR -j$(nproc) 
 cmake --install $BUILD_DIR
+
+# Modules
+make_lua_module "libjpeg" "$LIBJPEG_VERSION" "$LIB_DIR/bin"
