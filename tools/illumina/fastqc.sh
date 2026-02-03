@@ -3,7 +3,7 @@
 # Variables
 TOOL_NAME="fastqc"
 TOOL_VERSION="0.12.1"
-SOURCE_URL="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/${TOOL_NAME}_v${FASTQ_VERSION}.zip"
+SOURCE_URL="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/${TOOL_NAME}_v${TOOL_VERSION}.zip"
 ARCHIVE_NAME="${TOOL_NAME}_v${TOOL_VERSION}.zip"
 
 # Paths
