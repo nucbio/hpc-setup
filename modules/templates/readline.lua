@@ -22,4 +22,6 @@ prepend_path("CPLUS_INCLUDE_PATH",  pathJoin(root, "include"))
 setenv("READLINE_ROOT", root)
 setenv("READLINE_LIBS", "-L" .. pathJoin(root, "lib") .. " -lreadline")
 
+prepend_path("LDFLAGS", "-L" .. pathJoin(root, "lib"), " ")
+prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
 
