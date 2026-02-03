@@ -3,12 +3,12 @@
 # Variables
 TOOL_NAME="fastqc"
 TOOL_VERSION="0.12.1"
-SOURCE_URL="https://github.com/s-andrews/FastQC/archive/refs/tags/v$VERSION.zip"
-ARCHIVE_NAME="${TOOL_NAME}_v${VERSION}.zip"
+SOURCE_URL="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/${TOOL_NAME}_v${FASTQ_VERSION}.zip"
+ARCHIVE_NAME="${TOOL_NAME}_v${TOOL_VERSION}.zip"
 
 # Paths
 SOURCE_PATH="$INSTALL_DIR/sources/$ARCHIVE_NAME"
-TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$VERSION"
+TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$TOOL_VERSION"
 
 # Download to sources directory
 wget -q "$SOURCE_URL" -O "$SOURCE_PATH"
