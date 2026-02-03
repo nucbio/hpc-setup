@@ -47,7 +47,7 @@ ${SRC_DIR}/configure \
   --with-libpng \
   --with-jpeglib \
   --with-cairo \
-  --with-readline=yes \
+  --with-readline=no \
   --with-system-tre=no
 #  LDFLAGS="-L${INSTALL_DIR}/readline/readline-$READLINE_VERSION/lib" \
 #  CPPFLAGS="-I${INSTALL_DIR}/readline/readline-$READLINE_VERSION/include"
