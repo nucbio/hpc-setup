@@ -6,7 +6,7 @@ BUILD_DIR=/tmp/R-build
 SRC_DIR=$RDIR/src
 mkdir -p $SRC_DIR
 cd $RDIR
-#wget https://cran.r-project.org/src/base/R-4/R-4.5.2.tar.gz
+wget https://cran.r-project.org/src/base/R-4/R-$R_VERSION.tar.gz
 tar -xzf R*.tar.gz -C ${SRC_DIR} --strip-components=1
 # Prepare build directory in tmp
 rm -rf ${BUILD_DIR}
