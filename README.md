@@ -1,4 +1,4 @@
-Installation of Bioinformatic tools into a single directory.
+Installation of Bioinformatic tools into a single directory witout root permission.
 
 Start script from inside of the directory as:
 
