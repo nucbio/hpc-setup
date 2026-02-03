@@ -1,15 +1,20 @@
 #!/bin/bash
 
+# Configuration
 RUST_VERSION="1.91.1"
+INSTALL_ROOT="$INSTALL_DIR/rust/rust-$RUST_VERSION"
 
-# Globals
-#export RUSTUP_HOME=$INSTALL_DIR/rust/rust-$RUST_VERSION/rustup
-#export CARGO_HOME=$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo
+# Define local paths
+export RUSTUP_HOME="$INSTALL_ROOT/rustup"
+export CARGO_HOME="$INSTALL_ROOT/cargo"
 
-#mkdir -p $RUSTUP_HOME $CARGO_HOME
+# Create directories
+mkdir -p "$RUSTUP_HOME" "$CARGO_HOME"
 
-#cd $INSTALL_DIR/rust
-#curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf > rustup-init.sh
-#chmod +x rustup-init.sh
-#./rustup-init.sh --no-modify-path --profile complete
+# Download and execute installer
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
+    -y \
+    --default-toolchain "$RUST_VERSION" \
+    --no-modify-path \
+    --profile complete
 
