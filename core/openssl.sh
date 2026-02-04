@@ -1,5 +1,8 @@
 #!/bin/bash
 
+module load libcurl/$LIBCURL_VERSION
+module load pandoc/$PANDOC_VERSION
+
 # Variables
 OPENSSL_VERSION=3.6.1
 SOURCE_DIR="$INSTALL_DIR/sources"

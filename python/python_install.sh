@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Load dependencies
+module use $INSTALL_DIR/modulefiles
+module load openssl/$OPENSSL_VERSION
+module load readline/$READLINE_VERSION
+module load ncurses/$NCURSES_VERSION
+module load xz/$XZ_VERSION
+module load bzip2/$BZIP2_VERSION
+module load libcurl/$LIBCURL_VERSION
+module load sqlite/$SQLITE_VERSION
+
 # Variables
 PYTHON_VERSION=3.12.2
 SOURCE_DIR="$INSTALL_DIR/sources"

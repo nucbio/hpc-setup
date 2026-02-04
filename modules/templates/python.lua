@@ -18,13 +18,13 @@ whatis("Description: Python is an interpreted, interactive, object-oriented prog
 ----------------------------------------------------------------------
 -- Load the dependency stack
 ----------------------------------------------------------------------
-load("openssl/${OPENSSL_VERSION}")
-load("readline/${READLINE_VERSION}")
-load("ncurses/${NCURSES_VERSION}")
-load("lzma/${LZMA_VERSION}")
-load("bzip2/${BZIP2_VERSION}")
-load("libcurl/${LIBCURL_VERSION}")
-load("sqlite/${SQLITE_VERSION}") -- If you have an sqlite template
+load("${INSTALL_DIR}/openssl/${OPENSSL_VERSION}")
+load("${INSTALL_DIR}/readline/${READLINE_VERSION}")
+load("${INSTALL_DIR}/ncurses/${NCURSES_VERSION}")
+load("${INSTALL_DIR}/xz/${XZ_VERSION}")
+load("${INSTALL_DIR}/bzip2/${BZIP2_VERSION}")
+load("${INSTALL_DIR}/libcurl/${LIBCURL_VERSION}")
+load("${INSTALL_DIR}/sqlite/${SQLITE_VERSION}")
 
 ----------------------------------------------------------------------
 -- Python installation paths

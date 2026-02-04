@@ -10,6 +10,15 @@ Package `build-essential` containing `g++`, `make`, `gcc`, `libc-dev` must be in
 
 `sudo apt update && sudo apt install build-essential`
 
+## Installation Sequence
+1. Core packages (dependencies)  
+2. Python  
+3. Installers  
+4. R dependencies  
+5. R  
+6. Bioinformatic tools  
+7. Terminal (CLI) tools  
+
 ## Structure
 - Downloaded archives are in `sources` directory.
 - Installed packages are in `package/package-version` directories.
