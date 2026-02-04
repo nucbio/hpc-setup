@@ -22,6 +22,11 @@ cp "readline-${READLINE_VERSION}.tar.gz" "$SOURCE_ARCHIVE/"
 tar -xzf "readline-${READLINE_VERSION}.tar.gz"
 cd "readline-${READLINE_VERSION}"
 
+# Explicit ncurses variaables
+export CPPFLAGS="-I$NCURSES_DIR/include"
+export LDFLAGS="-L$NCURSES_DIR/lib"
+export PKG_CONFIG_PATH="$NCURSES_DIR/lib/pkgconfig"
+
 ./configure --prefix="$TARGET_DIR" \
             --with-curses="$NCURSES_DIR" \
             CPPFLAGS="-I$NCURSES_DIR/include" \
