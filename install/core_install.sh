@@ -25,6 +25,7 @@ source $REPO_DIR/core/pandoc.sh
 # 8. openssl
 source $REPO_DIR/core/openssl.sh
 # 9. libcurl
+module load openssl/$OPENSSL_VERSION
 source $REPO_DIR/core/libcurl.sh
 # 10. ncurses
 source $REPO_DIR/core/ncurses.sh
