@@ -30,6 +30,8 @@ PATH="$LUA_DIR/bin:$PATH" ./configure \
     --with-updateSystemFn=no
 
 make install
+# remove symlink
+rm $LMOD_INSTALL/lmod
 
 # Source Lmod
 source "$LMOD_INSTALL/lmod-$LMOD_VERSION/init/bash"
