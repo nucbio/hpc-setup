@@ -22,16 +22,9 @@ cp "readline-${READLINE_VERSION}.tar.gz" "$SOURCE_ARCHIVE/"
 tar -xzf "readline-${READLINE_VERSION}.tar.gz"
 cd "readline-${READLINE_VERSION}"
 
-# GET MODULE NCURSES
-module use $INSTALL_DIR/modulefiles
-module load ncurses/$NCURSES_VERSION
-
 ./configure --prefix="$TARGET_DIR" \
             --enable-shared \
             --enable-static
-#            --with-curses="$NCURSES_DIR" \
-#            CPPFLAGS="-I$NCURSES_DIR/include" \
-#            LDFLAGS="-L$NCURSES_DIR/lib" \
 
 make -j$(nproc)
 make install

@@ -24,10 +24,7 @@ for install_tool in ${REPO_DIR}/installers/*.sh
 #  done
 
 # Install R dependencies
-for install_tool in ${REPO_DIR}/R/R_stack/*.sh
-  do 
-    source $install_tool
-  done
+source ${REPO_DIR}/R/R_stack_install.sh
 
 # Install R
 source ${REPO_DIR}/R/R_install.sh
