@@ -26,8 +26,7 @@ tar -xf "$SOURCE_DIR/$OPENSSL_ARCHIVE" -C "$BUILD_DIR" --strip-components=1
 cd "$BUILD_DIR"
 
 # 4. Configure
-# Note: --openssldir is usually for configuration files/certs. 
-# Keeping it inside the prefix keeps the installation self-contained.
+mkdir -p "$OPENSSL_INSTALL_DIR"
 ./configure \
     --prefix="$OPENSSL_INSTALL_DIR" \
     --openssldir="$OPENSSL_INSTALL_DIR" \
