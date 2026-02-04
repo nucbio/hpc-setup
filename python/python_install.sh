@@ -9,7 +9,7 @@ module load xz/$XZ_VERSION
 module load bzip2/$BZIP2_VERSION
 module load sqlite/$SQLITE_VERSION
 # unload to test sertificate issues with proxy
-module load unlibcurl/$LIBCURL_VERSION
+module unload libcurl/$LIBCURL_VERSION
 
 
 # Variables
