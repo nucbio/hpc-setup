@@ -1,7 +1,7 @@
 #!/bin/bash
 # Variables
 SQLITE_ID=3510200
-SQLITE_VERSION=3.51
+export SQLITE_VERSION=3.51
 SQLITE_YEAR=2026
 SOURCE_DIR="$INSTALL_DIR/sources"
 BUILD_DIR="/tmp/sqlite-build"

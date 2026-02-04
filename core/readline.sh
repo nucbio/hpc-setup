@@ -1,7 +1,7 @@
 #!/bin/bash
 # Variables
 TOOL_NAME="readline"
-READLINE_VERSION="8.3"
+export READLINE_VERSION="8.3"
 SOURCE_URL="https://ftp.gnu.org/pub/gnu/readline/readline-${READLINE_VERSION}.tar.gz"
 # Keep the target directory clean (no version subfolders inside)
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$READLINE_VERSION"

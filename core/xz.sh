@@ -1,7 +1,7 @@
 # Variables
 # Variables
 TOOL_NAME="xz"
-XZ_VERSION="5.8.2"
+export XZ_VERSION="5.8.2"
 SOURCE_URL="https://github.com/tukaani-project/xz/releases/download/v${XZ_VERSION}/xz-${XZ_VERSION}.tar.xz"
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$XZ_VERSION"
 SOURCE_ARCHIVE="$INSTALL_DIR/sources"

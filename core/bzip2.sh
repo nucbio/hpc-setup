@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # https://gitlab.com/bzip2/bzip2/
-BZIP_VERSION="1.0.8"
+export BZIP_VERSION="1.0.8"
 
 # Create directories
 mkdir -p "$INSTALL_DIR/bzip2"

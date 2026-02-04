@@ -4,7 +4,7 @@ module load libcurl/$LIBCURL_VERSION
 module load pandoc/$PANDOC_VERSION
 
 # Variables
-OPENSSL_VERSION=3.6.1
+export OPENSSL_VERSION=3.6.1
 SOURCE_DIR="$INSTALL_DIR/sources"
 BUILD_DIR="/tmp/openssl-build"
 OPENSSL_INSTALL_DIR="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION"
