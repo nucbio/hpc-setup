@@ -1,8 +1,6 @@
 #!/bin/bash
 
-module load rust/$RUST_VERSION
 ## ripgrep - modern grep
-
 RIPGREP_RELEASE_TAG="${RIPGREP_RELEASE_TAG:-15.1.0}"
 # Install ripgrep
 cargo install \

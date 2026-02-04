@@ -18,10 +18,10 @@ for install_tool in ${REPO_DIR}/installers/*.sh
   done
 
 # Install bioinformatic tools
-#for install_tool in ${REPO_DIR}/tools/illumina/*.sh
-#  do 
-#    source $install_tool
-#  done
+for install_tool in ${REPO_DIR}/tools/illumina/*.sh
+  do 
+    source $install_tool
+  done
 
 # Install R dependencies
 source ${REPO_DIR}/R/R_stack_install.sh
@@ -30,4 +30,11 @@ source ${REPO_DIR}/R/R_stack_install.sh
 source ${REPO_DIR}/R/R_install.sh
 
 # Install R libraries
+
+# Install CLI tools
+module load rust/$RUST_VERSION
+for install_tool in ${REPO_DIR}/tools/terminal/*.sh
+  do 
+    source $install_tool
+  done
 
