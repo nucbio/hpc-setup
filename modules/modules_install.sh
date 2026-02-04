@@ -4,7 +4,6 @@ LMOD_VERSION=9.0.5
 LMOD_ARCHIVE="lmod-${LMOD_VERSION}.tar.gz"
 SOURCE_DIR="$INSTALL_DIR/sources"
 BUILD_DIR="/tmp/lmod-build"
-LMOD_INSTALL_ROOT="$INSTALL_DIR/lmod/lmod-$LMOD_VERSION"
 
 # 1. Manage Source Archive
 mkdir -p "$SOURCE_DIR"
@@ -30,7 +29,7 @@ export PATH="$LUA_DIR/bin:$PATH"
 
 # 5. Configure and Install
 ./configure \
-    --prefix="$LMOD_INSTALL_ROOT" \
+    --prefix="$INSTALL_DIR" \
     --with-lua="$LUA_DIR/bin/lua" \
     --with-luac="$LUA_DIR/bin/luac" \
     --with-tcl=yes \
@@ -40,12 +39,8 @@ export PATH="$LUA_DIR/bin:$PATH"
 
 make install
 
-# 6. Cleanup & Initialization
-# Removing the default 'lmod' symlink as requested
-#rm -f "$LMOD_INSTALL_ROOT/lmod"
-
 # Source the new installation
-#source "$LMOD_INSTALL_ROOT/$LMOD_VERSION/init/bash"
+source "$ISNTALL_DIR/lmod/$LMOD_VERSION/init/bash"
 
 # Optional: Add to your shell profile for persistence
 # echo "source $LMOD_INSTALL/lmod/${LMOD_VERSION}/init/bash" >> ~/.bashrc
