@@ -32,11 +32,11 @@ module load readline/$READLINE_VERSION
 
 # FIX: readline globals are not visible for R
 # Explicitly set flags for the R configure
-export LDFLAGS="-L$INSTALL_DIR/readline/readline-$READLINE_VERSION/lib \
-  -L$INSTALL_DIR/ncurses/ncurses-$NCURSES_VERSION/lib $LDFLAGS"
-export CPPFLAGS="-I$INSTALL_DIR/readline/readline-$READLINE_VERSION/include \
-  -I$INSTALL_DIR/ncurses/ncurses-$NCURSES_VERSION/include $CPPFLAGS"
-export LIBS="-lreadline -lncursesw"
+#export LDFLAGS="-L$INSTALL_DIR/readline/readline-$READLINE_VERSION/lib \
+#  -L$INSTALL_DIR/ncurses/ncurses-$NCURSES_VERSION/lib $LDFLAGS"
+#export CPPFLAGS="-I$INSTALL_DIR/readline/readline-$READLINE_VERSION/include \
+#  -I$INSTALL_DIR/ncurses/ncurses-$NCURSES_VERSION/include $CPPFLAGS"
+#export LIBS="-lreadline -lncursesw"
 
 ${SRC_DIR}/configure \
   --prefix=$RDIR \
@@ -47,7 +47,7 @@ ${SRC_DIR}/configure \
   --with-libpng \
   --with-jpeglib \
   --with-cairo \
-  --with-readline=no \
+  --with-readline=yes \
   --with-system-tre=no
 
 make -j$(nproc) && make install
