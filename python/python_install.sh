@@ -7,8 +7,10 @@ module load readline/$READLINE_VERSION
 module load ncurses/$NCURSES_VERSION
 module load xz/$XZ_VERSION
 module load bzip2/$BZIP2_VERSION
-module load libcurl/$LIBCURL_VERSION
 module load sqlite/$SQLITE_VERSION
+# unload to test sertificate issues with proxy
+module load unlibcurl/$LIBCURL_VERSION
+
 
 # Variables
 PYTHON_VERSION=3.12.2
