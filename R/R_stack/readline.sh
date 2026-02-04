@@ -26,8 +26,7 @@ cd "readline-${READLINE_VERSION}"
 #            --enable-shared \
 #            --enable-static
 
-./configure --prefix=$INSTALL_DIR/readline/readline-$READLINE_VERSION \
-  --with-curses
+./configure --prefix=$TARGET_DIR --with-curses
 
 make clean
 make SHLIB_LIBS="-lncursesw"
