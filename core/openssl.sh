@@ -1,6 +1,5 @@
 #!/bin/bash
 
-module load libcurl/$LIBCURL_VERSION
 module load pandoc/$PANDOC_VERSION
 
 # Variables
