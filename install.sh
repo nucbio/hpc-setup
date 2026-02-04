@@ -18,10 +18,10 @@ for install_tool in ${REPO_DIR}/installers/*.sh
   done
 
 # Install bioinformatic tools
-for install_tool in ${REPO_DIR}/tools/illumina/*.sh
-  do 
-    source $install_tool
-  done
+#for install_tool in ${REPO_DIR}/tools/illumina/*.sh
+#  do 
+#    source $install_tool
+#  done
 
 # Install R dependencies
 for install_tool in ${REPO_DIR}/R/R_stack/*.sh
