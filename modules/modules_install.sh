@@ -5,18 +5,15 @@ cd /tmp
 if [ -d "Lmod-${LMOD_VERSION}" ]; then
   rm -rf "Lmod-${LMOD_VERSION}"
 fi
-wget https://github.com/TACC/Lmod/archive/refs/tags/${LMOD_VERSION}.tar.gz -O Lmod-${LMOD_VERSION}.tar.gz
-tar -xzf Lmod-${LMOD_VERSION}.tar.gz
-cd Lmod-${LMOD_VERSION}
+wget https://github.com/TACC/Lmod/archive/refs/tags/${LMOD_VERSION}.tar.gz -O lmod-${LMOD_VERSION}.tar.gz
+tar -xzf lmod-${LMOD_VERSION}.tar.gz
+cd lmod-${LMOD_VERSION}
 
-LMOD_INSTALL=$INSTALL_DIR/lmod/lmod-${LMOD_VERSION}
+LMOD_INSTALL=$INSTALL_DIR/lmod
 mkdir -p $LMOD_INSTALL
 
 #  FIX: Set up Lua paths
 eval "$($LUA_DIR/bin/luarocks path)"
-
-# Verify it works
-$LUA_DIR/bin/lua -e 'require("posix")' && echo "✓ posix found"
 
 # Set up Tcl paths (fixes tcl.h detection)
 export TCL_INCLUDE="-I${TCL_INSTALL}/include"
@@ -35,7 +32,7 @@ PATH="$LUA_DIR/bin:$PATH" ./configure \
 make install
 
 # Source Lmod
-source "$LMOD_INSTALL/lmod/${LMOD_VERSION}/init/bash"
+source "$LMOD_INSTALL/lmod-$LMOD_VERSION/init/bash"
 
 # Optional: Add to your shell profile for persistence
 # echo "source $LMOD_INSTALL/lmod/${LMOD_VERSION}/init/bash" >> ~/.bashrc
