@@ -40,11 +40,9 @@ export PATH="$LUA_DIR/bin:$PATH"
 make install
 
 # Source the new installation
-source "$ISNTALL_DIR/lmod/$LMOD_VERSION/init/bash"
+source "$INSTALL_DIR/lmod/$LMOD_VERSION/init/bash"
 
 # Optional: Add to your shell profile for persistence
 # echo "source $LMOD_INSTALL/lmod/${LMOD_VERSION}/init/bash" >> ~/.bashrc
 
 # use for tests: unset -f module
-#
-
