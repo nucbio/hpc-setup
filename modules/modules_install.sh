@@ -4,7 +4,7 @@ LMOD_VERSION=9.0.5
 LMOD_ARCHIVE="lmod-${LMOD_VERSION}.tar.gz"
 SOURCE_DIR="$INSTALL_DIR/sources"
 BUILD_DIR="/tmp/lmod-build"
-LMOD_INSTALL_ROOT="$INSTALL_DIR/lmod"
+LMOD_INSTALL_ROOT="$INSTALL_DIR/lmod/lmod-$LMOD_VERSION"
 
 # 1. Manage Source Archive
 mkdir -p "$SOURCE_DIR"
@@ -42,10 +42,10 @@ make install
 
 # 6. Cleanup & Initialization
 # Removing the default 'lmod' symlink as requested
-rm -f "$LMOD_INSTALL_ROOT/lmod"
+#rm -f "$LMOD_INSTALL_ROOT/lmod"
 
 # Source the new installation
-source "$LMOD_INSTALL_ROOT/$LMOD_VERSION/init/bash"
+#source "$LMOD_INSTALL_ROOT/$LMOD_VERSION/init/bash"
 
 # Optional: Add to your shell profile for persistence
 # echo "source $LMOD_INSTALL/lmod/${LMOD_VERSION}/init/bash" >> ~/.bashrc
