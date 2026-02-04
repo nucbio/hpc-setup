@@ -27,9 +27,6 @@ source $REPO_DIR/core/ncurses.sh
 module load ncurses/$NCURSES_VERSION
 source $REPO_DIR/core/readline.sh
 
-# 11. freetype (use zlib, bzip2, png, harfbuzz)
-source $REPO_DIR/core/freetype.sh
-
 # 12. sqlite
 source $REPO_DIR/core/sqlite.sh
 
