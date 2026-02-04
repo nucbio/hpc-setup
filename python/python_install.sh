@@ -39,7 +39,7 @@ cd "$BUILD_DIR"
 # Note: Ensure $PKG_DIR and $NCPU are defined in your environment
 ./configure \
     --prefix="$TARGET_DIR" \
-    --with-openssl="$PKG_DIR/openssl/$OPENSSL_DIR" \
+    --with-openssl="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION" \
     --enable-optimizations \
     --with-ensurepip=install
 
