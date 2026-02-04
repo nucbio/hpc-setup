@@ -8,7 +8,7 @@ BUILD_DIR=/tmp/libcurl-$LIBCURL_VERSION-build
 SRC_DIR=$LIB_DIR/src
 mkdir -p $SRC_DIR
 cd $LIB_DIR
-wget https://curl.se/download/curl-$LIBCURL_VERSION.tar.gz
+wget --no-check-certificate https://curl.se/download/curl-$LIBCURL_VERSION.tar.gz
 tar -xzf curl*.tar.gz -C ${SRC_DIR} --strip-components=1
 # tmp dir for compilation
 rm -rf ${BUILD_DIR}
