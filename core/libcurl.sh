@@ -19,7 +19,7 @@ ${SRC_DIR}/configure \
     --prefix=$LIB_DIR \
     --enable-shared \
     --enable-static \
-    --with-openssl \
+    --with-openssl="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION" \
     --enable-optimize \
     --disable-manual \
     --disable-ldap \
