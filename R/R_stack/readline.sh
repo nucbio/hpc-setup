@@ -22,12 +22,19 @@ cp "readline-${READLINE_VERSION}.tar.gz" "$SOURCE_ARCHIVE/"
 tar -xzf "readline-${READLINE_VERSION}.tar.gz"
 cd "readline-${READLINE_VERSION}"
 
-./configure --prefix="$TARGET_DIR" \
-            --enable-shared \
-            --enable-static
+#./configure --prefix="$TARGET_DIR" \
+#            --enable-shared \
+#            --enable-static
 
-make -j$(nproc)
+./configure --prefix=$INSTALL_DIR/readline/readline-$READLINE_VERSION \
+  --with-curses
+
+make clean
+make SHLIB_LIBS="-lncursesw"
 make install
+
+#make -j$(nproc)
+#make install
 
 # Cleanup Build Area
 rm -rf /tmp/readline-build
