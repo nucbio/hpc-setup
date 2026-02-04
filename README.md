@@ -10,6 +10,9 @@ Package `build-essential` containing `g++`, `make`, `gcc`, `libc-dev` must be in
 
 `sudo apt update && sudo apt install build-essential`
 
+Cmake:
+`sudo apt install cmake`
+
 ## Installation Sequence
 1. Core packages (dependencies)  
 2. Python  
