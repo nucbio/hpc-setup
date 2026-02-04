@@ -8,8 +8,7 @@ module load ncurses/$NCURSES_VERSION
 module load xz/$XZ_VERSION
 module load bzip2/$BZIP2_VERSION
 module load sqlite/$SQLITE_VERSION
-# unload to test sertificate issues with proxy
-module unload libcurl/$LIBCURL_VERSION
+module load libcurl/$LIBCURL_VERSION
 
 
 # Variables
@@ -23,7 +22,7 @@ mkdir -p "$SOURCE_DIR"
 PYTHON_ARCHIVE="Python-$PYTHON_VERSION.tgz"
 
 if [ ! -f "$SOURCE_DIR/$PYTHON_ARCHIVE" ]; then
-    wget "https://www.python.org/ftp/python/$PYTHON_VERSION/$PYTHON_ARCHIVE" -O "$SOURCE_DIR/$PYTHON_ARCHIVE"
+    wget --no-check-certificate "https://www.python.org/ftp/python/$PYTHON_VERSION/$PYTHON_ARCHIVE" -O "$SOURCE_DIR/$PYTHON_ARCHIVE"
 fi
 
 # 2. Prepare Build Directory

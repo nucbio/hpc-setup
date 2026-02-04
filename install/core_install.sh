@@ -27,7 +27,7 @@ source $REPO_DIR/core/ncurses.sh
 module load ncurses/$NCURSES_VERSION
 source $REPO_DIR/core/readline.sh
 
-# 12. sqlite
+# 11. sqlite
 source $REPO_DIR/core/sqlite.sh
 
 # 12. openssl
