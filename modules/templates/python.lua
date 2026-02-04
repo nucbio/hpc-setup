@@ -22,7 +22,7 @@ load("openssl/${OPENSSL_VERSION}")
 load("readline/${READLINE_VERSION}")
 load("ncurses/${NCURSES_VERSION}")
 load("xz/${XZ_VERSION}")
-load("bzip2/${BZIP2_VERSION}")
+load("bzip2/${BZIP_VERSION}")
 load("libcurl/${LIBCURL_VERSION}")
 load("sqlite/${SQLITE_VERSION}")
 
