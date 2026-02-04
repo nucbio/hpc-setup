@@ -26,8 +26,7 @@ tar -xf "$SOURCE_DIR/$OPENSSL_ARCHIVE" -C "$BUILD_DIR" --strip-components=1
 cd "$BUILD_DIR"
 
 # 4. Configure
-mkdir -p "$OPENSSL_INSTALL_DIR"
-./configure \
+./Configure \
     --prefix="$OPENSSL_INSTALL_DIR" \
     --openssldir="$OPENSSL_INSTALL_DIR" \
     shared \
