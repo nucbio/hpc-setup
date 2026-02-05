@@ -13,3 +13,5 @@ python3 --version
 
 python3 -m pip install pod5==$POD5_VERSION
 
+# Modules
+make_lua_module "pod5" "$POD5_VERSION"

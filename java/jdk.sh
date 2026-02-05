@@ -1,14 +1,21 @@
 #!/bin/bash
 
-# Java 17.0.12
-mkdir -p $INSTALL_DIR/java/java-17.0.12
-cd $INSTALL_DIR/java/java-17.0.12
-wget --no-check-certificate https://download.oracle.com/java/17/archive/jdk-17.0.12_linux-x64_bin.tar.gz
-tar -xzvf jdk-17.0.12_linux-x64_bin.tar.gz
+# Variables
+export JAVA_VERSION="25.0.1"
+TOOL_NAME="java"
+SOURCE_URL="https://download.oracle.com/java/25/archive/jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz"
+SOURCE_ARCHIVE="$INSTALL_DIR/sources"
+TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/jdk-$JAVA_VERSION"
 
-# Java 25.0.1
-mkdir -p $INSTALL_DIR/java/java-25.0.1
-cd $INSTALL_DIR/java/java-25.0.1
-wget --no-check-certificate https://download.oracle.com/java/25/archive/jdk-25.0.1_linux-x64_bin.tar.gz
-tar -xzvf jdk-25.0.1_linux-x64_bin.tar.gz --strip-components=1
-rm jdk-25.0.1_linux-x64_bin.tar.gz
+# 1. Download to sources directory
+# Using --no-check-certificate as per your requirement
+wget -q --no-check-certificate "$SOURCE_URL" \
+  -O "$SOURCE_ARCHIVE/jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz"
+
+# 2. Prepare target directory and unpack
+mkdir -p "$TARGET_DIR"
+tar -xzf "$SOURCE_ARCHIVE/jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz" \
+  -C "$TARGET_DIR" --strip-components=1
+
+# 3. Module generation
+make_lua_module "java" "$JAVA_VERSION"
