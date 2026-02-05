@@ -37,8 +37,8 @@ meson setup build_dir \
   -Dmatio=disabled \
   -Dcfitsio=disabled \
   -Dpdfium=disabled \
-  -Dmagick=disabled \
-  -Dcglesv2=false
+  -Dmagick=disabled
+
 
 # 5. Build and Install
 meson compile -C build_dir
