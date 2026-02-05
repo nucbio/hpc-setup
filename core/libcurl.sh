@@ -28,7 +28,6 @@ ${SRC_DIR}/configure \
 # Compile
 make -j$(nproc) && make install
 # Cleanup
-cd $REPO_DIR
 rm -rf $BUILD_DIR
 rm -rf $SRC_DIR
 

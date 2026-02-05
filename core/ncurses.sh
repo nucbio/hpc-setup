@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "Install ncurses"
+echo $INSTALL_DIR
 
 # Variables
 TOOL_NAME="ncurses"
