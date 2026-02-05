@@ -1,11 +1,11 @@
 #!/bin/bash
 
 module use $INSTALL_DIR/modulefiles
-module load openssl/$OPENSSL_VERSION
+#module load openssl/$OPENSSL_VERSION
 module load python/$PYTHON_VERSION
 
 # 1. freetype (use zlib, bzip2, png, harfbuzz)
-source $REPO_DIR/R/R_core/freetype.sh
+source $REPO_DIR/core/freetype.sh
 
 # 2. fribidi (load freetype)
 module load freetype/$FREETYPE_VERSION
