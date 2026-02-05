@@ -7,9 +7,6 @@ SOURCE_URL="https://github.com/libvips/libvips/releases/download/v$LIBVIPS_VERSI
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$LIBVIPS_VERSION"
 SOURCE_ARCHIVE="$INSTALL_DIR/sources"
 
-# Load dependencies
-module use $INSTALL_DIR/modulefiles
-module load python/$PYTHON_VERSION  # Provides meson and ninja
 # Recommended: load cairo, harfbuzz, and freetype modules here
 # 1. Prepare Environment
 mkdir -p "$SOURCE_ARCHIVE"
