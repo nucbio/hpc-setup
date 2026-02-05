@@ -28,7 +28,6 @@ cd "vips-${LIBVIPS_VERSION}"
 meson setup build_dir \
     --prefix="$TARGET_DIR" \
     --buildtype=release \
-    -Dgtk_doc=disabled \
     -Dintrospection=disabled \
     -Dexamples=false
 
