@@ -27,10 +27,10 @@ source $REPO_DIR/java/jdk.sh
 # Rust
 source $REPO_DIR/rust/rust.sh
 
-# R dependencies
-source $REPO_DIR/R/R_core_install.sh
+# Meson/Ninja dependent packages
+source $REPO_DIR/install/core_install_py.sh
 # Install R
-source $REPO_DIR/R/R_install.sh
+source $REPO_DIR/R/R.sh
 
 module R/$R_VERSION
 Rscript $REPO_DIR/R/R_libraries.R 
