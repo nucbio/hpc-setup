@@ -28,6 +28,17 @@ meson setup build_dir \
   -Dcfitsio=disabled \
   -Dmagick=disabled
 
+# TRY NEXT
+meson setup build_dir \
+  --prefix="$TARGET_DIR" \
+  --buildtype=release \
+  -Dintrospection=disabled \
+  -Dmatio=disabled \
+  -Dcfitsio=disabled \
+  -Dpdfium=disabled \
+  -Dmagick=disabled \
+  -Dcglesv2=false
+
 # 5. Build and Install
 meson compile -C build_dir
 meson install -C build_dir
