@@ -32,3 +32,13 @@ prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib64/pkgconfig"))
 setenv("OPENSSL_ROOT_DIR", root)
 setenv("OPENSSL_INCLUDE_DIR", pathJoin(root, "include"))
 setenv("OPENSSL_LIBRARIES", pathJoin(root, "lib64"))
+
+-- Sertificates (critical for proxy)
+-- If system has proxy, wget should be wget --no-check-certificate if no sertificates added
+-- local (need to add)
+-- setenv("SSL_CERT_FILE", pathJoin(root, "ssl/cert.pem"))
+-- setenv("SSL_CERT_DIR",  pathJoin(root, "ssl/certs"))
+-- system
+setenv("SSL_CERT_FILE", "/etc/ssl/certs/ca-certificates.crt")
+setenv("SSL_CERT_DIR", "/etc/ssl/certs")
+
