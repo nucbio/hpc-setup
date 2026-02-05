@@ -20,13 +20,12 @@ source $REPO_DIR/install/core_install.sh
 source $REPO_DIR/python/python_install.sh
 source $REPO_DIR/python/python_packages.sh
 
-# Install installers first
-for install_tool in $REPO_DIR/installers/*.sh
-  do 
-    source $install_tool
-  done
+# Java
+source $REPO_DIR/java/jdk.sh
+# Rust
+source $REPO_DIR/rust/rust.sh
 
-# Install R dependencies (meson/python related)
+# R dependencies
 source $REPO_DIR/R/R_core_install.sh
 # Install R
 source $REPO_DIR/R/R_install.sh

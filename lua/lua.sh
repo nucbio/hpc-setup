@@ -22,3 +22,5 @@ rm -rf "lua-$LUA_VERSION"
 
 # Export
 export PATH="$LUA_DIR/bin:$PATH"
+
+make_lua_module "lua" "$LUA_VERSION"

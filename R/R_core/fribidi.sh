@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # https://github.com/fribidi/fribidi/releases
-FRIBIDI_VERSION="1.0.16"
+export FRIBIDI_VERSION="1.0.16"
 
 LIB_DIR=$INSTALL_DIR/fribidi/fribidi-$FRIBIDI_VERSION
 SRC_DIR=$LIB_DIR/src

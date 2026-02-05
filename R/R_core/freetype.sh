@@ -9,10 +9,6 @@ SOURCE_URL="https://download.savannah.gnu.org/releases/freetype/freetype-${FREET
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$FREETYPE_VERSION"
 SOURCE_ARCHIVE="$INSTALL_DIR/sources"
 
-# Load dependencies
-module use $INSTALL_DIR/modulefiles
-module load python/$PYTHON_VERSION  # Provides meson and ninja
-
 # 1. Prepare Environment
 mkdir -p "$SOURCE_ARCHIVE"
 rm -rf /tmp/$TOOL_NAME-build
