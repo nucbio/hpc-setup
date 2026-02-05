@@ -39,6 +39,7 @@ meson compile -C build_dir
 meson install -C build_dir
 
 # 6. Cleanup Build Area
+cd $REPO_DIR
 rm -rf /tmp/$TOOL_NAME-build
 
 # 7. Module generation

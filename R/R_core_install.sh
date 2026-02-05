@@ -17,8 +17,9 @@ source $REPO_DIR/R/R_core/harfbuzz.sh
 module load harfbuzz/$HARFBUZZ_VERSION
 source $REPO_DIR/R/R_core/cairo.sh
 
-# 5. libvips (load libjpeg, libpng, libwebp, Cairo)
+# 5. libvips
 module load libjpeg/$LIBJPEG_VERSION
+module load libwebp/$LIBWEBP_VERSION
 module load libpng/$LIBPNG_VERSION
 module load cairo/$CAIRO_VERSION
 source $REPO_DIR/R/R_core/libvips.sh
