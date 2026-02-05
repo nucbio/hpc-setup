@@ -1,22 +1,45 @@
 #!/bin/bash
 
-FREETYPE_VERSION=2.14.1
+echo "Install FreeType"
 
-LIB_DIR=$INSTALL_DIR/freetype/freetype-$FREETYPE_VERSION
-SRC_DIR=$LIB_DIR/src
-BUILD_DIR=/tmp/freetype-build
-mkdir -p $SRC_DIR
-cd $LIB_DIR
-wget https://download.savannah.gnu.org/releases/freetype/freetype-$FREETYPE_VERSION.tar.gz
-tar -xzf freetype-$FREETYPE_VERSION.tar.gz -C ${SRC_DIR} --strip-components=1
-rm -rf ${BUILD_DIR}
-mkdir -p ${BUILD_DIR}
-meson setup $BUILD_DIR $SRC_DIR --prefix=$LIB_DIR
-# Build and install
-meson compile -C $BUILD_DIR
-meson install -C $BUILD_DIR
-rm -rf $BUILD_DIR
+# Variables
+TOOL_NAME="freetype"
+export FREETYPE_VERSION="2.14.1"
+SOURCE_URL="https://download.savannah.gnu.org/releases/freetype/freetype-${FREETYPE_VERSION}.tar.gz"
+TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$FREETYPE_VERSION"
+SOURCE_ARCHIVE="$INSTALL_DIR/sources"
 
-# Modules
+# Load dependencies
+module use $INSTALL_DIR/modulefiles
+module load python/$PYTHON_VERSION  # Provides meson and ninja
 
+# 1. Prepare Environment
+mkdir -p "$SOURCE_ARCHIVE"
+rm -rf /tmp/$TOOL_NAME-build
+mkdir -p /tmp/$TOOL_NAME-build
+cd /tmp/$TOOL_NAME-build
+
+# 2. Download and Archive
+wget -q "$SOURCE_URL" -O "${TOOL_NAME}-${FREETYPE_VERSION}.tar.gz"
+cp "${TOOL_NAME}-${FREETYPE_VERSION}.tar.gz" "$SOURCE_ARCHIVE/"
+
+# 3. Unpack
+tar -xzf "${TOOL_NAME}-${FREETYPE_VERSION}.tar.gz"
+cd "freetype-${FREETYPE_VERSION}"
+
+# 4. Configure with Meson
+meson setup build_dir \
+    --prefix="$TARGET_DIR" \
+    --buildtype=release
+
+# 5. Build and Install
+meson compile -C build_dir
+meson install -C build_dir
+
+# 6. Cleanup Build Area
+rm -rf /tmp/$TOOL_NAME-build
+
+# 7. Module generation
 make_lua_module "freetype" "$FREETYPE_VERSION"
+
+echo "FreeType installation complete"
