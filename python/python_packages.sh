@@ -9,9 +9,6 @@ if ! command -v python3 &> /dev/null; then
     exit 1
 fi
 
-echo "Using Python: $(which python3)"
-echo "Python version: $(python3 --version)"
-
 echo "Upgrading pip..."
 python3 -m pip install --upgrade pip
 
@@ -30,15 +27,3 @@ python3 -m pip install \
     pytest \
     requests
 
-echo ""
-echo "=== Verification ==="
-python3 -m pip --version
-meson --version
-ninja --version
-python3 -c "import numpy; print(f'NumPy: {numpy.__version__}')"
-python3 -c "import scipy; print(f'SciPy: {scipy.__version__}')"
-python3 -c "import matplotlib; print(f'Matplotlib: {matplotlib.__version__}')"
-python3 -c "import pandas; print(f'Pandas: {pandas.__version__}')"
-
-echo ""
-echo "Python packages installed successfully!"
