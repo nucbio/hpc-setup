@@ -21,15 +21,9 @@ cp "${TOOL_NAME}-${LIBVIPS_VERSION}.tar.xz" "$SOURCE_ARCHIVE/"
 # 3. Unpack
 tar -xJf  "${TOOL_NAME}-${LIBVIPS_VERSION}.tar.xz"
 cd "vips-${LIBVIPS_VERSION}"
-# 4. Configure with Meson
-#meson setup build_dir \
-#  --prefix="$TARGET_DIR" \
-#  -Dmatio=disabled \
-#  -Dcfitsio=disabled \
-#  -Dmagick=disabled
+
 # FIX: distutils is needed but depricated 
 export SETUPTOOLS_USE_DISTUTILS=local
-# TRY NEXT
 meson setup build_dir \
   --prefix="$TARGET_DIR" \
   --buildtype=release \
@@ -38,7 +32,6 @@ meson setup build_dir \
   -Dcfitsio=disabled \
   -Dpdfium=disabled \
   -Dmagick=disabled
-
 
 # 5. Build and Install
 meson compile -C build_dir
