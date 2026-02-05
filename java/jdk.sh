@@ -5,7 +5,7 @@ export JAVA_VERSION="25.0.1"
 TOOL_NAME="java"
 SOURCE_URL="https://download.oracle.com/java/25/archive/jdk-${JAVA_VERSION}_linux-x64_bin.tar.gz"
 SOURCE_ARCHIVE="$INSTALL_DIR/sources"
-TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/jdk-$JAVA_VERSION"
+TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/java-$JAVA_VERSION"
 
 # 1. Download to sources directory
 # Using --no-check-certificate as per your requirement
