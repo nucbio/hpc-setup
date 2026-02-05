@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LIBPNG_VERSION="1.6.50"
+export LIBPNG_VERSION="1.6.50"
 
 LIB_DIR=$INSTALL_DIR/libpng/libpng-$LIBPNG_VERSION
 SRC_DIR=$LIB_DIR/src

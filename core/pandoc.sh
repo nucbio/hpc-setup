@@ -4,7 +4,7 @@
 
 # Variables
 TOOL_NAME="pandoc"
-PANDOC_VERSION="3.8.3"
+export PANDOC_VERSION="3.8.3"
 SOURCE_URL="https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz"
 ARCHIVE_NAME="${TOOL_NAME}_v${PANDOC_VERSION}.tar.gz"
 

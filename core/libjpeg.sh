@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # https://github.com/libjpeg-turbo/libjpeg-turbo/releases
-LIBJPEG_VERSION="3.1.2"
+export LIBJPEG_VERSION="3.1.2"
 LIB_DIR=$INSTALL_DIR/libjpeg/libjpeg-$LIBJPEG_VERSION
 SRC_DIR=$LIB_DIR/src
 BUILD_DIR=/tmp/libjpeg-build

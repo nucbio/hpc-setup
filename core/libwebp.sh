@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LIBWEBP_VERSION="1.6.0"
+export LIBWEBP_VERSION="1.6.0"
 
 # from github mirror get tar.gz
 LIB_DIR=$INSTALL_DIR/libwebp/libwebp-$LIBWEBP_VERSION

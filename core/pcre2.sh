@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-PCRE2_VERSION="10.47"
+export PCRE2_VERSION="10.47"
 LIB_DIR=$INSTALL_DIR/pcre2/pcre2-$PCRE2_VERSION
 SRC_DIR=$LIB_DIR/src
 BUILD_DIR=/tmp/pcre2-build

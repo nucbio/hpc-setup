@@ -23,6 +23,7 @@ load("freetype/${FREETYPE_VERSION}")
 load("libjpeg/${LIBJPEG_VERSION}")
 load("libwebp/${LIBWEBP_VERSION}")
 load("libvips/${LIBVIPS_VERSION}")
+load("java/${JAVA_VERSION}")
 
 ----------------------------------------------------------------------
 -- R installation paths
