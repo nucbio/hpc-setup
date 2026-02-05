@@ -23,10 +23,10 @@ tar -xJf  "${TOOL_NAME}-${LIBVIPS_VERSION}.tar.xz"
 cd "vips-${LIBVIPS_VERSION}"
 # 4. Configure with Meson
 meson setup build_dir \
-    --prefix="$TARGET_DIR" \
-    --buildtype=release \
-    -Dintrospection=disabled \
-    -Dhdf5=disabled
+  --prefix="$TARGET_DIR" \
+  -Dmatio=disabled \
+  -Dcfitsio=disabled \
+  -Dmagick=disabled
 
 # 5. Build and Install
 meson compile -C build_dir
