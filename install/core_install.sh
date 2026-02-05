@@ -4,34 +4,33 @@
 module use $INSTALL_DIR/modulefiles
 
 # No dependencies
-# 0. zlib
+# 1. zlib
 source $REPO_DIR/core/zlib.sh
-
-# 1. bzip2
+# 2. bzip2
 source $REPO_DIR/core/bzip2.sh
-# 2. pcre2
+# 3. pcre2
 source $REPO_DIR/core/pcre2.sh
-# 3. xz
+# 4. xz
 source $REPO_DIR/core/xz.sh
-# 4. libjpeg
+# 5. libjpeg
 source $REPO_DIR/core/libjpeg.sh
-# 5. libpng
+# 6. libpng
 module load zlib/$ZLIB_VERSION
 source $REPO_DIR/core/libpng.sh
-# 6. libwebp
+# 7. libwebp
 source $REPO_DIR/core/libwebp.sh
-# 7. pandoc
+# 8. pandoc
 source $REPO_DIR/core/pandoc.sh
-# 8. openssl
+# 9. openssl
 source $REPO_DIR/core/openssl.sh
-# 9. libcurl
+# 10. libcurl
 module load openssl/$OPENSSL_VERSION
 source $REPO_DIR/core/libcurl.sh
-# 10. ncurses
+# 11. ncurses
 source $REPO_DIR/core/ncurses.sh
-# 11. readline (load ncurses)
+# 12. readline (load ncurses)
 module load ncurses/$NCURSES_VERSION
 source $REPO_DIR/core/readline.sh
-# 12. sqlite
+# 13. sqlite
 source $REPO_DIR/core/sqlite.sh
 

@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Install ncurses"
+
 # Variables
 TOOL_NAME="ncurses"
 export NCURSES_VERSION="6.6"
