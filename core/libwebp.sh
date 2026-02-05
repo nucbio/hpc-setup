@@ -14,10 +14,23 @@ rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
+#cmake ${SRC_DIR} \
+#  -DCMAKE_BUILD_TYPE=Release \
+#  -DCMAKE_INSTALL_PREFIX=$LIB_DIR \
+#  -DWEBP_ENABLE_SIMD=OFF
+
 cmake ${SRC_DIR} \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=$LIB_DIR \
-  -DWEBP_ENABLE_SIMD=OFF
+  -DBUILD_SHARED_LIBS=ON \
+  -DWEBP_BUILD_ANIM_UTILS=ON \
+  -DWEBP_BUILD_CWEBP=ON \
+  -DWEBP_BUILD_DWEBP=ON \
+  -DWEBP_BUILD_LIBWEBPMUX=ON \
+  -DWEBP_BUILD_WEBPMUX=ON
+
+cmake --build $BUILD_DIR -j$(nproc)
+cmake --install $BUILD_DIR
 
 cmake --build $BUILD_DIR -j 4
 cmake --install $BUILD_DIR
