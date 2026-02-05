@@ -32,7 +32,8 @@ meson setup build_dir \
     --prefix="$TARGET_DIR" \
     --buildtype=release \
     -Dtests=disabled \
-    -Ddocs=disabled
+    -Ddocs=disabled \
+    -Dintrospection=disabled
 
 # 5. Build and Install
 meson compile -C build_dir
