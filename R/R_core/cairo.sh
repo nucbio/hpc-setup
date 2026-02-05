@@ -19,7 +19,6 @@ mkdir -p /tmp/$TOOL_NAME-build
 cd /tmp/$TOOL_NAME-build
 
 # 2. Download and Archive
-# Using -L to follow potential redirects for cairographics.org
 wget -qL "$SOURCE_URL" -O "${TOOL_NAME}-${CAIRO_VERSION}.tar.xz"
 cp "${TOOL_NAME}-${CAIRO_VERSION}.tar.xz" "$SOURCE_ARCHIVE/"
 

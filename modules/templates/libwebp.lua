@@ -14,11 +14,11 @@ local root = "${TOOL_PATH}"
 prepend_path("CPATH", pathJoin(root, "include"))
 
 -- library directory (lib64)
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib64"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib64"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
 
 -- pkg-config files
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib64", "pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib", "pkgconfig"))
 
 -- CMake config files
 prepend_path("CMAKE_PREFIX_PATH", root)

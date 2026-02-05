@@ -20,7 +20,13 @@ cd /tmp/$TOOL_NAME-build
 echo "TEST FLAG 2"
 # 2. Download and Archive
 # Note: Using the official release tarball is preferred over the source-code-only zip
-wget -qL "$SOURCE_URL" -O "${TOOL_NAME}-${LIBVIPS_VERSION}.tar.gz"
+#wget -qL "$SOURCE_URL" -O "${TOOL_NAME}-${LIBVIPS_VERSION}.tar.gz"
+wget -L "$SOURCE_URL" -O "${TOOL_NAME}-${LIBVIPS_VERSION}.tar.gz" || {
+    echo "wget failed with exit code: $?"
+    ls -lh "${TOOL_NAME}-${LIBVIPS_VERSION}.tar.gz" 2>/dev/null || echo "File not created"
+    exit 1
+}
+
 cp "${TOOL_NAME}-${LIBVIPS_VERSION}.tar.gz" "$SOURCE_ARCHIVE/"
 echo "TEST FLAG 3"
 # 3. Unpack

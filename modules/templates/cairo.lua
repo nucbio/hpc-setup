@@ -18,15 +18,15 @@ local base = "${TOOL_PATH}"
 prepend_path("PATH", pathJoin(base, "bin"))
 
 -- Libraries (correct directory: lib64)
-prepend_path("LD_LIBRARY_PATH", pathJoin(base, "lib64"))
-prepend_path("LIBRARY_PATH",    pathJoin(base, "lib64"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(base, "lib"))
+prepend_path("LIBRARY_PATH",    pathJoin(base, "lib"))
 
 -- Includes
 prepend_path("CPATH",              pathJoin(base, "include"))
 prepend_path("CPLUS_INCLUDE_PATH", pathJoin(base, "include"))
 
 -- pkg-config (correct directory: lib64/pkgconfig)
-prepend_path("PKG_CONFIG_PATH", pathJoin(base, "lib64/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(base, "lib/pkgconfig"))
 
 -- Optional Cairo-related environment variables
 -- (Note: These stay as CAIRO_ because this is the specific Cairo template)
@@ -36,11 +36,11 @@ setenv("CAIRO_HOME", base)
 
 -- Flags that R or compilation scripts may rely on
 setenv("CAIRO_CFLAGS", "-I" .. pathJoin(base, "include/cairo"))
-setenv("CAIRO_LIBS",   "-L" .. pathJoin(base, "lib64") .. " -lcairo")
+setenv("CAIRO_LIBS",   "-L" .. pathJoin(base, "lib") .. " -lcairo")
 
 -- Global compiler and linker flags
 prepend_path("CPPFLAGS", "-I" .. pathJoin(base, "include"), " ")
-prepend_path("LDFLAGS",  "-L" .. pathJoin(base, "lib64"),   " ")
+prepend_path("LDFLAGS",  "-L" .. pathJoin(base, "lib"),   " ")
 
 -- Man pages
 prepend_path("MANPATH", pathJoin(base, "share/man"))

@@ -2,6 +2,8 @@
 
 set -e
 
+{
+
 # Get Functions
 source $REPO_DIR/install/helpers.sh
 source ${REPO_DIR}/install/make_lua_module.sh
@@ -46,3 +48,4 @@ for install_tool in ${REPO_DIR}/tools/terminal/*.sh
     source $install_tool
   done
 
+}  2>&1 | tee -a "$INSTALL_DIR/install.log"
