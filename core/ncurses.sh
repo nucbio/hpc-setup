@@ -1,24 +1,27 @@
 #!/bin/bash
-echo "Install ncurses"
-echo $INSTALL_DIR
 
 # Variables
+echo "FLAG 1"
 TOOL_NAME="ncurses"
 export NCURSES_VERSION="6.6"
+echo "FLAG 2"
 SOURCE_URL="https://ftp.gnu.org/pub/gnu/ncurses/ncurses-${NCURSES_VERSION}.tar.gz"
 # Final destination: $INSTALL_DIR/ncurses/ncurses-6.6
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$NCURSES_VERSION"
 SOURCE_ARCHIVE="$INSTALL_DIR/sources"
+echo "FLAG 3"
 
 # 1. Prepare Environment
 mkdir -p "$SOURCE_ARCHIVE"
 rm -rf /tmp/$TOOL_NAME-build
 mkdir -p /tmp/$TOOL_NAME-build
 cd /tmp/$TOOL_NAME-build
+echo "FLAG 4"
 
 # 2. Download and Archive
 wget -q "$SOURCE_URL" -O "${TOOL_NAME}-${NCURSES_VERSION}.tar.gz"
 cp "${TOOL_NAME}-${NCURSES_VERSION}.tar.gz" "$SOURCE_ARCHIVE/"
+echo "FLAG 5"
 
 # 3. Unpack and Build
 tar -xzf "${TOOL_NAME}-${NCURSES_VERSION}.tar.gz"
