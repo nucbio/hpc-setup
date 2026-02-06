@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # eza - CLI tool
-EZA_RELEASE_TAG="${EZA_RELEASE_TAG:-v0.23.4}"
+export EZA_VERSION="0.23.4"
 # Install eza
 cargo install \
   --git https://github.com/eza-community/eza.git \
-  --tag "$EZA_RELEASE_TAG" \
+  --tag "v$EZA_VERSION" \
   --locked
 
+# Module
+make_lua_module "eza" "$EZA_VERSION" "$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo/bin"

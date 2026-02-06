@@ -1,9 +1,12 @@
 #!/bin/bash
 
 ## zoxide - modern cd
-ZOXIDE_RELEASE_TAG="${ZOXIDE_RELEASE_TAG:-v0.9.7}"
+export ZOXIDE_VERSION="0.9.7"
 # Install ripgrep
 cargo install \
   --git https://github.com/ajeetdsouza/zoxide.git \
-  --tag "$ZOXIDE_RELEASE_TAG" \
+  --tag "v$ZOXIDE_VERSION" \
   --locked
+
+# Module
+make_lua_module "zoxide" "$ZOXIDE_VERSION" "$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo/bin"

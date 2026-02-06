@@ -1,9 +1,12 @@
 #!/bin/bash
 
 ## ripgrep - modern grep
-RIPGREP_RELEASE_TAG="${RIPGREP_RELEASE_TAG:-15.1.0}"
+export RIPGREP_VERSION="15.1.0"
 # Install ripgrep
 cargo install \
   --git https://github.com/BurntSushi/ripgrep.git ripgrep\
-  --tag "$RIPGREP_RELEASE_TAG" \
+  --tag "$RIPGREP_VERSION" \
   --locked
+
+# Module
+make_lua_module "ripgrep" "$RIPGREP_VERSION" "$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo/bin"

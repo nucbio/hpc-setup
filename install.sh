@@ -46,6 +46,11 @@ for install_tool in ${REPO_DIR}/tools/illumina/*.sh
     source $install_tool
   done
 
+for install_tool in ${REPO_DIR}/tools/nanopore/*.sh
+  do 
+    source $install_tool
+  done
+
 # Install CLI tools
 module load rust/$RUST_VERSION
 for install_tool in ${REPO_DIR}/tools/terminal/*.sh

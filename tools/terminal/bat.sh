@@ -1,8 +1,11 @@
 #!/bin/bash
 
-BAT_RELEASE_TAG="${BAT_RELEASE_TAG:-v0.26.1}"
+BAT_VERSION="0.26.1"
 # Install ripgrep
 cargo install \
   --git https://github.com/sharkdp/bat.git \
-  --tag "$BAT_RELEASE_TAG" \
+  --tag "v$BAT_VERSION" \
   --locked
+
+# Module
+make_lua_module "bat" "$BAT_VERSION" "$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo/bin"
