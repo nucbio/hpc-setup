@@ -2,10 +2,9 @@
 # Configuration
 export HDF5_VERSION="1.14.6"
 
-BUILD_DIR="/tmp/hdf5-build-$$"
+BUILD_DIR="/tmp/hdf5-build"
 
 # Create directories
-mkdir -p "$INSTALL_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 wget https://support.hdfgroup.org/releases/hdf5/v1_14/v1_14_6/downloads/hdf5-$HDF5_VERSION.tar.gz
@@ -27,5 +26,5 @@ cd "hdf5-${HDF5_VERSION}"
 make # -j may cause error
 make install
 
-cd /
+cd $REPO_DIR
 rm -rf "$BUILD_DIR"
