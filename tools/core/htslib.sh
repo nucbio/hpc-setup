@@ -2,7 +2,7 @@
 
 # Variables
 TOOL_NAME="htslib"
-export HTSLIB_VERSION="1.21"
+export HTSLIB_VERSION="1.23"
 SOURCE_URL="https://github.com/samtools/htslib/releases/download/${HTSLIB_VERSION}/htslib-${HTSLIB_VERSION}.tar.bz2"
 ARCHIVE_NAME="${TOOL_NAME}_v${HTSLIB_VERSION}.tar.bz2"
 
