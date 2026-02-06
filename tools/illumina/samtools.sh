@@ -1,5 +1,7 @@
 #!/bin/bash
 
+module load htslib/$HTSLIB_VERSION
+
 # Variables
 TOOL_NAME="samtools"
 TOOL_VERSION="1.23"
@@ -22,8 +24,18 @@ tar -xjf "$SOURCE_PATH" -C "$TARGET_DIR" --strip-components=1
 cd "$TARGET_DIR"
 mkdir -p "$BUILD_DIR"
 
+# Should be available from modules
+#export CPPFLAGS="-I/home/suvar/test_install/openssl/openssl-3.6.1/include"
+#export LDFLAGS="-L/home/suvar/test_install/openssl/openssl-3.6.1/lib64 -Wl,-rpath,/home/suvar/test_install/openssl/openssl-3.6.1/lib64"
+
+./configure --prefix="$BUILD_DIR" \
+            --with-libcurl \
+            --enable-plugins \
+            --with-htslib="$INSTALL_DIR/htslib/htslib-$HTSLIB_VERSION"
+# check pkg-config
+# add --with-htslib=$INSTALL_DIR/htslib-1.2
 # Running configure with your specific requirement
-./configure --disable-bz2 --without-curses --prefix="$BUILD_DIR"
+#./configure --disable-bz2 --without-curses --prefix="$BUILD_DIR"
 
 # Build and install into the --prefix path
 make -j 8

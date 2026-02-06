@@ -19,7 +19,7 @@ tar -xzf "$SOURCE_PATH" -C "$TARGET_DIR" --strip-components=1
 
 # Compile
 cd "$TARGET_DIR"
-make -j 8
+make -j$(nproc)
 
 # Modules lua file
 make_lua_module "$TOOL_NAME" "$TOOL_VERSION" "$TARGET_DIR"
