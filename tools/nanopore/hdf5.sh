@@ -11,17 +11,18 @@ cd "$BUILD_DIR"
 wget https://support.hdfgroup.org/releases/hdf5/v1_14/v1_14_6/downloads/hdf5-$HDF5_VERSION.tar.gz
 tar -xzf "hdf5-${HDF5_VERSION}.tar.gz"
 cd "hdf5-${HDF5_VERSION}"
-./configure --prefix="$INSTALL_DIR" --enable-build-mode=production
+#./configure --prefix="$INSTALL_DIR" --enable-build-mode=production
 
 # Alternative configure
-# ./configure \
-#     --prefix="$INSTALL_DIR" \
-#     --enable-build-mode=production \
-#     --enable-threadsafe \
-#     --enable-unsupported \
-#     --with-pic \
-#     --enable-shared \
-#     --enable-cxx
+./configure \
+    --prefix="$INSTALL_DIR" \
+    --enable-build-mode=production \
+    --enable-threadsafe \
+    --enable-unsupported \
+    --enable-shared \
+    --enable-cxx \
+    --with-pic \
+    --with-zlib
 
 make # -j may cause error
 make install
