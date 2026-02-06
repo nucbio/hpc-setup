@@ -1,7 +1,5 @@
 #!/bin/bash
 
-module load htslib/$HTSLIB_VERSION
-
 # Variables
 TOOL_NAME="samtools"
 TOOL_VERSION="1.23"
@@ -38,7 +36,7 @@ mkdir -p "$BUILD_DIR"
 #./configure --disable-bz2 --without-curses --prefix="$BUILD_DIR"
 
 # Build and install into the --prefix path
-make -j 8
+make -j$(nproc)
 make install
 
 # Modules lua file
