@@ -16,6 +16,7 @@ TEMP_BUILD_DIR="/tmp/htslib-build"
 # 1. Cleanup old build remnants
 if [ -d "$TEMP_BUILD_DIR" ]; then
     echo "Removing existing temporary build directory: $TEMP_BUILD_DIR"
+    cd $REPO_DIR
     rm -rf "$TEMP_BUILD_DIR"
 fi
 
@@ -42,4 +43,5 @@ make install
 make_lua_module "$TOOL_NAME" "$HTSLIB_VERSION"
 
 # Cleanup /tmp after successful install
+cd $REPO_DIR
 rm -rf "$TEMP_BUILD_DIR"
