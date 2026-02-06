@@ -24,7 +24,7 @@ whatis("URL: http://www.htslib.org/")
 ----------------------------------------------------------------------
 load("zlib/${ZLIB_VERSION}")
 load("bzip2/${BZIP2_VERSION}")
-load("lzma/${LZMA_VERSION}")
+load("xz/${XZ_VERSION}")
 load("libcurl/${LIBCURL_VERSION}")
 
 local root = "${TOOL_PATH}"
