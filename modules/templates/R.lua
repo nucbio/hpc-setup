@@ -31,7 +31,6 @@ load("java/${JAVA_VERSION}")
 local rroot = "${TOOL_PATH}"
 local rversion = "${TOOL_VERSION}"
 
-setenv("R_HOME", rroot)
 prepend_path("PATH",            pathJoin(rroot, "bin"))
 prepend_path("LD_LIBRARY_PATH", pathJoin(rroot, "lib64"))
 prepend_path("PKG_CONFIG_PATH", pathJoin(rroot, "lib64/pkgconfig"))

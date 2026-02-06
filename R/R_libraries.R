@@ -1,6 +1,8 @@
+#!/usr/bin/env Rscript
+
 # TMP directory for compilations
-TMP_DIR="/tmp/r-pkg-build"
-dir.create(TMP_DIR, show.warnings = FALSE)
+TMP_DIR <- "/tmp/r-pkg-build"
+dir.create(TMP_DIR, showWarnings = FALSE, recursive = TRUE)
 Sys.setenv(TMPDIR = TMP_DIR)
 
 repos = list(CRAN="http://cran.rstudio.com/")
