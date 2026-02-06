@@ -24,6 +24,7 @@ cp "${TOOL_NAME}_${CUDA_VERSION}_linux.run" "$SOURCE_ARCHIVE/"
 # Using the .run installer with silent flags
 sh "${TOOL_NAME}_${CUDA_VERSION}_linux.run" \
     --silent \
+    --override \
     --toolkit \
     --toolkitpath="$TARGET_DIR" \
     --no-opengl-libs \
