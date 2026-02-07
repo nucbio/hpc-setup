@@ -20,7 +20,7 @@ echo "Downloading Gum $GUM_VERSION for $ARCH..."
 cd /tmp || exit
 
 # Download and Extract
-wget -q "$URL" -O gum.tar.gz
+wget -q "$URL" -O gum.tar.gz --strip-components=1
 
 # Extracting without needing to know the internal folder name
 mkdir -p gum_temp
