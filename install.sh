@@ -7,7 +7,8 @@ set -e
 # Get Functions
 source $REPO_DIR/install/helpers.sh
 source $REPO_DIR/install/check_essential.sh
-source $REPO_DIR/install/choose_build.sh
+source $REPO_DIR/core/gum.sh
+#source $REPO_DIR/install/choose_build.sh
 # # Set locations
 # mkdir -p $INSTALL_DIR/sources
 # mkdir -p $INSTALL_DIR/modulefiles
