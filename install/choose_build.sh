@@ -18,5 +18,5 @@ else
 fi
 
 echo "Selected option: $CHOICE (USE_TMP=$USE_TMP)"
-sleep 1
+sleep 2
 # TODO: set build directory prefix for all installations
