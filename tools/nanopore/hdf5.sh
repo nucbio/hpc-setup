@@ -15,6 +15,10 @@ cd $BUILD_DIR
 wget -qL $SOURCE_URL -O $ARCHIVE
 tar -xzf $ARCHIVE
 cd "$TOOL_NAME-$HDF5_VERSION"
+
+# Test environment
+env | grep -E 'CFLAGS|CPPFLAGS|CXXFLAGS|LDFLAGS' > $INSTALL_DIR/envir_vars.txt
+
 ./configure --prefix=$TARGET_DIR --enable-build-mode=production
 
 # Alternative configure
