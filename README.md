@@ -1,4 +1,6 @@
-**Installation of Bioinformatic tools into a single directory** on Linux distributives (Debian/Ubuntu/RHEL/Fedora) **without root permission** (see Prerequisites).  
+**Installation of Bioinformatic tools into a single directory** on Linux distributives (Debian/Ubuntu/RHEL/Fedora) **without root permission** (see Prerequisites). 
+
+**Note**: The current hpc-setup is made for `x86_64` systems.
 
 ## Prerequisites
 To download, unpack, and compile the software, the following packages must be installed before the hpc-setup:  
