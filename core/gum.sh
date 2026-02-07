@@ -8,16 +8,13 @@ ARCH="x86_64"
 cd /tmp
 
 # Download binary tarball
-TARBALL="gum_${VERSION}_Linux_${ARCH}.tar.gz"
-URL="https://github.com/charmbracelet/gum/releases/download/v${VERSION}/${TARBALL}"
+TARBALL="gum_${GUM_VERSION}_Linux_${ARCH}.tar.gz"
+URL="https://github.com/charmbracelet/gum/releases/download/v0.17.0/gum_0.17.0_Linux_x86_64.tar.gz"
 
-curl -fsSL --retry 3 --retry-delay 2 "$URL" -o gum.tar.gz || {
-    echo "Download failed. Check version & architecture." >&2
-    exit 1
-}
+wget -L "$URL" -O gum.tar.gz
 
 tar -xzf gum.tar.gz gum
 
 install -m 0755 gum "$GUM_BIN"
-rm -f gum gum.tar.gz checksums.txt
+#rm -f gum gum.tar.gz
 
