@@ -4,7 +4,7 @@ echo "Install CUDA"
 
 # Variables
 TOOL_NAME="cuda"
-export CUDA_VERSION="13.0.2"
+export CUDA_VERSION="13.1.1"
 export DRIVER_VERSION="580.95.05"
 SOURCE_URL="https://developer.download.nvidia.com/compute/cuda/${CUDA_VERSION}/local_installers/cuda_${CUDA_VERSION}_${DRIVER_VERSION}_linux.run"
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$CUDA_VERSION"
@@ -24,7 +24,7 @@ cp "${TOOL_NAME}_${CUDA_VERSION}_linux.run" "$SOURCE_ARCHIVE/"
 # Using the .run installer with silent flags
 sh "${TOOL_NAME}_${CUDA_VERSION}_linux.run" \
     --silent \
-  # --override \
+    --override \
     --toolkit \
     --toolkitpath="$TARGET_DIR" \
     --no-opengl-libs \
