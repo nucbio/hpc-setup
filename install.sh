@@ -6,7 +6,8 @@ set -e
 
 # Get Functions
 source $REPO_DIR/install/helpers.sh
-source $REPO_DIR/install/check_modules
+source $REPO_DIR/install/check_essential.sh
+source $REPO_DIR/modules/check_modules.sh
 # source ${REPO_DIR}/install/make_lua_module.sh
 #
 # # Set locations
