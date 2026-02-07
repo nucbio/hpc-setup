@@ -5,7 +5,7 @@ echo "Install modkit"
 export MODKIT_VERSION="0.5.0"
 TOOL_NAME="modkit"
 # Note: Check the exact filename on GitHub. It usually includes the architecture.
-SOURCE_URL="https://github.com/nanoporetech/modkit/releases/download/v${MODKIT_VERSION}/modkit_v${MODKIT_VERSION}_x86_64-unknown-linux-musl.tar.gz"
+SOURCE_URL="https://github.com/nanoporetech/modkit/releases/download/v0.6.0/modkit_v0.6.0_u16_x86_64.tar.gz"
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$MODKIT_VERSION"
 SOURCE_ARCHIVE="$INSTALL_DIR/sources"
 
@@ -13,7 +13,7 @@ SOURCE_ARCHIVE="$INSTALL_DIR/sources"
 mkdir -p "$SOURCE_ARCHIVE"
 cd "$SOURCE_ARCHIVE"
 echo "FLAG 1"
-wget -q "$SOURCE_URL" -O "${TOOL_NAME}-${MODKIT_VERSION}.tar.gz"
+wget "$SOURCE_URL" -O "${TOOL_NAME}-${MODKIT_VERSION}.tar.gz"
 echo "FLAG 2"
 # 3. Unpack directly into the TARGET_DIR
 mkdir -p "$TARGET_DIR/bin"
