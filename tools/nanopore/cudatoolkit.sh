@@ -23,13 +23,12 @@ cp "${TOOL_NAME}_${CUDA_VERSION}_linux.run" "$SOURCE_ARCHIVE/"
 # 3. Build and Install
 # Using the .run installer with silent flags
 sh "${TOOL_NAME}_${CUDA_VERSION}_linux.run" \
-    --silent \
-    --override \
     --toolkit \
     --toolkitpath="$TARGET_DIR" \
     --no-opengl-libs \
     --no-drm \
-    --no-man-page
+    --no-man-page \
+    --verbose
 
 # 4. Cleanup Build Area
 rm -rf /tmp/$TOOL_NAME-build
