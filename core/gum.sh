@@ -20,11 +20,11 @@ echo "Downloading Gum $GUM_VERSION for $ARCH..."
 cd /tmp || exit
 
 # Download and Extract
-wget -q "$URL" -O gum.tar.gz --strip-components=1
+wget -q "$URL" -O gum.tar.gz
 
 # Extracting without needing to know the internal folder name
 mkdir -p gum_temp
-tar -xzf gum.tar.gz -C gum_temp
+tar -xzf gum.tar.gz -C gum_temp --strip-components=1
 
 # Install the binary
 # Using find ensures we grab the binary even if the folder structure changes
