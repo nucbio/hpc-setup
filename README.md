@@ -1,23 +1,30 @@
 Installation of Bioinformatic tools into a single directory witout root permission.
 
-Start script from inside of the directory as:
+## Prerequisites
+To download, unpack, and compile the software, the following packages must be installed before the hhpc-setup:  
+
+- **Download**: `wget`.
+- **Unpack**: `tar`, `gzip`, `xz` (xz-utils), `bzip2`
+- **Compile**: `g++`, `gcc` 
+- **Build**: `make`,`cmake`.
+
+For Debian/Ubuntu linux distributives you can install them all as:
+```bash
+sudo apt update
+sudo apt install wget tar gzip xz-utils bzip2 build-essential cmake
+```
+
+## Installation
+Start hpc-setup from inside of the directory as:
 
 ```bash
 wget -qO- https://github.com/nucbio/hpc-setup/raw/main/boot.sh | bash
 ```
-## Prerequisites
-Package `build-essential` containing `g++`, `make`, `gcc`, `libc-dev` must be installed:
-
-`sudo apt update && sudo apt install build-essential`
-
-Cmake:
-`sudo apt install cmake`
 
 ## Installation Sequence
 1. Core packages (dependencies)  
-2. Python  
-3. Installers  
-4. R dependencies  
+2. Python, Rust, Java etc.  
+4. Meson based dependencies  
 5. R  
 6. Bioinformatic tools  
 7. Terminal (CLI) tools  
@@ -25,4 +32,5 @@ Cmake:
 ## Structure
 - Downloaded archives are in `sources` directory.
 - Installed packages are in `package/package-version` directories.
+- Environmental module (`Lmod`) is installed and should be added to the .bashrc or export PATH.
 - Environmental module files are in `modulefiles/package` directory with `version.lua` module files.
