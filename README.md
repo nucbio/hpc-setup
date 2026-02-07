@@ -14,6 +14,8 @@ sudo apt update
 sudo apt install wget tar gzip xz-utils bzip2 build-essential cmake
 ```
 
+**Note for Minimal Systems**: The only strict system requirements are the C/C++ compilers (gcc, g++). All other dependencies—including cmake, make, and archiving utilities—can be deployed without root privileges via portable binaries, precompiled distributions, or by compiling from source.  
+
 ## Installation
 Start hpc-setup from inside of the directory as:
 
