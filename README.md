@@ -1,12 +1,12 @@
 **Installation of Bioinformatic tools into a single directory** on Linux destributives (Debian/Ubuntu/RHEL/Fedora) **without root permission** (see Prerequisites).  
 
 ## Prerequisites
-To download, unpack, and compile the software, the following packages must be installed before the hhpc-setup:  
+To download, unpack, and compile the software, the following packages must be installed before the hpc-setup:  
 
-- **Download**: `wget`.
-- **Unpack**: `tar`, `gzip`, `xz` (xz-utils), `bzip2`
-- **Compile**: `g++`, `gcc` 
-- **Build**: `make`,`cmake`.
+- Download: `wget`.
+- Unpack: `tar`, `gzip`, `xz` (xz-utils), `bzip2`
+- Compile: `g++`, `gcc` 
+- Build: `make`,`cmake`.
 
 For Debian/Ubuntu linux distributives you can install them all as:
 ```bash
