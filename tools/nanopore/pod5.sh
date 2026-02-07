@@ -2,7 +2,7 @@
 
 # Variables
 TOOL_NAME="pod5"
-export POD5_VERSION="0.3.36"
+export POD5_VERSION="0.3.35"
 
 # Load Python
 module use $INSTALL_DIR/modulefiles
