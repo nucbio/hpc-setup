@@ -2,6 +2,7 @@
 
 GUM="$INSTALL_DIR/gum"
 
+echo "--------------------------------------------"
 echo "Select where to compile tools:"
 echo "• /tmp is faster (recommended for HPC)"
 echo "• $INSTALL_DIR keeps everything in one place"
@@ -18,3 +19,4 @@ fi
 
 echo "Selected option: $CHOICE (USE_TMP=$USE_TMP)"
 
+# TODO: set build directory prefix for all installations

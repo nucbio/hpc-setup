@@ -4,7 +4,6 @@
 
 # Configuration
 GUM_VERSION="0.17.0"
-INSTALL_DIR="${INSTALL_DIR:-/usr/local/bin}" # Default if not set
 GUM_BIN="$INSTALL_DIR/gum"
 
 # Architecture detection (Auto-detects x86_64 or arm64)
