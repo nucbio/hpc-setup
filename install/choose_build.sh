@@ -3,11 +3,11 @@
 GUM="$INSTALL_DIR/gum"
 
 echo "Select where to compile tools:"
-echo "• /tmp is faster (recommended for HPC)"
-echo "• $PWD keeps everything in one place"
+echo "• `/tmp` is faster (recommended for HPC)"
+echo "• `$INSTALL_DIR` keeps everything in one place"
 
 # Use gum choose to pick the directory string directly
-CHOICE=$($GUM choose "$PWD" "/tmp")
+CHOICE=$($GUM choose "$INSTALL_DIR" "/tmp")
 
 # Set USE_TMP based on the selection
 if [ "$CHOICE" = "/tmp" ]; then
