@@ -20,7 +20,7 @@ wget -q "$URL" -O "$TARBALL"
 tar -xzf "$TARBALL" -C "$SRC_DIR" --strip-components=1
 
 # Install the binary from src to bin and set execution permissions
-install -m 0755 "$SRC_DIR" "$BIN_DIR"
+install -m 0755 "$SRC_DIR/gum" "$BIN_DIR/gum"
 
 # Move the tarball to sources for backup
 mv "$TARBALL" "$INSTALL_DIR/sources/"
