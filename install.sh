@@ -4,14 +4,17 @@ set -e
 
 {
 
-# Get Functions
-source $REPO_DIR/install/helpers.sh
+# Check essential components
 source $REPO_DIR/install/check_essential.sh
-source $REPO_DIR/core/gum.sh
-source $REPO_DIR/install/choose_build.sh
+
 # Set locations
 mkdir -p $INSTALL_DIR/sources
 mkdir -p $INSTALL_DIR/modulefiles
+
+# Choose build directory
+source $REPO_DIR/install/make_lua_modules.sh
+source $REPO_DIR/core/gum.sh
+source $REPO_DIR/install/choose_build.sh
 
 # Lua
 source ${REPO_DIR}/install/make_lua_module.sh

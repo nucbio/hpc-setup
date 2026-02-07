@@ -10,7 +10,7 @@ TARBALL="${TOOL}_${GUM_VERSION}_Linux_x86_64.tar.gz"
 URL="https://github.com/charmbracelet/gum/releases/download/v${GUM_VERSION}/${TARBALL}"
 
 # Create directory structure
-mkdir -p "$SRC_DIR" "$BIN_DIR" "$INSTALL_DIR/sources"
+mkdir -p "$SRC_DIR" "$BIN_DIR"
 
 # Download
 cd "$SRC_DIR"
