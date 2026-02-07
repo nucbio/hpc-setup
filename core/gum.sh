@@ -24,6 +24,7 @@ install -m 0755 "$SRC_DIR" "$BIN_DIR"
 
 # Move the tarball to sources for backup
 mv "$TARBALL" "$INSTALL_DIR/sources/"
+
 # Module
 make_lua_module "$TOOL" "$GUM_VERSION" "$BIN_DIR"
 
