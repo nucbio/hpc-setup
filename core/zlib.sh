@@ -20,7 +20,8 @@ make -j$(nproc)
 make install
 
 # Cleanup Build Area
-rm -rf $PKG_BUILD_DIR 
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
 
 # Create Module File
 make_lua_module "$PKG_NAME" "$PKG_VERSION"

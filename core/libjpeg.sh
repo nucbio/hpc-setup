@@ -21,7 +21,8 @@ cmake --build   $PKG_BUILD_DIR -j$(nproc)
 cmake --install $PKG_BUILD_DIR
 
 # Cleanup Build Area
-rm -rf $PKG_BUILD_DIR
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
 
 # Modules
 make_lua_module $PKG_NAME $PKG_VERSION

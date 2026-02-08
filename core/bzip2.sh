@@ -38,7 +38,8 @@ ln -sf libbz2.so.${BZIP2_VERSION} "$PKG_PREFIX/lib/libbz2.so.1.0"
 ln -sf libbz2.so.1.0 "$PKG_PREFIX/lib/libbz2.so"
 
 # Cleanup Build Area
-rm -rf $PKG_BUILD_DIR
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
 
 # 8. Module generation
 make_lua_module $PKG_NAME "$PKG_VERSION"
