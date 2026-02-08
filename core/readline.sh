@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export $READLINE_VERSION="8.3"
+export READLINE_VERSION="8.3"
 
 PKG_VERSION=$READLINE_VERSION
 PKG_NAME="readline"
