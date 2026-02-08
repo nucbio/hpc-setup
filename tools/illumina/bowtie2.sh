@@ -1,20 +1,17 @@
 #!/bin/bash
 
-# Variables
-TOOL_NAME="bowtie2"
-TOOL_VERSION="2.5.4"
-# Using the pre-compiled linux binary link
-SOURCE_URL="https://github.com/BenLangmead/bowtie2/releases/download/v${TOOL_VERSION}/bowtie2-${TOOL_VERSION}-linux-x86_64.zip"
-ARCHIVE_NAME="${TOOL_NAME}_v${TOOL_VERSION}.zip"
+PKG_NAME="bowtie2"
+PKG_VERSION="2.5.4"
 
-# Paths
-SOURCE_PATH="$INSTALL_DIR/sources/$ARCHIVE_NAME"
-TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$TOOL_VERSION"
+PKG_SRC_URL="https://github.com/BenLangmead/bowtie2/releases/download/v${PKG_VERSION}/bowtie2-${PKG_VERSION}-linux-x86_64.zip"
+PKG_ARCHIVE="$SOURCES_DIR/$PKG_NAME-$PKG_VERSION.zip"
 
-# Download and Unpack
-wget -q "$SOURCE_URL" -O "$SOURCE_PATH"
-mkdir -p "$TARGET_DIR"
-unzip -q "$SOURCE_PATH" -d "$TARGET_DIR"
+# Set PKG_SRC_DIR, PKG_PREFIX
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+
+# Download to sources directory
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+unzip -q "$PKG_ARCHIVE" -d "$TARGET_DIR"
 
 # Modules lua file
-make_lua_module "$TOOL_NAME" "$TOOL_VERSION" "$TARGET_DIR/bowtie2-${TOOL_VERSION}-linux-x86_64"
+make_lua_module "$PKG_NAME" "$PKG_VERSION" "$PKG_PREFIX/bowtie2-${TOOL_VERSION}-linux-x86_64"

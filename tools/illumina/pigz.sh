@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Variables
-TOOL_NAME="pigz"
-TOOL_VERSION="2.8"
-SOURCE_URL="https://zlib.net/pigz/pigz-$TOOL_VERSION.tar.gz"
-ARCHIVE_NAME="${TOOL_NAME}_v${TOOL_VERSION}.tar.gz"
+PKG_NAME="pigz"
+PKG_VERSION="2.8"
+PKG_SRC_URL="https://zlib.net/pigz/pigz-$PKG_VERSION.tar.gz"
+PKG_ARCHIVE="${PKG_NAME}_v${PKG_VERSION}.tar.gz"
 
 # Paths
 SOURCE_PATH="$INSTALL_DIR/sources/$ARCHIVE_NAME"

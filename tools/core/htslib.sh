@@ -1,47 +1,30 @@
 #!/bin/bash
-
-# Variables
-TOOL_NAME="htslib"
 export HTSLIB_VERSION="1.23"
-SOURCE_URL="https://github.com/samtools/htslib/releases/download/${HTSLIB_VERSION}/htslib-${HTSLIB_VERSION}.tar.bz2"
-ARCHIVE_NAME="${TOOL_NAME}_v${HTSLIB_VERSION}.tar.bz2"
 
-# Paths
-SOURCE_PATH="$INSTALL_DIR/sources/$ARCHIVE_NAME"
-# Final destination (where the libraries/bins will live)
-FINAL_DEST="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$HTSLIB_VERSION"
-# Temporary build location
-TEMP_BUILD_DIR="/tmp/htslib-build"
+PKG_VERSION=$HTSLIB_VERSION
+PKG_NAME="htslib"
+PKG_SRC_URL="https://github.com/samtools/htslib/releases/download/${HTSLIB_VERSION}/htslib-${HTSLIB_VERSION}.tar.bz2"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
 
-# 1. Cleanup old build remnants
-if [ -d "$TEMP_BUILD_DIR" ]; then
-    echo "Removing existing temporary build directory: $TEMP_BUILD_DIR"
-    cd $REPO_DIR
-    rm -rf "$TEMP_BUILD_DIR"
-fi
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-# 2. Download to sources directory if not already there
-wget -q "$SOURCE_URL" -O "$SOURCE_PATH"
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xjf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-# 3. Create temporary build directory and unpack
-mkdir -p "$TEMP_BUILD_DIR"
-tar -xjf "$SOURCE_PATH" -C "$TEMP_BUILD_DIR" --strip-components=1
+cd "$PKG_BUILD_DIR"
+"$PKG_SRC_DIR/configure" \
+    --prefix="$PKG_PREFIX"
+    --enable-libcurl \
+    --enable-plugins
 
-# 4. Configure, Build, and Install
-cd "$TEMP_BUILD_DIR"
-
-# Configure HTSlib
-./configure --prefix="$FINAL_DEST" \
-            --enable-libcurl \
-            --enable-plugins
-
-# Build and install
-make -j$(nproc)
+make -j $(nproc)
 make install
 
-# 5. Generate Modulefile
-make_lua_module "$TOOL_NAME" "$HTSLIB_VERSION"
+# Cleanup Build Area
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
 
-# Cleanup /tmp after successful install
-cd $REPO_DIR
-rm -rf "$TEMP_BUILD_DIR"
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION

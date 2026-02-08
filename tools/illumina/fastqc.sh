@@ -1,19 +1,17 @@
 #!/bin/bash
 
 # Variables
-TOOL_NAME="fastqc"
-TOOL_VERSION="0.12.1"
-SOURCE_URL="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/${TOOL_NAME}_v${TOOL_VERSION}.zip"
-ARCHIVE_NAME="${TOOL_NAME}_v${TOOL_VERSION}.zip"
+PKG_NAME="fastqc"
+PKG_VERSION="0.12.1"
+PKG_SRC_URL="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/${TOOL_NAME}_v${TOOL_VERSION}.zip"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}_v${PKG_VERSION}.zip"
 
-# Paths
-SOURCE_PATH="$INSTALL_DIR/sources/$ARCHIVE_NAME"
-TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$TOOL_VERSION"
+# Set PKG_SRC_DIR, PKG_PREFIX
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
 
 # Download to sources directory
-wget -q "$SOURCE_URL" -O "$SOURCE_PATH"
-mkdir -p "$TARGET_DIR"
-unzip -q "$SOURCE_PATH" -d "$TARGET_DIR"
+wget -q "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+unzip -q "$PKG_ARCHIVE" -d "$PKG_PREFIX"
 
 # Modules lua file
-make_lua_module $TOOL_NAME $TOOL_VERSION "$TARGET_DIR/FastQC-$TOOL_VERSION"
+make_lua_module $PKG_NAME $PKG_VERSION "$PKG_PREFIX/FastQC-$TOOL_VERSION"
