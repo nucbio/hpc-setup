@@ -14,6 +14,7 @@ cd tcl${TCL_VERSION}/unix
 
 # Configure and Install Tcl locally
 PKG_PREFIX=$INSTALL_DIR/tcl/tcl-$TCL_VERSION
+export TCL_INSTALL=$PKG_PREFIX
 mkdir -p $PKG_PREFIX
 ./configure --prefix=$PKG_PREFIX
 make -j$(nproc)
