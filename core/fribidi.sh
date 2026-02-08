@@ -14,7 +14,7 @@ set_build_dir $PKG_NAME $PKG_VERSION
 wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
 tar -xJf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-"${SRC_DIR}/configure" \
+"$PKG_SRC_DIR/configure" \
     --prefix=$PKG_PREFIX
 
 make -j $(nproc)
