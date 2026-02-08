@@ -49,15 +49,15 @@ source $REPO_DIR/modules/check_modules.sh
 # # Install bioinformatic tools
 # module load htslib/$HTSLIB_VERSION
 #
-# for install_tool in ${REPO_DIR}/tools/illumina/*.sh
-#   do 
-#     source $install_tool
-#   done
-#
-# for install_tool in ${REPO_DIR}/tools/nanopore/*.sh
-#   do 
-#     source $install_tool
-#   done
+for install_tool in ${REPO_DIR}/tools/illumina/*.sh
+  do 
+    source $install_tool
+  done
+
+for install_tool in ${REPO_DIR}/tools/nanopore/*.sh
+  do 
+    source $install_tool
+  done
 #
 # # Install CLI tools
 # module load rust/$RUST_VERSION
