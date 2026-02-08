@@ -1,41 +1,29 @@
 #!/bin/bash
 
-echo "Install FreeType"
-
-# Variables
-PKG_NAME="freetype"
 export FREETYPE_VERSION="2.14.1"
+
+PKG_VERSION=$FREETYPE_VERSION
+PKG_NAME="freetype"
 PKG_SRC_URL="https://download.savannah.gnu.org/releases/freetype/freetype-${FREETYPE_VERSION}.tar.gz"
-PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$FREETYPE_VERSION"
-PKG_ARCHIVE="$INSTALL_DIR/sources"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
-# 1. Prepare Environment
-mkdir -p "$PKG_ARCHIVE"
-rm -rf /tmp/$PKG_NAME-build
-mkdir -p /tmp/$PKG_NAME-build
-cd /tmp/$PKG_NAME-build
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-# 2. Download and Archive
-wget -q "$PKG_SRC_URL" -O "${PKG_NAME}-${FREETYPE_VERSION}.tar.gz"
-cp "${PKG_NAME}-${FREETYPE_VERSION}.tar.gz" "$PKG_ARCHIVE/"
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-# 3. Unpack
-tar -xzf "${PKG_NAME}-${FREETYPE_VERSION}.tar.gz"
-cd "freetype-${FREETYPE_VERSION}"
-
-# 4. Configure with Meson
-meson setup build_dir \
+meson setup "$PKG_BUILD_DIR" "$PKG_SRC_DIR" \
     --prefix="$PKG_PREFIX" \
     --buildtype=release
 
-# 5. Build and Install
-meson compile -C build_dir
-meson install -C build_dir
+meson compile -C "$PKG_BUILD_DIR" -j $(nproc)
+meson install -C "$PKG_BUILD_DIR"
 
-# 6. Cleanup Build Area
-rm -rf /tmp/$PKG_NAME-build
+# Cleanup Build Area
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
 
-# 7. Module generation
-make_lua_module "freetype" "$FREETYPE_VERSION"
-
-echo "FreeType installation complete"
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION

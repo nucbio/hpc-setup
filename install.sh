@@ -35,8 +35,8 @@ source $REPO_DIR/java/jdk.sh
 # Rust
 source $REPO_DIR/rust/rust.sh
 
-# # Meson/Ninja dependent packages
-# source $REPO_DIR/install/core_install_py.sh
+# Meson/Ninja dependent packages
+source $REPO_DIR/install/core_install_py.sh
 # # Install R
 # source $REPO_DIR/R/R.sh
 #
