@@ -15,7 +15,7 @@ tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 cd "$PKG_BUILD_DIR"
 "$PKG_SRC_DIR/configure" \
-    --prefix="$PKG_PREFIX"
+    --prefix="$PKG_PREFIX" \
     --enable-shared \
     --enable-static \
     --with-openssl="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION" \
