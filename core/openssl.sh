@@ -5,7 +5,7 @@ module load pandoc/$PANDOC_VERSION
 # Variables
 export OPENSSL_VERSION=3.6.1
 SOURCE_DIR="$INSTALL_DIR/sources"
-BUILD_DIR="/tmp/openssl-build"
+PKG_BUILD_DIR="/tmp/openssl-build"
 OPENSSL_INSTALL_DIR="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION"
 
 # 1. Manage Source Archive
@@ -18,14 +18,14 @@ if [ ! -f "$SOURCE_DIR/$OPENSSL_ARCHIVE" ]; then
 fi
 
 # 2. Prepare Build Directory
-if [ -d "$BUILD_DIR" ]; then
-    rm -rf "$BUILD_DIR"
+if [ -d "$PKG_BUILD_DIR" ]; then
+    rm -rf "$PKG_BUILD_DIR"
 fi
-mkdir -p "$BUILD_DIR"
+mkdir -p "$PKG_BUILD_DIR"
 
 # 3. Extract to Build Directory
-tar -xf "$SOURCE_DIR/$OPENSSL_ARCHIVE" -C "$BUILD_DIR" --strip-components=1
-cd "$BUILD_DIR"
+tar -xf "$SOURCE_DIR/$OPENSSL_ARCHIVE" -C "$PKG_BUILD_DIR" --strip-components=1
+cd "$PKG_BUILD_DIR"
 
 # 4. Configure
 ./Configure \

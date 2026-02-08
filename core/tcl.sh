@@ -13,8 +13,8 @@ tar -xzf tcl${TCL_VERSION}-src.tar.gz
 cd tcl${TCL_VERSION}/unix
 
 # Configure and Install Tcl locally
-TCL_INSTALL=$INSTALL_DIR/tcl/tcl-$TCL_VERSION
-mkdir -p $TCL_INSTALL
-./configure --prefix=$TCL_INSTALL
+PKG_PREFIX=$INSTALL_DIR/tcl/tcl-$TCL_VERSION
+mkdir -p $PKG_PREFIX
+./configure --prefix=$PKG_PREFIX
 make -j$(nproc)
 make install

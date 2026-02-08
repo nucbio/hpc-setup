@@ -5,14 +5,14 @@ export LIBWEBP_VERSION="1.6.0"
 # from github mirror get tar.gz
 LIB_DIR=$INSTALL_DIR/libwebp/libwebp-$LIBWEBP_VERSION
 SRC_DIR=$LIB_DIR/src
-BUILD_DIR=/tmp/libwebp-build
+PKG_BUILD_DIR=/tmp/libwebp-build
 mkdir -p $SRC_DIR
 cd $LIB_DIR
 wget https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$LIBWEBP_VERSION.tar.gz
 tar -xzf libwebp-$LIBWEBP_VERSION.tar.gz -C ${SRC_DIR} --strip-components=1
-rm -rf ${BUILD_DIR}
-mkdir -p ${BUILD_DIR}
-cd ${BUILD_DIR}
+rm -rf ${PKG_BUILD_DIR}
+mkdir -p ${PKG_BUILD_DIR}
+cd ${PKG_BUILD_DIR}
 
 #cmake ${SRC_DIR} \
 #  -DCMAKE_BUILD_TYPE=Release \
@@ -30,12 +30,12 @@ cmake ${SRC_DIR} \
   -DWEBP_BUILD_WEBPMUX=ON \
   -DWEBP_ENABLE_SIMD=OFF
 
-cmake --build $BUILD_DIR -j$(nproc)
-cmake --install $BUILD_DIR
+cmake --build $PKG_BUILD_DIR -j$(nproc)
+cmake --install $PKG_BUILD_DIR
 
-cmake --build $BUILD_DIR -j 4
-cmake --install $BUILD_DIR
-rm -rf $BUILD_DIR
+cmake --build $PKG_BUILD_DIR -j 4
+cmake --install $PKG_BUILD_DIR
+rm -rf $PKG_BUILD_DIR
 
 # Modules
 make_lua_module "libwebp" "$LIBWEBP_VERSION"

@@ -1,30 +1,30 @@
 #!/bin/bash
 
 # Configuration
-TOOL="gum"
+PKG_NAME="gum"
 export GUM_VERSION="0.17.0"
-BASE_DIR="$INSTALL_DIR/$TOOL/$TOOL-$GUM_VERSION"
-SRC_DIR="$BASE_DIR/src"
-BIN_DIR="$BASE_DIR/bin"
-TARBALL="${TOOL}_${GUM_VERSION}_Linux_x86_64.tar.gz"
-URL="https://github.com/charmbracelet/gum/releases/download/v${GUM_VERSION}/${TARBALL}"
+BASE_DIR="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$GUM_VERSION"
+PKG_SRC_DIR="$BASE_DIR/src"
+PKG_BIN_DIR="$BASE_DIR/bin"
+PKG_ARCHIVE="${PKG_NAME}_${GUM_VERSION}_Linux_x86_64.tar.gz"
+PKG_SRC_URL="https://github.com/charmbracelet/gum/releases/download/v${GUM_VERSION}/${PKG_ARCHIVE}"
 
 # Create directory structure
-mkdir -p "$SRC_DIR" "$BIN_DIR"
+mkdir -p "$PKG_SRC_DIR" "$PKG_BIN_DIR"
 
 # Download
-cd "$SRC_DIR"
-wget -q "$URL" -O "$TARBALL"
+cd "$PKG_SRC_DIR"
+wget -q "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
 
 # Decompress directly into src (stripping the top-level archive folder)
-tar -xzf "$TARBALL" -C "$SRC_DIR" --strip-components=1
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 # Install the binary from src to bin and set execution permissions
-install -m 0755 "$SRC_DIR/gum" "$BIN_DIR/gum"
+install -m 0755 "$PKG_SRC_DIR/gum" "$PKG_BIN_DIR/gum"
 
 # Move the tarball to sources for backup
-mv "$TARBALL" "$INSTALL_DIR/sources/"
+mv "$PKG_ARCHIVE" "$INSTALL_DIR/sources/"
 
 # Module
-make_lua_module "$TOOL" "$GUM_VERSION" "$BIN_DIR"
+make_lua_module "$PKG_NAME" "$GUM_VERSION" "$PKG_BIN_DIR"
 

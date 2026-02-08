@@ -7,16 +7,16 @@ echo "Select where to compile tools:"
 echo "• /tmp is faster (recommended for HPC)"
 echo "• $INSTALL_DIR keeps everything in one place"
 
-CHOICE=$("$GUM" choose "$INSTALL_DIR" "/tmp")
+CHOICE=$("$GUM" choose "/tmp" "$INSTALL_DIR")
 
 if [ "$CHOICE" = "/tmp" ]; then
     export USE_TMP=1
-    export BUILD_DIR="/tmp"
+    export BUILD_BASE="/tmp"
 else
     export USE_TMP=0
-    export BUILD_DIR="$INSTALL_DIR"
+    export BUILD_BASE="$INSTALL_DIR"
 fi
 
-echo "Selected option: $CHOICE (USE_TMP=$USE_TMP)"
+echo "Selected build directory is : $CHOICE"
 sleep 2
-# TODO: set build directory prefix for all installations
+

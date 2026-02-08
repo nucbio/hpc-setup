@@ -1,35 +1,26 @@
 #!/bin/bash
 
-# Variables
-TOOL_NAME="zlib"
-export ZLIB_VERSION="1.3.1"
-SOURCE_URL="https://zlib.net/zlib-${ZLIB_VERSION}.tar.gz"
-TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$ZLIB_VERSION"
-SOURCE_ARCHIVE="$INSTALL_DIR/sources"
+PKG_NAME="zlib"
+PKG_VERSION="1.3.1"
+export ZLIB_VERSION=$PKG_VERSION
+PKG_SRC_URL="https://zlib.net/zlib-${PKG_VERSION}.tar.gz"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
-# 1. Prepare Environment
-mkdir -p "$SOURCE_ARCHIVE"
-rm -rf /tmp/$TOOL_NAME-build
-mkdir -p /tmp/$TOOL_NAME-build
-cd /tmp/$TOOL_NAME-build
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-# 2. Download and Archive
-wget -q "$SOURCE_URL" -O "${TOOL_NAME}-${ZLIB_VERSION}.tar.gz"
-cp "${TOOL_NAME}-${ZLIB_VERSION}.tar.gz" "$SOURCE_ARCHIVE/"
+wget -q "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-# 3. Unpack and Build
-tar -xzf "${TOOL_NAME}-${ZLIB_VERSION}.tar.gz"
-cd "${TOOL_NAME}-${ZLIB_VERSION}"
-
-# Configure
-# zlib's configure is simpler than others but respects --prefix
-./configure --prefix="$TARGET_DIR"
+cd "$PKG_BUILD_DIR"
+"$PKG_SRC_DIR/configure" --prefix="$PKG_PREFIX"
 
 make -j$(nproc)
 make install
 
-# 4. Cleanup Build Area
-rm -rf /tmp/$TOOL_NAME-build
+# Cleanup Build Area
+rm -rf $PKG_BUILD_DIR 
 
-# 5. Module generation
-make_lua_module "zlib" "$ZLIB_VERSION"
+# Create Module File
+make_lua_module "$PKG_NAME" "$PKG_VERSION"

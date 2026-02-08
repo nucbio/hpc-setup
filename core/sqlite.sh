@@ -4,7 +4,7 @@ SQLITE_ID=3510200
 export SQLITE_VERSION=3.51
 SQLITE_YEAR=2026
 SOURCE_DIR="$INSTALL_DIR/sources"
-BUILD_DIR="/tmp/sqlite-build"
+PKG_BUILD_DIR="/tmp/sqlite-build"
 SQLITE_INSTALL_DIR="$INSTALL_DIR/sqlite/$SQLITE_VERSION"
 
 # 1. Manage Source Archive
@@ -16,14 +16,14 @@ if [ ! -f "$SOURCE_DIR/$SQLITE_ARCHIVE" ]; then
 fi
 
 # 2. Prepare Build Directory
-if [ -d "$BUILD_DIR" ]; then
-    rm -rf "$BUILD_DIR"
+if [ -d "$PKG_BUILD_DIR" ]; then
+    rm -rf "$PKG_BUILD_DIR"
 fi
-mkdir -p "$BUILD_DIR"
+mkdir -p "$PKG_BUILD_DIR"
 
 # 3. Extract to Build Directory
-tar -xf "$SOURCE_DIR/$SQLITE_ARCHIVE" -C "$BUILD_DIR" --strip-components=1
-cd "$BUILD_DIR"
+tar -xf "$SOURCE_DIR/$SQLITE_ARCHIVE" -C "$PKG_BUILD_DIR" --strip-components=1
+cd "$PKG_BUILD_DIR"
 
 # 4. Configure
 ./configure --prefix="$SQLITE_INSTALL_DIR"
