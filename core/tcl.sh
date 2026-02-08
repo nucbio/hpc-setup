@@ -15,7 +15,7 @@ wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
 tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 cd "$PKG_BUILD_DIR"
-"$PKG_SRC_DIR/configure" --prefix="$PKG_PREFIX"
+"$PKG_SRC_DIR/unix/configure" --prefix="$PKG_PREFIX"
 
 make -j$(nproc)
 make install
