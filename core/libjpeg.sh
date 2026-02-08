@@ -15,7 +15,7 @@ wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
 tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 cmake -S "$PKG_SRC_DIR" -B "$PKG_BUILD_DIR" \
-    -DCMAKE_INSTALL_PREFIX=$LIB_DIR
+    -DCMAKE_INSTALL_PREFIX=$PKG_PREFIX
 
 cmake --build   $PKG_BUILD_DIR -j$(nproc) 
 cmake --install $PKG_BUILD_DIR
