@@ -1,17 +1,5 @@
 #!/bin/bash
 
-R_VERSION="4.5.2"
-RDIR=$INSTALL_DIR/R/R-$R_VERSION
-BUILD_DIR=/tmp/R-build
-SRC_DIR=$RDIR/src
-mkdir -p $SRC_DIR
-cd $RDIR
-wget https://cran.r-project.org/src/base/R-4/R-$R_VERSION.tar.gz
-tar -xzf R*.tar.gz -C ${SRC_DIR} --strip-components=1
-# Prepare build directory in tmp
-rm -rf ${BUILD_DIR}
-mkdir -p ${BUILD_DIR}
-cd ${BUILD_DIR}
 # Dependencies
 module use $INSTALL_DIR/modulefiles
 module load libcurl/$LIBCURL_VERSION
@@ -31,20 +19,38 @@ module load ncurses/$NCURSES_VERSION
 module load readline/$READLINE_VERSION
 module load java/$JAVA_VERSION
 
-${SRC_DIR}/configure \
-  --prefix=$RDIR \
-  --enable-memory-profiling \
-  --enable-R-shlib \
-  --with-blas \
-  --with-lapack \
-  --with-libpng \
-  --with-jpeglib \
-  --with-cairo \
-  --with-readline=yes \
-  --with-system-tre=no
+export R_VERSION="4.5.2"
+PKG_VERSION=$R_VERSION
+PKG_NAME="R"
+PKG_SRC_URL="https://cran.r-project.org/src/base/R-4/R-$R_VERSION.tar.gz"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
-make -j$(nproc) && make install
-rm -rf $BUILD
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-# Module
-make_lua_module "R" "$R_VERSION"
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
+
+cd "$PKG_BUILD_DIR"
+"$PKG_SRC_DIR/configure" \
+    --prefix="$PKG_PREFIX"  \
+    --enable-memory-profiling \
+    --enable-R-shlib \
+    --with-blas \
+    --with-lapack \
+    --with-libpng \
+    --with-jpeglib \
+    --with-cairo \
+    --with-readline=yes \
+    --with-system-tre=no
+
+make -j $(nproc)
+make install
+
+# Cleanup Build Area
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
+
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION

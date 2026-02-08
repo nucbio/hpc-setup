@@ -1,44 +1,37 @@
-echo "Install libvips"
+#!/bin/bash
 
-# Variables
-PKG_NAME="libvips"
 export LIBVIPS_VERSION="8.18.0"
+
+PKG_VERSION="$LIBVIPS_VERSION"
+PKG_NAME="libvips"
 PKG_SRC_URL="https://github.com/libvips/libvips/releases/download/v$LIBVIPS_VERSION/vips-$LIBVIPS_VERSION.tar.xz"
-PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$LIBVIPS_VERSION"
-PKG_ARCHIVE="$INSTALL_DIR/sources"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.xz"
 
-# Recommended: load cairo, harfbuzz, and freetype modules here
-# 1. Prepare Environment
-mkdir -p "$PKG_ARCHIVE"
-rm -rf /tmp/$PKG_NAME-build
-mkdir -p /tmp/$PKG_NAME-build
-cd /tmp/$PKG_NAME-build
-# 2. Download and Archive
-# Note: Using the official release tarball is preferred over the source-code-only zip
-wget -qL "$PKG_SRC_URL" -O "${PKG_NAME}-${LIBVIPS_VERSION}.tar.xz"
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-cp "${PKG_NAME}-${LIBVIPS_VERSION}.tar.xz" "$PKG_ARCHIVE/"
-# 3. Unpack
-tar -xJf  "${PKG_NAME}-${LIBVIPS_VERSION}.tar.xz"
-cd "vips-${LIBVIPS_VERSION}"
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xJf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 # FIX: distutils is needed but depricated 
 export SETUPTOOLS_USE_DISTUTILS=local
-meson setup build_dir \
-  --prefix="$PKG_PREFIX" \
-  --buildtype=release \
-  -Dintrospection=disabled \
-  -Dmatio=disabled \
-  -Dcfitsio=disabled \
-  -Dpdfium=disabled \
-  -Dmagick=disabled
 
-# 5. Build and Install
-meson compile -C build_dir
-meson install -C build_dir
+meson setup "$PKG_BUILD_DIR" "$PKG_SRC_DIR" \
+    --prefix="$PKG_PREFIX" \
+    --buildtype=release \
+    -Dintrospection=disabled \
+    -Dmatio=disabled \
+    -Dcfitsio=disabled \
+    -Dpdfium=disabled \
+    -Dmagick=disabled
 
-# 6. Cleanup Build Area
-rm -rf /tmp/$PKG_NAME-build
+meson compile -C "$PKG_BUILD_DIR" -j $(nproc)
+meson install -C "$PKG_BUILD_DIR"
 
-# 7. Module generation
-make_lua_module "libvips" "$LIBVIPS_VERSION"
+# Cleanup Build Area
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
+
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION

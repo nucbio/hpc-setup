@@ -18,10 +18,10 @@ source $REPO_DIR/core/gum.sh
 source $REPO_DIR/install/choose_build.sh
 source $REPO_DIR/install/set_pkg_dirs.sh
 # Lua
-source ${REPO_DIR}/install/make_lua_module.sh
+source $REPO_DIR/install/make_lua_module.sh
 
 # Modules
-source ${REPO_DIR}/modules/check_modules.sh
+source $REPO_DIR/modules/check_modules.sh
 
 # Install core dependencies
 source $REPO_DIR/install/core_install.sh
@@ -37,12 +37,12 @@ source $REPO_DIR/rust/rust.sh
 
 # Meson/Ninja dependent packages
 source $REPO_DIR/install/core_install_py.sh
-# # Install R
-# source $REPO_DIR/R/R.sh
-#
-# #module load R/$R_VERSION
-# Rscript $REPO_DIR/R/R_libraries.R 
-#
+# Install R
+source $REPO_DIR/R/R.sh
+
+#module load R/$R_VERSION
+Rscript $REPO_DIR/R/R_libraries.R 
+
 # # Install htslib
 # source $REPO_DIR/tools/core/htslib.sh
 #
