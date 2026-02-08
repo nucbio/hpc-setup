@@ -26,15 +26,15 @@ source ${REPO_DIR}/modules/check_modules.sh
 # Install core dependencies
 source $REPO_DIR/install/core_install.sh
 
-# # Install python
-# source $REPO_DIR/python/python_install.sh
-# source $REPO_DIR/python/python_packages.sh
-#
-# # Java
-# source $REPO_DIR/java/jdk.sh
-# # Rust
-# source $REPO_DIR/rust/rust.sh
-#
+# Install python
+source $REPO_DIR/python/python_install.sh
+source $REPO_DIR/python/python_packages.sh
+
+# Java
+source $REPO_DIR/java/jdk.sh
+# Rust
+source $REPO_DIR/rust/rust.sh
+
 # # Meson/Ninja dependent packages
 # source $REPO_DIR/install/core_install_py.sh
 # # Install R

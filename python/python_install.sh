@@ -10,44 +10,34 @@ module load bzip2/$BZIP2_VERSION
 module load sqlite/$SQLITE_VERSION
 module load libcurl/$LIBCURL_VERSION
 
+export PYTHON_VERSION=3.12.2
 
-# Variables
-PYTHON_VERSION=3.12.2
-SOURCE_DIR="$INSTALL_DIR/sources"
-BUILD_DIR="/tmp/python-build"
-TARGET_DIR="$INSTALL_DIR/python/python-$PYTHON_VERSION"
+PKG_VERSION=$PYTHON_VERSION
+PKG_NAME="python"
 
-# 1. Manage Source Archive
-mkdir -p "$SOURCE_DIR"
-PYTHON_ARCHIVE="Python-$PYTHON_VERSION.tgz"
+PKG_SRC_URL="https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
-if [ ! -f "$SOURCE_DIR/$PYTHON_ARCHIVE" ]; then
-    wget --no-check-certificate "https://www.python.org/ftp/python/$PYTHON_VERSION/$PYTHON_ARCHIVE" -O "$SOURCE_DIR/$PYTHON_ARCHIVE"
-fi
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-# 2. Prepare Build Directory
-if [ -d "$BUILD_DIR" ]; then
-    rm -rf "$BUILD_DIR"
-fi
-mkdir -p "$BUILD_DIR"
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-# 3. Extract to Build Directory
-tar -xf "$SOURCE_DIR/$PYTHON_ARCHIVE" -C "$BUILD_DIR" --strip-components=1
-cd "$BUILD_DIR"
-
-# 4. Configure
-# Note: Ensure $PKG_DIR and $NCPU are defined in your environment
-./configure \
-    --prefix="$TARGET_DIR" \
+cd "$PKG_BUILD_DIR"
+"$PKG_SRC_DIR/configure" \
+    --prefix="$PKG_PREFIX" \
     --with-openssl="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION" \
     --enable-optimizations \
     --with-ensurepip=install
 
-# 5. Build and Install
 make -j$(nproc)
 make install
 
-# Optional: Cleanup build directory after successful install
-# rm -rf "$BUILD_DIR"
+# Cleanup Build Area
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
 
-make_lua_module "python" "$PYTHON_VERSION"
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION
