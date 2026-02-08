@@ -1,33 +1,26 @@
-# Variables
-# Variables
+#!/bin/bash
+
 PKG_NAME="xz"
-export XZ_VERSION="5.8.2"
+PKG_VERSION="5.8.2"
+export XZ_VERSION=$PKG_VERSION
 PKG_SRC_URL="https://github.com/tukaani-project/xz/releases/download/v${XZ_VERSION}/xz-${XZ_VERSION}.tar.xz"
-PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$XZ_VERSION"
-PKG_ARCHIVE="$INSTALL_DIR/sources"
+PKG_ARCHIVE="$SOURCES_DIR/$PKG_NAME-$PKG_VERSION.tar.xz"
 
-# 1. Prepare Environment
-mkdir -p "$PKG_ARCHIVE"
-rm -rf /tmp/xz-build
-mkdir -p /tmp/xz-build
-cd /tmp/xz-build
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-# 2. Download and Archive
-wget -q "$PKG_SRC_URL" -O "xz-${XZ_VERSION}.tar.xz"
-cp "xz-${XZ_VERSION}.tar.xz" "$PKG_ARCHIVE/"
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xJf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-# 3. Unpack and Build
-tar -xJf "xz-${XZ_VERSION}.tar.xz"
-cd "xz-${XZ_VERSION}"
-
-# We install directly to $PKG_PREFIX to keep paths clean
-./configure --prefix="$PKG_PREFIX"
+cd "$PKG_BUILD_DIR"
+"$PKG_SRC_DIR/configure" --prefix="$PKG_PREFIX"
 
 make -j$(nproc)
 make install
 
-# 4. Cleanup Build Area
-rm -rf /tmp/xz-build
+# Cleanup Build Area
+rm -rf $PKG_BUILD_DIR
 
-# 5. Module generation
-make_lua_module "xz" "$XZ_VERSION"
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION

@@ -10,7 +10,7 @@ PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 set_pkg_dirs  $PKG_NAME $PKG_VERSION
 set_build_dir $PKG_NAME $PKG_VERSION
 
-wget -q "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
 tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 cd "$PKG_BUILD_DIR"
