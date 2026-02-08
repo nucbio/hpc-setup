@@ -2,7 +2,6 @@
 
 echo "Install Dorado"
 
-# Variables
 TOOL_NAME="dorado"
 export DORADO_VERSION="1.3.0"
 # Using the ONT CDN for the precompiled linux-x64 binary

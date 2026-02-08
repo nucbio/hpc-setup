@@ -2,30 +2,25 @@
 
 echo "Install DuckDB"
 
-# Variables
-TOOL_NAME="duckdb"
-export DUCKDB_VERSION="1.1.3"  # Adjust to the current latest version
-SOURCE_URL="https://github.com/duckdb/duckdb/releases/download/v${DUCKDB_VERSION}/duckdb_cli-linux-amd64.zip"
-TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$DUCKDB_VERSION"
-SOURCE_ARCHIVE="$INSTALL_DIR/sources"
+export DUCKDB_VERSION="1.1.3"
 
-# 1. Prepare Environment
-mkdir -p "$SOURCE_ARCHIVE"
-rm -rf /tmp/$TOOL_NAME-build
-mkdir -p /tmp/$TOOL_NAME-build
-cd /tmp/$TOOL_NAME-build
+PKG_VERSION=$DUCKDB_VERSION
+PKG_NAME="duckdb"
+export PANDOC_VERSION=$PKG_VERSION
+PKG_SRC_URL="https://github.com/duckdb/duckdb/releases/download/v${DUCKDB_VERSION}/duckdb_cli-linux-amd64.zip"
+PKG_ARCHIVE="$SOURCES_DIR/$PKG_NAME-$PKG_VERSION.zip"
 
-# 2. Download and Archive
-wget -qL "$SOURCE_URL" -O "${TOOL_NAME}_cli-${DUCKDB_VERSION}-linux-amd64.zip"
-cp "${TOOL_NAME}_cli-${DUCKDB_VERSION}-linux-amd64.zip" "$SOURCE_ARCHIVE/"
+# Set PKG_SRC_DIR, PKG_PREFIX
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
 
-# 3. Unpack and Install
-# Create a bin directory as is standard for CLI-only tools
-mkdir -p "$TARGET_DIR/bin"
-unzip -q "${TOOL_NAME}_cli-${DUCKDB_VERSION}-linux-amd64.zip" -d "$TARGET_DIR/bin"
+# Download to sources directory
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_PREFIX" --strip-components=1
 
-# 4. Cleanup Build Area
-rm -rf /tmp/$TOOL_NAME-build
+# Modules lua file
+make_lua_module "$PKG_NAME" "$PANDOC_VERSION" "$PKG_PREFIX"
+mkdir -p "$PKG_PREFIX/bin"
+unzip -q "$PKG_ARCHIVE" -d "$PKG_PREFIX/bin"
 
-# 5. Module generation
-make_lua_module "duckdb" "$DUCKDB_VERSION"
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION

@@ -1,18 +1,19 @@
 #!/bin/bash
 
 echo "Install modkit"
-# Variables
-export MODKIT_VERSION="0.5.0"
-TOOL_NAME="modkit"
-SOURCE_URL="https://github.com/nanoporetech/modkit/releases/download/v0.6.0/modkit_v0.6.0_u16_x86_64.tar.gz"
-TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$MODKIT_VERSION"
-SOURCE_ARCHIVE="$INSTALL_DIR/sources"
 
-mkdir -p "$SOURCE_ARCHIVE"
-cd "$SOURCE_ARCHIVE"
-wget "$SOURCE_URL" -O "${TOOL_NAME}-${MODKIT_VERSION}.tar.gz"
-mkdir -p "$TARGET_DIR/bin"
-tar -xzf "${TOOL_NAME}-${MODKIT_VERSION}.tar.gz" -C "$TARGET_DIR/bin" --strip-components=1
+PKG_NAME="modkit"
+PKG_VERSION="0.6.0"
+PKG_SRC_URL="https://github.com/nanoporetech/modkit/releases/download/v0.6.0/modkit_v0.6.0_u16_x86_64.tar.gz"
 
-# Module
-make_lua_module "modkit" "$MODKIT_VERSION" "$TARGET_DIR/bin"
+PKG_ARCHIVE="$SOURCES_DIR/$PKG_NAME-$PKG_VERSION.tar.gz"
+
+# Set PKG_SRC_DIR, PKG_PREFIX
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+mkdir -p "$PKG_PREFIX/bin"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_PREFIX/bin" --strip-components=1
+
+# Modules lua file
+make_lua_module "$PKG_NAME" "$PKG_VERSION" "$PKG_PREFIX/bin"
