@@ -19,18 +19,18 @@ module load zlib/$ZLIB_VERSION
 source $REPO_DIR/core/libpng.sh
 # 7. libwebp
 source $REPO_DIR/core/libwebp.sh
-# # 8. pandoc
-# source $REPO_DIR/core/pandoc.sh
-# # 9. openssl
-# source $REPO_DIR/core/openssl.sh
-# # 10. libcurl
-# module load openssl/$OPENSSL_VERSION
-# source $REPO_DIR/core/libcurl.sh
-# # 11. ncurses
-# source $REPO_DIR/core/ncurses.sh
-# # 12. readline (load ncurses)
-# module load ncurses/$NCURSES_VERSION
-# source $REPO_DIR/core/readline.sh
-# # 13. sqlite
-# source $REPO_DIR/core/sqlite.sh
+# 8. pandoc
+source $REPO_DIR/core/pandoc.sh
+# 9. openssl
+source $REPO_DIR/core/openssl.sh
+# 10. libcurl
+module load openssl/$OPENSSL_VERSION
+source $REPO_DIR/core/libcurl.sh
+# 11. ncurses
+source $REPO_DIR/core/ncurses.sh
+# 12. readline (load ncurses)
+module load ncurses/$NCURSES_VERSION
+source $REPO_DIR/core/readline.sh
+# 13. sqlite
+source $REPO_DIR/core/sqlite.sh
 

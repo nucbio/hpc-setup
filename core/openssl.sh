@@ -2,41 +2,34 @@
 
 module load pandoc/$PANDOC_VERSION
 
-# Variables
-export OPENSSL_VERSION=3.6.1
-SOURCE_DIR="$INSTALL_DIR/sources"
-PKG_BUILD_DIR="/tmp/openssl-build"
-OPENSSL_INSTALL_DIR="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION"
-
-# 1. Manage Source Archive
-mkdir -p "$SOURCE_DIR"
+export OPENSSL_VERSION="3.6.1"
+PKG_VERSION=$OPENSSL_VERSION
+PKG_NAME="openssl"
 OPENSSL_ARCHIVE="openssl-${OPENSSL_VERSION}.tar.gz"
+PKG_SRC_URL="https://github.com/openssl/openssl/releases/download/openssl-$OPENSSL_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
-if [ ! -f "$SOURCE_DIR/$OPENSSL_ARCHIVE" ]; then
-    wget "https://github.com/openssl/openssl/releases/download/openssl-$OPENSSL_VERSION/$OPENSSL_ARCHIVE" \
-      -O "$SOURCE_DIR/$OPENSSL_ARCHIVE"
-fi
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-# 2. Prepare Build Directory
-if [ -d "$PKG_BUILD_DIR" ]; then
-    rm -rf "$PKG_BUILD_DIR"
-fi
-mkdir -p "$PKG_BUILD_DIR"
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-# 3. Extract to Build Directory
-tar -xf "$SOURCE_DIR/$OPENSSL_ARCHIVE" -C "$PKG_BUILD_DIR" --strip-components=1
+
 cd "$PKG_BUILD_DIR"
-
-# 4. Configure
-./Configure \
-    --prefix="$OPENSSL_INSTALL_DIR" \
-    --openssldir="$OPENSSL_INSTALL_DIR" \
+"$PKG_SRC_DIR/Configure" \
+    --prefix="$PKG_PREFIX" \
+    --openssldir="$PKG_PREFIX" \
     shared \
     linux-x86_64
 
-# 5. Build and Install
-make -j$(nproc) 
+make -j$(nproc)
 make install
 
-# Modules
-make_lua_module "openssl" "$OPENSSL_VERSION"
+# Cleanup Build Area
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
+
+# Create Module File
+make_lua_module "$PKG_NAME" "$PKG_VERSION"

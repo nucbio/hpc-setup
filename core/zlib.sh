@@ -24,4 +24,4 @@ cd "$REPO_DIR"
 rm -rf "$PKG_BUILD_DIR"
 
 # Create Module File
-make_lua_module "$PKG_NAME" "$PKG_VERSION"
+make_lua_module $PKG_NAME $PKG_VERSION

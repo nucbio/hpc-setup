@@ -1,36 +1,32 @@
 #!/bin/bash
-# Variables
+
+export $READLINE_VERSION="8.3"
+
+PKG_VERSION=$READLINE_VERSION
 PKG_NAME="readline"
-export READLINE_VERSION="8.3"
+
 PKG_SRC_URL="https://ftp.gnu.org/pub/gnu/readline/readline-${READLINE_VERSION}.tar.gz"
-# Keep the target directory clean (no version subfolders inside)
-PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$READLINE_VERSION"
-NCURSES_DIR="$INSTALL_DIR/ncurses/ncurses-$NCURSES_VERSION"
-PKG_ARCHIVE="$INSTALL_DIR/sources"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
-# 1. Prepare Environment
-mkdir -p "$PKG_ARCHIVE"
-rm -rf /tmp/readline-build
-mkdir -p /tmp/readline-build
-cd /tmp/readline-build
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-# 2. Download and Archive
-wget -q "$PKG_SRC_URL" -O "readline-${READLINE_VERSION}.tar.gz"
-cp "readline-${READLINE_VERSION}.tar.gz" "$PKG_ARCHIVE/"
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-# 3. Unpack and Build
-tar -xzf "readline-${READLINE_VERSION}.tar.gz"
-cd "readline-${READLINE_VERSION}"
-
-./configure --prefix=$PKG_PREFIX --with-curses
+cd "$PKG_BUILD_DIR"
+"$PKG_SRC_DIR/configure" \
+    --prefix="$PKG_PREFIX" \
+    --with-curses
 
 make clean
 make SHLIB_LIBS="-lncursesw"
 make install
 
 # Cleanup Build Area
-rm -rf /tmp/readline-build
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
 
-# Module generation
-make_lua_module "readline" "$READLINE_VERSION"
-
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION

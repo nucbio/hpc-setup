@@ -1,36 +1,30 @@
 #!/bin/bash
-# Variables
-SQLITE_ID=3510200
-export SQLITE_VERSION=3.51
-SQLITE_YEAR=2026
-SOURCE_DIR="$INSTALL_DIR/sources"
-PKG_BUILD_DIR="/tmp/sqlite-build"
-SQLITE_INSTALL_DIR="$INSTALL_DIR/sqlite/$SQLITE_VERSION"
 
-# 1. Manage Source Archive
-mkdir -p "$SOURCE_DIR"
-SQLITE_ARCHIVE="sqlite-autoconf-${SQLITE_ID}.tar.gz"
+export SQLITE_VERSION="3.51"
 
-if [ ! -f "$SOURCE_DIR/$SQLITE_ARCHIVE" ]; then
-    wget "https://www.sqlite.org/${SQLITE_YEAR}/${SQLITE_ARCHIVE}" -O "$SOURCE_DIR/$SQLITE_ARCHIVE"
-fi
+PKG_VERSION=$SQLITE_VERSION
+PKG_NAME="sqlite"
+PKG_SRC_URL="https://www.sqlite.org/2026/sqlite-autoconf-3510200.tar.gz"
 
-# 2. Prepare Build Directory
-if [ -d "$PKG_BUILD_DIR" ]; then
-    rm -rf "$PKG_BUILD_DIR"
-fi
-mkdir -p "$PKG_BUILD_DIR"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
-# 3. Extract to Build Directory
-tar -xf "$SOURCE_DIR/$SQLITE_ARCHIVE" -C "$PKG_BUILD_DIR" --strip-components=1
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
+
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
+
 cd "$PKG_BUILD_DIR"
+"$PKG_SRC_DIR/configure" \
+    --prefix="$PKG_PREFIX"
 
-# 4. Configure
-./configure --prefix="$SQLITE_INSTALL_DIR"
-
-# 5. Build and Install
 make -j$(nproc)
 make install
 
-# Module
-make_lua_module "sqlite" "$SQLITE_VERSION"
+# Cleanup Build Area
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
+
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION

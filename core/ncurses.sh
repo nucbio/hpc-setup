@@ -1,41 +1,35 @@
 #!/bin/bash
 
-# Variables
-PKG_NAME="ncurses"
 export NCURSES_VERSION="6.6"
+
+PKG_VERSION=$NCURSES_VERSION
+PKG_NAME="ncurses"
 PKG_SRC_URL="https://ftp.gnu.org/pub/gnu/ncurses/ncurses-${NCURSES_VERSION}.tar.gz"
-# Final destination: $INSTALL_DIR/ncurses/ncurses-6.6
-PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$NCURSES_VERSION"
-PKG_ARCHIVE="$INSTALL_DIR/sources"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
-# 1. Prepare Environment
-mkdir -p "$PKG_ARCHIVE"
-rm -rf /tmp/$PKG_NAME-build
-mkdir -p /tmp/$PKG_NAME-build
-cd /tmp/$PKG_NAME-build
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-# 2. Download and Archive
-wget -q "$PKG_SRC_URL" -O "${PKG_NAME}-${NCURSES_VERSION}.tar.gz"
-cp "${PKG_NAME}-${NCURSES_VERSION}.tar.gz" "$PKG_ARCHIVE/"
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-# 3. Unpack and Build
-tar -xzf "${PKG_NAME}-${NCURSES_VERSION}.tar.gz"
-cd "${PKG_NAME}-${NCURSES_VERSION}"
-
-# Configure
-./configure --prefix="$PKG_PREFIX" \
-            --with-shared \
-            --enable-widec \
-            --enable-pc-files \
-            --with-pkg-config-libdir="$PKG_PREFIX/lib/pkgconfig" \
-            --without-debug \
-            --without-ada
+cd "$PKG_BUILD_DIR"
+"$PKG_SRC_DIR/configure" \
+    --prefix="$PKG_PREFIX"
+    --with-shared \
+    --enable-widec \
+    --enable-pc-files \
+    --with-pkg-config-libdir="$PKG_PREFIX/lib/pkgconfig" \
+    --without-debug \
+    --without-ada
 
 make -j$(nproc)
 make install
 
-# 4. Cleanup Build Area
-rm -rf /tmp/$PKG_NAME-build
+# Cleanup Build Area
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
 
-# 5. Module generation
-make_lua_module "ncurses" "$NCURSES_VERSION"
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION

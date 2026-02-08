@@ -1,22 +1,21 @@
 #!/bin/bash
 
 export LIBCURL_VERSION="8.17.0"
+PKG_VERSION=$LIBCURL_VERSION
+PKG_NAME="libcurl"
+PKG_SRC_URL="https://curl.se/download/curl-$LIBCURL_VERSION.tar.gz"
+PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
-LIB_DIR=$INSTALL_DIR/libcurl/libcurl-$LIBCURL_VERSION
-PKG_BUILD_DIR=/tmp/libcurl-$LIBCURL_VERSION-build
+# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+set_pkg_dirs  $PKG_NAME $PKG_VERSION
+set_build_dir $PKG_NAME $PKG_VERSION
 
-SRC_DIR=$LIB_DIR/src
-mkdir -p $SRC_DIR
-cd $LIB_DIR
-wget --no-check-certificate https://curl.se/download/curl-$LIBCURL_VERSION.tar.gz
-tar -xzf curl*.tar.gz -C ${SRC_DIR} --strip-components=1
-# tmp dir for compilation
-rm -rf ${PKG_BUILD_DIR}
-mkdir -p ${PKG_BUILD_DIR}
-cd ${PKG_BUILD_DIR}
-# Configure
-${SRC_DIR}/configure \
-    --prefix=$LIB_DIR \
+wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
+
+cd "$PKG_BUILD_DIR"
+"$PKG_SRC_DIR/configure" \
+    --prefix="$PKG_PREFIX"
     --enable-shared \
     --enable-static \
     --with-openssl="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION" \
@@ -25,11 +24,13 @@ ${SRC_DIR}/configure \
     --disable-ldap \
     --disable-ldaps \
     --without-libpsl
-# Compile
-make -j$(nproc) && make install
-# Cleanup
-rm -rf $PKG_BUILD_DIR
-rm -rf $SRC_DIR
 
-# Modules
-make_lua_module "libcurl" "$LIBCURL_VERSION"
+make -j$(nproc)
+make install
+
+# Cleanup Build Area
+cd "$REPO_DIR"
+rm -rf "$PKG_BUILD_DIR"
+
+# Create Module File
+make_lua_module $PKG_NAME $PKG_VERSION
