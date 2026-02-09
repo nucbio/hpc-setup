@@ -36,5 +36,6 @@ module load libjpeg/$LIBJPEG_VERSION
 module load libwebp/$LIBWEBP_VERSION
 module load libpng/$LIBPNG_VERSION
 module load cairo/$CAIRO_VERSION
+module load glib/$GLIB_VERSION
 source $REPO_DIR/core/libvips.sh
 
