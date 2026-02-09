@@ -3,7 +3,7 @@
 # Variables
 PKG_NAME="fastqc"
 PKG_VERSION="0.12.1"
-PKG_SRC_URL="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/${TOOL_NAME}_v${TOOL_VERSION}.zip"
+PKG_SRC_URL="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/${PKG_NAME}_v${PKG_VERSION}.zip"
 PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}_v${PKG_VERSION}.zip"
 
 # Set PKG_SRC_DIR, PKG_PREFIX
