@@ -19,16 +19,19 @@ echo "Install Harfbuzz"
 module load fribidi/$FRIBIDI_VERSION
 source $REPO_DIR/core/harfbuzz.sh
 
-# 4. cairo (load freetype, fribidi, harfbuzz)
-echo "Install Cairo"
-module load harfbuzz/$HARFBUZZ_VERSION
-source $REPO_DIR/core/cairo.sh
-
 # 5. glib (load zlib, pcre2, libff)
 module load zlib/$ZLIB_VERSION
 module load pcre2/$PCRE2_VERSION
 module load libff/$LIBFF_VERSION
 source $REPO_DIR/core/glib.sh
+
+# 4. cairo (load freetype, fribidi, harfbuzz)
+echo "Install Cairo"
+module load harfbuzz/$HARFBUZZ_VERSION
+module load glib/$GLIB_VERSION
+source $REPO_DIR/core/cairo.sh
+
+
 
 # 5. libvips
 echo "Install Libvips"

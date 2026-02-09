@@ -15,15 +15,11 @@ set_build_dir $PKG_NAME $PKG_VERSION
 wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
 tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-meson setup "$PKG_BUILD_DIR" "$PKG_SRC_DIR" \
-    --prefix="$PKG_PREFIX" \
-    --buildtype=release \
-    -Dlibmount=disabled \
-    -Dselinux=disabled \
-    -Dtests=false
+cd "$PKG_BUILD_DIR"
+"$PKG_SRC_DIR/configure" --prefix="$PKG_PREFIX"
 
-meson compile -C "$PKG_BUILD_DIR" -j $(nproc)
-meson install -C "$PKG_BUILD_DIR"
+make -j$(nproc)
+make install
 
 # Cleanup Build Area
 cd "$REPO_DIR"
