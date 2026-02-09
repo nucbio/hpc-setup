@@ -1,5 +1,3 @@
-#!/usr/bin/env Rscript
-
 # TMP directory for compilations
 TMP_DIR <- "/tmp/r-pkg-build"
 dir.create(TMP_DIR, showWarnings = FALSE, recursive = TRUE)
