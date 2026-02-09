@@ -31,8 +31,6 @@ module load harfbuzz/$HARFBUZZ_VERSION
 module load glib/$GLIB_VERSION
 source $REPO_DIR/core/cairo.sh
 
-
-
 # 5. libvips
 echo "Install Libvips"
 module load libjpeg/$LIBJPEG_VERSION
