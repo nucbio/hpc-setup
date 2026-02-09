@@ -7,7 +7,7 @@ module use $INSTALL_DIR/modulefiles
 # 1. zlib
 source $REPO_DIR/core/zlib.sh
 # 2. pkgconfig
-source $REPO_DIR/core/pkgconfig.sh
+source $REPO_DIR/core/pkgconf.sh
 # 3. libff
 source $REPO_DIR/core/libff.sh
 # 3. bzip2
