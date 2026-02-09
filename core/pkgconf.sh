@@ -28,3 +28,6 @@ rm -rf "$PKG_BUILD_DIR"
 
 # Create Module File
 make_lua_module $PKG_NAME $PKG_VERSION
+
+# Pkg-config link
+ln -s $PKG_PREFIX/bin/pkgconf $PKG_PREFIX/bin/pkg-config
