@@ -20,6 +20,7 @@ module load fribidi/$FRIBIDI_VERSION
 source $REPO_DIR/core/harfbuzz.sh
 
 # 5. glib (load zlib, pcre2, libff)
+module load pkgconf/$PKGCONF_VERSION
 module load zlib/$ZLIB_VERSION
 module load pcre2/$PCRE2_VERSION
 module load libff/$LIBFF_VERSION

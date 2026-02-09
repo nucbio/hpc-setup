@@ -1,9 +1,9 @@
 #!/bin/bash
 
-export PKGCONFIG_VERSION="1.3.1"
+export PKGCONF_VERSION="1.3.1"
 
 PKG_NAME="pkgconf"
-PKG_VERSION=$PKGCONFIG_VERSION
+PKG_VERSION=$PKGCONF_VERSION
 
 PKG_SRC_URL="https://distfiles.dereferenced.org/pkgconf/pkgconf-$PKG_VERSION.tar.xz"
 PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.xz"
