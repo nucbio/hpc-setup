@@ -15,7 +15,7 @@ whatis("URL: https://www.sqlite.org/")
 
 local root = "${TOOL_PATH}"
 
--- Binaries (sqlite3 CLI)
+-- Binaries
 prepend_path("PATH",            pathJoin(root, "bin"))
 
 -- Libraries

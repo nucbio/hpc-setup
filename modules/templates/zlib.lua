@@ -14,7 +14,7 @@ whatis("URL: https://zlib.net/")
 
 local root = "${TOOL_PATH}"
 
--- Libraries (zlib almost always uses 'lib')
+-- Libraries
 prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
 prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
 
@@ -22,7 +22,6 @@ prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
 prepend_path("CPATH",           pathJoin(root, "include"))
 prepend_path("LDFLAGS", "-L" .. pathJoin(root, "lib"), " ")
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
--- pkg-config
 prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
 
 -- Environment variables for compilers and other tools
