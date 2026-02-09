@@ -24,6 +24,12 @@ echo "Install Cairo"
 module load harfbuzz/$HARFBUZZ_VERSION
 source $REPO_DIR/core/cairo.sh
 
+# 5. glib (load zlib, pcre2, libff)
+module load zlib/$ZLIB_VERSION
+module load pcre2/$PCRE2_VERSION
+module load libff/$LIBFF_VERSION
+source $REPO_DIR/core/glib.sh
+
 # 5. libvips
 echo "Install Libvips"
 module load libjpeg/$LIBJPEG_VERSION

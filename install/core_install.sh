@@ -8,6 +8,8 @@ module use $INSTALL_DIR/modulefiles
 source $REPO_DIR/core/zlib.sh
 # 2. pkgconfig
 source $REPO_DIR/core/pkgconfig.sh
+# 3. libff
+source $REPO_DIR/core/libff.sh
 # 3. bzip2
 source $REPO_DIR/core/bzip2.sh
 # 4. pcre2
