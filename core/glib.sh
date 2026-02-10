@@ -1,29 +1,11 @@
 #!/bin/bash
 
-# Dependencies: zlib, pcre2, libff
-export GLIB_VERSION=2.87.2
+module load pkgconf
+module load zlib
+module load pcre2
+module load libff
+module load gettext
 
-PKG_NAME="glib"
-PKG_VERSION=$GLIB_VERSION
-PKG_SRC_URL="https://download.gnome.org/sources/glib/2.87/glib-2.87.2.tar.xz"
-PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
-
-# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
-set_pkg_dirs  $PKG_NAME $PKG_VERSION
-set_build_dir $PKG_NAME $PKG_VERSION
-
-wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
-tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
-
-cd "$PKG_BUILD_DIR"
-"$PKG_SRC_DIR/configure" --prefix="$PKG_PREFIX"
-
-make -j$(nproc)
-make install
-
-# Cleanup Build Area
-cd "$REPO_DIR"
-rm -rf "$PKG_BUILD_DIR"
-
-# Create Module File
-make_lua_module $PKG_NAME $PKG_VERSION
+pkg_install -n "glib" \
+            -v "2.87.2" \
+            -u "https://download.gnome.org/sources/glib/2.87/glib-2.87.2.tar.xz"
