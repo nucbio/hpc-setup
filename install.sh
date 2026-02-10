@@ -5,6 +5,7 @@ set -e
 {
 
 # Check essential components
+source $REPO_DIR/functions/pkg_install.sh
 source $REPO_DIR/install/check_essential.sh
 
 # Set locations
