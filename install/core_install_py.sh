@@ -35,5 +35,6 @@ module load libwebp
 module load libpng
 module load cairo
 module load glib
+module load libexpat
 source $REPO_DIR/core/libvips.sh
 

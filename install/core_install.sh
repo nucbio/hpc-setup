@@ -39,4 +39,5 @@ source $REPO_DIR/core/readline.sh
 source $REPO_DIR/core/gettext.sh
 # 16. sqlite
 source $REPO_DIR/core/sqlite.sh
-
+# 17. libexpat
+source $REPO_DIR/core/libexpat.sh
