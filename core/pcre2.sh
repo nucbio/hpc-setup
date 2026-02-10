@@ -5,6 +5,8 @@ PKG_VERSION="10.47"
 export PCRE2_VERSION=$PKG_VERSION
 
 PKG_SRC_URL="https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE2_VERSION/pcre2-$PCRE2_VERSION.tar.gz"
+
+
 PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
 # Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
