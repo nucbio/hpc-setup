@@ -42,6 +42,7 @@ module load pkgconf/$PKGCONF_VERSION
 module load zlib/$ZLIB_VERSION
 module load pcre2/$PCRE2_VERSION
 module load libff/$LIBFF_VERSION
+module load gettext/$GETTEXT_VERSION
 source $REPO_DIR/core/glib.sh
 # 15. sqlite
 source $REPO_DIR/core/sqlite.sh
