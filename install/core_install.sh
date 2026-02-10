@@ -19,7 +19,7 @@ source $REPO_DIR/core/xz.sh
 # 7. libjpeg
 source $REPO_DIR/core/libjpeg.sh
 # 8. libpng
-module load zlib/$ZLIB_VERSION
+module load zlib
 source $REPO_DIR/core/libpng.sh
 # 9. libwebp
 source $REPO_DIR/core/libwebp.sh
@@ -28,12 +28,12 @@ source $REPO_DIR/core/pandoc.sh
 # 11. openssl
 source $REPO_DIR/core/openssl.sh
 # 12. libcurl
-module load openssl/$OPENSSL_VERSION
+module load openssl
 source $REPO_DIR/core/libcurl.sh
 # 13. ncurses
 source $REPO_DIR/core/ncurses.sh
 # 14. readline (load ncurses)
-module load ncurses/$NCURSES_VERSION
+module load ncurses
 source $REPO_DIR/core/readline.sh
 # 15. gettext
 source $REPO_DIR/core/gettext.sh
