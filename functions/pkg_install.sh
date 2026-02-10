@@ -3,6 +3,10 @@
 # Universal package intaller
 
 pkg_install() {
+    
+    # Reset the global index for getopts
+    local OPTIND=1
+    
     local PKG_NAME PKG_VERSION PKG_URL PKG_TYPE="conf" EXTRA_OPTS=""
     
     # Parse Arguments
@@ -17,6 +21,9 @@ pkg_install() {
             *) echo "Usage: pkg_install -n name -v ver -u url [-t type] [-o 'options']"; return 1 ;;
         esac
     done
+
+    # Shift away the parsed options so $@ contains remaining args (if any)
+    shift $((OPTIND-1))
 
     # Derive Archive Name
     local ARCHIVE_NAME="${PKG_URL##*/}"
