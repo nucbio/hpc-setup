@@ -28,7 +28,8 @@ pkg_install() {
     # Derive Archive Name
     local ARCHIVE_NAME="${PKG_URL##*/}"
     local PKG_ARCHIVE="$SOURCES_DIR/$ARCHIVE_NAME"
-    
+
+    # Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
     set_pkg_dirs "$PKG_NAME" "$PKG_VERSION"
     set_build_dir "$PKG_NAME" "$PKG_VERSION"
 
