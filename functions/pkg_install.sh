@@ -51,12 +51,19 @@ pkg_install() {
             make -j $(nproc) && make install
             ;;
         cmake)
-            cmake "$PKG_SRC_DIR" -DCMAKE_INSTALL_PREFIX="$PKG_PREFIX" $EXTRA_OPTS
-            make -j $(nproc) && make install
+            cmake -S "$PKG_SRC_DIR" \
+                  -B "$PKG_BUILD_DIR" \
+                  -DCMAKE_INSTALL_PREFIX="$PKG_PREFIX" \
+                  $EXTRA_OPTS
+            cmake --build   "$PKG_BUILD_DIR" -j$(nproc)
+            cmake --install "$PKG_BUILD_DIR"
             ;;
         meson)
-            meson setup "$PKG_SRC_DIR" --prefix="$PKG_PREFIX" $EXTRA_OPTS
-            ninja && ninja install
+            meson setup "$PKG_BUILD_DIR" "$PKG_SRC_DIR" \
+                --prefix="$PKG_PREFIX" \
+                $EXTRA_OPTS
+            meson compile -C "$PKG_BUILD_DIR" -j $(nproc)
+            meson install -C "$PKG_BUILD_DIR"
             ;;
     esac
 
