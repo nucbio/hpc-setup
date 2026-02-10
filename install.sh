@@ -18,8 +18,6 @@ source $REPO_DIR/functions/make_lua_module.sh
 source $REPO_DIR/core/gum.sh
 source $REPO_DIR/install/choose_build.sh
 source $REPO_DIR/functions/set_pkg_dirs.sh
-# Lua
-source $REPO_DIR/install/make_lua_module.sh
 
 # Modules
 source $REPO_DIR/modules/check_modules.sh
