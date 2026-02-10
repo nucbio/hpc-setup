@@ -8,4 +8,5 @@ module load gettext
 
 pkg_install -n "glib" \
             -v "2.87.2" \
-            -u "https://download.gnome.org/sources/glib/2.87/glib-2.87.2.tar.xz"
+            -u "https://download.gnome.org/sources/glib/2.87/glib-2.87.2.tar.xz" \
+            -t "meson"

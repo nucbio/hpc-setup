@@ -37,8 +37,6 @@ module load ncurses/$NCURSES_VERSION
 source $REPO_DIR/core/readline.sh
 # 15. gettext
 source $REPO_DIR/core/gettext.sh
-# 16. glib
-source $REPO_DIR/core/glib.sh
-# 17. sqlite
+# 16. sqlite
 source $REPO_DIR/core/sqlite.sh
 
