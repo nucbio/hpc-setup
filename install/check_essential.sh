@@ -5,7 +5,7 @@
 echo "Checking system dependencies..."
 echo "-----------------------------------------------"
 
-DEPENDENCIES="gcc g++ make cmake install tar gzip bzip2 xz"
+DEPENDENCIES="gcc g++ make cmake install tar gzip bzip2 xz gfortran"
 MISSING_COUNT=0
 
 for tool in $DEPENDENCIES; do

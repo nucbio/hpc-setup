@@ -7,13 +7,13 @@ To download, unpack, and compile the software, the following packages must be in
 
 - Download: `wget`.
 - Unpack: `tar`, `gzip`, `xz` (xz-utils), `bzip2`
-- Compile: `g++`, `gcc` 
+- Compile: `g++`, `gcc`, `gfortran`
 - Build: `make`,`cmake`.
 
 For Debian/Ubuntu linux distributives you can install them all as:
 ```bash
 sudo apt update
-sudo apt install wget tar gzip xz-utils bzip2 build-essential cmake
+sudo apt install wget tar gzip xz-utils bzip2 build-essential cmake gfortran
 ```
 
 **Note for Minimal Systems**: The only strict system requirements are the C/C++ compilers (gcc, g++). All other dependencies—including cmake, make, and archiving utilities—can be deployed without root privileges via portable binaries, precompiled distributions, or by compiling from source.  
