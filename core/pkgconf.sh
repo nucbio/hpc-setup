@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install pkgconf"
+
 pkg_install -n "pkgconf" \
             -v "2.5.1" \
             -u "https://distfiles.dereferenced.org/pkgconf/pkgconf-2.5.1.tar.xz"
