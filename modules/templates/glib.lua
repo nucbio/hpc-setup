@@ -20,9 +20,7 @@ prepend_path("PATH", pathJoin(root, "bin"))
 
 -- Libraries
 prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib64"))
 prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib64"))
 
 -- Includes
 prepend_path("CPATH",           pathJoin(root, "include"))
@@ -34,8 +32,7 @@ prepend_path("LDFLAGS", "-L" .. pathJoin(root, "lib"), " ")
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
 
 -- PKG_CONFIG_PATH for .pc files
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib64/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/x86_64-linux-gnu/pkgconfig"))
 
 -- GLib-specific paths
 prepend_path("XDG_DATA_DIRS", pathJoin(root, "share"))
