@@ -14,10 +14,10 @@ export SOURCES_DIR=$INSTALL_DIR/sources
 mkdir -p $INSTALL_DIR/modulefiles
 export MODULEFILES=$INSTALL_DIR/modulefiles
 # Choose build directory
-source $REPO_DIR/install/make_lua_module.sh
+source $REPO_DIR/functions/make_lua_module.sh
 source $REPO_DIR/core/gum.sh
 source $REPO_DIR/install/choose_build.sh
-source $REPO_DIR/install/set_pkg_dirs.sh
+source $REPO_DIR/functions/set_pkg_dirs.sh
 # Lua
 source $REPO_DIR/install/make_lua_module.sh
 
