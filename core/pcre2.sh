@@ -20,6 +20,3 @@ pkg_install \
     -u "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.47/pcre2-10.47.tar.gz" \
     -t "cmake" \
     -o "${CMAKE_OPTS[*]}"
-
-#"-DCMAKE_C_FLAGS='-O2 -fPIC'"
-#"-DCMAKE_CXX_FLAGS='-O2 -fPIC'"
