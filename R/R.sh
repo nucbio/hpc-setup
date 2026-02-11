@@ -23,11 +23,11 @@ module load java
 module load pkgconf
 
 # Check if X11 libraries are available for R installation
-if pkgconf --exists x11 xt xext xmu 2>/dev/null; then
-    echo "X11 development files found → building R with X support"
+if pkg-config --exists x11 xt xext xmu 2>/dev/null; then
+    echo "X11 support for R is enabled."
     X_OPT="--with-x=yes"
 else
-    echo "X11 development files not found → building R without X support"
+    echo "X11 support for R is disabled."
     X_OPT="--with-x=no"
 fi
 
