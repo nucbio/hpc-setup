@@ -2,7 +2,7 @@
 
 echo "Install libexpat"
 
-export LIBEXPAT_VERSION
+export LIBEXPAT_VERSION="2.7.4"
 
 pkg_install -n "libexpat" \
             -v "$LIBEXPAT_VERSION" \
