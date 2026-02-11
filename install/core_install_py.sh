@@ -7,10 +7,10 @@ module load python
 # 1. glib
 source $REPO_DIR/core/glib.sh
 
-# 2. freetype (use zlib, bzip2, png, harfbuzz)
+# 2. freetype
 source $REPO_DIR/core/freetype.sh
 
-# 3. fribidi (load freetype)
+# 3. fribidi
 module load freetype
 source $REPO_DIR/core/fribidi.sh
 
