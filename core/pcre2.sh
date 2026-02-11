@@ -11,8 +11,6 @@ CMAKE_OPTS=(
     "-DPCRE2_BUILD_PCRE2_32=ON"
     "-DPCRE2_SUPPORT_UNICODE=ON"
     "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"
-    "-DCMAKE_C_FLAGS='-O2 -fPIC'"
-    "-DCMAKE_CXX_FLAGS='-O2 -fPIC'"
 )
 
 # Standard cmake intall
@@ -23,3 +21,5 @@ pkg_install \
     -t "cmake" \
     -o "${CMAKE_OPTS[*]}"
 
+#"-DCMAKE_C_FLAGS='-O2 -fPIC'"
+#"-DCMAKE_CXX_FLAGS='-O2 -fPIC'"
