@@ -22,9 +22,9 @@ cd "$PKG_BUILD_DIR"
     --disable-manual \
     --disable-ldap \
     --disable-ldaps \
-    --without-libpsl
-# try without
-#--with-openssl="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION"
+    --without-libpsl \
+    --with-openssl
+    #="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION"
 
 make -j$(nproc)
 make install
