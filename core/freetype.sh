@@ -7,7 +7,6 @@ module use $INSTALL_DIR/modulefiles
 module load zlib
 module load bzip2
 module load libpng
-module load harfbuzz
 
 # Standard meson installation
 pkg_install -n "freetype" \
