@@ -18,12 +18,12 @@ cd "$PKG_BUILD_DIR"
     --prefix="$PKG_PREFIX" \
     --enable-shared \
     --enable-static \
-    --with-openssl="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION" \
     --enable-optimize \
     --disable-manual \
     --disable-ldap \
     --disable-ldaps \
-    --without-libpsl
+    --without-libpsl \
+    --with-openssl="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION"
 
 make -j$(nproc)
 make install
