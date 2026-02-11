@@ -39,7 +39,7 @@ source $REPO_DIR/install/core_install_py.sh
 # Install R
 source $REPO_DIR/R/R.sh
 
-#module load R/$R_VERSION
+module load R
 Rscript $REPO_DIR/R/R_libraries.R 
 
 # Install htslib
