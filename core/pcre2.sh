@@ -2,6 +2,8 @@
 
 echo "Install pcre2"
 
+export PCRE2_VERSION="10.47"
+
 # Options
 CMAKE_OPTS=(
     "-DBUILD_SHARED_LIBS=ON"
@@ -16,7 +18,7 @@ CMAKE_OPTS=(
 # Standard cmake intall
 pkg_install \
     -n "pcre2" \
-    -v "10.47" \
-    -u "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.47/pcre2-10.47.tar.gz" \
+    -v "$PCRE2_VERSION" \
+    -u "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE2_VERSION/pcre2-$PCRE2_VERSION.tar.gz" \
     -t "cmake" \
     -o "${CMAKE_OPTS[*]}"

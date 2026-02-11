@@ -2,7 +2,9 @@
 
 echo "Install zlib"
 
+export ZLIB_VERSION="1.3.1"
+
 pkg_install -n "zlib" \
-            -v "1.3.1" \
-            -u "https://zlib.net/zlib-1.3.1.tar.gz"
+            -v "$ZLIB_VERSION" \
+            -u "https://zlib.net/zlib-$ZLIB_VERSION.tar.gz"
 

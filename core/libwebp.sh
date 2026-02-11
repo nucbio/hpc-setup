@@ -2,6 +2,8 @@
 
 echo "Install libwebp"
 
+export LIBWEBP_VERSION="1.6.0"
+
 # Options
 CMAKE_OPTS=(
     "-DCMAKE_BUILD_TYPE=Release"
@@ -17,8 +19,8 @@ CMAKE_OPTS=(
 # Standard cmake intall
 pkg_install \
     -n "libwebp" \
-    -v "1.6.0" \
-    -u "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.6.0.tar.gz" \
+    -v "$LIBWEBP_VERSION" \
+    -u "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$LIBWEBP_VERSION.tar.gz" \
     -t "cmake" \
     -o "${CMAKE_OPTS[*]}"
 

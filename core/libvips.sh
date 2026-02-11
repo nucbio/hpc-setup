@@ -5,9 +5,11 @@ echo "Install libvips"
 # FIX: distutils is needed but depricated 
 export SETUPTOOLS_USE_DISTUTILS=local
 
+export LIBVIPS_VERSION="8.18.0"
+
 pkg_install -n "libvips" \
-            -v "8.18.0" \
-            -u "https://github.com/libvips/libvips/releases/download/v8.18.0/vips-8.18.0.tar.xz" \
+            -v "$LIBVIPS_VERSION" \
+            -u "https://github.com/libvips/libvips/releases/download/v$LIBVIPS_VERSION/vips-$LIBVIPS_VERSION.tar.xz" \
             -t "meson" \
             -o "--buildtype=release \
 -Dintrospection=disabled \

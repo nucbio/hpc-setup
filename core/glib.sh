@@ -8,7 +8,9 @@ module load gettext
 
 echo "Install glib"
 
+export GLIB_VERSION="2.87.2"
+
 pkg_install -n "glib" \
-            -v "2.87.2" \
+            -v "$GLIB_VERSION" \
             -u "https://download.gnome.org/sources/glib/2.87/glib-2.87.2.tar.xz" \
             -t "meson"
