@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# Dependencies
+echo "Install R"
+
+# Load dependencies
 module use $INSTALL_DIR/modulefiles
 module load libcurl
 module load pcre2
@@ -18,42 +20,29 @@ module load xz
 module load ncurses
 module load readline
 module load java
+module load pkgconf
 
-export R_VERSION="4.5.2"
-PKG_VERSION=$R_VERSION
-PKG_NAME="R"
-PKG_SRC_URL="https://cran.r-project.org/src/base/R-4/R-$R_VERSION.tar.gz"
+# Check if X11 libraries are available for R installation
+if pkgconf --exists x11 xt xext xmu 2>/dev/null; then
+    echo "X11 development files found → building R with X support"
+    X_OPT="--with-x=yes"
+else
+    echo "X11 development files not found → building R without X support"
+    X_OPT="--with-x=no"
+fi
 
+# Standard config installation
+pkg_install -n "R" \
+            -v "4.5.2" \
+            -u "https://cran.r-project.org/src/base/R-4/R-4.5.2.tar.gz" \
+            -o "--enable-memory-profiling \
+--enable-R-shlib \
+--with-blas \
+--with-lapack \
+--with-libpng \
+--with-jpeglib \
+--with-cairo \
+--with-readline=yes \
+--with-system-tre=no \
+$X_OPT" 
 
-# Standard configuration installation
-PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
-
-# Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
-set_pkg_dirs  $PKG_NAME $PKG_VERSION
-set_build_dir $PKG_NAME $PKG_VERSION
-
-wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
-tar -xzf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
-
-cd "$PKG_BUILD_DIR"
-"$PKG_SRC_DIR/configure" \
-    --prefix="$PKG_PREFIX"  \
-    --enable-memory-profiling \
-    --enable-R-shlib \
-    --with-blas \
-    --with-lapack \
-    --with-libpng \
-    --with-jpeglib \
-    --with-cairo \
-    --with-readline=yes \
-    --with-system-tre=no
-
-make -j $(nproc)
-make install
-
-# Cleanup Build Area
-cd "$REPO_DIR"
-rm -rf "$PKG_BUILD_DIR"
-
-# Create Module File
-make_lua_module $PKG_NAME $PKG_VERSION

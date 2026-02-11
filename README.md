@@ -18,6 +18,19 @@ sudo apt install wget tar gzip xz-utils bzip2 build-essential cmake gfortran
 
 **Note for Minimal Systems**: The only strict system requirements are the C/C++ compilers (gcc, g++). All other dependencies—including cmake, make, and archiving utilities—can be deployed without root privileges via portable binaries, precompiled distributions, or by compiling from source.  
 
+### R Configuration with X11 Support
+
+X11 is required for graphical displays and interactive plotting windows on local Linux desktops.  
+To enable X11 support in R, the X11 development libraries should be installed before the hpc-setup.  
+If the X11 libraries are missing (normally on HPC), R will be configured without X11 support.  
+
+For Debian/Ubuntu systems, run the following command:
+
+```bash
+sudo apt update
+sudo apt install libx11-dev libxt-dev libxext-dev
+```
+
 ## Installation
 Start hpc-setup from inside of the directory as:
 
@@ -26,12 +39,12 @@ wget -qO- https://github.com/nucbio/hpc-setup/raw/main/boot.sh | bash
 ```
 
 ## Installation Sequence
-1. Core packages (dependencies)  
-2. Python, Rust, Java etc.  
-4. Meson based dependencies  
-5. R  
-6. Bioinformatic tools  
-7. Terminal (CLI) tools  
+1. **Core packages**: bzip2, cairo, freetype, fribidi, gettext, glib, gum, 
+harfbuzz, libcurl, libexpat, libff, libjpeg, libpng, libvips, libwebp, ncurses, 
+openssl, pandoc, pcre2, pkgconf, readline, sqlite, tcl, xz, zlib.  
+2. **Development**: R, Python, Rust, Java, Lua.  
+3. **Bioinformatic tools**:  htslib, samtools, bowtie2, cutadapt, fastqc, gatk, pigz.  
+4. **Terminal (CLI) tools**: nvim, bat, eza, fdfind, ripgrep, tree, zoxide.  
 
 ## Structure
 - Downloaded archives are in `sources` directory.
