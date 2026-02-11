@@ -2,27 +2,30 @@
 
 # Dependencies
 module use $INSTALL_DIR/modulefiles
-module load libcurl/$LIBCURL_VERSION
-module load pcre2/$PCRE2_VERSION
-module load libpng/$LIBPNG_VERSION
-module load libjpeg/$LIBJPEG_VERSION
-module load pandoc/$PANDOC_VERSION
-module load cairo/$CAIRO_VERSION
-module load harfbuzz/$HARFBUZZ_VERSION
-module load fribidi/$FRIBIDI_VERSION
-module load freetype/$FREETYPE_VERSION
-module load bzip2/$BZIP2_VERSION
-module load libwebp/$LIBWEBP_VERSION
-module load libvips/$LIBVIPS_VERSION
-module load xz/$XZ_VERSION
-module load ncurses/$NCURSES_VERSION
-module load readline/$READLINE_VERSION
-module load java/$JAVA_VERSION
+module load libcurl
+module load pcre2
+module load libpng
+module load libjpeg
+module load pandoc
+module load cairo
+module load harfbuzz
+module load fribidi
+module load freetype
+module load bzip2
+module load libwebp
+module load libvips
+module load xz
+module load ncurses
+module load readline
+module load java
 
 export R_VERSION="4.5.2"
 PKG_VERSION=$R_VERSION
 PKG_NAME="R"
 PKG_SRC_URL="https://cran.r-project.org/src/base/R-4/R-$R_VERSION.tar.gz"
+
+
+# Standard configuration installation
 PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
 # Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
