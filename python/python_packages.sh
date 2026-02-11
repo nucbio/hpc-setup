@@ -1,7 +1,7 @@
 #!/bin/bash
 
 module use $INSTALL_DIR/modulefiles
-module load python/$PYTHON_VERSION
+module load python
 
 # Verify Python is loaded
 if ! command -v python3 &> /dev/null; then

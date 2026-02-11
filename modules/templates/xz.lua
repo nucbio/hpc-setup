@@ -16,5 +16,4 @@ prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
 prepend_path("LDFLAGS", "-L" .. pathJoin(root, "lib"), " ")
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
 
--- Crucial for R compilation
 setenv("LZMA_ROOT", root)
