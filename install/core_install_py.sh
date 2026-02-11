@@ -19,7 +19,9 @@ module load fribidi
 module load glib
 source $REPO_DIR/core/harfbuzz.sh
 
-# 5. cairo (load freetype, fribidi, harfbuzz)
+# 5. cairo
+module load freetype
+module load fribidi
 module load harfbuzz
 source $REPO_DIR/core/cairo.sh
 

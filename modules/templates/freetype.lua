@@ -15,7 +15,7 @@ local root = "${TOOL_PATH}"
 prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
 prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
 prepend_path("CPATH",           pathJoin(root, "include"))
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/x86_64-linux-gnu/pkgconfig"))
 prepend_path("MANPATH",         pathJoin(root, "share/man"))
 prepend_path("ACLOCAL_PATH",    pathJoin(root, "share/aclocal"))
 
