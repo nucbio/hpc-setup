@@ -11,10 +11,10 @@ whatis("Description: XZ Utils is free general-purpose data compression software 
 local root = "${TOOL_PATH}"
 
 prepend_path("PATH",            pathJoin(root, "bin"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib64"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib64"))
 prepend_path("CPATH",           pathJoin(root, "include"))
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib64/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
+prepend_path("LDFLAGS", "-L" .. pathJoin(root, "lib"), " ")
+prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
 
 -- Crucial for R compilation
 setenv("LZMA_ROOT", root)
