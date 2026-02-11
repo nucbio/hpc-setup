@@ -32,7 +32,7 @@ module load openssl
 source $REPO_DIR/core/libcurl.sh
 # 13. ncurses
 source $REPO_DIR/core/ncurses.sh
-# 14. readline (load ncurses)
+# 14. readline
 module load ncurses
 source $REPO_DIR/core/readline.sh
 # 15. gettext
