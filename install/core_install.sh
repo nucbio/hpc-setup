@@ -16,30 +16,32 @@ source $REPO_DIR/core/bzip2.sh
 source $REPO_DIR/core/pcre2.sh
 # 6. xz
 source $REPO_DIR/core/xz.sh
-# 7. libjpeg
+# 7. libtiff
+source $REPO_DIR/core/libtiff.sh
+# 8. libjpeg
 source $REPO_DIR/core/libjpeg.sh
-# 8. libpng
+# 9. libpng
 module load zlib
 source $REPO_DIR/core/libpng.sh
-# 9. libwebp
+# 10. libwebp
 source $REPO_DIR/core/libwebp.sh
-# 10. pandoc
+# 11. pandoc
 source $REPO_DIR/core/pandoc.sh
-# 11. openssl
+# 12. openssl
 source $REPO_DIR/core/openssl.sh
-# 12. libcurl
+# 13. libcurl
 module load openssl
 source $REPO_DIR/core/libcurl.sh
-# 13. ncurses
+# 14. ncurses
 source $REPO_DIR/core/ncurses.sh
-# 14. readline
+# 15. readline
 module load ncurses
 source $REPO_DIR/core/readline.sh
-# 15. gettext
+# 16. gettext
 source $REPO_DIR/core/gettext.sh
-# 16. sqlite
+# 17. sqlite
 source $REPO_DIR/core/sqlite.sh
-# 17. libexpat
+# 18. libexpat
 source $REPO_DIR/core/libexpat.sh
-# 18. gperf
+# 19. gperf
 source $REPO_DIR/core/gperf.sh
