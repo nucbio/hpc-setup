@@ -43,7 +43,8 @@ wget -qO- https://github.com/nucbio/hpc-setup/raw/main/boot.sh | bash
 harfbuzz, libcurl, libexpat, libff, libjpeg, libpng, libvips, libwebp, ncurses, 
 openssl, pandoc, pcre2, pkgconf, readline, sqlite, tcl, xz, zlib.  
 2. **Development**: R, Python, Rust, Java, Lua.  
-3. **Bioinformatic tools**:  htslib, samtools, bowtie2, cutadapt, fastqc, gatk, pigz.  
+3. **Bioinformatic tools**:  htslib, samtools, bowtie2, cutadapt, fastqc, gatk, 
+pigz. dorado hdf5 duckdb modkit pod5. 
 4. **Terminal (CLI) tools**: nvim, bat, eza, fdfind, ripgrep, tree, zoxide.  
 
 ## Structure
