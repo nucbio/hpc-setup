@@ -13,21 +13,21 @@ local base = "${TOOL_PATH}"
 
 -- Prepend paths
 prepend_path("PATH",            pathJoin(base, "bin"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(base, "lib64"))
-prepend_path("LIBRARY_PATH",    pathJoin(base, "lib64"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(base, "lib"))
+prepend_path("LIBRARY_PATH",    pathJoin(base, "lib"))
 prepend_path("CPATH",           pathJoin(base, "include"))
-prepend_path("PKG_CONFIG_PATH", pathJoin(base, "lib64/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(base, "lib/x86_64-linux-gnu/pkgconfig"))
 
 -- Set environment variables for R package compilation
 setenv("HARFBUZZ_ROOT",    base)
 setenv("HARFBUZZ_HOME",    base)
 setenv("HARFBUZZ_INCLUDE", pathJoin(base, "include"))
-setenv("HARFBUZZ_LIB",     pathJoin(base, "lib64"))
+setenv("HARFBUZZ_LIB",     pathJoin(base, "lib"))
 
 -- Additional variables that R's configure scripts might check
 pushenv("CFLAGS",   "-I" .. pathJoin(base, "include"))
 pushenv("CXXFLAGS", "-I" .. pathJoin(base, "include"))
-pushenv("LDFLAGS",  "-L" .. pathJoin(base, "lib64"))
+pushenv("LDFLAGS",  "-L" .. pathJoin(base, "lib"))
 
 -- For R packages that might look for harfbuzz-config
 pushenv("CPPFLAGS", "-I" .. pathJoin(base, "include/harfbuzz"))
