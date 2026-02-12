@@ -41,3 +41,5 @@ source $REPO_DIR/core/gettext.sh
 source $REPO_DIR/core/sqlite.sh
 # 17. libexpat
 source $REPO_DIR/core/libexpat.sh
+# 18. gperf
+source $REPO_DIR/core/gperf.sh
