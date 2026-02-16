@@ -31,6 +31,13 @@ sudo apt update
 sudo apt install libx11-dev libxt-dev libxext-dev
 ```
 
+You can install all mentioned dependencies on Fedora as following:
+```bash
+sudo dnf upgrade --refresh
+sudo dnf install -y wget tar gzip xz bzip2 gcc gcc-c++ gcc-gfortran make cmake
+sudo dnf install libX11-devel libXt-devel libXext-devel
+```
+
 ## Installation
 Start hpc-setup from inside of the directory as:
 
