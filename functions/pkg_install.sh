@@ -3,7 +3,6 @@
 # Universal package intaller
 
 pkg_install() {
-    echo "FLAG0"
     # Reset the global index for getopts
     local OPTIND=1
     
@@ -21,22 +20,22 @@ pkg_install() {
             *) echo "Usage: pkg_install -n name -v ver -u url [-t type] [-o 'options']"; return 1 ;;
         esac
     done
-
+    echo "FLAG2"
     # Shift away the parsed options so $@ contains remaining args (if any)
     shift $((OPTIND-1))
-
+    echo "FLAG3"
     # Derive Archive Name
     local ARCHIVE_NAME="${PKG_URL##*/}"
     local PKG_ARCHIVE="$SOURCES_DIR/$ARCHIVE_NAME"
-
+    echo "FLAG4"
     # Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
     set_pkg_dirs "$PKG_NAME" "$PKG_VERSION"
     set_build_dir "$PKG_NAME" "$PKG_VERSION"
-
+    echo "FLAG5"
     # Download & Extract
     wget -nv "$PKG_URL" -O "$PKG_ARCHIVE"
     mkdir -p "$PKG_SRC_DIR"
-    
+    echo "FLAG6"
     if [[ "$ARCHIVE_NAME" == *.zip ]]; then
         unzip -q "$PKG_ARCHIVE" -d "$PKG_SRC_DIR"
     else
