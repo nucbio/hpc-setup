@@ -35,18 +35,9 @@ local rroot = "${TOOL_PATH}"
 local rversion = "${TOOL_VERSION}"
 
 prepend_path("PATH",            pathJoin(rroot, "bin"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(rroot, "lib"))
-prepend_path("PKG_CONFIG_PATH", pathJoin(rroot, "lib/pkgconfig"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(rroot, "$LIB"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(rroot, "$PKG_CONF"))
 prepend_path("CPATH",           pathJoin(rroot, "include"))
-
-----------------------------------------------------------------------
--- User library tree
-----------------------------------------------------------------------
-local home = os.getenv("HOME") or ""
-if home ~= "" then
-    local r_libs_user = pathJoin(home, "R/library", rversion)
-    prepend_path("R_LIBS_USER", r_libs_user)
-end
 
 conflict("${TOOL}")
 

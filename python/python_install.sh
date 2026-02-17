@@ -12,10 +12,7 @@ module load bzip2
 module load sqlite
 module load libcurl
 
-# Options (lets try without)
-# --with-openssl="$INSTALL_DIR/openssl/openssl-$OPENSSL_VERSION" \
-
 pkg_install -n "python" \
-            -v "3.12.2" \
-            -u "https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tgz" \
-            -o "--enable-optimizations --with-ensurepip=install"
+            -v "3.14.3" \
+            -u "https://www.python.org/ftp/python/3.14.3/Python-3.14.3.tar.xz" \
+            -o "--enable-optimizations --with-ensurepip=install --enable-shared"

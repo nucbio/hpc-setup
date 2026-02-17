@@ -38,6 +38,23 @@ make_lua_module() {
 
     mkdir -p "$MODULE_DIR"
 
+    # Find library and pkg-config exists
+    LIB_PATH=$(find "$TOOL_PATH" -type d -name "lib*" -print -quit)
+    PKG_CONF_PATH=$(find "$TOOL_PATH" -type d -name "pkgconfig" -print -quit)
+
+    if [ -n "$LIB_PATH" ]; then
+        export LIB=${LIB_PATH#$TOOL_PATH/}
+    else
+        export LIB="lib"  # Default
+    fi
+
+    if [ -n "$PKG_CONF_PATH" ]; then
+        export PKG_CONF=${PKG_CONF_PATH#$TOOL_PATH/}
+    else
+        export PKG_CONF="lib/pkgconfig" # Default
+    fi
+    #TODO make conditinal block in lua tempates instead of defaults for not existing directory
+
     # Export variables for envsubst
     export TOOL TOOL_VERSION TOOL_PATH
 

@@ -19,8 +19,8 @@ local root = "${TOOL_PATH}"
 prepend_path("PATH", pathJoin(root, "bin"))
 
 -- Libraries
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 
 -- Includes
 prepend_path("CPATH",           pathJoin(root, "include"))
@@ -28,15 +28,15 @@ prepend_path("C_INCLUDE_PATH",  pathJoin(root, "include"))
 prepend_path("CPLUS_INCLUDE_PATH", pathJoin(root, "include"))
 
 -- Compiler/Linker flags
-prepend_path("LDFLAGS", "-L" .. pathJoin(root, "lib"), " ")
+prepend_path("LDFLAGS", "-L" .. pathJoin(root, "$LIB"), " ")
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
 
 -- PKG_CONFIG_PATH for .pc files
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/x86_64-linux-gnu/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 -- GLib-specific paths
 prepend_path("XDG_DATA_DIRS", pathJoin(root, "share"))
-prepend_path("GIO_MODULE_DIR", pathJoin(root, "lib/gio/modules"))
+prepend_path("GIO_MODULE_DIR", pathJoin(root, "$LIB/gio/modules"))
 
 -- GSettings schema directory
 prepend_path("GSETTINGS_SCHEMA_DIR", pathJoin(root, "share/glib-2.0/schemas"))
@@ -45,7 +45,7 @@ prepend_path("GSETTINGS_SCHEMA_DIR", pathJoin(root, "share/glib-2.0/schemas"))
 setenv("GLIB_ROOT", root)
 setenv("GLIB_HOME", root)
 setenv("GLIB_INCLUDE_DIR", pathJoin(root, "include"))
-setenv("GLIB_LIBRARY_DIR", pathJoin(root, "lib"))
+setenv("GLIB_LIBRARY_DIR", pathJoin(root, "$LIB"))
 
 -- Man pages
 prepend_path("MANPATH", pathJoin(root, "share/man"))

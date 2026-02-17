@@ -33,27 +33,18 @@ local root = "${TOOL_PATH}"
 
 -- Add Python and pip to PATH
 prepend_path("PATH",            pathJoin(root, "bin"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 prepend_path("CPATH",           pathJoin(root, "include"))
 
 -- pkg-config
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 -- Python specific environment variables
 setenv("PYTHONHOME", root)
 -- Set PYTHONPATH to include site-packages for this specific version
 local pyver = "${TOOL_VERSION:0:4}" -- Extracts "3.11" from "3.11.x"
 prepend_path("PYTHONPATH", pathJoin(root, "lib/python" .. pyver .. "/site-packages"))
-
-----------------------------------------------------------------------
--- User Site-Packages (equivalent to R_LIBS_USER)
-----------------------------------------------------------------------
-local home = os.getenv("HOME") or ""
-if home ~= "" then
-    local user_site = pathJoin(home, ".local/lib/python" .. pyver .. "/site-packages")
-    prepend_path("PYTHONPATH", user_site)
-end
 
 conflict("${TOOL}")
 conflict("python")
