@@ -7,7 +7,7 @@ pkg_install() {
     local OPTIND=1
     
     local PKG_NAME PKG_VERSION PKG_URL PKG_TYPE="conf" EXTRA_OPTS=""
-    echo "FLAG1"
+    
     # Parse Arguments
     # n: Name, v: Version, u: URL, t: Type, o: Options (the string you requested)
     while getopts "n:v:u:t:o:" opt; do
