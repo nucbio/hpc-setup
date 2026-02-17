@@ -37,7 +37,7 @@ pkg_install() {
         echo "Downloaded $ARCHIVE_NAME"
     else
         echo "ERROR: Failed to download $PKG_NAME."
-        echo "Check if the URL is valid or if the server is down: $PKG_URL"
+        echo "Check if the URL is valid: $PKG_URL"
         return 1
     fi
     
