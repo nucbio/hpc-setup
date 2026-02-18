@@ -19,22 +19,22 @@ source $REPO_DIR/core/fontconfig.sh
 # 5. imagemagic
 source $REPO_DIR/core/imagemagick.sh
 
-# 5. fribidi
+# 6. fribidi
 module load freetype
 source $REPO_DIR/core/fribidi.sh
 
-# 6. harfbuzz
+# 7. harfbuzz
 module load fribidi
 module load glib
 source $REPO_DIR/core/harfbuzz.sh
 
-# 7. cairo
+# 8. cairo
 module load freetype
 module load fribidi
 module load harfbuzz
 source $REPO_DIR/core/cairo.sh
 
-# 8. libvips
+# 9. libvips
 module load libjpeg
 module load libwebp
 module load libpng
