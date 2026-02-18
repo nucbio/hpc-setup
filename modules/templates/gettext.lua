@@ -15,20 +15,20 @@ whatis("URL: https://www.gnu.org/software/gettext/")
 -- gettext often benefits from having your Core icons available
 load("ncurses/${NCURSES_VERSION}")
 
-local root = "${TOOL_PATH}"
+local root = "$TOOL_PATH"
 
 -- Binaries (envsubst, gettext, msgfmt, xgettext, etc.)
 prepend_path("PATH",            pathJoin(root, "bin"))
 
 -- Libraries
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 
 -- Includes
 prepend_path("CPATH",           pathJoin(root, "include"))
 
 -- pkg-config
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 -- Environment variables for Autotools and R
 setenv("GETTEXT_ROOT", root)

@@ -16,10 +16,8 @@ whatis("URL: https://sourceware.org/libffi/")
 local root = "${TOOL_PATH}"
 
 -- Libraries
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib64"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib64"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 
 -- Includes
 prepend_path("CPATH",           pathJoin(root, "include"))
@@ -31,14 +29,13 @@ prepend_path("LDFLAGS", "-L" .. pathJoin(root, "lib"), " ")
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
 
 -- PKG_CONFIG_PATH for .pc files
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib64/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 -- Environment variables for build systems
 setenv("LIBFFI_ROOT", root)
 setenv("LIBFFI_HOME", root)
 setenv("LIBFFI_INCLUDE_DIR", pathJoin(root, "include"))
-setenv("LIBFFI_LIBRARY_DIR", pathJoin(root, "lib"))
+setenv("LIBFFI_LIBRARY_DIR", pathJoin(root, "$LIB"))
 
 -- Man pages
 prepend_path("MANPATH", pathJoin(root, "share/man"))

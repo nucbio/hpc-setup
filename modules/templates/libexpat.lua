@@ -19,20 +19,20 @@ local root = "${TOOL_PATH}"
 prepend_path("PATH",            pathJoin(root, "bin"))
 
 -- Libraries
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 
 -- Includes
 prepend_path("CPATH",           pathJoin(root, "include"))
 
 -- pkg-config (Crucial for fontconfig and other Autotools builds)
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 -- Variables
 setenv("EXPAT_ROOT",        root)
 setenv("EXPAT_INCLUDE_DIR", pathJoin(root, "include"))
-setenv("EXPAT_LIBRARY",     pathJoin(root, "lib"))
-setenv("EXPAT_LIBS",        "-L" .. pathJoin(root, "lib") .. " -lexpat")
+setenv("EXPAT_LIBRARY",     pathJoin(root, "$LIB"))
+setenv("EXPAT_LIBS",        "-L" .. pathJoin(root, "$LIB") .. " -lexpat")
 
 -- Man pages
 prepend_path("MANPATH", pathJoin(root, "share/man"))

@@ -10,8 +10,8 @@ whatis("Description: GNU Readline library for command-line editing and history."
 
 local root = "${TOOL_PATH}"
 
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 prepend_path("CPATH",           pathJoin(root, "include"))
 
 -- Crucial for some compilers to pick up the paths automatically
@@ -20,8 +20,8 @@ prepend_path("CPLUS_INCLUDE_PATH",  pathJoin(root, "include"))
 
 -- Specific variable for R's ./configure
 setenv("READLINE_ROOT", root)
-setenv("READLINE_LIBS", "-L" .. pathJoin(root, "lib") .. " -lreadline")
+setenv("READLINE_LIBS", "-L" .. pathJoin(root, "$LIB") .. " -lreadline")
 
-prepend_path("LDFLAGS", "-L" .. pathJoin(root, "lib"), " ")
+prepend_path("LDFLAGS", "-L" .. pathJoin(root, "$LIB"), " ")
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
 

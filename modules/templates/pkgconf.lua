@@ -18,7 +18,7 @@ local root = "${TOOL_PATH}"
 prepend_path("PATH", pathJoin(root, "bin"))
 
 -- PKG_CONFIG_PATH is the primary search path for .pc files
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 prepend_path("PKG_CONFIG_PATH", pathJoin(root, "share/pkgconfig"))
 
 -- Include directories (if pkg-config has header files)

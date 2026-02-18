@@ -19,16 +19,16 @@ local root = "${TOOL_PATH}"
 prepend_path("PATH",            pathJoin(root, "bin"))
 
 -- Libraries
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 
 -- Includes
 prepend_path("CPATH",           pathJoin(root, "include"))
 
 -- pkg-config
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 -- Variables for high-level language configures
 setenv("SQLITE_ROOT", root)
 setenv("SQLITE_INCLUDE_DIR", pathJoin(root, "include"))
-setenv("SQLITE_LIBS", "-L" .. pathJoin(root, "lib") .. " -lsqlite3")
+setenv("SQLITE_LIBS", "-L" .. pathJoin(root, "$LIB") .. " -lsqlite3")

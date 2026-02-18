@@ -20,8 +20,8 @@ local root = "${TOOL_PATH}"
 prepend_path("PATH",            pathJoin(root, "bin"))
 
 -- Libraries
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 
 -- Includes
 prepend_path("CPATH",           pathJoin(root, "include"))

@@ -27,8 +27,8 @@ setenv("RUSTUP_HOME", rustup_home)
 prepend_path("PATH", pathJoin(cargo_home, "bin"))
 
 -- Rust libraries (Cargo folder)
-prepend_path("LD_LIBRARY_PATH", pathJoin(cargo_home, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(cargo_home, "$LIB"))
 
 -- Rust libraries (Toolchain specific folder)
 local toolchain_path = pathJoin(rustup_home, "toolchains", tool_ver .. "-x86_64-unknown-linux-gnu")
-prepend_path("LD_LIBRARY_PATH", pathJoin(toolchain_path, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(toolchain_path, "$LIB"))

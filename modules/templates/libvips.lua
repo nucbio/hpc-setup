@@ -13,14 +13,14 @@ whatis("Category: Image Processing")
 whatis("Description: Fast image processing library")
 whatis("URL: https://libvips.github.io/libvips/")
 
--- Installation prefix from Bash
-local root = "${TOOL_PATH}"
+-- Installation prefix
+local root = "$TOOL_PATH"
 
 -- Paths
 local bin        = pathJoin(root, "bin")
-local lib        = pathJoin(root, "lib64")
+local lib        = pathJoin(root, "$LIB")
 local include    = pathJoin(root, "include")
-local pkgconfig  = pathJoin(lib, "pkgconfig")
+local pkgconfig  = pathJoin(root, "$PKG_CONF")
 local man        = pathJoin(root, "share/man")
 
 -- Environment setup

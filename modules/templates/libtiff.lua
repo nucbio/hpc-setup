@@ -30,14 +30,14 @@ local root = "${TOOL_PATH}"
 prepend_path("PATH",            pathJoin(root, "bin"))
 
 -- Libraries
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 
 -- Includes
 prepend_path("CPATH",           pathJoin(root, "include"))
 
 -- pkg-config
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 ----------------------------------------------------------------------
 -- Developer Access Variables
@@ -45,7 +45,7 @@ prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
 setenv("LIBTIFF_ROOT", root)
 -- Specifically for R and Python build scripts
 setenv("TIFF_INCLUDE_DIR", pathJoin(root, "include"))
-setenv("TIFF_LIBRARY",     pathJoin(root, "lib"))
+setenv("TIFF_LIBRARY",     pathJoin(root, "$LIB"))
 
 -- Man pages
 prepend_path("MANPATH", pathJoin(root, "share/man"))

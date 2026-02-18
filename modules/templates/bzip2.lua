@@ -8,11 +8,11 @@ prepend_path("PATH", pathJoin(root, "bin"))
 
 -- Compiler flags (APPEND using space separator)
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
-prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "lib"), " ")
+prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"), " ")
 
 -- Library paths
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 prepend_path("CPATH",           pathJoin(root, "include"))
 -- Man
 prepend_path("MANPATH",         pathJoin(root, "man"))

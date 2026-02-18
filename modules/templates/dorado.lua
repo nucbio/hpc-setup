@@ -12,7 +12,7 @@ Library directory added to LD_LIBRARY_PATH.
 
 -- Standard paths
 prepend_path("PATH",            pathJoin(base, "bin"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(base, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(base, "$LIB"))
 
 -- Environment variables
 setenv("${TOOL^^}_HOME", base)

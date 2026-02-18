@@ -19,8 +19,8 @@ local root = "${TOOL_PATH}"
 prepend_path("PATH", pathJoin(root, "bin"))
 
 -- Standard library and include paths (though rarely used by other tools)
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 prepend_path("CPATH",           pathJoin(root, "include"))
 
 -- Man pages and Info pages

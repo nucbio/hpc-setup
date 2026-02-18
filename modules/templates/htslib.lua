@@ -19,9 +19,7 @@ whatis("Category: Bioinformatics/Library")
 whatis("Description: C library for handling high-throughput sequencing data formats.")
 whatis("URL: http://www.htslib.org/")
 
-----------------------------------------------------------------------
--- Dependencies (Core & Networking)
-----------------------------------------------------------------------
+-- Dependencies
 load("zlib/${ZLIB_VERSION}")
 load("bzip2/${BZIP2_VERSION}")
 load("xz/${XZ_VERSION}")
@@ -33,22 +31,18 @@ local root = "${TOOL_PATH}"
 prepend_path("PATH",            pathJoin(root, "bin"))
 
 -- Libraries
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "lib"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 
 -- Includes
 prepend_path("CPATH",           pathJoin(root, "include"))
 
 -- pkg-config (Essential for samtools/bcftools builds)
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
-----------------------------------------------------------------------
--- Variables for downstream bioinformatics tools
-----------------------------------------------------------------------
+-- Variables
 setenv("HTSLIB_DIR",  root)
 setenv("HTSLIB_HOME", root)
-
--- Useful for R packages like 'Rsamtools' or 'numbat'
 setenv("HTSLIB_INCLUDE", pathJoin(root, "include"))
 setenv("HTSLIB_LIB",     pathJoin(root, "lib"))
 

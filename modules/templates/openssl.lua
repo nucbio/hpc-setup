@@ -19,26 +19,21 @@ local root = "${TOOL_PATH}"
 prepend_path("PATH", pathJoin(root, "bin"))
 
 -- Includes
-prepend_path("LD_LIBRARY_PATH",  pathJoin(root, "lib64"))
-prepend_path("LIBRARY_PATH",     pathJoin(root, "lib64"))
+prepend_path("LD_LIBRARY_PATH",  pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",     pathJoin(root, "$LIB"))
 prepend_path("CPATH",            pathJoin(root, "include"))
-prepend_path("LDFLAGS", "-L" ..  pathJoin(root, "lib64"), " ")
+prepend_path("LDFLAGS", "-L" ..  pathJoin(root, "$LIB"), " ")
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
 
 -- pkg-config
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib64/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 -- Essential variables for Python and CMake builds
 setenv("OPENSSL_ROOT_DIR", root)
 setenv("OPENSSL_INCLUDE_DIR", pathJoin(root, "include"))
-setenv("OPENSSL_LIBRARIES", pathJoin(root, "lib64"))
+setenv("OPENSSL_LIBRARIES", pathJoin(root, "$LIB"))
 
--- Sertificates (critical for proxy)
--- If system has proxy, wget should be wget --no-check-certificate if no sertificates added
--- local (need to add)
--- setenv("SSL_CERT_FILE", pathJoin(root, "ssl/cert.pem"))
--- setenv("SSL_CERT_DIR",  pathJoin(root, "ssl/certs"))
--- system
+-- System Sertificates (critical for proxy)
 setenv("SSL_CERT_FILE", "/etc/ssl/certs/ca-certificates.crt")
 setenv("SSL_CERT_DIR", "/etc/ssl/certs")
 
