@@ -15,8 +15,5 @@ whatis("URL: https://duckdb.org/")
 
 local root = "${TOOL_PATH}"
 
--- Add the root directory to PATH (assuming the binary is located there)
 prepend_path("PATH", root)
-
--- Set environment variable for reference
 setenv("DUCKDB_HOME", root)

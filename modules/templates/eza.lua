@@ -15,7 +15,7 @@ whatis("Category: file utilities")
 whatis("Description: A modern replacement for ls")
 whatis("URL: https://github.com/eza-community/eza")
 
-local base = "${TOOL_PATH}"
+local root = "${TOOL_PATH}"
 
 -- Add binary directory to PATH
-prepend_path("PATH", base)
+prepend_path("PATH", root)

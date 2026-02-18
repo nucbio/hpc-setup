@@ -17,6 +17,5 @@ prepend_path("LD_LIBRARY_PATH", pathJoin(base, "$LIB"))
 -- Environment variables
 setenv("${TOOL^^}_HOME", base)
 
--- Specialized path for Dorado models 
--- (Kept as a fixed path to avoid duplicating models across versions)
+-- Path for Dorado models 
 setenv("DORADO_MODELS", "/projects/p_bp/tools/dorado/dorado_models")

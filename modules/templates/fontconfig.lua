@@ -10,21 +10,23 @@ whatis("Category: Library/Graphics")
 whatis("Description: Fontconfig is a library for configuring and customizing font access.")
 whatis("URL: https://www.freedesktop.org/wiki/Software/fontconfig/")
 
--- Fontconfig depends on Expat (XML parsing) and FreeType
+-- Dependencies
 load("libexpat/${EXPAT_VERSION}")
 load("freetype/${FREETYPE_VERSION}")
 
-local root = "${TOOL_PATH}"
+local root = "$TOOL_PATH"
+local bin = pathJoin(root, "bin")
+local lib = pathJoin(root, "$LIB")
+local include = pathJoin(root, "include")
+local pkg_conf = pathJoin(root, "$PKG_CONF")
 
--- Binaries (fc-cache, fc-list, fc-match, etc.)
-prepend_path("PATH",            pathJoin(root, "bin"))
+-- Variables
+prepend_path("PATH",            bin)
+prepend_path("LD_LIBRARY_PATH", lin)
+prepend_path("LIBRARY_PATH",    lib)
+prepend_path("CPATH",           include)
 
--- Libraries
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
-prepend_path("CPATH",           pathJoin(root, "include"))
-
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
+prepend_path("PKG_CONFIG_PATH", pkg_conf)
 
 setenv("FONTCONFIG_PATH", pathJoin(root, "etc/fonts"))
 setenv("FONTCONFIG_FILE", pathJoin(root, "etc/fonts/fonts.conf"))

@@ -17,22 +17,19 @@ load("ncurses/${NCURSES_VERSION}")
 
 local root = "$TOOL_PATH"
 
--- Binaries (envsubst, gettext, msgfmt, xgettext, etc.)
-prepend_path("PATH",            pathJoin(root, "bin"))
+local bin = pathJoin(root, "bin")
+local lib = pathJoin(root, "$LIB")
+local include = pathJoin(root, "include")
+local pkg_conf = pathJoin(root, "$PKG_CONF")
 
--- Libraries
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
+-- Variables
+prepend_path("PATH",            bin)
+prepend_path("LD_LIBRARY_PATH", lib)
+prepend_path("LIBRARY_PATH",    lib)
+prepend_path("CPATH",           include)
+prepend_path("PKG_CONFIG_PATH", pkg_conf)
 
--- Includes
-prepend_path("CPATH",           pathJoin(root, "include"))
-
--- pkg-config
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
-
--- Environment variables for Autotools and R
 setenv("GETTEXT_ROOT", root)
--- Some R configurations look specifically for the .h location
-setenv("GETTEXT_INCLUDE_DIR", pathJoin(root, "include"))
+setenv("GETTEXT_INCLUDE_DIR", include)
 
 conflict("${TOOL}")

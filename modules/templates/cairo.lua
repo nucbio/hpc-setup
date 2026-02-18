@@ -12,20 +12,20 @@ whatis("Category: library")
 whatis("Description: Cairo 2D graphics library")
 whatis("URL: https://www.cairographics.org/")
 
-local root = "${TOOL_PATH}"
+local root = "$TOOL_PATH"
+local bin = pathJoin(root, "bin")
+local lib = pathJoin(root, "$LIB")
+local include = pathJoin(root, "include")
+local pkg_conf = pathJoin(root, "$PKG_CONF")
+local man = pathJoin(root, "share/man")
 
--- Binaries
-prepend_path("PATH", pathJoin(root, "bin"))
-
--- Libraries (correct directory: lib64)
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
-
--- Includes
-prepend_path("CPATH",              pathJoin(root, "include"))
-prepend_path("CPLUS_INCLUDE_PATH", pathJoin(root, "include"))
-
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
+-- Variabless
+prepend_path("PATH",               bin)
+prepend_path("LD_LIBRARY_PATH",    lib)
+prepend_path("LIBRARY_PATH",       lib)
+prepend_path("CPATH",              include)
+prepend_path("CPLUS_INCLUDE_PATH", include)
+prepend_path("PKG_CONFIG_PATH",    pkg_conf)
 
 -- Optional Cairo-related environment variables
 setenv("CAIRO_ROOT", root)
@@ -33,11 +33,10 @@ setenv("CAIRO_DIR",  root)
 setenv("CAIRO_HOME", root)
 
 setenv("CAIRO_CFLAGS", "-I" .. pathJoin(root, "include/cairo"))
-setenv("CAIRO_LIBS",   "-L" .. pathJoin(root, "$LIB") .. " -lcairo")
+setenv("CAIRO_LIBS",   "-L" .. lib .. " -lcairo")
 
--- Global compiler and linker flags
-prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
-prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"),   " ")
+prepend_path("CPPFLAGS", "-I" .. include, " ")
+prepend_path("LDFLAGS",  "-L" .. lib,   " ")
 
 -- Man pages
-prepend_path("MANPATH", pathJoin(root, "share/man"))
+prepend_path("MANPATH", man)
