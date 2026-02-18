@@ -2,15 +2,12 @@
 
 help([[
 ${TOOL} ${TOOL_VERSION} - Statistical Computing Environment
-Loads full dependency stack for R package compilation.
 ]])
 
 whatis("Name: ${TOOL}")
 whatis("Version: ${TOOL_VERSION}")
 
-----------------------------------------------------------------------
--- Load required dependency modules using dynamic versions
-----------------------------------------------------------------------
+-- Dependencies
 load("libcurl/${LIBCURL_VERSION}")
 load("pcre2/${PCRE2_VERSION}")
 load("bzip2/${BZIP2_VERSION}")
@@ -28,19 +25,25 @@ load("libwebp/${LIBWEBP_VERSION}")
 load("libvips/${LIBVIPS_VERSION}")
 load("java/${JAVA_VERSION}")
 
-----------------------------------------------------------------------
--- R installation paths
-----------------------------------------------------------------------
-local rroot = "${TOOL_PATH}"
-local rversion = "${TOOL_VERSION}"
+-- Version conflicts
+conflict("$TOOL")
 
-prepend_path("PATH",            pathJoin(rroot, "bin"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(rroot, "$LIB"))
-prepend_path("PKG_CONFIG_PATH", pathJoin(rroot, "$PKG_CONF"))
-prepend_path("CPATH",           pathJoin(rroot, "include"))
-
-conflict("${TOOL}")
-
+-- Message
 if mode() == "load" then
-    LmodMessage("Loading ${TOOL} ${TOOL_VERSION} with dynamic dependencies.")
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
 end
+
+local root = "$TOOL_PATH"
+
+-- Paths
+local bin        = pathJoin(root, "bin")
+local lib        = pathJoin(root, "$LIB")
+local pkgconfig  = pathJoin(root, "$PKG_CONF")
+local include    = pathJoin(root, "include")
+
+-- Variables
+prepend_path("PATH",            bin)
+prepend_path("LD_LIBRARY_PATH", lib)
+prepend_path("PKG_CONFIG_PATH", pkgconfig)
+prepend_path("CPATH",           include)
+

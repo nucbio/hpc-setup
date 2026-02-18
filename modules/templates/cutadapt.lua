@@ -13,21 +13,18 @@ whatis("Category: Bioinformatics/Sequence Preprocessing")
 whatis("Description: Trim adapters and clean up high-throughput sequencing reads.")
 whatis("URL: https://cutadapt.readthedocs.io/")
 
-----------------------------------------------------------------------
--- Specificity: Enforce the Python dependency
-----------------------------------------------------------------------
--- Load the specific version of Python this was installed into
+-- Dependencies
 load("python3/${PYTHON_VERSION}")
 
--- Define the root based on the Python installation path
-local python_root = "$INSTALL_DIR/python/python-${PYTHON_VERSION}"
+local root = "$INSTALL_DIR/python/python-${PYTHON_VERSION}"
 
 -- Add the cutadapt CLI binary to the path 
--- (Installed by pip into the Python bin directory)
-prepend_path("PATH", pathJoin(python_root, "bin"))
+prepend_path("PATH", pathJoin(root, "bin"))
 
-conflict("${TOOL}")
+-- Version conflicts
+conflict("$TOOL")
 
+-- Message
 if mode() == "load" then
     LmodMessage("cutadapt ${TOOL_VERSION} loaded (using Python ${PYTHON_VERSION}).")
 end

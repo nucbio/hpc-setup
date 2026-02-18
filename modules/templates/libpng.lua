@@ -20,8 +20,8 @@ prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
 prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 
 -- Build helper flags
-setenv("CPPFLAGS", "-I" .. pathJoin(root, "include"))
-setenv("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"))
+prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"))
+prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"))
 
 -- Prepend to include path
 prepend_path("CPATH",              pathJoin(root, "include"))

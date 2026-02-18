@@ -31,5 +31,5 @@ prepend_path("PKG_CONFIG_PATH", pkgconfig)
 prepend_path("C_INCLUDE_PATH",  include)
 prepend_path("MANPATH",         man)
 
--- Avoid conflicts with other versions
-conflict("${TOOL}")
+-- Version conflicts
+conflict("$TOOL")
