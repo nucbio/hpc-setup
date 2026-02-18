@@ -14,7 +14,7 @@ export MAGICK_VERSION="7.1.2-13"
 pkg_install \
     -n "imagemagick" \
     -v $MAGICK_VERSION \
-    -u "https://download.imagemagick.org/archive/releases/ImageMagick-7.1.2-13.tar.xz"
+    -u "https://download.imagemagick.org/archive/releases/ImageMagick-7.1.2-13.tar.xz" \
     -o "--enable-shared \
 --enable-static=no \
 --with-modules \
