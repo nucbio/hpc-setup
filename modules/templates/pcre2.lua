@@ -3,16 +3,19 @@ whatis("${TOOL} version ${TOOL_VERSION}")
 
 local root = "${TOOL_PATH}"
 
-prepend_path("PATH", pathJoin(root, "bin"))
+local bin = pathJoin(root, "bin")
+local lib = pathJoin(root, "$LIB")
+local include = pathJoin(root, "include")
+local pkgconf = pathJoin(root, "$PKG_CONF")
 
--- Public include directory
-prepend_path("CPATH", pathJoin(root, "include"))
-prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
+prepend_path("PATH", bin)
+prepend_path("CPATH", include)
+prepend_path("CPPFLAGS", "-I" .. include, " ")
 
 -- Library paths
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
-prepend_path("LDFLAGS", "-L" .. pathJoin(root, "$LIB"), " ")
+prepend_path("LD_LIBRARY_PATH", lib)
+prepend_path("LIBRARY_PATH",    lib)
+prepend_path("LDFLAGS", "-L" .. lib, " ")
 
 -- pkg-config
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
+prepend_path("PKG_CONFIG_PATH", pkgconf)

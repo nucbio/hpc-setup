@@ -39,11 +39,7 @@ prepend_path("CPATH",           pathJoin(root, "include"))
 -- pkg-config
 prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
-----------------------------------------------------------------------
--- Developer Access Variables
-----------------------------------------------------------------------
 setenv("LIBTIFF_ROOT", root)
--- Specifically for R and Python build scripts
 setenv("TIFF_INCLUDE_DIR", pathJoin(root, "include"))
 setenv("TIFF_LIBRARY",     pathJoin(root, "$LIB"))
 

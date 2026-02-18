@@ -24,6 +24,8 @@ prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
 prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 prepend_path("CPATH",           pathJoin(root, "include"))
 prepend_path("CPATH",           pathJoin(root, "include/libxml2/libxml"))
+prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
+prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"),   " ")
 
 -- Variables
 setenv("LIBXML2_ROOT", root)

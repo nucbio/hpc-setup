@@ -21,5 +21,5 @@ prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 -- Build helper flags
-setenv("CPPFLAGS", "-I" .. pathJoin(root, "include"))
-setenv("LDFLAGS",  "-L" .. pathJoin(root, "LIB"))
+prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"))
+prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"))

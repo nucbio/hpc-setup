@@ -22,21 +22,12 @@ prepend_path("PATH",            pathJoin(root, "bin"))
 -- Libraries
 prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
 prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
-
--- Includes
 prepend_path("CPATH",           pathJoin(root, "include"))
 
--- pkg-config (Crucial for Cairo and HarfBuzz builds)
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "lib/pkgconfig"))
+prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
-----------------------------------------------------------------------
--- Fontconfig Specific Configuration
-----------------------------------------------------------------------
--- Tells fontconfig where to find the 'fonts.conf' file
 setenv("FONTCONFIG_PATH", pathJoin(root, "etc/fonts"))
 setenv("FONTCONFIG_FILE", pathJoin(root, "etc/fonts/fonts.conf"))
-
--- Helps fontconfig find data files in your custom prefix
 prepend_path("XDG_DATA_DIRS", pathJoin(root, "share"))
 
 -- Developer Access Variables

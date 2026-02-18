@@ -19,10 +19,10 @@ prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
 prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 
 -- Includes
-prepend_path("CPATH",           pathJoin(root, "include"))
-prepend_path("LDFLAGS", "-L" .. pathJoin(root, "$LIB"), " ")
+prepend_path("CPATH",            pathJoin(root, "include"))
+prepend_path("LDFLAGS", "-L" ..  pathJoin(root, "$LIB"), " ")
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
+prepend_path("PKG_CONFIG_PATH",  pathJoin(root, "$PKG_CONF"))
 
 -- Environment variables for compilers and other tools
 setenv("ZLIB_ROOT", root)

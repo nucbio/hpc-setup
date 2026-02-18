@@ -8,6 +8,7 @@ whatis("Name: ${TOOL}")
 whatis("Version: ${TOOL_VERSION}")
 
 -- Dependencies
+load("zlib/${ZLIB_VERSION}")
 load("libcurl/${LIBCURL_VERSION}")
 load("pcre2/${PCRE2_VERSION}")
 load("bzip2/${BZIP2_VERSION}")
