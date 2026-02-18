@@ -10,9 +10,6 @@ whatis("Category: library")
 whatis("Description: ImageMagick image processing library")
 whatis("URL: https://imagemagick.org")
 
--- Dependencies
-load("libtool/${LIBTOOL_VERSION}")
-
 local root = "${TOOL_PATH}"
 
 -- Binaries (MagickCore, MagickWand tools, convert, identify, etc.)
