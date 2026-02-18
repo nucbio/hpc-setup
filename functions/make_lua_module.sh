@@ -39,7 +39,7 @@ make_lua_module() {
     mkdir -p "$MODULE_DIR"
 
     # Find library and pkg-config exists
-    LIB_PATH=$(find "$TOOL_PATH" -type d -name "lib*" -print -quit)
+    LIB_PATH=$(find "$TOOL_PATH" -maxdepth 1 -type d \( -name "lib" -o -name "lib64" \) -print -quit)
     PKG_CONF_PATH=$(find "$TOOL_PATH" -type d -name "pkgconfig" -print -quit)
 
     if [ -n "$LIB_PATH" ]; then
