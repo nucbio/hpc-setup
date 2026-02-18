@@ -22,7 +22,7 @@ local pkg_conf = pathJoin(root, "$PKG_CONF")
 
 -- Variables
 prepend_path("PATH",            bin)
-prepend_path("LD_LIBRARY_PATH", lin)
+prepend_path("LD_LIBRARY_PATH", lib)
 prepend_path("LIBRARY_PATH",    lib)
 prepend_path("CPATH",           include)
 
