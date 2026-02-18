@@ -45,3 +45,5 @@ source $REPO_DIR/core/sqlite.sh
 source $REPO_DIR/core/libexpat.sh
 # 19. gperf
 source $REPO_DIR/core/gperf.sh
+# 20. libtool
+source $REPO_DIR/core/libtool.sh

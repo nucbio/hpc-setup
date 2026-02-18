@@ -8,6 +8,7 @@ module load libpng
 module load libtiff
 module load freetype
 module load fontconfig
+module load libtool
 
 export MAGICK_VERSION="7.1.2-13"
 
