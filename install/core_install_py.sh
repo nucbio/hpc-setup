@@ -16,6 +16,9 @@ source $REPO_DIR/core/freetype.sh
 # 4. fontconfig
 source $REPO_DIR/core/fontconfig.sh
 
+# 5. imagemagic
+source $REPO_DIR/core/imagemagick.sh
+
 # 5. fribidi
 module load freetype
 source $REPO_DIR/core/fribidi.sh
@@ -38,5 +41,6 @@ module load libpng
 module load cairo
 module load glib
 module load libexpat
+module load imagemagick
 source $REPO_DIR/core/libvips.sh
 
