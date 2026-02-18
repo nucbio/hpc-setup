@@ -23,7 +23,7 @@ prepend_path("LD_LIBRARY_PATH", lib)
 prepend_path("LIBRARY_PATH",    lib)
 prepend_path("CPATH",           include)
 prepend_path("PKG_CONFIG_PATH", pkg_conf)
-prepend_path("MANPATH",         man
+prepend_path("MANPATH",         man)
 
 prepend_path("CFLAGS",   "-I" .. include, " ")
 prepend_path("CXXFLAGS", "-I" .. include, " ")
