@@ -36,6 +36,8 @@ You can install all mentioned dependencies on Fedora as following:
 sudo dnf upgrade --refresh
 sudo dnf install -y wget tar gzip xz bzip2 gcc gcc-c++ gcc-gfortran make cmake
 sudo dnf install libX11-devel libXt-devel libXext-devel
+# Perl
+sudo dnf install -y perl perl-core perl-CPAN
 ```
 
 ## Installation
