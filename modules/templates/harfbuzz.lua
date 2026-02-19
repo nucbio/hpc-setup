@@ -9,26 +9,30 @@ whatis("Category: library")
 whatis("Description: OpenType text shaping engine")
 whatis("URL: https://harfbuzz.github.io/")
 
-local base = "${TOOL_PATH}"
+local root = "${TOOL_PATH}"
+local bin = pathJoin(root, "bin")
+local lib = pathJoin(root, "$LIB")
+local include = pathJoin(root, "include")
+local include2 = pathJoin(root, "include/harfbuzz")
+local pkgconf = pathJOin(root, "$PKG_CONF")
 
 -- Prepend paths
-prepend_path("PATH",            pathJoin(base, "bin"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(base, "$LIB"))
-prepend_path("LIBRARY_PATH",    pathJoin(base, "$LIB"))
-prepend_path("CPATH",           pathJoin(base, "include"))
-prepend_path("PKG_CONFIG_PATH", pathJoin(base, "$PKG_CONF"))
+prepend_path("PATH",            bin)
+prepend_path("LD_LIBRARY_PATH", lib)
+prepend_path("LIBRARY_PATH",    lib)
+prepend_path("CPATH",           include)
+prepend_path("PKG_CONFIG_PATH", pkgconf)
 
--- Additional variables that R's configure scripts might check
-prepend_path("CFLAGS",   "-I" .. pathJoin(base, "include"))
-prepend_path("CXXFLAGS", "-I" .. pathJoin(base, "include"))
-prepend_path("LDFLAGS",  "-L" .. pathJoin(base, "$LIB"))
-prepend_path("CPPFLAGS", "-I" .. pathJoin(base, "include/harfbuzz"))
+prepend_path("LDFLAGS",  "-L" .. lib)
+prepend_path("CFLAGS",   "-I" .. include2)
+prepend_path("CXXFLAGS", "-I" .. include2)
+prepend_path("CPPFLAGS", "-I" .. include2)
 
--- Set environment variables for R package compilation
-setenv("HARFBUZZ_ROOT",    base)
-setenv("HARFBUZZ_HOME",    base)
-setenv("HARFBUZZ_INCLUDE", pathJoin(base, "include"))
-setenv("HARFBUZZ_LIB",     pathJoin(base, "$PKG_CONF"))
+-- Variables
+setenv("HARFBUZZ_ROOT",    root)
+setenv("HARFBUZZ_HOME",    root)
+setenv("HARFBUZZ_INCLUDE", include)
+setenv("HARFBUZZ_LIB",     pkgconf)
 
--- Conflict with other versions of the same tool
+-- Conflicts
 conflict("${TOOL}")
