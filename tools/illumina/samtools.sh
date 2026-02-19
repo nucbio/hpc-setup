@@ -2,7 +2,7 @@
 
 PKG_NAME="samtools"
 PKG_VERSION="1.23"
-PKG_SRC_URL="https://github.com/samtools/samtools/releases/download/${PKG_VERSION}/samtools-${PKG_VERSION}.tar.bz2"
+PKG_URL="https://github.com/samtools/samtools/releases/download/${PKG_VERSION}/samtools-${PKG_VERSION}.tar.bz2"
 
 PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
 
@@ -10,7 +10,7 @@ PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.bz2"
 set_pkg_dirs  $PKG_NAME $PKG_VERSION
 set_build_dir $PKG_NAME $PKG_VERSION
 
-wget -nv "$PKG_SRC_URL" -O "$PKG_ARCHIVE"
+wget -nv "$PKG_URL" -O "$PKG_ARCHIVE"
 tar -xjf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 cd "$PKG_BUILD_DIR"

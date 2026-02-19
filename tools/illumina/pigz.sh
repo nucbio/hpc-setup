@@ -3,7 +3,7 @@
 # Variables
 PKG_NAME="pigz"
 PKG_VERSION="2.8"
-PKG_SRC_URL="https://zlib.net/pigz/pigz-$PKG_VERSION.tar.gz"
+PKG_URL="https://zlib.net/pigz/pigz-$PKG_VERSION.tar.gz"
 PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
 # Set PKG_SRC_DIR, PKG_PREFIX

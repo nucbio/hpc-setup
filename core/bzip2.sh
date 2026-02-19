@@ -4,7 +4,7 @@
 PKG_NAME="bzip2"
 PKG_VERSION="1.0.8"
 export BZIP2_VERSION="$PKG_VERSION"
-PKG_SRC_URL="https://gitlab.com/bzip2/bzip2/-/archive/bzip2-$BZIP2_VERSION/bzip2-bzip2-$BZIP2_VERSION.tar.gz"
+PKG_URL="https://gitlab.com/bzip2/bzip2/-/archive/bzip2-$BZIP2_VERSION/bzip2-bzip2-$BZIP2_VERSION.tar.gz"
 PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/bzip2-$BZIP2_VERSION"
 
 # Prepare build
@@ -15,7 +15,7 @@ mkdir -p $PKG_BUILD_DIR
 
 cd $PKG_BUILD_DIR
 # Download and Archive
-wget -q "$PKG_SRC_URL" -O "${PKG_NAME}-${BZIP2_VERSION}.tar.gz"
+wget -q "$PKG_URL" -O "${PKG_NAME}-${BZIP2_VERSION}.tar.gz"
 cp "${PKG_NAME}-${BZIP2_VERSION}.tar.gz" "$SOURCES_DIR/"
 
 # Unpack
