@@ -14,7 +14,7 @@ local bin = pathJoin(root, "bin")
 local lib = pathJoin(root, "$LIB")
 local include = pathJoin(root, "include")
 local include2 = pathJoin(root, "include/harfbuzz")
-local pkgconf = pathJOin(root, "$PKG_CONF")
+local pkgconf = pathJoin(root, "$PKG_CONF")
 
 -- Prepend paths
 prepend_path("PATH",            bin)
