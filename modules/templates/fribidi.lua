@@ -14,7 +14,8 @@ local root = "${TOOL_PATH}"
 local bin = pathJoin(root, "bin")
 local lib = pathJoin(root, "$LIB")
 local include = pathJoin(root, "include")
-local pkg_conf = pathJoin(root, "PKG_CONF")
+local include2 = pathJoin(root, "include/fribidi")
+local pkg_conf = pathJoin(root, "$PKG_CONF")
 local man = pathJoin(root, "share/man")
 
 -- Prepend paths
@@ -25,10 +26,10 @@ prepend_path("CPATH",           include)
 prepend_path("PKG_CONFIG_PATH", pkg_conf)
 prepend_path("MANPATH",         man)
 
-prepend_path("CFLAGS",   "-I" .. include, " ")
-prepend_path("CXXFLAGS", "-I" .. include, " ")
+prepend_path("CFLAGS",   "-I" .. include2, " ")
+prepend_path("CXXFLAGS", "-I" .. include2, " ")
 prepend_path("LDFLAGS",  "-L" .. lib, " ")
-prepend_path("CPPFLAGS", "-I" .. include, " ")
+prepend_path("CPPFLAGS", "-I" .. include2, " ")
 
 -- Set environment variables
 setenv("FRIBIDI_ROOT",    root)
