@@ -20,8 +20,8 @@ prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
 
 -- Build helper flags
-prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"))
-prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"))
+prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
+prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"), " ")
 
 -- pkg-config files
 prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))

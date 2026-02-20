@@ -17,12 +17,10 @@ whatis("Category: Library/Graphics")
 whatis("Description: libtiff provides support for the Tagged Image File Format (TIFF), a widely used format for storing image data.")
 whatis("URL: http://libtiff.maptools.org/")
 
-----------------------------------------------------------------------
--- Dependencies (Core & Image Compression)
-----------------------------------------------------------------------
+-- Dependencies
 load("zlib/${ZLIB_VERSION}")
 load("libjpeg/${LIBJPEG_VERSION}")
-load("xz/${XZ_VERSION}") -- For LZMA support
+load("xz/${XZ_VERSION}")
 
 local root = "${TOOL_PATH}"
 

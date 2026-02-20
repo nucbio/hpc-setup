@@ -16,22 +16,24 @@ load("zlib/${ZLIB_VERSION}")
 load("xz/${XZ_VERSION}")
 
 local root = "${TOOL_PATH}"
+local bin = pathJoin(root, "bin")
+local lib = pathJoin(root, "$LIB")
+local include = pathJoin(root, "include/libxml2/libxml") 
+local pkgconf = pathJoin(root, "$PKG_CONF")
 
-prepend_path("PATH",             pathJoin(root, "bin"))
-prepend_path("PKG_CONFIG_PATH",  pathJoin(root, "$PKG_CONF"))
-
-prepend_path("LD_LIBRARY_PATH",  pathJoin(root, "$LIB"))
+prepend_path("PATH",             bin)
+prepend_path("PKG_CONFIG_PATH",  pkgconf)
+prepend_path("LD_LIBRARY_PATH",  lib)
 prepend_path("LIBRARY_PATH",     pathJoin(root, "$LIB"))
-prepend_path("CPATH",            pathJoin(root, "include"))
-prepend_path("CPATH",            pathJoin(root, "include/libxml2/libxml"))
-prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
-prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"),   " ")
+prepend_path("CPATH",            include)
+prepend_path("LDFLAGS",  "-L" .. lib, " ")
+prepend_path("CPPFLAGS", "-I" .. include, " ")
+prepend_path("CFLAGS",   "-I" .. include, " ")
+prepend_path("CXXFLAGS", "-I" .. include, " ")
 
 -- Variables
 setenv("LIBXML2_ROOT", root)
-setenv("XML2_CONFIG",  pathJoin(root, "bin/xml2-config"))
-
-setenv("LIBXML_INCDIR", pathJoin(root, "include/libxml2"))
-setenv("LIBXML_LIBDIR", pathJoin(root, "$LIB"))
+setenv("LIBXML_INCDIR", include)
+setenv("LIBXML_LIBDIR", lib)
 
 conflict("${TOOL}")

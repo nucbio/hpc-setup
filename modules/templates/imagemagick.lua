@@ -26,8 +26,8 @@ prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
 prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 -- Build helper flags
-prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"))
-prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"))
+prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
+prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"), " ")
 
 -- Optional: ensure correct Magick configuration detection
 setenv("MAGICK_HOME", root)

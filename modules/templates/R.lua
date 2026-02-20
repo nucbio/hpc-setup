@@ -45,8 +45,8 @@ local pkgconfig  = pathJoin(root, "$PKG_CONF")
 local include    = pathJoin(root, "include")
 
 -- Variables
-prepend_path("PATH",            bin)
-prepend_path("LD_LIBRARY_PATH", lib)
-prepend_path("PKG_CONFIG_PATH", pkgconfig)
-prepend_path("CPATH",           include)
+prepend_path("PATH",            bin, ":")
+prepend_path("LD_LIBRARY_PATH", lib, ":")
+prepend_path("PKG_CONFIG_PATH", pkgconfig, ":")
+prepend_path("CPATH",           include, ":")
 

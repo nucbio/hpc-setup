@@ -23,10 +23,10 @@ prepend_path("LIBRARY_PATH",    lib)
 prepend_path("CPATH",           include)
 prepend_path("PKG_CONFIG_PATH", pkgconf)
 
-prepend_path("LDFLAGS",  "-L" .. lib)
-prepend_path("CFLAGS",   "-I" .. include2)
-prepend_path("CXXFLAGS", "-I" .. include2)
-prepend_path("CPPFLAGS", "-I" .. include2)
+prepend_path("LDFLAGS",  "-L" .. lib, " ")
+prepend_path("CFLAGS",   "-I" .. include2, " ")
+prepend_path("CXXFLAGS", "-I" .. include2, " ")
+prepend_path("CPPFLAGS", "-I" .. include2, " ")
 
 -- Variables
 setenv("HARFBUZZ_ROOT",    root)

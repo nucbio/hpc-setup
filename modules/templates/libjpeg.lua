@@ -13,13 +13,17 @@ whatis("Description: JPEG codec")
 whatis("URL: https://libjpeg-turbo.org")
 
 local root = "${TOOL_PATH}"
+local bin = pathJoin(root, "bin")
+local lib = pathJoin(root, "$LIB")
+local pkgconf = pathJoin(root, "$PKG_CONF")
+local include = pathJoin(root, "include")
 
-prepend_path("PATH",            pathJoin(root, "bin"))
-prepend_path("CPATH",           pathJoin(root, "include"))
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
-prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
+prepend_path("PATH",             bin)
+prepend_path("CPATH",            include)
+prepend_path("LD_LIBRARY_PATH",  lib)
+prepend_path("LIBRARY_PATH",     lib)
+prepend_path("PKG_CONFIG_PATH",  pkgconf)
 
 -- Build helper flags
-prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"))
-prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"))
+prepend_path("CPPFLAGS", "-I" .. include, " ")
+prepend_path("LDFLAGS",  "-L" .. lib, " ")
