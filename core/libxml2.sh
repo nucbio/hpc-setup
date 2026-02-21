@@ -11,5 +11,5 @@ pkg_install \
     -n "libxml2" \
     -v "$LIBXML2_VERSION" \
     -u "https://download.gnome.org/sources/libxml2/2.15/libxml2-$LIBXML2_VERSION.tar.xz" \
-    -o "--with-zlib $ZLIB"
+    -o "--with-zlib=$ZLIB"
 
