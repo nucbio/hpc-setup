@@ -5,6 +5,29 @@ Sys.setenv(TMPDIR = TMP_DIR)
 
 repos = list(CRAN="http://cran.rstudio.com/")
 
+# install.packages("XML", type = "source",
+#   configure.args = c(
+#     "--with-libxml-includedir=/home/suvar/test_install/libxml2/libxml2-2.15.1/include/libxml2",
+#     "--with-libxml-libdir=/home/suvar/test_install/libxml2/libxml2-2.15.1/lib"
+#   )
+# )
+
+## CRAN PACKAGES
+install.packages('XML', dependencies = TRUE, repos = repos)
+
+install.packages(
+  c(
+    'devtools',       # development packange (also knitr, roxygen, markdown)
+    'tidyverse',      # data manipulation
+    'data.table',     # data manipulation
+    'e1071',          # stat functions
+    'corrplot',       # ggplot extension
+    'cowplot',        # ggplot extension
+    'RColorBrewer',   # ggplot extension
+    'colorRamps',     # ggplot extension 
+    'GGally'          # ggplot extension
+   ), dependencies = TRUE, repos = repos)
+
 ## BIOCONDUCTOR PACKAGES
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager", repos = repos)
@@ -23,21 +46,8 @@ BiocManager::install(
    ), ask = FALSE)     
 BiocManager::install(ask = FALSE)  # update packages
 
-## CRAN PACKAGES
-install.packages(
-  c(
-    'devtools',       # development packange (also knitr, roxygen, markdown)
-    'tidyverse',      # data manipulation
-    'data.table',     # data manipulation
-    'e1071',          # stat functions
-    'corrplot',       # ggplot extension
-    'cowplot',        # ggplot extension
-    'RColorBrewer',   # ggplot extension
-    'colorRamps',     # ggplot extension 
-    'GGally'          # ggplot extension
-   ), dependencies = TRUE, repos = repos)
    
-# Laboratory Packages
+## Laboratory Packages
 # Install the packages from GitLab 
 devtools::install_gitlab("mglab/loci") 
 devtools::install_gitlab("mglab/seqtools") 
