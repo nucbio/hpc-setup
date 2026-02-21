@@ -5,6 +5,7 @@ module use $INSTALL_DIR/modulefiles
 module load python
 
 # 1. libxml2
+module load zlib
 source $REPO_DIR/core/libxml2.sh
 
 # 2. glib
