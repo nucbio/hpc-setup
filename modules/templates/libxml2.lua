@@ -18,7 +18,8 @@ load("xz/${XZ_VERSION}")
 local root = "${TOOL_PATH}"
 local bin = pathJoin(root, "bin")
 local lib = pathJoin(root, "$LIB")
-local include = pathJoin(root, "include/libxml2") 
+local include = pathJoin(root, "include/libxml2")
+local include2 = pathJoin(root, "include/libxml2/libxml")
 local pkgconf = pathJoin(root, "$PKG_CONF")
 
 prepend_path("PATH",             bin)
@@ -30,6 +31,12 @@ prepend_path("LDFLAGS",  "-L" .. lib, " ")
 prepend_path("CPPFLAGS", "-I" .. include, " ")
 prepend_path("CFLAGS",   "-I" .. include, " ")
 prepend_path("CXXFLAGS", "-I" .. include, " ")
+
+prepend_path("CPATH",            include2)
+prepend_path("CPPFLAGS", "-I" .. include2, " ")
+prepend_path("CFLAGS",   "-I" .. include2, " ")
+prepend_path("CXXFLAGS", "-I" .. include2, " ")
+
 
 -- Variables
 --setenv("LIBXML2_ROOT", root)

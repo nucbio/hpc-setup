@@ -5,13 +5,7 @@ Sys.setenv(TMPDIR = TMP_DIR)
 
 repos = list(CRAN="http://cran.rstudio.com/")
 
-install.packages("XML", type = "source",
-                 repos = repos,
-  configure.args = c(
-    "--with-libxml-includedir=/home/suvar/test_install/libxml2/libxml2-2.15.1/include/libxml2",
-    "--with-libxml-libdir=/home/suvar/test_install/libxml2/libxml2-2.15.1/lib"
-  )
-)
+install.packages("XML", type = "source", dependencies = TRUE, repos = repos)
 
 ## CRAN PACKAGES
 #install.packages('XML', dependencies = TRUE, repos = repos)
