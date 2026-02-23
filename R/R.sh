@@ -22,7 +22,7 @@ module load ncurses
 module load readline
 module load java
 module load pkgconf
-module load libxml2
+#module load libxml2
 module load zlib
 module load imagemagick
 module load fontconfig
