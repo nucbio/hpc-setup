@@ -4,10 +4,6 @@ module use $INSTALL_DIR/modulefiles
 #module load openssl/$OPENSSL_VERSION
 module load python
 
-# 1. libxml2
-# module load zlib
-# source $REPO_DIR/core/libxml2.sh
-
 # 2. glib
 source $REPO_DIR/core/glib.sh
 

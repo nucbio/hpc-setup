@@ -6,6 +6,7 @@
 To download, unpack, and compile the software, the following packages must be installed before the hpc-setup:  
 
 - Download: `wget`.
+- Parser: `libxml2` (see unresolved dependencies)
 - Unpack: `tar`, `gzip`, `xz` (xz-utils), `bzip2`
 - Compile: `g++`, `gcc`, `gfortran`
 - Build: `make`,`cmake`.
@@ -13,7 +14,7 @@ To download, unpack, and compile the software, the following packages must be in
 For Debian/Ubuntu linux distributives you can install them all as:
 ```bash
 sudo apt update
-sudo apt install wget tar gzip xz-utils bzip2 build-essential cmake gfortran
+sudo apt install wget tar gzip xz-utils bzip2 build-essential cmake gfortran libxml2-dev
 ```
 
 **Note for Minimal Systems**: The only strict system requirements are the C/C++ compilers (gcc, g++). All other dependencies—including cmake, make, and archiving utilities—can be deployed without root privileges via portable binaries, precompiled distributions, or by compiling from source.  
@@ -34,7 +35,7 @@ sudo apt install libx11-dev libxt-dev libxext-dev
 You can install all mentioned dependencies on Fedora as following:
 ```bash
 sudo dnf upgrade --refresh
-sudo dnf install -y wget tar gzip xz bzip2 gcc gcc-c++ gcc-gfortran make cmake
+sudo dnf install -y wget tar gzip xz bzip2 gcc gcc-c++ gcc-gfortran make cmake libxml2-devel
 sudo dnf install libX11-devel libXt-devel libXext-devel
 # Perl
 sudo dnf install -y perl perl-core perl-CPAN
@@ -61,3 +62,9 @@ pigz. dorado hdf5 duckdb modkit pod5.
 - Installed packages are in `package/package-version` directories.
 - Environmental module (`Lmod`) is installed and should be added to the .bashrc or export PATH.
 - Environmental module files are in `modulefiles/package` directory with `version.lua` module files.
+
+## Unresolved dependencies
+`libxml2` library can be installed locally. However, the configuration of R 
+package `XML` failed due to the problems to find linked libraries for `libxml2` 
+via pkgconf or environmental variables in loaded module.  
+It is known bug in XML but the only solution is to have system installed `libxml2-dev`.
