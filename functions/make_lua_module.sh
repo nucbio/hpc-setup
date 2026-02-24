@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Make lua module file
 # Usage: make_lua_module $TOOL $TOOL_VERSION
 make_lua_module() {
@@ -63,3 +62,4 @@ make_lua_module() {
 
     echo "Module for $TOOL created."
 }
+

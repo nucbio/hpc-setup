@@ -10,4 +10,4 @@ module load python/$PYTHON_VERSION
 python3 -m pip install cutadapt==$CUTADAPT_VERSION
 
 # Modules
-make_lua_module "cutadapt" "$CUTADAPT_VERSION"
+make_pip_module "cutadapt" "$CUTADAPT_VERSION"
