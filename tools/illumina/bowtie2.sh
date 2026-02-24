@@ -11,11 +11,7 @@ set_pkg_dirs  $PKG_NAME $PKG_VERSION
 
 # Download to sources directory
 wget -nv "$PKG_URL" -O "$PKG_ARCHIVE"
-#unzip -q "$PKG_ARCHIVE" -d "$PKG_PREFIX"
-# test tar
-tar --strip-components=1 -xf "$PKG_ARCHIVE" -C "$PKG_PREFIX"
+unzip -q "$PKG_ARCHIVE" -d "$PKG_PREFIX"
 
 # Modules lua file
-make_lua_module "$PKG_NAME" "$PKG_VERSION" "$PKG_PREFIX"
-
-#/bowtie2-${PKG_VERSION}-linux-x86_64"
+make_lua_module "$PKG_NAME" "$PKG_VERSION" "$PKG_PREFIX/bowtie2-${PKG_VERSION}-linux-x86_64"
