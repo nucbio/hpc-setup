@@ -15,3 +15,14 @@ unzip -q "$PKG_ARCHIVE" -d "$PKG_PREFIX"
 
 # Modules lua file
 make_lua_module $PKG_NAME $PKG_VERSION "$PKG_PREFIX/FastQC"
+
+
+
+echo "Install cairo"
+
+export CAIRO_VERSION="1.18.4"
+
+pkg_install -n "fastqc" \
+            -v "$FASTQC_VERSION" \
+            -u "https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip" \
+            -t "unpack"

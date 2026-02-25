@@ -4,7 +4,6 @@
 # Options:
 # -n   Package name
 # -v   Package version
-# -p   Package installation path (for modules)
 # -u   Package URL
 # -o   Configuration options (followed by prefix)
 # -t   Installation type: "config", "make", "meson", "unpack" (no intallation)
@@ -13,7 +12,7 @@ pkg_install() {
     # Reset the global index for getopts
     local OPTIND=1
     
-    local PKG_NAME PKG_VERSION PKG_PATH PKG_URL PKG_TYPE="conf" EXTRA_OPTS=""
+    local PKG_NAME PKG_VERSION PKG_URL PKG_TYPE="conf" EXTRA_OPTS=""
     
     # Parse Arguments
     # n: Name, v: Version, u: URL, t: Type, o: Options (the string you requested)
@@ -21,7 +20,6 @@ pkg_install() {
         case $opt in
             n) PKG_NAME="$OPTARG" ;;
             v) PKG_VERSION="$OPTARG" ;;
-            p) PKG_PATH="$OPTARG" ;;
             u) PKG_URL="$OPTARG" ;;
             t) PKG_TYPE="$OPTARG" ;; 
             o) EXTRA_OPTS="$OPTARG" ;; # configuraiton options
@@ -57,7 +55,7 @@ pkg_install() {
 
     # Early exit for simple "unpack" packages
     if [[ "$PKG_TYPE" == "unpack" ]]; then
-        make_lua_module "$PKG_NAME" "$PKG_VERSION" "$PKG_PATH"
+        make_lua_module "$PKG_NAME" "$PKG_VERSION"
         return 0
     fi
     
@@ -90,5 +88,5 @@ pkg_install() {
     # Finalize
     cd "$REPO_DIR"
     rm -rf "$PKG_BUILD_DIR"
-    make_lua_module "$PKG_NAME" "$PKG_VERSION" "$PKG_PATH"
+    make_lua_module "$PKG_NAME" "$PKG_VERSION"
 }
