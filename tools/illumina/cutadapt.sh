@@ -2,7 +2,7 @@
 
 echo "Install Cutadapt"
 
-pkg_intall \
+pkg_install \
   -n "cutadapt" \
   -v "5.0" \
   -t "venv"
