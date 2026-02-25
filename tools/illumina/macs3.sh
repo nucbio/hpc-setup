@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "Install Deeptools"
+echo "Install MACS3"
 
 module load python/$PYTHON_VERSION
 
 pkg_install \
-  -n "deeptools" \
-  -v "3.5.6" \
+  -n "macs3" \
+  -v "3.0.4" \
   -t "venv"
