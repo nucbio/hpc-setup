@@ -14,4 +14,4 @@ wget -q "$PKG_URL" -O "$PKG_ARCHIVE"
 unzip -q "$PKG_ARCHIVE" -d "$PKG_PREFIX"
 
 # Modules lua file
-make_lua_module $PKG_NAME $PKG_VERSION "$PKG_PREFIX/FastQC-$PKG_VERSION"
+make_lua_module $PKG_NAME $PKG_VERSION "$PKG_PREFIX/FastQC"
