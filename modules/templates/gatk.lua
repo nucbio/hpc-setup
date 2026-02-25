@@ -7,4 +7,4 @@ whatis("Category: Bioinformatics")
 
 local root = "$TOOL_PATH"
 
-prepend_path("PATH", pathJoin(root, "gatk-$TOOL_VERSION"))
+prepend_path("PATH", root)

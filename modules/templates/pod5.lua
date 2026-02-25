@@ -13,13 +13,9 @@ whatis("Description: Tools for writing and reading Oxford Nanopore POD5 files.")
 -- Load Python
 load("python/${PYTHON_VERSION}")
 
-local root = "${TOOL_PATH}"
-local python_lib = "$INSTALL_DIR/python/python-$PYTHON_VERSION/lib"
+local root = "$TOOL_PATH"
 
--- Add the cutadapt CLI binary to the path 
 prepend_path("PATH", pathJoin(root, "bin"))
-prepend_path("LD_LIBRARY_PATH", python_lib)
-
 -- Version conflicts
 conflict("$TOOL")
 

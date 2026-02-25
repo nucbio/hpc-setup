@@ -14,9 +14,9 @@ whatis("Description: Trim adapters and clean up high-throughput sequencing reads
 whatis("URL: https://cutadapt.readthedocs.io/")
 
 -- Dependencies
-load("python3/${PYTHON_VERSION}")
+load("python/$PYTHON_VERSION")
 
-local root = "$INSTALL_DIR/python/python-${PYTHON_VERSION}"
+local root = "$TOOL_PATH"
 
 -- Add the cutadapt CLI binary to the path 
 prepend_path("PATH", pathJoin(root, "bin"))

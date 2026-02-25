@@ -6,7 +6,7 @@ PKG_VERSION="1.23"
 
 module load htslib
 
-pkg_intall \
+pkg_install \
     -n "samtools" \
     -v "$PKG_VERSION" \
     -u "https://github.com/samtools/samtools/releases/download/${PKG_VERSION}/samtools-${PKG_VERSION}.tar.bz2" \

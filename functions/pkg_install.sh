@@ -6,7 +6,8 @@
 # -v   Package version
 # -u   Package URL (accepted arhives: tar.gz, tar.xz, tar.bz2, .zip (unpack only)
 # -o   Configuration options (followed by prefix)
-# -t   Installation type: "config", "make", "meson", "unpack" (no intallation)
+# -t   Installation type: "config", "make", "meson", "unpack" (no intallation), 
+#      "venv" for python packages.
 
 pkg_install() {
   # Reset the global index for getopts
@@ -30,6 +31,22 @@ pkg_install() {
   # Shift away the parsed options so $@ contains remaining args (if any)
   shift $((OPTIND-1))
   
+  # Python environments
+  if [[ "$PKG_TYPE" == "venv" ]]; then
+    if ! command -v python &> /dev/null; then
+      echo "Python not found. Please load python: 'module load python'."
+      return 1
+    fi
+    PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$PKG_VERSION"
+    mkdir -p "$PKG_PREFIX"
+    
+    python -m venv "$PKG_PREFIX"
+    "$PKG_PREFIX/bin/pip" install --upgrade pip
+    "$PKG_PREFIX/bin/pip" install "${PKG_NAME}==${PKG_VERSION}"
+    make_lua_module $PKG_NAME $PKG_VERSION
+    return 0
+  fi
+
   # Derive Archive Name
   local ARCHIVE_NAME="${PKG_URL##*/}"
   local PKG_ARCHIVE="$SOURCES_DIR/$ARCHIVE_NAME"
@@ -47,6 +64,7 @@ pkg_install() {
   # unpack zip
   if [[ "$PKG_TYPE" == "unpack" ]]; then
     PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$PKG_VERSION"
+    mkdir -p $PKG_PREFIX
 
     if [[ "$ARCHIVE_NAME" == *.zip ]]; then
       PKG_TMP="$PKG_PREFIX/_tmp_$$"
