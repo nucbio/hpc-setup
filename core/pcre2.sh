@@ -15,7 +15,7 @@ CMAKE_OPTS=(
     "-DCMAKE_POSITION_INDEPENDENT_CODE=ON"
 )
 
-# Standard cmake intall
+# Standard cmake install
 pkg_install \
     -n "pcre2" \
     -v "$PCRE2_VERSION" \

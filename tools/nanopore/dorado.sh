@@ -5,7 +5,7 @@ echo "Install Dorado"
 PKG_NAME="dorado"
 PKG_VERSION="1.3.0"
 
-pkg_intall \
+pkg_install \
   -n "$PKG_NAME" \
   -v "$PKG_VERSION" \
   -u "https://cdn.oxfordnanoportal.com/software/analysis/dorado-${PKG_VERSION}-linux-x64.tar.gz" \

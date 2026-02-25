@@ -6,7 +6,7 @@
 # -v   Package version
 # -u   Package URL (accepted arhives: tar.gz, tar.xz, tar.bz2, .zip (unpack only)
 # -o   Configuration options (followed by prefix)
-# -t   Installation type: "config", "make", "meson", "unpack" (no intallation), 
+# -t   Installation type: "config", "cmake", "meson", "unpack" (no intallation), 
 #      "venv" for python packages.
 
 pkg_install() {

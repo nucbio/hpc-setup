@@ -2,7 +2,7 @@
 
 export LIBJPEG_VERSION="3.1.2"
 
-# Standard cmake intall
+# Standard cmake install
 pkg_install \
     -n "libjpeg" \
     -v "$LIBJPEG_VERSION" \
