@@ -1,26 +1,24 @@
 #!/bin/bash
 
-# Variables
-PKG_NAME="fastqc"
-PKG_VERSION="0.12.1"
-PKG_URL="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/${PKG_NAME}_v${PKG_VERSION}.zip"
-PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}_v${PKG_VERSION}.zip"
+# # Variables
+# PKG_NAME="fastqc"
+# PKG_VERSION="0.12.1"
+# PKG_URL="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/${PKG_NAME}_v${PKG_VERSION}.zip"
+# PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}_v${PKG_VERSION}.zip"
+#
+# # Set PKG_SRC_DIR, PKG_PREFIX
+# set_pkg_dirs  $PKG_NAME $PKG_VERSION
+#
+# # Download to sources directory
+# wget -q "$PKG_URL" -O "$PKG_ARCHIVE"
+# unzip -q "$PKG_ARCHIVE" -d "$PKG_PREFIX"
+#
+# # Modules lua file
+# make_lua_module $PKG_NAME $PKG_VERSION "$PKG_PREFIX/FastQC"
 
-# Set PKG_SRC_DIR, PKG_PREFIX
-set_pkg_dirs  $PKG_NAME $PKG_VERSION
+echo "Install FastQC"
 
-# Download to sources directory
-wget -q "$PKG_URL" -O "$PKG_ARCHIVE"
-unzip -q "$PKG_ARCHIVE" -d "$PKG_PREFIX"
-
-# Modules lua file
-make_lua_module $PKG_NAME $PKG_VERSION "$PKG_PREFIX/FastQC"
-
-
-
-echo "Install cairo"
-
-export CAIRO_VERSION="1.18.4"
+export FASTQC_VERSION="0.12.1"
 
 pkg_install -n "fastqc" \
             -v "$FASTQC_VERSION" \
