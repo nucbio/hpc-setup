@@ -10,7 +10,7 @@ pkg_intall \
     -n "samtools" \
     -v "$PKG_VERSION" \
     -u "https://github.com/samtools/samtools/releases/download/${PKG_VERSION}/samtools-${PKG_VERSION}.tar.bz2" \
-    -o "--with-libcurl --enable-plugins --with-htslib"
+    -o "--with-libcurl --enable-plugins"
 
 # PKG_NAME="samtools"
 # PKG_VERSION="1.23"
