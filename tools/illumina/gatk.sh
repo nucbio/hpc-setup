@@ -17,9 +17,9 @@
 
 echo "Install GATK"
 
-export GATK_VERSION="4.6.2.0"
+PKG_VERSION="4.6.2.0"
 
 pkg_install -n "gatk" \
-            -v "$GATK_VERSION" \
-            -u "https://github.com/broadinstitute/gatk/releases/download/$GATK_VERSION/gatk-$GATK_VERSION.zip" \
+            -v "$PKG_VERSION" \
+            -u "https://github.com/broadinstitute/gatk/releases/download/$PKG_VERSION/gatk-$PKG_VERSION.zip" \
             -t "unpack"

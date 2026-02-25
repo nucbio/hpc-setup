@@ -18,9 +18,9 @@
 
 echo "Install FastQC"
 
-export FASTQC_VERSION="0.12.1"
+PKG_VERSION="0.12.1"
 
 pkg_install -n "fastqc" \
-            -v "$FASTQC_VERSION" \
-            -u "https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip" \
+            -v "$PKG_VERSION" \
+            -u "https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${PKG_VERSION}.zip" \
             -t "unpack"
