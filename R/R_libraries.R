@@ -4,8 +4,10 @@ dir.create(TMP_DIR, showWarnings = FALSE, recursive = TRUE)
 Sys.setenv(TMPDIR = TMP_DIR)
 
 repos = list(CRAN="http://cran.rstudio.com/")
+cores <- min(6, parallel::detectCores(), na.rm = TRUE)
 
-install.packages("XML", type = "source", dependencies = TRUE, repos = repos)
+install.packages("XML", type = "source", 
+                 dependencies = TRUE, repos = repos, Ncpus = cores)
 
 ## CRAN PACKAGES
 #install.packages('XML', dependencies = TRUE, repos = repos)
@@ -21,11 +23,11 @@ install.packages(
     'RColorBrewer',   # ggplot extension
     'colorRamps',     # ggplot extension 
     'GGally'          # ggplot extension
-   ), dependencies = TRUE, repos = repos)
+   ), dependencies = TRUE, repos = repos, Ncpus = cores)
 
 ## BIOCONDUCTOR PACKAGES
 if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager", repos = repos)
+    install.packages("BiocManager", repos = repos, Ncpus = cores)
 # devel version
 BiocManager::install(ask = FALSE)
 BiocManager::valid()              # checks for out of date packages
@@ -38,8 +40,8 @@ BiocManager::install(
     'BSgenome.Scerevisiae.UCSC.sacCer3',
     'rtracklayer',
     'Rsamtools'
-   ), ask = FALSE)     
-BiocManager::install(ask = FALSE)  # update packages
+   ), ask = FALSE, Ncpus = cores)     
+BiocManager::install(ask = FALSE, Ncpus = cores)  # update packages
 
    
 ## Laboratory Packages
