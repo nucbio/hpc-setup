@@ -1,13 +1,28 @@
 #!/bin/bash
 
-# Variables
+# # Variables
+# export CUTADAPT_VERSION="5.0"
+#
+# # Load Python
+# module use $INSTALL_DIR/modulefiles
+# module load python/$PYTHON_VERSION
+#
+# python3 -m pip install cutadapt==$CUTADAPT_VERSION
+#
+# # Modules
+# make_pip_module "cutadapt" "$CUTADAPT_VERSION"
+
+echo "Install Cutadapt"
+
+PKG_NAME="cutadapt"
 export CUTADAPT_VERSION="5.0"
 
-# Load Python
-module use $INSTALL_DIR/modulefiles
+PKG_PREFIX="$INSTALL_DIR/$TOOL_NAME/$PKG_NAME-$CUTADAPT_VERSION"
+mkdir -p "$PKG_PREFIX"
 module load python/$PYTHON_VERSION
+python3 -m venv "$PKG_PREFIX"
 
-python3 -m pip install cutadapt==$CUTADAPT_VERSION
+"$PKG_PREFIX/bin/python3" -m pip install --upgrade pip
+"$PKG_PREFIX/bin/python3" -m pip install "${PKG_NAME}==${CUTADAPT_VERSION}"
 
-# Modules
-make_pip_module "cutadapt" "$CUTADAPT_VERSION"
+make_lua_module $PKG_NAME $CUTADAPT_VERSION

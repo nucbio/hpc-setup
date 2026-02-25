@@ -4,7 +4,7 @@
 # Options:
 # -n   Package name
 # -v   Package version
-# -u   Package URL
+# -u   Package URL (accepted arhives: tar.gz, tar.xz, tar.bz2, .zip (unpack only)
 # -o   Configuration options (followed by prefix)
 # -t   Installation type: "config", "make", "meson", "unpack" (no intallation)
 
@@ -34,8 +34,7 @@ pkg_install() {
     local ARCHIVE_NAME="${PKG_URL##*/}"
     local PKG_ARCHIVE="$SOURCES_DIR/$ARCHIVE_NAME"
     
-    # Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
-    set_pkg_dirs "$PKG_NAME" "$PKG_VERSION"
+
     
     # Download & Extract
     if wget -nv "$PKG_URL" -O "$PKG_ARCHIVE"; then
@@ -46,20 +45,41 @@ pkg_install() {
         return 1
     fi
     
-    mkdir -p "$PKG_SRC_DIR"
-    if [[ "$ARCHIVE_NAME" == *.zip ]]; then
-        unzip -q "$PKG_ARCHIVE" -d "$PKG_SRC_DIR"
-    else
-        tar -xf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
-    fi
-
-    # Early exit for simple "unpack" packages
-    if [[ "$PKG_TYPE" == "unpack" ]]; then
+    # unpack zip
+    if [[ "$PKG_TYPE" == "unpack" && "$ARCHIVE_NAME" == *.zip ]]; then
+        PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$PKG_VERSION"
+        PKG_TMP="$PKG_PREFIX/_tmp_$$"
+        
+        mkdir -p "$PKG_TMP"
+        unzip -q "$PKG_ARCHIVE" -d "$PKG_TMP"
+        
+        # Find the internal directory
+        INTERNAL_DIR=$(find "$PKG_TMP" -mindepth 1 -maxdepth 1 -type d | head -n 1)
+        
+        if [[ -n "$INTERNAL_DIR" ]]; then
+          # Enable dotglob so hidden files (dotfiles) are moved too
+            shopt -s dotglob
+            mv "$INTERNAL_DIR"/* "$PKG_PREFIX/"
+            shopt -u dotglob
+        fi
+        
+        rm -rf "$PKG_TMP"
+        
         make_lua_module "$PKG_NAME" "$PKG_VERSION"
         return 0
     fi
     
+    # Continue compilations
+    # Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
+    set_pkg_dirs "$PKG_NAME" "$PKG_VERSION"
     set_build_dir "$PKG_NAME" "$PKG_VERSION"
+
+    tar -xf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
+
+    # Early exit for simple "unpack" packages
+    if [[]]; then
+    fi
+    
     cd "$PKG_BUILD_DIR" || return
     
     # Execute Build based on Type
