@@ -76,10 +76,6 @@ pkg_install() {
 
     tar -xf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
-    # Early exit for simple "unpack" packages
-    if [[]]; then
-    fi
-    
     cd "$PKG_BUILD_DIR" || return
     
     # Execute Build based on Type
