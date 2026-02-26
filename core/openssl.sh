@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install openssl"
+
 module load pandoc/$PANDOC_VERSION
 
 export OPENSSL_VERSION="3.6.1"

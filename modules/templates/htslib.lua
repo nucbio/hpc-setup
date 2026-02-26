@@ -47,3 +47,8 @@ setenv("HTSLIB_INCLUDE", pathJoin(root, "include"))
 setenv("HTSLIB_LIB",     pathJoin(root, "lib"))
 
 conflict("${TOOL}")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

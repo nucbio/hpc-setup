@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install nvim"
+
 # Variables
 export NVIM_VERSION="v0.10.4" # Note: check GitHub for latest; 0.11.0+ are often nightly
 TOOL_NAME="nvim"

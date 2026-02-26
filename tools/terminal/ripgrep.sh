@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Install ripgrep"
 ## ripgrep - modern grep
 export RIPGREP_VERSION="15.1.0"
 # Install ripgrep

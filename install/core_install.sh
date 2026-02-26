@@ -3,7 +3,6 @@
 # Dependencies for Python and R
 module use $INSTALL_DIR/modulefiles
 
-# No dependencies
 # 1. zlib
 source $REPO_DIR/core/zlib.sh
 # 2. pkgconfig

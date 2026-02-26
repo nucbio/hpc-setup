@@ -34,3 +34,8 @@ setenv("FREETYPE_LIB",     pathJoin(root, "$LIB"))
 
 -- Conflict with other versions
 conflict("${TOOL}")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

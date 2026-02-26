@@ -11,10 +11,8 @@ CHOICE=$("$GUM" choose \
   "• $INSTALL_DIR (keeps everything in one place)")
 
 if [ "$CHOICE" = "/tmp" ]; then
-    export USE_TMP=1
     export BUILD_BASE="/tmp"
 else
-    export USE_TMP=0
     export BUILD_BASE="$INSTALL_DIR"
 fi
 

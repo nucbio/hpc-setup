@@ -20,3 +20,8 @@ prepend_path("CPATH",            pathJoin(root, "include"))
 prepend_path("CPATH",            pathJoin(root, "include/ncurses"))
 
 setenv("NCURSES_HOME", root)
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

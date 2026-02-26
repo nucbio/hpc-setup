@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install POD5"
+
 module load python/$PYTHON_VERSION
 
 pkg_install \

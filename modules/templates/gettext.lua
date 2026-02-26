@@ -33,3 +33,8 @@ setenv("GETTEXT_ROOT", root)
 setenv("GETTEXT_INCLUDE_DIR", include)
 
 conflict("${TOOL}")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

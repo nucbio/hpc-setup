@@ -36,3 +36,8 @@ setenv("HARFBUZZ_LIB",     pkgconf)
 
 -- Conflicts
 conflict("${TOOL}")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

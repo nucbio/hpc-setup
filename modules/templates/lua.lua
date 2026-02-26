@@ -37,3 +37,8 @@ setenv("LUA_PATH",  pathJoin(root, "share/lua", luaver, "?.lua") .. ";;")
 setenv("LUA_CPATH", pathJoin(root, "lib/lua", luaver, "?.so") .. ";;")
 
 setenv("LUA_ROOT", root)
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

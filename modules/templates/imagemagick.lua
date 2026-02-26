@@ -32,3 +32,7 @@ prepend_path("LDFLAGS",  "-L" .. pathJoin(root, "$LIB"), " ")
 -- Optional: ensure correct Magick configuration detection
 setenv("MAGICK_HOME", root)
 
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

@@ -33,3 +33,8 @@ prepend_path("MANPATH",         man)
 
 -- Version conflicts
 conflict("$TOOL")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

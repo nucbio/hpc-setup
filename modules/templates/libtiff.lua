@@ -45,3 +45,8 @@ setenv("TIFF_LIBRARY",     pathJoin(root, "$LIB"))
 prepend_path("MANPATH", pathJoin(root, "share/man"))
 
 conflict("${TOOL}")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

@@ -18,3 +18,8 @@ prepend_path("PATH", root)
 prepend_path("MANPATH", man)
 
 conflict("${TOOL}")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

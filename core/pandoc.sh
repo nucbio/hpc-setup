@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install pandoc"
+
 PKG_NAME="pandoc"
 PKG_VERSION="3.8.3"
 export PANDOC_VERSION=$PKG_VERSION

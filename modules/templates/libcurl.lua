@@ -18,3 +18,8 @@ prepend_path("PKG_CONFIG_PATH", pkgconf)
 setenv("CURL_HOME",    root)
 setenv("CURL_INCLUDE", include)
 setenv("CURL_LIB",     lib)
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

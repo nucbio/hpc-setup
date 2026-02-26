@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install HDF5"
+
 export HDF5_VERSION="2.0.0"
 
 pkg_install \

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install ncurses"
+
 export NCURSES_VERSION="6.6"
 
 PKG_VERSION=$NCURSES_VERSION

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install libpng"
+
 export LIBPNG_VERSION="1.6.50"
 
 pkg_install -n "libpng" \

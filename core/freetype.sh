@@ -10,7 +10,6 @@ module load libpng
 
 export FREETYPE_VERSION="2.14.1"
 
-# Standard meson installation
 pkg_install -n "freetype" \
             -v "$FREETYPE_VERSION" \
             -u "https://download.savannah.gnu.org/releases/freetype/freetype-2.14.1.tar.gz" \

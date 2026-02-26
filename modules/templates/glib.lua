@@ -61,3 +61,8 @@ prepend_path("ACLOCAL_PATH", pathJoin(root, "share/aclocal"))
 
 -- Bash completion
 prepend_path("BASH_COMPLETION_DIR", pathJoin(root, "share/bash-completion/completions"))
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

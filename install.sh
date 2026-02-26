@@ -33,7 +33,7 @@ source $REPO_DIR/python/python_install.sh
 source $REPO_DIR/python/python_packages.sh
 
 # Java
-source $REPO_DIR/java/jdk.sh
+source $REPO_DIR/java/java.sh
 # Rust
 source $REPO_DIR/rust/rust.sh
 

@@ -17,3 +17,8 @@ local root = "${TOOL_PATH}"
 
 prepend_path("PATH", root)
 setenv("DUCKDB_HOME", root)
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

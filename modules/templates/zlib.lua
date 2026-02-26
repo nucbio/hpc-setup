@@ -33,3 +33,7 @@ setenv("ZLIB_LIBRARY",     pathJoin(root, "$LIB"))
 -- Man pages
 prepend_path("MANPATH", pathJoin(root, "share/man"))
 
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

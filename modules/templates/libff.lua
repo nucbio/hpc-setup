@@ -46,3 +46,8 @@ prepend_path("MANPATH", man)
 
 -- Info pages
 prepend_path("INFOPATH", pathJoin(root, "share/info"))
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

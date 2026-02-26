@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install eza"
+
 # eza - CLI tool
 export EZA_VERSION="0.23.4"
 # Install eza

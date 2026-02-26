@@ -5,7 +5,6 @@ echo "Install fontconfig"
 # Dependencies
 module load freetype
 module load libexpat
-#module load libxml2
 module load gperf
 
 export FONTCONFIG_VERSION="2.17.1"

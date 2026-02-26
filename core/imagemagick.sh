@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Dependencies
+echo "Install imagemagick"
+
 module load zlib
 module load bzip2
 module load libjpeg

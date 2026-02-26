@@ -37,3 +37,7 @@ setenv("OPENSSL_LIBRARIES", pathJoin(root, "$LIB"))
 setenv("SSL_CERT_FILE", "/etc/ssl/certs/ca-certificates.crt")
 setenv("SSL_CERT_DIR", "/etc/ssl/certs")
 
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

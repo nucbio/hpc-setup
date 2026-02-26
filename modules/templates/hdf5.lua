@@ -19,3 +19,7 @@ prepend_path("CMAKE_PREFIX_PATH", root)
 -- pkg-config support
 prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

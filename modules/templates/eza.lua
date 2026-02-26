@@ -19,3 +19,8 @@ local root = "${TOOL_PATH}"
 
 -- Add binary directory to PATH
 prepend_path("PATH", root)
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

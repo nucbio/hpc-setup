@@ -32,3 +32,8 @@ prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 setenv("SQLITE_ROOT", root)
 setenv("SQLITE_INCLUDE_DIR", pathJoin(root, "include"))
 setenv("SQLITE_LIBS", "-L" .. pathJoin(root, "$LIB") .. " -lsqlite3")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

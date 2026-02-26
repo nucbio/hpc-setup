@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Try unpack
+echo "Install gum"
 
 export GUM_VERSION="0.17.0"
 

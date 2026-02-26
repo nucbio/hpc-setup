@@ -46,3 +46,8 @@ setenv("LIBPNG_LIB",     lib)
 
 -- Add man pages
 prepend_path("MANPATH", man)
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

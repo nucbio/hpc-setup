@@ -31,3 +31,8 @@ prepend_path("INFOPATH", pathJoin(root, "share/info"))
 setenv("GPERF", pathJoin(root, "bin/gperf"))
 
 conflict("${TOOL}")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

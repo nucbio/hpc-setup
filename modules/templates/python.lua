@@ -50,5 +50,5 @@ conflict("${TOOL}")
 conflict("python")
 
 if mode() == "load" then
-    LmodMessage("Python ${TOOL_VERSION} loaded. Dependencies: OpenSSL, Readline, LZMA.")
+    LmodMessage("Python ${TOOL_VERSION} loaded.")
 end

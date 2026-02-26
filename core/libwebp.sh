@@ -16,7 +16,6 @@ CMAKE_OPTS=(
     "-DWEBP_ENABLE_SIMD=OFF"
 )
 
-# Standard cmake install
 pkg_install \
     -n "libwebp" \
     -v "$LIBWEBP_VERSION" \

@@ -17,3 +17,8 @@ prepend_path("LDFLAGS", "-L" .. pathJoin(root, "$LIB"), " ")
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
 
 setenv("LZMA_ROOT", root)
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

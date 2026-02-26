@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install tcl"
+
 export TCL_VERSION="8.6.13"
 PKG_NAME="tcl"
 PKG_VERSION=$TCL_VERSION

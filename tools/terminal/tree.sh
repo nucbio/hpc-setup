@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Install tree"
 # tree - CLI tool
 export TREE_VERSION="1.3.0"
 # Install eza

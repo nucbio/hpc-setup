@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 echo "Install FastQC"
 
 PKG_VERSION="0.12.1"

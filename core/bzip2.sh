@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install bzip2"
+
 # Variables
 PKG_NAME="bzip2"
 PKG_VERSION="1.0.8"

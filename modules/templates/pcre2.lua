@@ -19,3 +19,8 @@ prepend_path("LDFLAGS", "-L" .. lib, " ")
 
 -- pkg-config
 prepend_path("PKG_CONFIG_PATH", pkgconf)
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

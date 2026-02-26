@@ -8,3 +8,8 @@ whatis("Category: Bioinformatics")
 local root = "$TOOL_PATH"
 
 prepend_path("PATH", pathJoin(root, "FastQC"))
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

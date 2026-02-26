@@ -38,3 +38,8 @@ setenv("EXPAT_LIBS",        "-L" .. pathJoin(root, "$LIB") .. " -lexpat")
 prepend_path("MANPATH", pathJoin(root, "share/man"))
 
 conflict("${TOOL}")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

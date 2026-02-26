@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Install zoxide"
 ## zoxide - modern cd
 export ZOXIDE_VERSION="0.9.7"
 # Install ripgrep

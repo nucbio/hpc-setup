@@ -36,3 +36,8 @@ prepend_path("XDG_DATA_DIRS", pathJoin(root, "share"))
 setenv("FONTCONFIG_ROOT", root)
 
 conflict("${TOOL}")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

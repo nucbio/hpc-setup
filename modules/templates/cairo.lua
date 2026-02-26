@@ -40,3 +40,8 @@ prepend_path("LDFLAGS",  "-L" .. lib,   " ")
 
 -- Man pages
 prepend_path("MANPATH", man)
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

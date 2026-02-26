@@ -33,3 +33,8 @@ prepend_path("MANPATH", pathJoin(root, "share/man"))
 
 -- Aclocal path for m4 macros (useful for autotools integration)
 prepend_path("ACLOCAL_PATH", pathJoin(root, "share/aclocal"))
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

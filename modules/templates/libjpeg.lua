@@ -27,3 +27,8 @@ prepend_path("PKG_CONFIG_PATH",  pkgconf)
 -- Build helper flags
 prepend_path("CPPFLAGS", "-I" .. include, " ")
 prepend_path("LDFLAGS",  "-L" .. lib, " ")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

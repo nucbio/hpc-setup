@@ -36,5 +36,5 @@ conflict("${TOOL}")
 conflict("jdk")
 
 if mode() == "load" then
-    LmodMessage("Java ${TOOL_VERSION} loaded. JAVA_HOME set to " .. root)
+    LmodMessage("$TOOL $TOOL_VERSION loaded.)
 end

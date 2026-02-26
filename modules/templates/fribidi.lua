@@ -38,3 +38,8 @@ setenv("FRIBIDI_INCLUDE", include)
 setenv("FRIBIDI_LIB",     lib)
 -- Conflict with other versions of the same tool
 conflict("${TOOL}")
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

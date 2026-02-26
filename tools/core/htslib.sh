@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install htslib"
+
 export HTSLIB_VERSION="1.23"
 
 pkg_install \

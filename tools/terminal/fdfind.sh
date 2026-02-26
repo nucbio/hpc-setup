@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Install fdfind"
 ## fdfind - modern cd
 export FD_VERSION="10.3.0"
 # Install fdfind

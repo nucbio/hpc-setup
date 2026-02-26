@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Install bat"
+
 BAT_VERSION="0.26.1"
 # Install ripgrep
 cargo install \

@@ -25,3 +25,7 @@ setenv("READLINE_LIBS", "-L" .. pathJoin(root, "$LIB") .. " -lreadline")
 prepend_path("LDFLAGS", "-L" .. pathJoin(root, "$LIB"), " ")
 prepend_path("CPPFLAGS", "-I" .. pathJoin(root, "include"), " ")
 
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end

@@ -18,3 +18,8 @@ prepend_path("LD_LIBRARY_PATH", lib)
 prepend_path("LIBRARY_PATH",    lib)
 prepend_path("CPATH",           include)
 prepend_path("MANPATH",         man)
+
+-- Message
+if mode() == "load" then
+    LmodMessage("Loading $TOOL $TOOL_VERSION.")
+end
