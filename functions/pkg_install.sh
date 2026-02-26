@@ -53,14 +53,19 @@ pkg_install() {
   
   
   # Download & Extract
-  if wget -nv "$PKG_URL" -O "$PKG_ARCHIVE"; then
+  echo "Downloadeing $PKG_NAME..."
+  if wget -v -c \
+          --tries=10 \
+          --read-timeout=30 \
+          --waitretry=5 \
+          "$PKG_URL" -O "$PKG_ARCHIVE"; then
     echo "Downloaded $ARCHIVE_NAME"
   else
     echo "ERROR: Failed to download $PKG_NAME."
     echo "Check if the URL is valid: $PKG_URL"
     return 1
   fi
-  
+
   # unpack zip
   if [[ "$PKG_TYPE" == "unpack" ]]; then
     PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$PKG_VERSION"
