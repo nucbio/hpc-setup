@@ -15,4 +15,4 @@ prepend_path("PATH",            pathJoin(base, "bin"))
 prepend_path("LD_LIBRARY_PATH", pathJoin(base, "$LIB"))
 
 -- Path for Dorado models 
-setenv("DORADO_MODELS", $DORADO_MODELS)
+setenv("DORADO_MODELS", "$DORADO_MODELS")
