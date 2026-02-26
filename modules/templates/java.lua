@@ -36,5 +36,5 @@ conflict("${TOOL}")
 conflict("jdk")
 
 if mode() == "load" then
-    LmodMessage("$TOOL $TOOL_VERSION loaded.)
+    LmodMessage("$TOOL $TOOL_VERSION loaded.")
 end
