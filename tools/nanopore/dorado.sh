@@ -3,7 +3,7 @@
 echo "Install Dorado"
 
 PKG_NAME="dorado"
-PKG_VERSION="1.3.0"
+PKG_VERSION="1.3.1"
 
 pkg_install \
   -n "$PKG_NAME" \

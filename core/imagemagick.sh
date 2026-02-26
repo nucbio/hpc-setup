@@ -15,5 +15,4 @@ pkg_install \
     -n "imagemagick" \
     -v $MAGICK_VERSION \
     -u "https://download.imagemagick.org/archive/releases/ImageMagick-7.1.2-13.tar.xz" \
-    -o "--enable-shared \
---enable-magick-plus-plus"
+    -o "--enable-shared --enable-magick-plus-plus"

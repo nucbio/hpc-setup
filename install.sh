@@ -55,16 +55,23 @@ for install_tool in $REPO_DIR/tools/illumina/*.sh
     source $install_tool
   done
 
-for install_tool in $REPO_DIR/tools/nanopore/*.sh
-  do 
-    source $install_tool
-  done
-
 # Install CLI tools
 module load rust/$RUST_VERSION
 for install_tool in $REPO_DIR/tools/terminal/*.sh
   do 
     source $install_tool
   done
+
+  # for install_tool in $REPO_DIR/tools/nanopore/*.sh
+  # do 
+  #   source $install_tool
+  # done
+
+source $REPO_DIR/nanopore/pod5
+source $REPO_DIR/nanopore/hdf5.sh
+source $REPO_DIR/nanopore/duckdb.sh
+source $REPO_DIR/nanopore/modkit.sh
+source $REPO_DIR/nanopore/dorado.sh
+
 
 }  2>&1 | tee -a "$INSTALL_DIR/install.log"
