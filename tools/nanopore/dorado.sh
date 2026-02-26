@@ -11,7 +11,9 @@ pkg_install \
   -u "https://cdn.oxfordnanoportal.com/software/analysis/dorado-${PKG_VERSION}-linux-x64.tar.gz" \
   -t "unpack"
 
-# Download selected Dorado models
+## Download selected Dorado models
+
+echo "Get Dorado Models"
 
 DORADO_MODELS="$INSTALL_DIR/dorado/models"
 
