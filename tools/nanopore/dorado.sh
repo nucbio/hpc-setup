@@ -15,7 +15,7 @@ pkg_install \
 
 echo "Get Dorado Models"
 
-DORADO_MODELS="$INSTALL_DIR/dorado/models"
+export DORADO_MODELS="$INSTALL_DIR/dorado/models"
 
 mkdir -p $DORADO_MODELS
 

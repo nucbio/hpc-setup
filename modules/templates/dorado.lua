@@ -14,8 +14,5 @@ Library directory added to LD_LIBRARY_PATH.
 prepend_path("PATH",            pathJoin(base, "bin"))
 prepend_path("LD_LIBRARY_PATH", pathJoin(base, "$LIB"))
 
--- Environment variables
-setenv("${TOOL^^}_HOME", base)
-
 -- Path for Dorado models 
-setenv("DORADO_MODELS", "/projects/p_bp/tools/dorado/dorado_models")
+setenv("DORADO_MODELS", $DORADO_MODELS)
