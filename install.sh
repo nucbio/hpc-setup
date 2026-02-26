@@ -68,7 +68,7 @@ for install_tool in $REPO_DIR/tools/terminal/*.sh
   #   source $install_tool
   # done
 
-source $REPO_DIR/nanopore/pod5
+source $REPO_DIR/nanopore/pod5.sh
 source $REPO_DIR/nanopore/hdf5.sh
 source $REPO_DIR/nanopore/duckdb.sh
 source $REPO_DIR/nanopore/modkit.sh

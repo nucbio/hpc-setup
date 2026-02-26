@@ -5,8 +5,6 @@ GUM="$INSTALL_DIR/gum/gum-$GUM_VERSION/gum"
 
 echo "-----------------------------------------------"
 echo "Select where to compile tools:"
-#echo "/tmp is faster (recommended for HPC)"
-#echo "• $INSTALL_DIR keeps everything in one place"
 
 CHOICE=$("$GUM" choose \
   "• /tmp (is faster - recommended for HPC)" \
