@@ -1,6 +1,7 @@
 #!/bin/bash
 
-GUM="$INSTALL_DIR/gum/gum-$GUM_VERSION/bin/gum"
+#GUM="$INSTALL_DIR/gum/gum-$GUM_VERSION/bin/gum"
+GUM="$INSTALL_DIR/gum/gum-$GUM_VERSION/gum"
 
 echo "-----------------------------------------------"
 echo "Select where to compile tools:"
