@@ -16,7 +16,6 @@ mkdir -p $INSTALL_DIR/modulefiles
 export MODULEFILES=$INSTALL_DIR/modulefiles
 # Choose build directory
 source $REPO_DIR/functions/make_lua_module.sh
-source $REPO_DIR/functions/make_pip_module.sh
 source $REPO_DIR/core/gum.sh
 source $REPO_DIR/install/choose_build.sh
 source $REPO_DIR/functions/set_pkg_dirs.sh
