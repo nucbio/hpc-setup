@@ -33,7 +33,7 @@ pkg_install() {
   
   # Python environments
   if [[ "$PKG_TYPE" == "venv" ]]; then
-    if ! command -v python &> /dev/null; then
+    if ! command -v python3 &> /dev/null; then
       echo "Python not found. Please load python: 'module load python'."
       return 1
     fi
@@ -41,10 +41,10 @@ pkg_install() {
     mkdir -p "$PKG_PREFIX"
     
     python3 -m venv "$PKG_PREFIX"
-    #"$PKG_PREFIX/bin/pip" install --upgrade pip
-    #"$PKG_PREFIX/bin/pip" install "${PKG_NAME}==${PKG_VERSION}"
-    "$PKG_PREFIX/bin/python3" -m pip install --upgrade pip
-    "$PKG_PREFIX/bin/python3" -m pip install "${PKG_NAME}==${PKG_VERSION}"
+    "$PKG_PREFIX/bin/pip" install --upgrade pip
+    "$PKG_PREFIX/bin/pip" install "${PKG_NAME}==${PKG_VERSION}"
+   # "$PKG_PREFIX/bin/python3" -m pip install --upgrade pip
+   # "$PKG_PREFIX/bin/python3" -m pip install "${PKG_NAME}==${PKG_VERSION}"
 
     make_lua_module $PKG_NAME $PKG_VERSION
     return 0
