@@ -40,7 +40,7 @@ pkg_install() {
     PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$PKG_VERSION"
     mkdir -p "$PKG_PREFIX"
     
-    python -m venv "$PKG_PREFIX"
+    python3 -m venv "$PKG_PREFIX"
     "$PKG_PREFIX/bin/pip" install --upgrade pip
     "$PKG_PREFIX/bin/pip" install "${PKG_NAME}==${PKG_VERSION}"
     make_lua_module $PKG_NAME $PKG_VERSION
