@@ -21,7 +21,7 @@ echo "Select where to compile tools:"
 CHOICE=$("$GUM" choose \
   --timeout 30s \
   "• /tmp (is faster - recommended for HPC)" \
-  "• $INSTALL_DIR (keeps everything in one place)")
+  "• $INSTALL_DIR (keeps everything in one place)" || true)
 
 # If timeout occurs, gum returns empty output → fallback to /tmp
 if [ -z "$CHOICE" ]; then
