@@ -20,7 +20,6 @@ echo "Select where to compile tools:"
 
 CHOICE=$("$GUM" choose \
   --timeout 30s \
-  --default "• /tmp (is faster - recommended for HPC)" \
   "• /tmp (is faster - recommended for HPC)" \
   "• $INSTALL_DIR (keeps everything in one place)")
 
@@ -34,6 +33,5 @@ if [[ "$CHOICE" == *"/tmp"* ]]; then
 else
     export BUILD_BASE="$INSTALL_DIR"
 fi
-
 echo "Selected build directory is: $BUILD_BASE"
 sleep 3
