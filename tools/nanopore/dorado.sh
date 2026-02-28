@@ -2,6 +2,8 @@
 
 echo "Install Dorado"
 
+export DORADO_MODELS="$INSTALL_DIR/dorado/models"
+
 PKG_NAME="dorado"
 PKG_VERSION="1.3.1"
 
@@ -14,8 +16,6 @@ pkg_install \
 ## Download selected Dorado models
 
 echo "Download selected Dorado Models"
-
-export DORADO_MODELS="$INSTALL_DIR/dorado/models"
 
 mkdir -p $DORADO_MODELS
 

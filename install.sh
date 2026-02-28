@@ -21,7 +21,6 @@ source $REPO_DIR/functions/set_pkg_dirs.sh
 source $REPO_DIR/core/gum.sh
 source $REPO_DIR/install/choose_build.sh
 
-
 # Modules
 source $REPO_DIR/modules/check_modules.sh
 
