@@ -4,9 +4,13 @@ set -e
 
 {
 
+# Source functions
+for func in $REPO_DIR/functions/*.sh
+  do 
+    source $func
+  done
+
 # Check essential components
-#TODO all functions can be sourced in loop as *.sh
-source $REPO_DIR/functions/pkg_install.sh
 source $REPO_DIR/install/check_essential.sh
 
 # Set locations
@@ -14,9 +18,7 @@ mkdir -p $INSTALL_DIR/sources
 export SOURCES_DIR=$INSTALL_DIR/sources 
 mkdir -p $INSTALL_DIR/modulefiles
 export MODULEFILES=$INSTALL_DIR/modulefiles
-# Source functions
-source $REPO_DIR/functions/make_lua_module.sh
-source $REPO_DIR/functions/set_pkg_dirs.sh
+
 # Choose build directory
 source $REPO_DIR/core/gum.sh
 source $REPO_DIR/install/choose_build.sh
