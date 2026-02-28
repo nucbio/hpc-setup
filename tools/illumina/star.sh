@@ -37,7 +37,7 @@ fi
 # ------------------------------------
 
 # Build
-cd "$PKG_PREFIX/source" # STAR specifically builds from the /source subdir
+cd "$PKG_PREFIX" # STAR specifically builds from the /source subdir
 make -j $(nproc)
 
 # Modules lua file
