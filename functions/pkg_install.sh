@@ -6,8 +6,13 @@
 # -v   Package version
 # -u   Package URL (accepted arhives: tar.gz, tar.xz, tar.bz2, .zip (unpack only)
 # -o   Configuration options (followed by prefix)
-# -t   Installation type: "config", "cmake", "meson", "unpack" (no installation), 
-#      "venv" for python packages.
+# -t   Installation pattern type: 
+#          "conf" - configure -> make -> make intall (Default), 
+#          "make"   - make (without configure and make intall),
+#          "cmake"  - cmake -> cmake --build -> cmake --install, 
+#          "meson"  - meson setup -> compile -> install, 
+#          "unpack" - unpack precompiled package (zip, tar.gz, tar.xz, tar.bz2), 
+#          "venv"   - python environment (pip python packages). 
 
 pkg_install() {
   # Reset the global index for getopts
@@ -57,7 +62,7 @@ pkg_install() {
   
   # Download & Extract
   echo "Downloading $PKG_NAME..."
-  if wget -v -c \
+  if wget -nv -c \
           --tries=10 \
           --read-timeout=30 \
           --waitretry=5 \
