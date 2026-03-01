@@ -2,6 +2,9 @@
 
 echo "Install HDF5"
 
+module load zlib
+module load glib
+
 export HDF5_VERSION="2.0.0"
 
 pkg_install \
