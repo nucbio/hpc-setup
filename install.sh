@@ -70,4 +70,12 @@ for install_tool in $REPO_DIR/tools/terminal/*.sh
     source $install_tool
   done
 
+# HPC-setup release
+source $REPO_DIR/modules/release_module.sh
+
+# Run test
+source $REPO_DIR/modules/test_install.sh
+
+echo "HPC-setup is done!"
+
 }  2>&1 | tee -a "$INSTALL_DIR/install.log"
