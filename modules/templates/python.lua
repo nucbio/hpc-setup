@@ -28,7 +28,7 @@ prepend_path("CPATH",           pathJoin(root, "include"))
 prepend_path("PKG_CONFIG_PATH", pathJoin(root, "$PKG_CONF"))
 
 -- Python specific environment variables
-setenv("PYTHONHOME", root)
+-- setenv("PYTHONHOME", root)
 -- Set PYTHONPATH to include site-packages for this specific version
 --local pyver = "${TOOL_VERSION:0:4}" -- Extracts "3.11" from "3.11.x"
 --prepend_path("PYTHONPATH", pathJoin(root, "lib/python" .. pyver .. "/site-packages"))
@@ -39,3 +39,4 @@ conflict("python")
 if mode() == "load" then
     LmodMessage("Python ${TOOL_VERSION} loaded.")
 end
+

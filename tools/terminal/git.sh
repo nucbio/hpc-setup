@@ -39,3 +39,8 @@ make install
 
 make_lua_module "$PKG_NAME" "$PKG_VERSION"
 
+# cd git-2.8.0
+# make configure
+# ./configure --prefix=/usr
+# make all doc info
+# sudo make install install-doc install-html install-info
