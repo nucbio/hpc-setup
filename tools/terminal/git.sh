@@ -9,8 +9,8 @@ PKG_VERSION="$GIT_VERSION"
 PKG_URL="https://mirrors.edge.kernel.org/pub/software/scm/git/git-$GIT_VERSION.tar.xz"
 
 # Derive Archive Name
-local ARCHIVE_NAME="${PKG_URL##*/}"
-local PKG_ARCHIVE="$SOURCES_DIR/$ARCHIVE_NAME"
+ARCHIVE_NAME="${PKG_URL##*/}"
+PKG_ARCHIVE="$SOURCES_DIR/$ARCHIVE_NAME"
   
 # Download & Extract
 echo "Downloading $PKG_NAME..."
