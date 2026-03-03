@@ -33,8 +33,9 @@ tar -xf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 cd "$PKG_SRC_DIR" || return
 
-make configure
-./configure --prefix="$PKG_PREFIX" $EXTRA_OPTS
-make -j $(nproc) all && make install
+./configure --prefix="$PREFIX"
+make -j$(nproc)
+make install
 
 make_lua_module "$PKG_NAME" "$PKG_VERSION"
+
