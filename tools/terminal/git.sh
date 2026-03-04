@@ -6,7 +6,7 @@ export GIT_VERSION="2.53.0"
 
 pkg_install \
   -n "git" \
-  -v "GIT_VERSION" \
+  -v "$GIT_VERSION" \
   -u "https://mirrors.edge.kernel.org/pub/software/scm/git/git-$GIT_VERSION.tar.xz"
 
 # PKG_NAME="git"
