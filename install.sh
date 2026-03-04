@@ -34,35 +34,35 @@ source $REPO_DIR/python/python_install.sh
 source $REPO_DIR/python/python_packages.sh
 
 # Java
-source $REPO_DIR/java/java.sh
+# source $REPO_DIR/java/java.sh
 # Rust
 source $REPO_DIR/rust/rust.sh
 
 # Meson/Ninja dependent packages
-source $REPO_DIR/install/core_install_py.sh
+# source $REPO_DIR/install/core_install_py.sh
 
 # Install R
-source $REPO_DIR/R/R.sh
+# source $REPO_DIR/R/R.sh
 
 module load R
-Rscript $REPO_DIR/R/R_libraries.R 
+# Rscript $REPO_DIR/R/R_libraries.R 
 
 # Install htslib
-source $REPO_DIR/tools/core/htslib.sh
+# source $REPO_DIR/tools/core/htslib.sh
 
 # Install bioinformatic tools
-module load htslib/$HTSLIB_VERSION
+# module load htslib/$HTSLIB_VERSION
 
-for install_tool in $REPO_DIR/tools/illumina/*.sh
-  do 
-    source $install_tool
-  done
+#for install_tool in $REPO_DIR/tools/illumina/*.sh
+#  do 
+#    source $install_tool
+#  done
 
 # Install Nanopore tools
-for install_tool in $REPO_DIR/tools/nanopore/*.sh
-  do 
-    source $install_tool
-  done
+#for install_tool in $REPO_DIR/tools/nanopore/*.sh
+#  do 
+#    source $install_tool
+#  done
 
 # Install CLI tools
 module load rust/$RUST_VERSION
