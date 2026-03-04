@@ -2,7 +2,7 @@
 
 RELEASE_VERSION=$(cat $REPO_DIR/VERSION 2>/dev/null)
 
-"TEMPLATES="$REPO_DIR/modules/templates"
+TEMPLATES="$REPO_DIR/modules/templates"
 HPC_SETUP="$INSTALL_DIR/modulefiles/$RELEASE_VERSION"
 
 mkdir -p "$HPC_SETUP"
