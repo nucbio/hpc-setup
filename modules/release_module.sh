@@ -1,7 +1,6 @@
 #!/bin/bash
 
-module load git
-RELEASE_VERSION="$(git -C "$REPO_DIR" describe --tags --abbrev=0)
+RELEASE_VERSION=$(cat $REPO_DIR/VERSION 2>/dev/null)
 
 "TEMPLATES="$REPO_DIR/modules/templates"
 HPC_SETUP="$INSTALL_DIR/modulefiles/$RELEASE_VERSION"
