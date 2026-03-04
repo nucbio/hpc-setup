@@ -32,7 +32,7 @@ mkdir -p "$PKG_SRC_DIR"
 tar -xf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 cd "$PKG_SRC_DIR" || return
-make configure
+#make configure
 ./configure --prefix="$PREFIX"
 make -j $(nproc)
 make install
