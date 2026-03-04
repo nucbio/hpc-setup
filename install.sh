@@ -44,7 +44,7 @@ source $REPO_DIR/rust/rust.sh
 # Install R
 # source $REPO_DIR/R/R.sh
 
-module load R
+#module load R
 # Rscript $REPO_DIR/R/R_libraries.R 
 
 # Install htslib
