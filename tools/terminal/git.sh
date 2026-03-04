@@ -29,21 +29,14 @@ else
   return 1
 fi
 
+# PKG_SRC_DIR and PKG_PREFIX
 set_pkg_dirs "$PKG_NAME" "$PKG_VERSION"
 mkdir -p "$PKG_SRC_DIR"
 
 tar -xf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 cd "$PKG_SRC_DIR" || return
-./configure --prefix="$PREFIX" --without-tcltk
-
-# make -j "$(nproc)" \
-#   NO_GITWEB=YesPlease \
-#   NO_PERL=YesPlease \
-#   NO_PYTHON=YesPlease \
-#   NO_EXPAT=YesPlease
-#
-# make install NO_INSTALL_GITWEB=YesPlease
+./configure --prefix="$PKG_PREFIX" --without-tcltk
 
 make -j "$(nproc)" \
     NO_GITWEB=YesPlease \
