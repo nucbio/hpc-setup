@@ -2,6 +2,9 @@
 
 echo "Install git"
 
+module load libcurl
+module load openssl
+
 export GIT_VERSION="2.53.0"
 
 PKG_NAME="git"
@@ -32,17 +35,15 @@ mkdir -p "$PKG_SRC_DIR"
 tar -xf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 cd "$PKG_SRC_DIR" || return
-#make configure
-./configure --prefix="$PREFIX" \
-  --with-gitweb=no \
-  --with-tcltk=no
-make -j $(nproc)
-make install
+./configure --prefix="$PREFIX" --without-tcltk
+
+make -j "$(nproc)" \
+  NO_GITWEB=YesPlease \
+  NO_PERL=YesPlease \
+  NO_PYTHON=YesPlease \
+  NO_EXPAT=YesPlease
+
+make install NO_INSTALL_GITWEB=YesPlease
 
 make_lua_module "$PKG_NAME" "$PKG_VERSION"
 
-# cd git-2.8.0
-# make configure
-# ./configure --prefix=/usr
-# make all doc info
-# sudo make install install-doc install-html install-info
