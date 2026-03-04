@@ -37,13 +37,25 @@ tar -xf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 cd "$PKG_SRC_DIR" || return
 ./configure --prefix="$PREFIX" --without-tcltk
 
-make -j "$(nproc)" \
-  NO_GITWEB=YesPlease \
-  NO_PERL=YesPlease \
-  NO_PYTHON=YesPlease \
-  NO_EXPAT=YesPlease
+# make -j "$(nproc)" \
+#   NO_GITWEB=YesPlease \
+#   NO_PERL=YesPlease \
+#   NO_PYTHON=YesPlease \
+#   NO_EXPAT=YesPlease
+#
+# make install NO_INSTALL_GITWEB=YesPlease
 
-make install NO_INSTALL_GITWEB=YesPlease
+make -j "$(nproc)" \
+    NO_GITWEB=YesPlease \
+    NO_PERL=YesPlease \
+    NO_PYTHON=YesPlease \
+    NO_EXPAT=YesPlease
+
+make install \
+    NO_INSTALL_GITWEB=YesPlease \
+    NO_PERL=YesPlease \
+    NO_PYTHON=YesPlease \
+    NO_EXPAT=YesPlease
 
 make_lua_module "$PKG_NAME" "$PKG_VERSION"
 
