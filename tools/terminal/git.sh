@@ -37,7 +37,6 @@ tar -xf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
 
 cd "$PKG_SRC_DIR" || return
 ./configure --prefix="$PKG_PREFIX" 
-# --without-tcltk
 
 make -j "$(nproc)"
 make install
