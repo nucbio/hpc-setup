@@ -2,6 +2,8 @@
 
 echo "Install git"
 
+module purge
+module load zlib
 module load libcurl
 module load openssl
 
