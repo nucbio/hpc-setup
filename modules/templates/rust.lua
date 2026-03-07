@@ -2,7 +2,8 @@
 
 local root = "$TOOL_PATH"
 
-whatis("$TOOL" "$TOOL_VERSION")
+whatis("Name: ${TOOL}")
+whatis("Version: ${TOOL_VERSION}")
 
 -- Root paths
 local cargo_home  = pathJoin(root, "cargo")
