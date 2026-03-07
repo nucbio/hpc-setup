@@ -4,8 +4,11 @@ echo "Install git"
 
 module purge
 module load zlib
+module load pcre2
 module load libcurl
 module load openssl
+module load gettext
+module load libexpat
 
 export GIT_VERSION="2.53.0"
 

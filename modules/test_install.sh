@@ -1,10 +1,39 @@
 #!/bin/bash
 
 # Load modules
+module purge
+module load hpc-setup
 
-# Test installation in the end
+# CHECK core-libraries
 
-for lib in zlib libxml-2.0 openssl liblzma; do
+# List of libraries to verify
+CHECK_LIBS=(
+    zlib
+    libpng
+    libjpeg
+    libtiff-4
+    libwebp
+    freetype2
+    fontconfig
+    harfbuzz
+    fribidi
+    cairo
+    gobject-2.0
+    glib-2.0
+    libcurl
+    openssl
+    libexpat
+    libxml-2.0
+    pcre2
+    sqlite3
+    liblzma
+    bzip2
+    ncurses
+    readline
+    tcl
+)
+
+for lib in "${CHECK_LIBS[@]}"; do
     if pkgconf --exists "$lib"; then
         LIB_PATH=$(pkgconf --variable=libdir "$lib")
         LIB_VER=$(pkgconf --modversion "$lib")
@@ -14,6 +43,7 @@ for lib in zlib libxml-2.0 openssl liblzma; do
         echo "[FAIL] $lib cannot be found by pkgconf"
     fi
 done
+
 
 echo "--- Verifying Binary Modules ---"
 
