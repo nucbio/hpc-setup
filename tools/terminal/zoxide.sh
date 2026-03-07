@@ -1,6 +1,10 @@
 #!/bin/bash
 
 echo "Install zoxide"
+
+module purge
+module load rust
+
 ## zoxide - modern cd
 export ZOXIDE_VERSION="0.9.7"
 # Install ripgrep

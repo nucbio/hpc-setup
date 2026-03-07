@@ -1,6 +1,10 @@
 #!/bin/bash
 
 echo "Install fdfind"
+
+module purge
+module load rust
+
 ## fdfind - modern cd
 export FD_VERSION="10.3.0"
 # Install fdfind

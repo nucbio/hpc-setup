@@ -65,7 +65,6 @@ for install_tool in $REPO_DIR/tools/nanopore/*.sh
   done
 
 # Install CLI tools
-module load rust/$RUST_VERSION
 for install_tool in $REPO_DIR/tools/terminal/*.sh
   do 
     source $install_tool

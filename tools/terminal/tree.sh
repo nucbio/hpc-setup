@@ -2,6 +2,10 @@
 
 echo "Install tree"
 # tree - CLI tool
+
+module purge
+module load rust
+
 export TREE_VERSION="1.3.0"
 # Install eza
 cargo install \

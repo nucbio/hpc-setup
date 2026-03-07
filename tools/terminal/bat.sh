@@ -2,6 +2,9 @@
 
 echo "Install bat"
 
+module purge
+module load rust
+
 BAT_VERSION="0.26.1"
 # Install ripgrep
 cargo install \

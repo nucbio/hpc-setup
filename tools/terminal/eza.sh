@@ -2,6 +2,9 @@
 
 echo "Install eza"
 
+module purge
+module load rust
+
 # eza - CLI tool
 export EZA_VERSION="0.23.4"
 # Install eza
