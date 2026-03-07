@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "Install Rust"
+
+#TEST which curl?
+which curl
+
 # Configuration
 export RUST_VERSION="1.93.0"
 INSTALL_ROOT="$INSTALL_DIR/rust/rust-$RUST_VERSION"
