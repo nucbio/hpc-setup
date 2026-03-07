@@ -14,7 +14,7 @@ To download, unpack, and compile the software, the following packages must be in
 For Debian/Ubuntu linux distributives you can install them all as:
 ```bash
 sudo apt update
-sudo apt install wget tar gzip xz-utils bzip2 build-essential cmake gfortran libxml2-dev
+sudo apt install wget tar gzip build-essential cmake gfortran libxml2-dev
 ```
 
 **Note for Minimal Systems**: The only strict system requirements are the C/C++ 
@@ -41,7 +41,7 @@ sudo apt install libx11-dev libxt-dev libxext-dev
 You can install all mentioned dependencies on Fedora as following:
 ```bash
 sudo dnf upgrade --refresh
-sudo dnf install -y wget tar gzip xz bzip2 gcc gcc-c++ gcc-gfortran make cmake libxml2-devel
+sudo dnf install -y wget tar gzip gcc gcc-c++ gcc-gfortran make cmake libxml2-devel
 sudo dnf install libX11-devel libXt-devel libXext-devel
 # Perl
 sudo dnf install -y perl perl-core perl-CPAN
