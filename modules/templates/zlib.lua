@@ -1,9 +1,6 @@
 -- ${TOOL} version ${TOOL_VERSION}
 help([[
 ${TOOL} ${TOOL_VERSION} - A mass-appeal lossless data-compression library.
-
-This is a foundational "Core" library. It is required by almost all other
-modules in the stack, including OpenSSL, LibPNG, Python, and R.
 ]])
 
 whatis("Name: ${TOOL}")

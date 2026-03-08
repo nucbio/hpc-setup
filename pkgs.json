@@ -3,8 +3,14 @@
     "pkg_version": "1.3.2",
     "pkg_url": "https://zlib.net/zlib-1.3.2.tar.xz",
     "inst_type": "conf",
+    "inst_opt": [],
     "pkgconf": "zlib",
     "dependencies": [],
+    "module_help": "Data compression library",
+    "module_description": "",
+    "module_category": "compression",
+    "module_path": "",
+    "module_c": true,
     "enabled": true
   },
   "bzip2": {

@@ -3,11 +3,10 @@
 # Import package info from json
 
 import_json() {
-    local pkg_name="$1"
+    local pkg="$1"
     local json="$REPO_DIR/pkgs.json"
 
-    export PKG_NAME="$pkg_name"
-
+    export PKG_NAME="$pkg"
     export PKG_VERSION=$(jq -r --arg pkg "$pkg" '.[$pkg].pkg_version // ""' "$json")
     export PKG_URL=$(jq -r --arg pkg "$pkg" '.[$pkg].pkg_url // ""' "$json")
     export INST_TYPE=$(jq -r --arg pkg "$pkg" '.[$pkg].inst_type // ""' "$json")
@@ -19,3 +18,4 @@ import_json() {
         jq -r --arg pkg "$pkg" '.[$pkg].dependencies // [] | .[]' "$json"
     )
 }
+
