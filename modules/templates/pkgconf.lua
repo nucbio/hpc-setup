@@ -2,8 +2,7 @@
 help([[
 ${TOOL} ${TOOL_VERSION} - A helper tool used when compiling applications and libraries.
 pkg-config is a system for managing library compile and link flags that works 
-with automake and autoconf. It helps you insert the correct compiler options 
-on the command line rather than hard-coding values on where to find libraries.
+with automake and autoconf.
 ]])
 
 whatis("Name: ${TOOL}")
