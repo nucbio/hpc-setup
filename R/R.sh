@@ -6,7 +6,6 @@ export R_VERSION="${R_VERSION:-4.5.2}"
 
 # Load dependencies
 module use $INSTALL_DIR/modulefiles
-module purge
 module load libcurl
 module load pcre2
 module load libpng
@@ -49,16 +48,16 @@ pkg_install -n "R" \
 --with-libpng \
 --with-jpeglib \
 --with-libtiff \
+--with-libxml2 \
+--with-libcurl \
+--with-openssl \
+--with-zlib \
+--with-bzlib \
+--with-lzma \
 --with-cairo \
 --with-readline=yes \
 --with-system-tre=no \
 $X_OPT" 
 
 # new added: --with-libtiff --with-libxml2 --with-libcurl --with-openssl --with-zlib --with-bzlib --with-lzma
-# removed as unrecognized:
-# --with-libxml2 \
-# --with-libcurl \
-# --with-openssl \
-# --with-zlib \
-# --with-bzlib \
-# --with-lzma \
+

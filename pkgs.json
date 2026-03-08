@@ -9,8 +9,9 @@
     "module_help": "Data compression library",
     "module_description": "",
     "module_category": "compression",
+    "module_url": "https://zlib.net",
     "module_path": "",
-    "module_c": true,
+    "module_c_lib": true,
     "enabled": true
   },
   "bzip2": {
