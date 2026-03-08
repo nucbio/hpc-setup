@@ -3,6 +3,8 @@
 # Dependencies for Python and R
 module use $INSTALL_DIR/modulefiles
 
+source $REPO_DIR/core/test_json.sh
+
 # 1. zlib
 source $REPO_DIR/core/zlib.sh
 # 2. pkgconfig
