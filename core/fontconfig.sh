@@ -3,7 +3,7 @@
 echo "Install fontconfig"
 
 # Dependencies
-module load freetype
+module load freetype2
 module load libexpat
 module load gperf
 

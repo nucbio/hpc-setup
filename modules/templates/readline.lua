@@ -10,9 +10,10 @@ whatis("Description: GNU Readline library for command-line editing and history."
 
 local root = "${TOOL_PATH}"
 
-prepend_path("LD_LIBRARY_PATH", pathJoin(root, "$LIB"))
-prepend_path("LIBRARY_PATH",    pathJoin(root, "$LIB"))
-prepend_path("CPATH",           pathJoin(root, "include"))
+prepend_path("LD_LIBRARY_PATH",  pathJoin(root, "$LIB"))
+prepend_path("LIBRARY_PATH",     pathJoin(root, "$LIB"))
+prepend_path("CPATH",            pathJoin(root, "include"))
+prepend_path("PKG_CONFIG_PATH",  pathJoin(root, "$PKG_CONF"))
 
 -- Crucial for some compilers to pick up the paths automatically
 prepend_path("C_INCLUDE_PATH",      pathJoin(root, "include"))

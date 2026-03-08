@@ -13,7 +13,7 @@ load("ncurses/${NCURSES_VERSION}")
 load("xz/${XZ_VERSION}")
 load("bzip2/${BZIP2_VERSION}")
 load("libcurl/${LIBCURL_VERSION}")
-load("sqlite/${SQLITE_VERSION}")
+load("sqlite3/${SQLITE_VERSION}")
 
 -- Python installation paths
 local root = "${TOOL_PATH}"
@@ -37,6 +37,6 @@ conflict("${TOOL}")
 conflict("python")
 
 if mode() == "load" then
-    LmodMessage("Python ${TOOL_VERSION} loaded.")
+    LmodMessage("Loading python ${TOOL_VERSION}.")
 end
 

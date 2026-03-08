@@ -3,9 +3,10 @@
 whatis("HPC setup - core stack")
 
 load(
+  "gum",
   "zlib",
   "pkgconf",
-  "libff",
+  "libffi",
   "bzip2",
   "pcre2",
   "xz",
@@ -19,13 +20,13 @@ load(
   "ncurses",
   "readline",
   "gettext",
-  "sqlite",
+  "sqlite3",
   "libexpat",
   "gperf",
   "glib",
-  "freetype",
+  "freetype2",
   "fontconfig",
-  "imagemagick",
+  "magick",
   "fribidi",
   "harfbuzz",
   "cairo",
@@ -67,5 +68,7 @@ load(
   "dorado",
   "duckdb",
   "modkit",
-  "pod5"
+  "pod5",
+  "bwa-mem2",
+  "bedtools"
 )

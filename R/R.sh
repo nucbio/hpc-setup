@@ -2,6 +2,8 @@
 
 echo "Install R"
 
+export R_VERSION="${R_VERSION:-4.5.2}"
+
 # Load dependencies
 module use $INSTALL_DIR/modulefiles
 module load libcurl
@@ -13,7 +15,7 @@ module load pandoc
 module load cairo
 module load harfbuzz
 module load fribidi
-module load freetype
+module load freetype2
 module load bzip2
 module load libwebp
 module load libvips
@@ -23,7 +25,7 @@ module load readline
 module load java
 module load pkgconf
 module load zlib
-module load imagemagick
+module load magick
 module load fontconfig
 
 # Check if X11 libraries are available for R installation
@@ -37,8 +39,8 @@ fi
 
 # Standard config installation
 pkg_install -n "R" \
-            -v "4.5.2" \
-            -u "https://cran.r-project.org/src/base/R-4/R-4.5.2.tar.gz" \
+            -v "$R_VERSION" \
+            -u "https://cran.r-project.org/src/base/R-4/R-${R_VERSION}.tar.gz" \
             -o "--enable-memory-profiling \
 --enable-R-shlib \
 --with-blas \

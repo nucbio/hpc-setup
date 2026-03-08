@@ -5,7 +5,7 @@ echo "Install glib"
 module load pkgconf
 module load zlib
 module load pcre2
-module load libff
+module load libffi
 module load gettext
 
 export GLIB_VERSION="2.87.2"

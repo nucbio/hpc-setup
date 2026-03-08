@@ -20,6 +20,6 @@ prepend_path("PATH", pathJoin(root, "bin"))
 conflict("$TOOL")
 
 if mode() == "load" then
-    LmodMessage("${TOOL} ${TOOL_VERSION} loaded (using Python ${PYTHON_VERSION}).")
+    LmodMessage("Loading ${TOOL} ${TOOL_VERSION}.")
 end
 

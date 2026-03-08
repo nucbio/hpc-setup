@@ -39,7 +39,6 @@ export PATH="$LUA_DIR/bin:$PATH"
 
 make install
 
-# Source the new installation
 source "$INSTALL_DIR/lmod/$LMOD_VERSION/init/bash"
 
 # Optional: Add to your shell profile for persistence

@@ -9,7 +9,7 @@ module load readline
 module load ncurses
 module load xz
 module load bzip2
-module load sqlite
+module load sqlite3
 module load libcurl
 
 export PYTHON_VERSION="3.14.3"

@@ -12,5 +12,7 @@ load(
   "dorado",
   "duckdb",
   "modkit",
-  "pod5"
+  "pod5",
+  "bwa-mem2",
+  "bedtools"
 )

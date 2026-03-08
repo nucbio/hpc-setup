@@ -7,8 +7,8 @@ module use $INSTALL_DIR/modulefiles
 source $REPO_DIR/core/zlib.sh
 # 2. pkgconfig
 source $REPO_DIR/core/pkgconf.sh
-# 3. libff
-source $REPO_DIR/core/libff.sh
+# 3. libffi
+source $REPO_DIR/core/libffi.sh
 # 4. bzip2
 source $REPO_DIR/core/bzip2.sh
 # 5. pcre2
@@ -38,8 +38,8 @@ module load ncurses
 source $REPO_DIR/core/readline.sh
 # 16. gettext
 source $REPO_DIR/core/gettext.sh
-# 17. sqlite
-source $REPO_DIR/core/sqlite.sh
+# 17. sqlite3
+source $REPO_DIR/core/sqlite3.sh
 # 18. libexpat
 source $REPO_DIR/core/libexpat.sh
 # 19. gperf

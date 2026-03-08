@@ -5,9 +5,9 @@ whatis("Version: $TOOL_VERSION")
 whatis("Description: A quality control tool for high throughput sequence data.")
 whatis("Category: Bioinformatics")
 
-local root = "$TOOL_PATH"
+local root = "${TOOL_PATH}"
 
-prepend_path("PATH", pathJoin(root, "FastQC"))
+prepend_path("PATH", root)
 
 -- Message
 if mode() == "load" then

@@ -26,5 +26,5 @@ conflict("$TOOL")
 
 -- Message
 if mode() == "load" then
-    LmodMessage("cutadapt ${TOOL_VERSION} loaded (using Python ${PYTHON_VERSION}).")
+    LmodMessage("Loading cutadapt ${TOOL_VERSION}.")
 end

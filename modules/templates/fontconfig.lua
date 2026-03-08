@@ -12,7 +12,7 @@ whatis("URL: https://www.freedesktop.org/wiki/Software/fontconfig/")
 
 -- Dependencies
 load("libexpat/${EXPAT_VERSION}")
-load("freetype/${FREETYPE_VERSION}")
+load("freetype2/${FREETYPE_VERSION}")
 
 local root = "$TOOL_PATH"
 local bin = pathJoin(root, "bin")
