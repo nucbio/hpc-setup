@@ -42,10 +42,10 @@ source $REPO_DIR/rust/rust.sh
 source $REPO_DIR/install/core_install_py.sh
 
 # Install R
-source $REPO_DIR/R/R.sh
-
-module load R
-Rscript $REPO_DIR/R/R_libraries.R 
+# source $REPO_DIR/R/R.sh
+#
+# module load R
+# Rscript $REPO_DIR/R/R_libraries.R 
 
 # Install htslib
 source $REPO_DIR/tools/core/htslib.sh
@@ -59,16 +59,16 @@ for install_tool in $REPO_DIR/tools/illumina/*.sh
   done
 
 # Install Nanopore tools
-for install_tool in $REPO_DIR/tools/nanopore/*.sh
-  do 
-    source $install_tool
-  done
-
-# Install CLI tools
-for install_tool in $REPO_DIR/tools/terminal/*.sh
-  do 
-    source $install_tool
-  done
+# for install_tool in $REPO_DIR/tools/nanopore/*.sh
+#   do 
+#     source $install_tool
+#   done
+#
+# # Install CLI tools
+# for install_tool in $REPO_DIR/tools/terminal/*.sh
+#   do 
+#     source $install_tool
+#   done
 
 # HPC-setup release
 source $REPO_DIR/modules/release_module.sh
