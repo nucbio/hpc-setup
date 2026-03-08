@@ -45,7 +45,7 @@ load(
 load(
   "bat",
   "eza",
-  "fdfind",
+  "fd",
   "git",
   "nvim",
   "ripgrep",
@@ -66,7 +66,6 @@ load(
   "samtools",
   "dorado",
   "duckdb",
-  "hdf5",
   "modkit",
   "pod5"
 )

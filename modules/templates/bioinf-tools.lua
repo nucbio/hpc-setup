@@ -11,7 +11,6 @@ load(
   "samtools",
   "dorado",
   "duckdb",
-  "hdf5",
   "modkit",
   "pod5"
 )

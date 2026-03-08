@@ -2,7 +2,7 @@
 load(
   "bat",
   "eza",
-  "fdfind",
+  "fd",
   "git",
   "nvim",
   "ripgrep",

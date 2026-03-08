@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Install fdfind"
+echo "Install fd"
 
 module purge
 module load rust
