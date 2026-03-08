@@ -3,6 +3,9 @@
 # Dependencies for Python and R
 module use $INSTALL_DIR/modulefiles
 
+
+source $REPO_DIR/core/jq.sh
+module load jq
 source $REPO_DIR/core/test_json.sh
 
 # 1. zlib
