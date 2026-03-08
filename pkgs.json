@@ -29,7 +29,7 @@
     "pkg_url": "https://download.oracle.com/java/25/archive/jdk-25.0.1_linux-x64_bin.tar.gz",
     "inst_type":"unpack",
     "pkgconf": "java",
-    "dependencies": ["glib", "pixman", "freetype", "fontconfig"],
+    "dependencies": [],
     "enabled": true
   }
 }
