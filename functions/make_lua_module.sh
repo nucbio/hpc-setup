@@ -52,7 +52,6 @@ make_lua_module() {
     else
         export PKG_CONF="lib/pkgconfig" # Default
     fi
-    #TODO make conditinal block in lua tempates instead of defaults for not existing directory
 
     # Export variables for envsubst
     export TOOL TOOL_VERSION TOOL_PATH

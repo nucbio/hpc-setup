@@ -1,15 +1,11 @@
 -- ${TOOL} version ${TOOL_VERSION}
 help([[
 ${TOOL} ${TOOL_VERSION} - Java Development Kit
-
-This module sets up the environment for Java applications and development.
-It configures JAVA_HOME and adds the JDK binaries to your PATH.
 ]])
 
 whatis("Name: ${TOOL}")
 whatis("Version: ${TOOL_VERSION}")
 whatis("Category: Programming Language/Runtime")
-whatis("Description: High-level, class-based, object-oriented programming language.")
 whatis("URL: https://openjdk.org/")
 
 local root = "${TOOL_PATH}"
@@ -36,5 +32,5 @@ conflict("${TOOL}")
 conflict("jdk")
 
 if mode() == "load" then
-    LmodMessage("$TOOL $TOOL_VERSION loaded.")
+    LmodMessage("Loading $TOOL $TOOL_VERSION")
 end
