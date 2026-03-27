@@ -14,7 +14,7 @@ To download, unpack, and compile the software, the following packages must be in
 For Debian/Ubuntu linux distributives you can install them all as:
 ```bash
 sudo apt update
-sudo apt install wget tar gzip build-essential cmake gfortran libxml2-dev
+sudo apt install wget tar gzip build-essential cmake gfortran libxml2-dev libcrypt-dev
 ```
 
 **Note for Minimal Systems**: The only strict system requirements are the C/C++ 
