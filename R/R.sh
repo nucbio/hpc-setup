@@ -2,7 +2,7 @@
 
 echo "Install R"
 
-export R_VERSION="${R_VERSION:-4.5.2}"
+export R_VERSION="${R_VERSION:-4.5.3}"
 
 # Load dependencies
 module use $INSTALL_DIR/modulefiles
