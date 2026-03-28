@@ -61,6 +61,7 @@ module_templater() {
     _mt_emit_dependencies
     _mt_emit_path_extra
     _mt_emit_c_lib_paths
+    _mt_emit_std_flags
     _mt_emit_module_path
     _mt_emit_module_env
     _mt_emit_manpath
@@ -164,9 +165,14 @@ _mt_emit_c_lib_paths() {
   echo ""
   echo "-- Includes"
   echo "prepend_path(\"CPATH\",           pathJoin(root, \"include\"))"
-  echo "prepend_path(\"LDFLAGS\", \"-L\" .. pathJoin(root, \"$lib_dir\"), \" \")"
-  echo "prepend_path(\"CPPFLAGS\", \"-I\" .. pathJoin(root, \"include\"), \" \")"
   echo "prepend_path(\"PKG_CONFIG_PATH\", pathJoin(root, \"$pkg_conf\"))"
+}
+
+_mt_emit_std_flags() {
+  echo ""
+  echo "-- Compiler and linker flags"
+  echo "prepend_path(\"LDFLAGS\",  \"-L\" .. pathJoin(root, \"$lib_dir\"), \" \")"
+  echo "prepend_path(\"CPPFLAGS\", \"-I\" .. pathJoin(root, \"include\"), \" \")"
 }
 
 _mt_emit_module_path() {

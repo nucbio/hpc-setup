@@ -657,8 +657,7 @@
     "module_env": {
       "EXPAT_ROOT": "",
       "EXPAT_INCLUDE_DIR": "include",
-      "EXPAT_LIBRARY": "{LIB}",
-      "EXPAT_LIBS": "{LIB}"
+      "EXPAT_LIBRARY": "{LIB}"
     },
     "module_path": {},
     "module_path_extra": "bin",
