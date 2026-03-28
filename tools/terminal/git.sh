@@ -47,5 +47,5 @@ cd "$PKG_SRC_DIR" || return
 make -j "$(nproc)"
 make install
 
-make_lua_module "$PKG_NAME" "$PKG_VERSION"
+module_templater "$PKG_NAME"
 

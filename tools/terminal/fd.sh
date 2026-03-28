@@ -14,4 +14,4 @@ cargo install \
   --locked
 
 # Module
-make_lua_module "fd" "$FD_VERSION" "$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo/bin"
+module_templater "fd" "$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo/bin"

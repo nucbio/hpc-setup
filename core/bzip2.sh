@@ -44,4 +44,4 @@ cd "$REPO_DIR"
 rm -rf "$PKG_BUILD_DIR"
 
 # 8. Module generation
-make_lua_module $PKG_NAME "$PKG_VERSION"
+module_templater "$PKG_NAME"

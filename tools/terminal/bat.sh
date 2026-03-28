@@ -13,4 +13,4 @@ cargo install \
   --locked
 
 # Module
-make_lua_module "bat" "$BAT_VERSION" "$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo/bin"
+module_templater "bat" "$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo/bin"

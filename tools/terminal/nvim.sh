@@ -17,7 +17,7 @@ mkdir -p "$TARGET_DIR"
 tar -xzf "$SOURCE_ARCHIVE/${TOOL_NAME}-${NVIM_VERSION}.tar.gz" -C "$TARGET_DIR" --strip-components=1
 
 # 3. Module generation
-make_lua_module "nvim" "$NVIM_VERSION"
+module_templater "nvim"
 
 # Make sure to copy configuration to ~/.config/nvim
 # Make sure that fonts are installed

@@ -14,4 +14,4 @@ cargo install \
   --locked
 
 # Module
-make_lua_module "zoxide" "$ZOXIDE_VERSION" "$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo/bin"
+module_templater "zoxide" "$INSTALL_DIR/rust/rust-$RUST_VERSION/cargo/bin"

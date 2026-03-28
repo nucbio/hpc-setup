@@ -1,0 +1,23 @@
+# Installation artifacts
+sources/
+modulefiles/
+install.log
+
+# Build directories
+build/
+build-*/
+
+# Lmod
+lmod/
+
+# Installed packages (top-level package directories)
+# These are created at runtime in INSTALL_DIR
+
+# OS/editor
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Claude Code
+CLAUDE.md

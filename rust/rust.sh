@@ -23,5 +23,5 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
     --profile complete
 
 # Module
-make_lua_module "rust" "$RUST_VERSION"
+module_templater "rust"
 

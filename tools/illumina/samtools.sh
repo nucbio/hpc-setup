@@ -27,5 +27,5 @@ cd "$REPO_DIR"
 rm -rf "$PKG_SRC_DIR"
 
 # Create Module file
-make_lua_module $PKG_NAME $PKG_VERSION "$PKG_PREFIX/bin"
+module_templater "$PKG_NAME"
 

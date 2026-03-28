@@ -1,18 +1,16 @@
 #!/bin/bash
 
-RELEASE_VERSION=$(cat $REPO_DIR/VERSION 2>/dev/null)
-TEMPLATES="$REPO_DIR/modules/templates"
+# Generate meta-module files from pkgs.json
 
-# List of templates to process
-TEMPLATES_LIST=(
+RELEASE_VERSION=$(cat $REPO_DIR/VERSION 2>/dev/null)
+
+META_MODULES=(
   hpc-setup
   core-libs
   bioinf-tools
   terminal-utils
 )
 
-for TEMPLATE in "${TEMPLATES_LIST[@]}"; do
-    mkdir -p "$MODULEFILES/$TEMPLATE"
-    cp "$TEMPLATES/$TEMPLATE.lua" \
-       "$MODULEFILES/$TEMPLATE/$RELEASE_VERSION.lua"
+for META in "${META_MODULES[@]}"; do
+    module_templater "$META"
 done

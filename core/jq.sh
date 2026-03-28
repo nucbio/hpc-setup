@@ -10,4 +10,4 @@ cd $JQ_DIR
 wget -O jq https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux64 && chmod +x jq
 
 # Modules lua file
-make_lua_module $PKG_NAME $JQ_VERSION
+module_templater "$PKG_NAME"

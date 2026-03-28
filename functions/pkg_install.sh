@@ -51,7 +51,7 @@ pkg_install() {
    # "$PKG_PREFIX/bin/python3" -m pip install --upgrade pip
    # "$PKG_PREFIX/bin/python3" -m pip install "${PKG_NAME}==${PKG_VERSION}"
 
-    make_lua_module $PKG_NAME $PKG_VERSION
+    module_templater "$PKG_NAME"
     return 0
   fi
 
@@ -96,12 +96,12 @@ pkg_install() {
       
       rm -rf "$PKG_TMP"
       
-      make_lua_module "$PKG_NAME" "$PKG_VERSION"
+      module_templater "$PKG_NAME"
       return 0
     else
       # Unpack other archives: tar.gz, tar.bz2, tar.xz
       tar -xf "$PKG_ARCHIVE" -C "$PKG_PREFIX" --strip-components=1
-      make_lua_module "$PKG_NAME" "$PKG_VERSION"
+      module_templater "$PKG_NAME"
       return 0
     fi
   fi
@@ -141,5 +141,5 @@ pkg_install() {
     # Finalize
     cd "$REPO_DIR"
     rm -rf "$PKG_BUILD_DIR"
-    make_lua_module "$PKG_NAME" "$PKG_VERSION"
+    module_templater "$PKG_NAME"
 }
