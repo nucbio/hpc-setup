@@ -958,7 +958,7 @@
     "enabled": true
   },
   "nvim": {
-    "pkg_version": "v0.10.4",
+    "pkg_version": "0.10.4",
     "pkg_url": "https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.tar.gz",
     "inst_type": "unpack",
     "inst_opt": [],
