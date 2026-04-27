@@ -14,13 +14,16 @@ To download, unpack, and compile the software, the following packages must be in
 For Debian/Ubuntu linux distributives you can install them all as:
 ```bash
 sudo apt update
-sudo apt install wget tar gzip build-essential cmake gfortran libxml2-dev libcrypt-dev
+sudo apt install wget tar gzip build-essential cmake gfortran libxml2-dev libcrypt-dev libuv1-dev
 ```
 
 **Note for Minimal Systems**: The only strict system requirements are the C/C++ 
 compilers (gcc, g++). All other dependencies—including cmake, make, and 
 archiving utilities—can be deployed without root privileges via portable 
 binaries, precompiled distributions, or by compiling from source.  
+
+**New dependency detected**: Ubuntu 24.04 fresh installation require `libuv1-dev` 
+for `fs` R package. Previously did not appear. 
 
 ### R Configuration with X11 Support
 
