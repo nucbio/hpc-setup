@@ -1,6 +1,7 @@
 #!/bin/bash
 
-LMOD_VERSION=9.0.5
+# 9.5: first Lmod with the new luaposix interface (needed for Lua 5.5)
+LMOD_VERSION=9.5
 LMOD_ARCHIVE="lmod-${LMOD_VERSION}.tar.gz"
 SOURCE_DIR="$INSTALL_DIR/sources"
 # Per-run build dir (a fixed /tmp/lmod-build clashes with leftovers from other users)
