@@ -23,8 +23,20 @@ cd ..
 rm -rf luarocks-${LUAROCKS_VERSION}
 
 # Install Lua Packages
+# Pinned: luaposix >= 37 removed posix.stat, which Lmod 9.0.5 still uses
+# (make install fails at man_pages; the error ends up in share/man/man1/module.pod).
+LUASOCKET_VERSION="3.1.0-1"
+LUAPOSIX_VERSION="36.3-1"
+LUAFILESYSTEM_VERSION="1.9.0-1"
+
 LUAROCKS=$LUA_DIR/bin/luarocks
 
-$LUAROCKS install luasocket
-$LUAROCKS install luaposix
-$LUAROCKS install luafilesystem
+$LUAROCKS install luasocket     "$LUASOCKET_VERSION"
+$LUAROCKS install luaposix      "$LUAPOSIX_VERSION"
+$LUAROCKS install luafilesystem "$LUAFILESYSTEM_VERSION"
+
+# Check the Lua modules Lmod needs (with the rock paths, as Lmod's configure uses them)
+if ! ( eval "$($LUAROCKS path)"; "$LUA_DIR/bin/lua" -e 'assert(require("posix").stat, "posix.stat missing"); require("lfs")' ); then
+    echo "ERROR: Lua modules for Lmod (luaposix with posix.stat, luafilesystem) are not usable."
+    return 1
+fi

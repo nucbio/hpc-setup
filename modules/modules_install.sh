@@ -41,6 +41,12 @@ make install
 
 source "$INSTALL_DIR/lmod/$LMOD_VERSION/init/bash"
 
+# Check that the module command works
+if ! module --version; then
+    echo "ERROR: Lmod $LMOD_VERSION is installed but 'module' does not work."
+    return 1
+fi
+
 # Optional: Add to your shell profile for persistence
 # echo "source $LMOD_INSTALL/lmod/${LMOD_VERSION}/init/bash" >> ~/.bashrc
 
