@@ -2,12 +2,11 @@
 
 echo "Install DuckDB"
 
-export DUCKDB_VERSION="1.1.3"
+DUCKDB_VERSION=$(pkg_version "duckdb")
+export DUCKDB_VERSION
 
 pkg_install \
   -n "duckdb" \
-  -v "1.1.3" \
-  -u "https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip" \
   -t "unpack"
 
 

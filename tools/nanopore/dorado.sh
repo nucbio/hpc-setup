@@ -5,12 +5,8 @@ echo "Install Dorado"
 export DORADO_MODELS="$INSTALL_DIR/dorado/models"
 
 PKG_NAME="dorado"
-PKG_VERSION="1.3.1"
-
 pkg_install \
   -n "$PKG_NAME" \
-  -v "$PKG_VERSION" \
-  -u "https://cdn.oxfordnanoportal.com/software/analysis/dorado-${PKG_VERSION}-linux-x64.tar.gz" \
   -t "unpack"
 
 ## Download selected Dorado models

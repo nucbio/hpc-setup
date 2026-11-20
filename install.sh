@@ -19,6 +19,9 @@ export SOURCES_DIR=$INSTALL_DIR/sources
 mkdir -p $INSTALL_DIR/modulefiles
 export MODULEFILES=$INSTALL_DIR/modulefiles
 
+# jq first: versions are read from pkgs.json with it
+source $REPO_DIR/core/jq.sh
+
 # Choose build directory
 source $REPO_DIR/core/gum.sh
 source $REPO_DIR/install/choose_build.sh

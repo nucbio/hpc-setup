@@ -6,10 +6,10 @@ module purge
 module load rust
 
 # eza - CLI tool
-export EZA_VERSION="0.23.4"
+EZA_VERSION=$(pkg_version "eza")
 # Install eza
 cargo install \
-  --git https://github.com/eza-community/eza.git \
+  --git "$(pkg_url eza)" \
   --tag "v$EZA_VERSION" \
   --locked
 

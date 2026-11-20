@@ -3,7 +3,8 @@
 LMOD_VERSION=9.0.5
 LMOD_ARCHIVE="lmod-${LMOD_VERSION}.tar.gz"
 SOURCE_DIR="$INSTALL_DIR/sources"
-BUILD_DIR="/tmp/lmod-build"
+# Per-run build dir (a fixed /tmp/lmod-build clashes with leftovers from other users)
+BUILD_DIR="${BUILD_BASE:-/tmp}/lmod/lmod-${LMOD_VERSION}/build-$$"
 
 # 1. Manage Source Archive
 mkdir -p "$SOURCE_DIR"
@@ -38,6 +39,9 @@ export PATH="$LUA_DIR/bin:$PATH"
     --with-updateSystemFn=no
 
 make install
+
+cd "$REPO_DIR"
+rm -rf "$BUILD_DIR"
 
 source "$INSTALL_DIR/lmod/$LMOD_VERSION/init/bash"
 

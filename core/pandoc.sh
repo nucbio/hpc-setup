@@ -2,12 +2,11 @@
 
 echo "Install pandoc"
 
-export PANDOC_VERSION="3.8.3"
+PANDOC_VERSION=$(pkg_version "pandoc")
+export PANDOC_VERSION
 
 pkg_install \
   -n "pandoc" \
-  -v "$PANDOC_VERSION" \
-  -u "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz" \
   -t "unpack"
 
 # PKG_NAME="pandoc"

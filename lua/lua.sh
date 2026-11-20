@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Variables
-export LUA_VERSION="5.4.8"
+LUA_VERSION=$(pkg_version "lua")
+export LUA_VERSION
 LUA_DIR="$INSTALL_DIR/lua/lua-$LUA_VERSION"
 SOURCE_DIR="$INSTALL_DIR/sources"
 
 # Download Lua
 cd "$SOURCE_DIR"
-wget https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz
+wget "$(pkg_url lua)" -O "lua-${LUA_VERSION}.tar.gz"
 tar -xzf "lua-${LUA_VERSION}.tar.gz"
 cd "lua-$LUA_VERSION"
 

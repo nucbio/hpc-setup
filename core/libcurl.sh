@@ -2,11 +2,10 @@
 
 echo "Install libcurl"
 
-export LIBCURL_VERSION="8.17.0"
+LIBCURL_VERSION=$(pkg_version "libcurl")
+export LIBCURL_VERSION
 
 pkg_install -n "libcurl" \
-            -v "$LIBCURL_VERSION" \
-            -u "https://curl.se/download/curl-$LIBCURL_VERSION.tar.gz" \
             -o "--enable-shared \
 --enable-static \
 --enable-optimize \

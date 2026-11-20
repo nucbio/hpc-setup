@@ -2,7 +2,8 @@
 
 echo "Install libwebp"
 
-export LIBWEBP_VERSION="1.6.0"
+LIBWEBP_VERSION=$(pkg_version "libwebp")
+export LIBWEBP_VERSION
 
 # Options
 CMAKE_OPTS=(
@@ -18,8 +19,6 @@ CMAKE_OPTS=(
 
 pkg_install \
     -n "libwebp" \
-    -v "$LIBWEBP_VERSION" \
-    -u "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$LIBWEBP_VERSION.tar.gz" \
     -t "cmake" \
     -o "${CMAKE_OPTS[*]}"
 

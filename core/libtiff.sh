@@ -2,9 +2,8 @@
 
 echo "Install libtiff"
 
-export LIBTIFF_VERSION="4.7.1"
+LIBTIFF_VERSION=$(pkg_version "libtiff")
+export LIBTIFF_VERSION
 
 pkg_install \
-    -n "libtiff" \
-    -v "$LIBTIFF_VERSION" \
-    -u "http://download.osgeo.org/libtiff/tiff-4.7.1.tar.xz"
+    -n "libtiff"

@@ -2,12 +2,8 @@
 
 echo "Install modkit"
 
-PKG_VERSION="0.6.0"
-
 pkg_install \
   -n "modkit" \
-  -v "$PKG_VERSION" \
-  -u "https://github.com/nanoporetech/modkit/releases/download/v0.6.0/modkit_v0.6.0_u16_x86_64.tar.gz" \
   -t "unpack"
 
 # PKG_NAME="modkit"

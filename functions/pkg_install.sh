@@ -2,9 +2,11 @@
 
 # Universal package intaller
 # Options:
-# -n   Package name
-# -v   Package version
-# -u   Package URL (accepted arhives: tar.gz, tar.xz, tar.bz2, .zip (unpack only)
+# -n   Package name (key in pkgs.json)
+# -v   Package version: default is pkg_version from pkgs.json. Only give it to
+#      override the json (e.g. R_VERSION); the module then uses this version.
+# -u   Package URL: default is pkg_url from pkgs.json (with the version replaced
+#      when -v overrides it). Accepted archives: tar.gz, tar.xz, tar.bz2, .zip (unpack only)
 # -o   Configuration options (followed by prefix)
 # -t   Installation pattern type: 
 #          "conf" - configure -> make -> make intall (Default), 
@@ -35,7 +37,24 @@ pkg_install() {
   
   # Shift away the parsed options so $@ contains remaining args (if any)
   shift $((OPTIND-1))
-  
+
+  # Version and URL come from pkgs.json
+  local JSON_VERSION JSON_URL=""
+  JSON_VERSION=$(pkg_version "$PKG_NAME") || return 1
+  if [[ "$PKG_TYPE" != "venv" ]]; then
+    JSON_URL=$(pkg_url "$PKG_NAME") || return 1
+  fi
+
+  if [[ -z "$PKG_VERSION" ]]; then
+    PKG_VERSION="$JSON_VERSION"
+  elif [[ "$PKG_VERSION" != "$JSON_VERSION" ]]; then
+    echo "WARNING: $PKG_NAME $PKG_VERSION overrides pkgs.json version $JSON_VERSION."
+  fi
+
+  if [[ -z "$PKG_URL" && "$PKG_TYPE" != "venv" ]]; then
+    PKG_URL="${JSON_URL//$JSON_VERSION/$PKG_VERSION}"
+  fi
+
   # Python environments
   if [[ "$PKG_TYPE" == "venv" ]]; then
     if ! command -v python3 &> /dev/null; then
@@ -47,11 +66,9 @@ pkg_install() {
     
     python3 -m venv "$PKG_PREFIX"
     "$PKG_PREFIX/bin/pip" install --upgrade pip
-    "$PKG_PREFIX/bin/pip" install "${PKG_NAME}==${PKG_VERSION}"
-   # "$PKG_PREFIX/bin/python3" -m pip install --upgrade pip
-   # "$PKG_PREFIX/bin/python3" -m pip install "${PKG_NAME}==${PKG_VERSION}"
+    "$PKG_PREFIX/bin/pip" install "${PKG_NAME}==${PKG_VERSION}" || return 1
 
-    module_templater "$PKG_NAME"
+    module_templater "$PKG_NAME" "" "$PKG_VERSION" || return 1
     return 0
   fi
 
@@ -79,31 +96,33 @@ pkg_install() {
     PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$PKG_VERSION"
     mkdir -p $PKG_PREFIX
 
+    PKG_TMP="$PKG_PREFIX/_tmp_$$"
+    mkdir -p "$PKG_TMP"
     if [[ "$ARCHIVE_NAME" == *.zip ]]; then
-      PKG_TMP="$PKG_PREFIX/_tmp_$$"
-      mkdir -p "$PKG_TMP"
       unzip -q "$PKG_ARCHIVE" -d "$PKG_TMP"
-      
-      # Find the internal directory
-      INTERNAL_DIR=$(find "$PKG_TMP" -mindepth 1 -maxdepth 1 -type d | head -n 1)
-      
-      if [[ -n "$INTERNAL_DIR" ]]; then
-        # Enable dotglob so hidden files (dotfiles) are moved too
-        shopt -s dotglob
-        mv "$INTERNAL_DIR"/* "$PKG_PREFIX/"
-        shopt -u dotglob
-      fi
-      
-      rm -rf "$PKG_TMP"
-      
-      module_templater "$PKG_NAME"
-      return 0
     else
-      # Unpack other archives: tar.gz, tar.bz2, tar.xz
-      tar -xf "$PKG_ARCHIVE" -C "$PKG_PREFIX" --strip-components=1
-      module_templater "$PKG_NAME"
-      return 0
+      # tar.gz, tar.bz2, tar.xz
+      tar -xf "$PKG_ARCHIVE" -C "$PKG_TMP"
     fi
+
+    # Archives with one top folder: move its content up.
+    # Archives with loose files (e.g. a single binary): move them as they are.
+    # dotglob/nullglob: include hidden files, empty glob gives an empty list
+    local OLD_SHOPT
+    OLD_SHOPT=$(shopt -p dotglob nullglob || true)  # status 1 if an option is off
+    shopt -s dotglob nullglob
+    local TOP_ENTRIES=("$PKG_TMP"/*)
+    local CONTENT_DIR="$PKG_TMP"
+    if [[ ${#TOP_ENTRIES[@]} -eq 1 && -d "${TOP_ENTRIES[0]}" ]]; then
+      CONTENT_DIR="${TOP_ENTRIES[0]}"
+    fi
+    local CONTENT=("$CONTENT_DIR"/*)
+    [[ ${#CONTENT[@]} -gt 0 ]] && mv "${CONTENT[@]}" "$PKG_PREFIX/"
+    eval "$OLD_SHOPT"
+    rm -rf "$PKG_TMP"
+
+    module_templater "$PKG_NAME" "" "$PKG_VERSION" || return 1
+    return 0
   fi
   
   # Continue compilations
@@ -141,5 +160,5 @@ pkg_install() {
     # Finalize
     cd "$REPO_DIR"
     rm -rf "$PKG_BUILD_DIR"
-    module_templater "$PKG_NAME"
+    module_templater "$PKG_NAME" "" "$PKG_VERSION"
 }

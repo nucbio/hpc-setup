@@ -6,5 +6,4 @@ module load python/$PYTHON_VERSION
 
 pkg_install \
   -n "deeptools" \
-  -v "3.5.6" \
   -t "venv"

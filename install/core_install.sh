@@ -4,9 +4,6 @@
 module use $INSTALL_DIR/modulefiles
 
 
-source $REPO_DIR/core/jq.sh
-module load jq
-
 # 1. zlib
 source $REPO_DIR/core/zlib.sh
 # 2. pkgconfig

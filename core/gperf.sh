@@ -2,9 +2,8 @@
 
 echo "Install gperf"
 
-export GPERF_VERSION="3.3"
+GPERF_VERSION=$(pkg_version "gperf")
+export GPERF_VERSION
 
 pkg_install \
-    -n "gperf" \
-    -v "$GPERF_VERSION" \
-    -u "http://ftp.gnu.org/pub/gnu/gperf/gperf-$GPERF_VERSION.tar.gz"
+    -n "gperf"

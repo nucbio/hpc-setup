@@ -2,11 +2,10 @@
 
 echo "Install pkgconf"
 
-export PKGCONF_VERSION="2.5.1"
+PKGCONF_VERSION=$(pkg_version "pkgconf")
+export PKGCONF_VERSION
 
-pkg_install -n "pkgconf" \
-            -v "$PKGCONF_VERSION" \
-            -u "https://distfiles.dereferenced.org/pkgconf/pkgconf-$PKGCONF_VERSION.tar.xz"
+pkg_install -n "pkgconf"
 
 # Pkg-config link
 PKG_BIN=$INSTALL_DIR/pkgconf/pkgconf-$PKGCONF_VERSION/bin

@@ -36,7 +36,7 @@ $LUAROCKS install luaposix      "$LUAPOSIX_VERSION"
 $LUAROCKS install luafilesystem "$LUAFILESYSTEM_VERSION"
 
 # Check the Lua modules Lmod needs (with the rock paths, as Lmod's configure uses them)
-if ! ( eval "$($LUAROCKS path)"; "$LUA_DIR/bin/lua" -e 'assert(require("posix").stat, "posix.stat missing"); require("lfs")' ); then
+if ! ( eval "$($LUAROCKS path)"; "$LUA_DIR/bin/lua" -e 'assert(require("posix").stat("/"), "posix.stat failed"); require("lfs")' ); then
     echo "ERROR: Lua modules for Lmod (luaposix with posix.stat, luafilesystem) are not usable."
     return 1
 fi

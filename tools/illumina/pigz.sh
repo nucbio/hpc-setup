@@ -3,9 +3,8 @@
 echo "Installing Pigz"
 
 PKG_NAME="pigz"
-PKG_VERSION="2.8"
-
-PKG_URL="https://zlib.net/pigz/pigz-$PKG_VERSION.tar.gz"
+PKG_VERSION=$(pkg_version "$PKG_NAME")
+PKG_URL=$(pkg_url "$PKG_NAME")
 PKG_ARCHIVE="$SOURCES_DIR/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$PKG_VERSION"
 mkdir -p $PKG_PREFIX

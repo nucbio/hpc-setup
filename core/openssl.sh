@@ -4,11 +4,10 @@ echo "Install openssl"
 
 module load pandoc/$PANDOC_VERSION
 
-export OPENSSL_VERSION="3.6.1"
-PKG_VERSION=$OPENSSL_VERSION
 PKG_NAME="openssl"
-OPENSSL_ARCHIVE="openssl-${OPENSSL_VERSION}.tar.gz"
-PKG_URL="https://github.com/openssl/openssl/releases/download/openssl-$OPENSSL_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_VERSION=$(pkg_version "$PKG_NAME")
+PKG_URL=$(pkg_url "$PKG_NAME")
+export OPENSSL_VERSION="$PKG_VERSION"
 PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
 # Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR

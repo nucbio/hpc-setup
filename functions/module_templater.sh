@@ -1,19 +1,22 @@
 #!/bin/bash
 
 # Generate Lmod module files from pkgs.json
-# Usage: module_templater "package_name" [optional_tool_path]
+# Usage: module_templater "package_name" [tool_path] [version]
+#   tool_path: module root (default $INSTALL_DIR/NAME/NAME-VERSION); "" for default
+#   version:   version actually built, if it overrides pkgs.json (default: json)
 
 module_templater() {
   local PKG_NAME="$1"
   local TOOL_PATH_OVERRIDE="$2"
+  local VERSION_OVERRIDE="$3"
   local PKGS_JSON="$REPO_DIR/pkgs.json"
 
   import_json "$PKG_NAME" || return 1
+  [[ -n "$VERSION_OVERRIDE" ]] && PKG_VERSION="$VERSION_OVERRIDE"
 
   # Determine output path
   local MODULE_DIR="$INSTALL_DIR/modulefiles/$PKG_NAME"
   local OUTPUT_FILE="$MODULE_DIR/$PKG_VERSION.lua"
-  mkdir -p "$MODULE_DIR"
 
   # Determine TOOL_PATH
   local TOOL_PATH
@@ -25,10 +28,19 @@ module_templater() {
 
   # Handle meta-modules
   if [[ "$INST_TYPE" == "meta" ]]; then
+    mkdir -p "$MODULE_DIR"
     _mt_generate_meta > "$OUTPUT_FILE"
     echo "Module for $PKG_NAME (meta) created."
     return 0
   fi
+
+  # Never write a module whose root does not exist (Lmod would load it silently)
+  if [[ ! -d "$TOOL_PATH" ]]; then
+    echo "ERROR: module $PKG_NAME/$PKG_VERSION not created: $TOOL_PATH does not exist." >&2
+    echo "       Was $PKG_NAME installed with the version from pkgs.json?" >&2
+    return 1
+  fi
+  mkdir -p "$MODULE_DIR"
 
   # Detect lib/lib64 and pkgconfig paths
   local lib_dir="lib"

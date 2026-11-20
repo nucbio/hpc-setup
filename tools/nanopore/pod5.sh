@@ -6,7 +6,6 @@ module load python/$PYTHON_VERSION
 
 pkg_install \
   -n "pod5" \
-  -v "0.3.35" \
   -t "venv"
 
 # PKG_NAME="pod5"

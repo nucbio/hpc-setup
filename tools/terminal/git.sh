@@ -11,11 +11,10 @@ module load openssl
 module load gettext
 module load libexpat
 
-export GIT_VERSION="2.53.0"
-
 PKG_NAME="git"
-PKG_VERSION="$GIT_VERSION"
-PKG_URL="https://mirrors.edge.kernel.org/pub/software/scm/git/git-$GIT_VERSION.tar.xz"
+PKG_VERSION=$(pkg_version "$PKG_NAME")
+PKG_URL=$(pkg_url "$PKG_NAME")
+export GIT_VERSION="$PKG_VERSION"
 
 # Derive Archive Name
 ARCHIVE_NAME="${PKG_URL##*/}"

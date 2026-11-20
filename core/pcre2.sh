@@ -2,7 +2,8 @@
 
 echo "Install pcre2"
 
-export PCRE2_VERSION="10.47"
+PCRE2_VERSION=$(pkg_version "pcre2")
+export PCRE2_VERSION
 
 # Options
 CMAKE_OPTS=(
@@ -18,7 +19,5 @@ CMAKE_OPTS=(
 # Standard cmake install
 pkg_install \
     -n "pcre2" \
-    -v "$PCRE2_VERSION" \
-    -u "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE2_VERSION/pcre2-$PCRE2_VERSION.tar.gz" \
     -t "cmake" \
     -o "${CMAKE_OPTS[*]}"

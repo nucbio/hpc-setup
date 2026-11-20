@@ -2,11 +2,10 @@
 
 echo "Install ncurses"
 
-export NCURSES_VERSION="6.6"
-
-PKG_VERSION=$NCURSES_VERSION
 PKG_NAME="ncurses"
-PKG_URL="https://ftp.gnu.org/pub/gnu/ncurses/ncurses-${NCURSES_VERSION}.tar.gz"
+PKG_VERSION=$(pkg_version "$PKG_NAME")
+PKG_URL=$(pkg_url "$PKG_NAME")
+export NCURSES_VERSION="$PKG_VERSION"
 PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
 # Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR

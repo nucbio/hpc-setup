@@ -3,9 +3,9 @@
 echo "Install nvim"
 
 # Variables
-NVIM_VERSION="0.10.4"
 TOOL_NAME="nvim"
-SOURCE_URL="https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux-x86_64.tar.gz"
+NVIM_VERSION=$(pkg_version "$TOOL_NAME")
+SOURCE_URL=$(pkg_url "$TOOL_NAME")
 SOURCE_ARCHIVE="$INSTALL_DIR/sources"
 TARGET_DIR="$INSTALL_DIR/$TOOL_NAME/$TOOL_NAME-$NVIM_VERSION"
 

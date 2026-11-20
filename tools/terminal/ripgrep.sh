@@ -6,10 +6,10 @@ module purge
 module load rust
 
 ## ripgrep - modern grep
-export RIPGREP_VERSION="15.1.0"
+RIPGREP_VERSION=$(pkg_version "ripgrep")
 # Install ripgrep
 cargo install \
-  --git https://github.com/BurntSushi/ripgrep.git ripgrep\
+  --git "$(pkg_url ripgrep)" ripgrep\
   --tag "$RIPGREP_VERSION" \
   --locked
 

@@ -2,8 +2,7 @@
 
 echo "Install libpng"
 
-export LIBPNG_VERSION="1.6.50"
+LIBPNG_VERSION=$(pkg_version "libpng")
+export LIBPNG_VERSION
 
-pkg_install -n "libpng" \
-            -v "$LIBPNG_VERSION" \
-            -u "https://downloads.sourceforge.net/libpng/libpng-$LIBPNG_VERSION.tar.gz"
+pkg_install -n "libpng"

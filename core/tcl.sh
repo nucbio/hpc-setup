@@ -2,11 +2,10 @@
 
 echo "Install tcl"
 
-export TCL_VERSION="8.6.13"
 PKG_NAME="tcl"
-PKG_VERSION=$TCL_VERSION
-
-PKG_URL="https://prdownloads.sourceforge.net/tcl/tcl${TCL_VERSION}-src.tar.gz"
+PKG_VERSION=$(pkg_version "$PKG_NAME")
+PKG_URL=$(pkg_url "$PKG_NAME")
+export TCL_VERSION="$PKG_VERSION"
 PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
 # Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR

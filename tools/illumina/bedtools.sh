@@ -3,9 +3,8 @@
 echo "Installing Bedtools"
 
 PKG_NAME="bedtools"
-PKG_VERSION="2.31.1"
-
-PKG_URL="https://github.com/arq5x/bedtools2/releases/download/v$PKG_VERSION/bedtools-$PKG_VERSION.tar.gz"
+PKG_VERSION=$(pkg_version "$PKG_NAME")
+PKG_URL=$(pkg_url "$PKG_NAME")
 PKG_ARCHIVE="$SOURCES_DIR/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$PKG_VERSION"
 mkdir -p $PKG_PREFIX

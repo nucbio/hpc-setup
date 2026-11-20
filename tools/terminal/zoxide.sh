@@ -6,10 +6,10 @@ module purge
 module load rust
 
 ## zoxide - modern cd
-export ZOXIDE_VERSION="0.9.7"
+ZOXIDE_VERSION=$(pkg_version "zoxide")
 # Install ripgrep
 cargo install \
-  --git https://github.com/ajeetdsouza/zoxide.git \
+  --git "$(pkg_url zoxide)" \
   --tag "v$ZOXIDE_VERSION" \
   --locked
 

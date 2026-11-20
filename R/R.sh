@@ -2,7 +2,10 @@
 
 echo "Install R"
 
-export R_VERSION="${R_VERSION:-4.5.3}"
+# Version from pkgs.json; R_VERSION in the environment overrides it
+# (the module then gets the version actually built).
+R_JSON_VERSION=$(pkg_version "R")
+export R_VERSION="${R_VERSION:-$R_JSON_VERSION}"
 
 # Load dependencies
 module use $INSTALL_DIR/modulefiles
@@ -40,7 +43,6 @@ fi
 # Standard config installation
 pkg_install -n "R" \
             -v "$R_VERSION" \
-            -u "https://cran.r-project.org/src/base/R-4/R-${R_VERSION}.tar.gz" \
             -o "--enable-memory-profiling \
 --enable-R-shlib \
 --with-blas \

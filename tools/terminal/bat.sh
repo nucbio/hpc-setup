@@ -5,10 +5,10 @@ echo "Install bat"
 module purge
 module load rust
 
-BAT_VERSION="0.26.1"
+BAT_VERSION=$(pkg_version "bat")
 # Install ripgrep
 cargo install \
-  --git https://github.com/sharkdp/bat.git \
+  --git "$(pkg_url bat)" \
   --tag "v$BAT_VERSION" \
   --locked
 

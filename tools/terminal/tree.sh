@@ -5,10 +5,10 @@ echo "Install tree"
 module purge
 module load rust
 
-export TREE_VERSION="1.3.0"
+TREE_VERSION=$(pkg_version "tree")
 
 cargo install \
-  --git https://github.com/peteretelej/tree.git \
+  --git "$(pkg_url tree)" \
   --tag "v$TREE_VERSION" \
   --locked
 

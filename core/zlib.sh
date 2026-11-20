@@ -2,9 +2,8 @@
 
 echo "Install zlib"
 
-export ZLIB_VERSION="1.3.2"
+ZLIB_VERSION=$(pkg_version "zlib")
+export ZLIB_VERSION
 
-pkg_install -n "zlib" \
-            -v "$ZLIB_VERSION" \
-            -u "https://zlib.net/zlib-$ZLIB_VERSION.tar.xz"
+pkg_install -n "zlib"
 

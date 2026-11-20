@@ -2,11 +2,10 @@
 
 echo "Install htslib"
 
-export HTSLIB_VERSION="1.23"
+HTSLIB_VERSION=$(pkg_version "htslib")
+export HTSLIB_VERSION
 
 pkg_install \
     -n "htslib" \
-    -v "$HTSLIB_VERSION" \
-    -u "https://github.com/samtools/htslib/releases/download/${HTSLIB_VERSION}/htslib-${HTSLIB_VERSION}.tar.bz2" \
     -o "--enable-libcurl --enable-plugins"
 

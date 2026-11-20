@@ -11,12 +11,11 @@
 echo "Install ont-guppy"
 
 # GPU build (bundles its own CUDA libraries); also runs on CPU without --device.
-export GUPPY_VERSION="6.5.7"
+GUPPY_VERSION=$(pkg_version "ont-guppy")
+export GUPPY_VERSION
 
 pkg_install \
   -n "ont-guppy" \
-  -v "$GUPPY_VERSION" \
-  -u "https://cdn.oxfordnanoportal.com/software/analysis/ont-guppy_${GUPPY_VERSION}_linux64.tar.gz" \
   -t "unpack"
 
 ### nanopolish ###
@@ -26,12 +25,12 @@ echo "Install nanopolish"
 module load zlib
 
 PKG_NAME="nanopolish"
-PKG_VERSION="0.13.2"
+PKG_VERSION=$(pkg_version "$PKG_NAME")
 export NANOPOLISH_VERSION="$PKG_VERSION"
 
 # GitHub has no release tarball with submodules: download the tag and the
 # submodule commits pinned by v0.13.2 separately (no git needed).
-PKG_URL="https://github.com/jts/nanopolish/archive/refs/tags/v${PKG_VERSION}.tar.gz"
+PKG_URL=$(pkg_url "$PKG_NAME")
 PKG_ARCHIVE="$SOURCES_DIR/$PKG_NAME-$PKG_VERSION.tar.gz"
 
 SUBMODULES=(

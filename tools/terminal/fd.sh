@@ -6,10 +6,10 @@ module purge
 module load rust
 
 ## fdfind - modern cd
-export FD_VERSION="10.3.0"
+FD_VERSION=$(pkg_version "fd")
 # Install fdfind
 cargo install \
-  --git https://github.com/sharkdp/fd.git \
+  --git "$(pkg_url fd)" \
   --tag "v$FD_VERSION" \
   --locked
 

@@ -2,8 +2,7 @@
 
 echo "Install fribidi"
 
-export FRIBIDI_VERSION="1.0.16"
+FRIBIDI_VERSION=$(pkg_version "fribidi")
+export FRIBIDI_VERSION
 
-pkg_install -n "fribidi" \
-            -v "$FRIBIDI_VERSION" \
-            -u "https://github.com/fribidi/fribidi/releases/download/v1.0.16/fribidi-1.0.16.tar.xz"
+pkg_install -n "fribidi"
