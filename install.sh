@@ -48,7 +48,10 @@ source $REPO_DIR/install/core_install_py.sh
 source $REPO_DIR/R/R.sh
 
 module load R
-Rscript $REPO_DIR/R/R_libraries.R 
+# System .pc dirs for this step only (arrow needs .pc files of system libs, see
+# core/pkgconf.sh). Not exported: later pip/meson builds must not see them.
+PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}$PKGCONF_SYS_PC" \
+  Rscript $REPO_DIR/R/R_libraries.R
 
 # Install htslib
 source $REPO_DIR/tools/core/htslib.sh

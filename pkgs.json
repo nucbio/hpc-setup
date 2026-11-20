@@ -1142,7 +1142,7 @@
     "pkg_url": "https://distfiles.dereferenced.org/pkgconf/pkgconf-3.0.11.tar.xz",
     "inst_type": "conf",
     "inst_opt": [
-      "--with-pkg-config-dir=<prefix>/lib/pkgconfig:<prefix>/share/pkgconfig:/usr/lib64/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig",
+      "--with-pkg-config-dir=<prefix>/lib/pkgconfig:<prefix>/share/pkgconfig",
       "--with-system-libdir=/usr/lib64:/usr/lib/x86_64-linux-gnu:/usr/lib:/lib64:/lib",
       "--with-system-includedir=/usr/include"
     ],
