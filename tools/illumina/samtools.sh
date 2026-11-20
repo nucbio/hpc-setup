@@ -3,6 +3,7 @@
 PKG_NAME="samtools"
 PKG_VERSION="1.23"
 PKG_URL="https://github.com/samtools/samtools/releases/download/${PKG_VERSION}/samtools-${PKG_VERSION}.tar.bz2"
+PKG_ARCHIVE="$SOURCES_DIR/$PKG_NAME-$PKG_VERSION.tar.bz2"
 
 # Set PKG_SCR_DIR, PKG_PREFIX
 set_pkg_dirs  $PKG_NAME $PKG_VERSION

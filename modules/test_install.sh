@@ -26,8 +26,14 @@ for file in "$REPO_DIR/tools/illumina"/*.sh
 
 for file in "$REPO_DIR/tools/nanopore"/*.sh
   do
+    [[ "$(get_filename "$file")" == "legacy" ]] && continue
     check_pkg "$(get_filename "$file")" || true
   done
+
+echo "--- Verifying Legacy Nanopore Tools ---"
+module load ont-guppy nanopolish || true
+check_pkg "guppy_basecaller" || true
+check_pkg "nanopolish" || true
 
 echo "--- Verifying Terminal Utilities ---"
 for file in "$REPO_DIR/tools/terminal"/*.sh
