@@ -478,6 +478,37 @@
     "module_conflict": true,
     "enabled": true
   },
+  "libgit2": {
+    "pkg_version": "1.9.7",
+    "pkg_url": "https://github.com/libgit2/libgit2/archive/v1.9.7/libgit2-1.9.7.tar.gz",
+    "inst_type": "cmake",
+    "inst_opt": [
+      "-DBUILD_SHARED_LIBS=ON",
+      "-DBUILD_TESTS=OFF",
+      "-DBUILD_CLI=OFF",
+      "-DUSE_HTTPS=OpenSSL",
+      "-DUSE_SSH=OFF",
+      "-DREGEX_BACKEND=pcre2",
+      "-DUSE_BUNDLED_ZLIB=OFF",
+      "-DCMAKE_INSTALL_LIBDIR=lib"
+    ],
+    "pkgconf": "libgit2",
+    "dependencies": [
+      "openssl",
+      "zlib",
+      "pcre2"
+    ],
+    "module_help": "Portable C implementation of the Git core methods (needed by R gert/usethis/devtools)",
+    "module_description": "Git library",
+    "module_category": "core-library",
+    "module_url": "https://libgit2.org/",
+    "module_c_lib": true,
+    "module_env": {},
+    "module_path": {},
+    "module_path_extra": null,
+    "module_conflict": false,
+    "enabled": true
+  },
   "gum": {
     "pkg_version": "2.0.2",
     "pkg_url": "https://github.com/charmbracelet/gum/releases/download/v2.0.2/gum_2.0.2_Linux_x86_64.tar.gz",
@@ -1229,7 +1260,8 @@
       "libjpeg",
       "libwebp",
       "libvips",
-      "java"
+      "java",
+      "libgit2"
     ],
     "module_help": "Statistical Computing Environment",
     "module_description": "Statistical computing and graphics",
@@ -1518,6 +1550,7 @@
       "sqlite3",
       "libexpat",
       "gperf",
+      "libgit2",
       "glib",
       "freetype2",
       "fontconfig",
@@ -1584,6 +1617,7 @@
       "sqlite3",
       "libexpat",
       "gperf",
+      "libgit2",
       "glib",
       "freetype2",
       "fontconfig",

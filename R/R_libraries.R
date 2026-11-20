@@ -3,7 +3,10 @@ TMP_DIR <- "/tmp/r-pkg-build"
 dir.create(TMP_DIR, showWarnings = FALSE, recursive = TRUE)
 Sys.setenv(TMPDIR = TMP_DIR)
 
-repos = list(CRAN="http://cran.rstudio.com/")
+# R downloads all dependencies in parallel; the default 60 s timeout makes
+# some of them fail silently ("download of package 'X' failed")
+options(timeout = 600)
+repos = list(CRAN="https://cloud.r-project.org/")
 cores <- min(6, parallel::detectCores(), na.rm = TRUE)
 
 install.packages("XML", type = "source", 

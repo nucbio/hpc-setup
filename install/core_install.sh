@@ -45,3 +45,6 @@ source $REPO_DIR/core/sqlite3.sh
 source $REPO_DIR/core/libexpat.sh
 # 19. gperf
 source $REPO_DIR/core/gperf.sh
+# 20. libgit2 (for R gert -> usethis -> devtools)
+module load openssl zlib pcre2
+source $REPO_DIR/core/libgit2.sh

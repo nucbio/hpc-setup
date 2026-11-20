@@ -30,6 +30,7 @@ module load pkgconf
 module load zlib
 module load magick
 module load fontconfig
+module load libgit2
 
 # Check if X11 libraries are available for R installation
 if pkg-config --exists x11 xt xext xmu 2>/dev/null; then
