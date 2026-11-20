@@ -64,10 +64,10 @@ To avoid installation interruptions on local machines, use `systemd-inhibit
 1. **Core packages**: bzip2, cairo, fontconfig, freetype, fribidi, gettext, 
 glib, gperf, gum, harfbuzz, imagemagick, libcurl, libexpat, libff, libjpeg, 
 libpng, libtiff, libvips, libwebp, ncurses, openssl, pandoc, pcre2, pkgconf, 
-readline, sqlite, tcl, xz, zlib.  
+readline, sqlite, tcl, xz, zlib, hdf5.  
 2. **Development**: R, Python, Rust, Java, Lua.  
 3. **Bioinformatic tools**:  htslib, samtools, bowtie2, cutadapt, fastqc, gatk, 
-pigz. dorado hdf5 duckdb modkit pod5.  
+pigz, dorado, duckdb, modkit, pod5.  
 Legacy Nanopore tools for old R9.4.1/fast5 data: ont-guppy 6.5.7, nanopolish 0.13.2 
 (not in the meta-modules; load with `module load ont-guppy` / `module load nanopolish`). 
 4. **Terminal (CLI) tools**: nvim, git, bat, eza, fdfind, ripgrep, tree, zoxide.  
