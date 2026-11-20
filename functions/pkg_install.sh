@@ -149,8 +149,11 @@ pkg_install() {
       cmake --install "$PKG_BUILD_DIR"
     ;;
     meson)
+      # --libdir=lib: not lib/x86_64-linux-gnu (Debian multiarch default),
+      # which module_templater does not detect
       meson setup "$PKG_BUILD_DIR" "$PKG_SRC_DIR" \
         --prefix="$PKG_PREFIX" \
+        --libdir=lib \
         $EXTRA_OPTS
         meson compile -C "$PKG_BUILD_DIR" -j $(nproc)
         meson install -C "$PKG_BUILD_DIR"

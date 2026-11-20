@@ -115,9 +115,7 @@
     "module_env": {
       "CAIRO_ROOT": "",
       "CAIRO_DIR": "",
-      "CAIRO_HOME": "",
-      "CAIRO_CFLAGS": "include",
-      "CAIRO_LIBS": "{LIB}"
+      "CAIRO_HOME": ""
     },
     "module_path": {},
     "module_path_extra": "bin",
@@ -1143,7 +1141,11 @@
     "pkg_version": "3.0.11",
     "pkg_url": "https://distfiles.dereferenced.org/pkgconf/pkgconf-3.0.11.tar.xz",
     "inst_type": "conf",
-    "inst_opt": [],
+    "inst_opt": [
+      "--with-pkg-config-dir=<prefix>/lib/pkgconfig:<prefix>/share/pkgconfig:/usr/lib64/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig",
+      "--with-system-libdir=/usr/lib64:/usr/lib/x86_64-linux-gnu:/usr/lib:/lib64:/lib",
+      "--with-system-includedir=/usr/include"
+    ],
     "pkgconf": "",
     "dependencies": [],
     "module_help": "pkg-config is a helper tool for compiling applications and libraries",
