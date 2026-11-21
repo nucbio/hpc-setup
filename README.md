@@ -81,7 +81,7 @@ is reused. Downloaded archives in `sources` are kept.
 1. **Core packages**: bzip2, cairo, fontconfig, freetype, fribidi, gettext, 
 glib, gperf, gum, harfbuzz, imagemagick, libcurl, libexpat, libff, libjpeg, 
 libpng, libtiff, libvips, libwebp, ncurses, openssl, pandoc, pcre2, pkgconf, 
-readline, sqlite, tcl, xz, zlib, hdf5.  
+readline, sqlite, tcl, xz, zlib.  
 2. **Development**: R, Python, Rust, Java, Lua.  
 3. **Bioinformatic tools**:  htslib, samtools, bowtie2, cutadapt, fastqc, gatk, 
 pigz, dorado, duckdb, modkit, pod5.  

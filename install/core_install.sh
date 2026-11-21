@@ -48,6 +48,3 @@ source $REPO_DIR/core/gperf.sh
 # 20. libgit2 (for R gert -> usethis -> devtools)
 module load openssl zlib pcre2
 source $REPO_DIR/core/libgit2.sh
-# 21. hdf5 (for h5py: MACS3 -> anndata, pod5 -> vbz_h5py_plugin)
-module load zlib
-source $REPO_DIR/core/hdf5.sh

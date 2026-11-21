@@ -507,39 +507,6 @@
     "module_conflict": false,
     "enabled": true
   },
-  "hdf5": {
-    "pkg_version": "2.2.0",
-    "pkg_url": "https://github.com/HDFGroup/hdf5/archive/2.2.0/hdf5-2.2.0.tar.gz",
-    "inst_type": "cmake",
-    "inst_opt": [
-      "-DCMAKE_BUILD_TYPE=Release",
-      "-DBUILD_SHARED_LIBS=ON",
-      "-DBUILD_TESTING=OFF",
-      "-DHDF5_BUILD_EXAMPLES=OFF",
-      "-DHDF5_BUILD_CPP_LIB=OFF",
-      "-DHDF5_BUILD_FORTRAN=OFF",
-      "-DHDF5_BUILD_JAVA=OFF",
-      "-DHDF5_ENABLE_ZLIB_SUPPORT=ON",
-      "-DHDF5_ENABLE_SZIP_SUPPORT=OFF",
-      "-DCMAKE_INSTALL_LIBDIR=lib"
-    ],
-    "pkgconf": "hdf5",
-    "dependencies": [
-      "zlib"
-    ],
-    "module_help": "HDF5 data model, library and file format (needed to build h5py for MACS3 and pod5)",
-    "module_description": "Hierarchical Data Format library",
-    "module_category": "core-library",
-    "module_url": "https://www.hdfgroup.org/solutions/hdf5/",
-    "module_c_lib": true,
-    "module_env": {
-      "HDF5_DIR": ""
-    },
-    "module_path": {},
-    "module_path_extra": "bin",
-    "module_conflict": false,
-    "enabled": true
-  },
   "gum": {
     "pkg_version": "2.0.2",
     "pkg_url": "https://github.com/charmbracelet/gum/releases/download/v2.0.2/gum_2.0.2_Linux_x86_64.tar.gz",
@@ -927,8 +894,7 @@
     "inst_opt": [],
     "pkgconf": "",
     "dependencies": [
-      "python",
-      "hdf5"
+      "python"
     ],
     "module_help": "Model-based Analysis of ChIP-Seq",
     "module_description": "ChIP-Seq peak caller",
@@ -1207,8 +1173,7 @@
     "inst_opt": [],
     "pkgconf": "",
     "dependencies": [
-      "python",
-      "hdf5"
+      "python"
     ],
     "module_help": "Tools for writing and reading Oxford Nanopore POD5 files",
     "module_description": "Nanopore POD5 file tools",
@@ -1222,8 +1187,8 @@
     "enabled": true
   },
   "python": {
-    "pkg_version": "3.15.2",
-    "pkg_url": "https://www.python.org/ftp/python/3.15.2/Python-3.15.2.tar.xz",
+    "pkg_version": "3.14.10",
+    "pkg_url": "https://www.python.org/ftp/python/3.14.10/Python-3.14.10.tar.xz",
     "inst_type": "conf",
     "inst_opt": [
       "--enable-optimizations",
@@ -1588,7 +1553,6 @@
       "libexpat",
       "gperf",
       "libgit2",
-      "hdf5",
       "glib",
       "freetype2",
       "fontconfig",
@@ -1656,7 +1620,6 @@
       "libexpat",
       "gperf",
       "libgit2",
-      "hdf5",
       "glib",
       "freetype2",
       "fontconfig",
