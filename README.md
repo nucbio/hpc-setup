@@ -60,6 +60,23 @@ wget -qO- https://github.com/nucbio/hpc-setup/raw/main/boot.sh | bash
 To avoid installation interruptions on local machines, use `systemd-inhibit 
 --what=sleep:idle bash` before starting the installation command.
 
+### Resume / rebuild
+Every installed package gets a stamp in `.stamps/NAME-VERSION.done`. If an 
+installation fails, fix the cause and start the same command again in the same 
+directory: finished packages are skipped (`[SKIP]`), the failed package is 
+cleaned up and built again, and the build directory chosen on the first run 
+is reused. Downloaded archives in `sources` are kept.
+
+- Rebuild packages: `wget -qO- https://github.com/nucbio/hpc-setup/raw/main/boot.sh | FORCE_REBUILD="openssl zlib" bash` 
+  (`FORCE_REBUILD=all` rebuilds everything; `lmod` and `luarocks` are also accepted). 
+  `FORCE_REBUILD` is not remembered: leave it out on the next rerun.
+- Or delete the stamp: `rm .stamps/openssl-*.done`.
+- A new version in `pkgs.json` is installed next to the old one on the next run.
+- `[STALE]` means the install script changed since the package was built; it is 
+  not rebuilt unless you ask for it with `FORCE_REBUILD`.
+- Python packages and R libraries have no stamp: they are checked on every run 
+  and only missing packages are installed. The final test always runs.
+
 ## Installation Sequence
 1. **Core packages**: bzip2, cairo, fontconfig, freetype, fribidi, gettext, 
 glib, gperf, gum, harfbuzz, imagemagick, libcurl, libexpat, libff, libjpeg, 

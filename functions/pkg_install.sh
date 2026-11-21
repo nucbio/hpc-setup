@@ -55,6 +55,12 @@ pkg_install() {
     PKG_URL="${JSON_URL//$JSON_VERSION/$PKG_VERSION}"
   fi
 
+  # Already installed by a previous run (see functions/stamp.sh)?
+  # Otherwise remove leftovers of a failed attempt.
+  if skip_if_installed "$PKG_NAME" "$PKG_VERSION"; then
+    return 0
+  fi
+
   # Python environments
   if [[ "$PKG_TYPE" == "venv" ]]; then
     if ! command -v python3 &> /dev/null; then
@@ -138,7 +144,9 @@ pkg_install() {
   case "$PKG_TYPE" in
     conf)
       "$PKG_SRC_DIR/configure" --prefix="$PKG_PREFIX" $EXTRA_OPTS
-      make -j $(nproc) && make install
+      # Separate lines: in an && list a failing make does not stop set -e
+      make -j $(nproc)
+      make install
     ;;
     cmake)
       cmake -S "$PKG_SRC_DIR" \

@@ -9,6 +9,11 @@ export BZIP2_VERSION="$PKG_VERSION"
 PKG_URL=$(pkg_url "$PKG_NAME")
 PKG_PREFIX="$INSTALL_DIR/$PKG_NAME/bzip2-$BZIP2_VERSION"
 
+# Already installed by a previous run? (see functions/stamp.sh)
+if skip_if_installed "$PKG_NAME" "$PKG_VERSION"; then
+  return 0
+fi
+
 # Prepare build
 PKG_BUILD_DIR="${BUILD_BASE}/${PKG_NAME}/${PKG_NAME}-${PKG_VERSION}/build-$$"
 rm -rf $PKG_BUILD_DIR

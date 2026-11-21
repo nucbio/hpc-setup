@@ -13,6 +13,11 @@ INSTALL_ROOT="$INSTALL_DIR/rust/rust-$RUST_VERSION"
 export RUSTUP_HOME="$INSTALL_ROOT/rustup"
 export CARGO_HOME="$INSTALL_ROOT/cargo"
 
+# Already installed by a previous run? (see functions/stamp.sh)
+if skip_if_installed "rust" "$RUST_VERSION"; then
+  return 0
+fi
+
 # Create directories
 mkdir -p "$RUSTUP_HOME" "$CARGO_HOME"
 

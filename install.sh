@@ -1,6 +1,8 @@
 #!/bin/bash
 
 set -e
+# Exit status of the { ... } | tee pipeline below is the install's, not tee's
+set -o pipefail
 
 {
 
@@ -34,6 +36,7 @@ source $REPO_DIR/install/core_install.sh
 
 # Install python
 source $REPO_DIR/python/python_install.sh
+# No stamp: pip skips packages that are already installed
 source $REPO_DIR/python/python_packages.sh
 
 # Java
@@ -47,6 +50,8 @@ source $REPO_DIR/install/core_install_py.sh
 # Install R
 source $REPO_DIR/R/R.sh
 
+# R libraries: no stamp, R_libraries.R installs only missing packages
+# and fails if a package could not be installed
 module load R
 # System .pc dirs for this step only (arrow needs .pc files of system libs, see
 # core/pkgconf.sh). Not exported: later pip/meson builds must not see them.
@@ -79,7 +84,7 @@ for install_tool in $REPO_DIR/tools/terminal/*.sh
 # HPC-setup release
 source $REPO_DIR/modules/release_module.sh
 
-# Run test
+# Run test (always: cheap verification)
 source $REPO_DIR/modules/test_install.sh
 
 echo "HPC-setup is done!"

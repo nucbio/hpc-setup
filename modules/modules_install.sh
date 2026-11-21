@@ -1,7 +1,20 @@
 #!/bin/bash
 
-# 9.5: first Lmod with the new luaposix interface (needed for Lua 5.5)
-LMOD_VERSION=9.5
+# LMOD_VERSION is set in modules/check_modules.sh
+LMOD_VERSION="${LMOD_VERSION:?}"
+LMOD_INIT="$INSTALL_DIR/lmod/$LMOD_VERSION/init/bash"
+
+# Lmod of a previous run: load it instead of building it again
+# (FORCE_REBUILD=lmod builds it again)
+if [[ -f "$LMOD_INIT" ]] && ! is_forced lmod; then
+    source "$LMOD_INIT"
+    if module --version; then
+        echo "[SKIP] lmod $LMOD_VERSION already installed"
+        return 0
+    fi
+    echo "Lmod $LMOD_VERSION of a previous run does not work: building it again."
+fi
+
 LMOD_ARCHIVE="lmod-${LMOD_VERSION}.tar.gz"
 SOURCE_DIR="$INSTALL_DIR/sources"
 # Per-run build dir (a fixed /tmp/lmod-build clashes with leftovers from other users)
@@ -44,7 +57,7 @@ make install
 cd "$REPO_DIR"
 rm -rf "$BUILD_DIR"
 
-source "$INSTALL_DIR/lmod/$LMOD_VERSION/init/bash"
+source "$LMOD_INIT"
 
 # Check that the module command works
 if ! module --version; then

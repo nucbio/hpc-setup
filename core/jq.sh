@@ -19,12 +19,18 @@ fi
 export JQ_VERSION
 
 JQ_DIR=$INSTALL_DIR/$PKG_NAME/$PKG_NAME-$JQ_VERSION
+
+# Usable right away, before Lmod exists (also when the download is skipped)
+export PATH="$JQ_DIR:$PATH"
+
+# Already installed by a previous run? (see functions/stamp.sh)
+if skip_if_installed "$PKG_NAME" "$JQ_VERSION"; then
+  return 0
+fi
+
 mkdir -p "$JQ_DIR"
 wget -nv "$JQ_URL" -O "$JQ_DIR/jq"
 chmod +x "$JQ_DIR/jq"
-
-# Usable right away, before Lmod exists
-export PATH="$JQ_DIR:$PATH"
 
 # Modules lua file
 module_templater "$PKG_NAME"

@@ -31,11 +31,19 @@ check_dir() {
         echo "Error: No write permission for directory: $INSTALL_DIR"
         return 1 
     fi
-    # 5. Check if directory is not empty
-    if [ -d "$INSTALL_DIR" ] && [ "$(ls -A "$INSTALL_DIR" 2>/dev/null)" ]; then
+    # 5. Resume a previous run, or check if directory is not empty
+    if [ -d "$INSTALL_DIR/.stamps" ]; then
+        echo "Previous installation found: resuming (finished packages are skipped)."
+    elif [ -d "$INSTALL_DIR" ] && [ "$(ls -A "$INSTALL_DIR" 2>/dev/null)" ]; then
         echo "Warning: Directory is not empty: $INSTALL_DIR"
         echo "Existing files may be overwritten or cause conflicts."
-        read -p "Continue anyway? (y/N): " -n 1 -r
+        # stdin is this script when started as `wget -qO- .../boot.sh | bash`:
+        # read the answer from the terminal instead
+        if ! ( : < /dev/tty ) 2>/dev/null; then
+            echo "Error: no terminal to ask for confirmation. Use an empty directory."
+            return 1
+        fi
+        read -p "Continue anyway? (y/N): " -n 1 -r < /dev/tty
         echo
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             echo "Installation aborted by user."
@@ -44,7 +52,7 @@ check_dir() {
     fi
     echo "Environment check passed. Proceeding in: $INSTALL_DIR"
 }
-check_dir || return
+check_dir || exit 1
 
 # Check if wget is available to download tools
 check_tools() {
@@ -61,12 +69,14 @@ check_tools() {
 }
 
 echo "Check if wget and zip is available..."
-check_tools || return
+check_tools || exit 1
 
 echo "Downloading repository with wget..."
 REPO="https://github.com/nucbio/hpc-setup/archive/refs/heads/main.zip"
 export REPO_DIR="$INSTALL_DIR/hpc-setup-main"
 wget -nv "$REPO" -O "$INSTALL_DIR/hpc-setup-main.zip"
+# Replace the copy of a previous run (unzip would ask on stdin)
+rm -rf "$REPO_DIR"
 unzip -q "$INSTALL_DIR/hpc-setup-main.zip" -d "$INSTALL_DIR"
 rm "$INSTALL_DIR/hpc-setup-main.zip"
 

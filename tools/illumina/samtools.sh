@@ -5,6 +5,11 @@ PKG_VERSION=$(pkg_version "$PKG_NAME")
 PKG_URL=$(pkg_url "$PKG_NAME")
 PKG_ARCHIVE="$SOURCES_DIR/$PKG_NAME-$PKG_VERSION.tar.bz2"
 
+# Already installed by a previous run? (see functions/stamp.sh)
+if skip_if_installed "$PKG_NAME" "$PKG_VERSION"; then
+  return 0
+fi
+
 # Set PKG_SCR_DIR, PKG_PREFIX
 set_pkg_dirs  $PKG_NAME $PKG_VERSION
 

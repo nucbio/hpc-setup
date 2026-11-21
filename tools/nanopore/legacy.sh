@@ -50,6 +50,12 @@ VBZ_VERSION="1.0.1"
 VBZ_URL="https://files.pythonhosted.org/packages/d2/dd/eab7a9cac698afd8d4d469d703303390a88570ace01da358088459a6a48d/vbz_h5py_plugin-${VBZ_VERSION}-py3-none-any.whl"
 VBZ_ARCHIVE="$SOURCES_DIR/vbz_h5py_plugin-${VBZ_VERSION}-py3-none-any.whl"
 
+# Already installed by a previous run? (see functions/stamp.sh)
+# (nanopolish is the last part of this file)
+if skip_if_installed "$PKG_NAME" "$PKG_VERSION"; then
+  return 0
+fi
+
 # Set PKG_SRC_DIR, PKG_PREFIX
 set_pkg_dirs $PKG_NAME $PKG_VERSION
 

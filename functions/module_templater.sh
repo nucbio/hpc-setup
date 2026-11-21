@@ -81,6 +81,10 @@ module_templater() {
   } > "$OUTPUT_FILE"
 
   echo "Module for $PKG_NAME created."
+
+  # Stamp: the install finished (see functions/stamp.sh). Written here, after
+  # the module file, so every install gets it and a failed build never does.
+  mark_installed "$PKG_NAME" "$PKG_VERSION" "${DEPENDENCIES[@]}"
 }
 
 # --- Internal helper functions (all write to stdout) ---

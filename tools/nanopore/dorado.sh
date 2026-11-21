@@ -30,6 +30,11 @@ for MODEL in \
   dna_r10.4.1_e8.2_400bps_sup@v5.0.0_6mA@v3 \
   dna_r10.4.1_e8.2_400bps_sup@v5.0.0_5mCG_5hmCG@v3
 do
+  # Several GB each: download only models that are not there yet
+  if [[ -d "$DORADO_MODELS/$MODEL" ]]; then
+    echo "[SKIP] Dorado model $MODEL already downloaded"
+    continue
+  fi
   dorado download \
     --models-directory "$DORADO_MODELS" \
     --model "$MODEL"

@@ -16,6 +16,11 @@ PKG_VERSION=$(pkg_version "$PKG_NAME")
 PKG_URL=$(pkg_url "$PKG_NAME")
 export GIT_VERSION="$PKG_VERSION"
 
+# Already installed by a previous run? (see functions/stamp.sh)
+if skip_if_installed "$PKG_NAME" "$PKG_VERSION"; then
+  return 0
+fi
+
 # Derive Archive Name
 ARCHIVE_NAME="${PKG_URL##*/}"
 PKG_ARCHIVE="$SOURCES_DIR/$ARCHIVE_NAME"

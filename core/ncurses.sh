@@ -8,6 +8,11 @@ PKG_URL=$(pkg_url "$PKG_NAME")
 export NCURSES_VERSION="$PKG_VERSION"
 PKG_ARCHIVE="$SOURCES_DIR/${PKG_NAME}-${PKG_VERSION}.tar.gz"
 
+# Already installed by a previous run? (see functions/stamp.sh)
+if skip_if_installed "$PKG_NAME" "$PKG_VERSION"; then
+  return 0
+fi
+
 # Set PKG_SRC_DIR, PKG_PREFIX, PKG_BUILD_DIR
 set_pkg_dirs  $PKG_NAME $PKG_VERSION
 set_build_dir $PKG_NAME $PKG_VERSION
