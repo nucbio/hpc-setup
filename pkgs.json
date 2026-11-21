@@ -330,7 +330,7 @@
   "fribidi": {
     "pkg_version": "1.0.18",
     "pkg_url": "https://github.com/fribidi/fribidi/releases/download/v1.0.18/fribidi-1.0.18.tar.xz",
-    "inst_type": "conf",
+    "inst_type": "meson",
     "inst_opt": [],
     "pkgconf": "fribidi",
     "dependencies": [],
