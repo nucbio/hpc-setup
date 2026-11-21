@@ -58,14 +58,20 @@ if (length(bioc_missing) > 0)
   BiocManager::install(bioc_missing, ask = FALSE, update = FALSE, Ncpus = cores)
 
 ## Laboratory Packages
-# Install the packages from GitLab (skipped if the commit is already
-# installed; an error stops the script)
-devtools::install_gitlab("mglab/loci", upgrade = "never")
-devtools::install_gitlab("mglab/seqtools", upgrade = "never")
-devtools::install_gitlab("mglab/fiber", upgrade = "never")
+# Install the packages from GitLab with pak (devtools::install_gitlab() is
+# deprecated since devtools 2.5.0). pak skips a package whose commit is
+# already installed, does not upgrade dependencies (upgrade = FALSE) and
+# stops the script on an error.
+cran_install("pak")
+pak::pak(
+  c(
+    "gitlab::mglab/loci",
+    "gitlab::mglab/seqtools",
+    "gitlab::mglab/fiber"
+  ), upgrade = FALSE, ask = FALSE)
 
 ## Fail loudly if a package could not be installed
-missing_pkgs <- not_installed(c("XML", CRAN_PKGS, "BiocManager", BIOC_PKGS))
+missing_pkgs <- not_installed(c("XML", CRAN_PKGS, "BiocManager", BIOC_PKGS, "pak"))
 if (length(missing_pkgs) > 0) {
   message("ERROR: R packages not installed: ", paste(missing_pkgs, collapse = ", "))
   quit(status = 1)
