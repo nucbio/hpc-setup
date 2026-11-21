@@ -185,6 +185,12 @@ _mt_emit_c_lib_paths() {
 }
 
 _mt_emit_std_flags() {
+  # Only for C libraries: -L/-I of binary bundles (e.g. dorado's old libstdc++)
+  # would leak into every later build.
+  if [[ "$MODULE_C_LIB" != "true" ]]; then
+    return
+  fi
+
   echo ""
   echo "-- Compiler and linker flags"
   echo "prepend_path(\"LDFLAGS\",  \"-L\" .. pathJoin(root, \"$lib_dir\"), \" \")"

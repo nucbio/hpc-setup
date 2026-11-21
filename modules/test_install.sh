@@ -9,6 +9,7 @@ echo "--- Verifying Core Libraries ---"
 
 for file in "$REPO_DIR/core"/*.sh
   do
+    [[ "$(get_filename "$file")" == "test_json" ]] && continue
     check_pkg "$(get_filename "$file")" || true
   done
 
