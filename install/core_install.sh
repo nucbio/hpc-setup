@@ -1,6 +1,10 @@
 #!/bin/bash
 
 # Dependencies for Python and R
+
+# Start from a clean module environment: drop modules loaded in the calling
+# shell (e.g. a previous hpc-setup release or HPC defaults). Sticky modules stay.
+module purge
 module use $INSTALL_DIR/modulefiles
 
 

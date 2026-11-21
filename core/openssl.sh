@@ -2,8 +2,6 @@
 
 echo "Install openssl"
 
-module load pandoc/$PANDOC_VERSION
-
 PKG_NAME="openssl"
 PKG_VERSION=$(pkg_version "$PKG_NAME")
 PKG_URL=$(pkg_url "$PKG_NAME")
