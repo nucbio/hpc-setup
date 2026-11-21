@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Commit + push hpc-setup, render the docs site, then commit + push hpc-setup-docs.
+# Bump VERSION, commit + push hpc-setup, render the docs site, then commit + push hpc-setup-docs.
 #
 # Usage: deploy/git_upload.sh "commit message"
 #
@@ -24,6 +24,14 @@ commit_push() {
     fi
     git -C "$dir" push
 }
+
+# Bump the last number in VERSION (1.0.0 -> 1.0.1) on every run.
+VERSION_FILE="$REPO/VERSION"
+OLD="$(tr -d '[:space:]' < "$VERSION_FILE")"
+[[ "$OLD" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]] || { echo "bad VERSION: '$OLD' (expected X.Y.Z)" >&2; exit 1; }
+NEW="${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.$((BASH_REMATCH[3] + 1))"
+echo "$NEW" > "$VERSION_FILE"
+echo "== version $OLD -> $NEW"
 
 echo "== hpc-setup"
 commit_push "$REPO"
