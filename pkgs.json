@@ -1047,8 +1047,8 @@
     "enabled": true
   },
   "openssl": {
-    "pkg_version": "4.1.0",
-    "pkg_url": "https://github.com/openssl/openssl/releases/download/openssl-4.1.0/openssl-4.1.0.tar.gz",
+    "pkg_version": "3.6.1",
+    "pkg_url": "https://github.com/openssl/openssl/releases/download/openssl-3.6.1/openssl-3.6.1.tar.gz",
     "inst_type": "manual",
     "inst_opt": [
       "shared",
