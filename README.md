@@ -94,6 +94,8 @@ Legacy Nanopore tools for old R9.4.1/fast5 data: ont-guppy 6.5.7, nanopolish 0.1
 - Installed packages are in `package/package-version` directories.
 - Environmental module (`Lmod`) is installed and should be added to the .bashrc or export PATH.
 - Environmental module files are in `modulefiles/package` directory with `version.lua` module files.
+- HPC with a system Lmod: if modules of hpc-setup do not show up after an update, 
+  run `module --ignore_cache avail` or `rm -rf ~/.cache/lmod` (Lmod spider cache).
 
 ## Unresolved dependencies
 `libxml2` library can be installed locally. However, the configuration of R 

@@ -16,3 +16,10 @@ else
     echo "✗ Environment Modules not found"
     source "$REPO_DIR/modules/modules_install.sh"
 fi
+
+# Newly written modulefiles must be visible at once: a user spider cache
+export LMOD_IGNORE_CACHE=1
+# Unversioned "module load X" takes X from the first MODULEPATH entry
+# ($INSTALL_DIR/modulefiles, prepended by "module use") instead of the highest
+# version of a system module (e.g. a sticky HPC release module survives "module purge").
+export LMOD_TMOD_FIND_FIRST=yes
