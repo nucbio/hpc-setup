@@ -27,6 +27,7 @@ CRAN_PKGS <- c(
   'RColorBrewer',   # ggplot extension
   'colorRamps',     # ggplot extension
   'GGally',         # ggplot extension
+  'duckdb',         # fiber dependency; long source build
   'pak'
 )
 

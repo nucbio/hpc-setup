@@ -22,6 +22,7 @@ pkg_install \
 
 echo "Install nanopolish"
 
+module purge
 module load zlib
 
 PKG_NAME="nanopolish"
