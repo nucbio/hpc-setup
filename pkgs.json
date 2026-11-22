@@ -1063,8 +1063,8 @@
       "OPENSSL_ROOT_DIR": "",
       "OPENSSL_INCLUDE_DIR": "include",
       "OPENSSL_LIBRARIES": "{LIB}",
-      "SSL_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt",
-      "SSL_CERT_DIR": "/etc/ssl/certs"
+      "SSL_CERT_FILE": "{CA_BUNDLE}",
+      "SSL_CERT_DIR": "{CA_DIR}"
     },
     "module_path": {},
     "module_path_extra": "bin",

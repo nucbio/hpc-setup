@@ -240,10 +240,35 @@ _mt_emit_module_env() {
     return
   fi
 
+  # System CA trust store for {CA_BUNDLE}/{CA_DIR}: the path differs per distro
+  # (Debian, RHEL, SUSE, ...), so probe at install time instead of hardcoding.
+  local ca_bundle="" ca_dir="" f
+  for f in /etc/ssl/certs/ca-certificates.crt \
+           /etc/pki/tls/certs/ca-bundle.crt \
+           /etc/ssl/ca-bundle.pem \
+           /etc/ssl/cert.pem; do
+    if [[ -f "$f" ]]; then ca_bundle="$f"; break; fi
+  done
+  if [[ -d /etc/ssl/certs ]]; then
+    ca_dir="/etc/ssl/certs"
+  elif [[ -n "$ca_bundle" ]]; then
+    ca_dir="${ca_bundle%/*}"
+  fi
+
   echo ""
   echo "-- Environment variables"
   for item in "${MODULE_ENV[@]}"; do
     IFS='|' read -r env_key env_val <<< "$item"
+
+    # CA placeholders: if nothing was found, emit no setenv so curl/openssl
+    # fall back to their compiled-in defaults instead of a broken path.
+    if [[ ( "$env_val" == *"{CA_BUNDLE}"* && -z "$ca_bundle" ) ||
+          ( "$env_val" == *"{CA_DIR}"* && -z "$ca_dir" ) ]]; then
+      echo "WARNING: $PKG_NAME: no system CA certificates found; not setting $env_key." >&2
+      continue
+    fi
+    env_val="${env_val//\{CA_BUNDLE\}/$ca_bundle}"
+    env_val="${env_val//\{CA_DIR\}/$ca_dir}"
 
     # Replace placeholders
     env_val="${env_val//\{LIB\}/$lib_dir}"
