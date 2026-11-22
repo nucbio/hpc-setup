@@ -4,8 +4,12 @@
 # Usage: deploy/git_upload.sh [-m|-M] "commit message"
 #
 #   (default)  bump patch: 1.0.14 -> 1.0.15
-#   -m         release: bump minor (1.0.14 -> 1.1.0) and push git tag 1.1.0
-#   -M         release: bump major (1.0.14 -> 2.0.0) and push git tag 2.0.0
+#   -m         release: bump minor (1.0.14 -> 1.1.0) and push release tag YY.MM
+#   -M         release: bump major (1.0.14 -> 2.0.0) and push release tag YY.MM
+#
+# Release tags are the current date YY.MM (e.g. 26.11): the same name is used for
+# the GitHub release and the release directory on servers (tools/26.11).
+# One release per month: an existing tag aborts the run.
 #
 # Expects hpc-setup-docs next to this repo (override with DOCS_DIR).
 # The docs are rendered into hpc-setup-docs/docs/, which GitHub Pages serves from main.
@@ -47,8 +51,12 @@ case "$BUMP" in
 esac
 
 # Check before touching anything, so an existing tag aborts cleanly.
-if [[ "$BUMP" != patch ]] && git -C "$REPO" rev-parse -q --verify "refs/tags/$NEW" >/dev/null; then
-    echo "tag $NEW already exists" >&2; exit 1
+TAG=""
+if [[ "$BUMP" != patch ]]; then
+    TAG="$(date +%y.%m)"
+    if git -C "$REPO" rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
+        echo "tag $TAG already exists (one release per month)" >&2; exit 1
+    fi
 fi
 
 echo "$NEW" > "$VERSION_FILE"
@@ -57,10 +65,10 @@ echo "== version $OLD -> $NEW"
 echo "== hpc-setup"
 commit_push "$REPO"
 
-if [[ "$BUMP" != patch ]]; then
-    git -C "$REPO" tag -a "$NEW" -m "Release version $NEW"
-    git -C "$REPO" push origin "$NEW"
-    echo "== tagged release $NEW"
+if [[ -n "$TAG" ]]; then
+    git -C "$REPO" tag -a "$TAG" -m "Release $TAG (VERSION $NEW)"
+    git -C "$REPO" push origin "$TAG"
+    echo "== tagged release $TAG (VERSION $NEW)"
 fi
 
 echo "== rendering docs"
