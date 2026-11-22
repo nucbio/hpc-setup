@@ -10,6 +10,8 @@ module load libcurl
 module load openssl
 module load gettext
 module load libexpat
+# Git >= 2.52 builds a Rust component (libgitcore.a) by default: needs cargo
+module load rust
 
 PKG_NAME="git"
 PKG_VERSION=$(pkg_version "$PKG_NAME")
