@@ -15,12 +15,18 @@ if [[ -z "$BUILD_BASE" ]]; then
     echo "-----------------------------------------------"
     echo "Select where to compile tools:"
 
-    CHOICE=$("$GUM" choose \
-      --timeout 30s \
-      "• /tmp (is faster - recommended for HPC)" \
-      "• $INSTALL_DIR (keeps everything in one place)" || true)
+    # install.sh pipes stderr into tee; gum v2 draws its menu on stderr and
+    # renders nothing into a pipe (no terminal size), so draw on /dev/tty.
+    # No terminal (batch job, nohup): skip the menu and use the default.
+    CHOICE=""
+    if [[ -t 0 ]] && { : >/dev/tty; } 2>/dev/null; then
+        CHOICE=$("$GUM" choose \
+          --timeout 30s \
+          "• /tmp (is faster - recommended for HPC)" \
+          "• $INSTALL_DIR (keeps everything in one place)" 2>/dev/tty || true)
+    fi
 
-    # If timeout occurs, gum returns empty output → fallback to /tmp
+    # Timeout, abort or no terminal: empty output → fallback to /tmp
     if [ -z "$CHOICE" ]; then
         CHOICE="• /tmp (is faster - recommended for HPC)"
     fi
