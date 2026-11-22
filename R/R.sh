@@ -42,8 +42,12 @@ else
 fi
 
 # Standard config installation
+# -p: doc/html/Makefile.in copies katex/ with "cp -p -R". The source tree on
+# NFSv3 carries a POSIX ACL; cp -p cannot copy it there (ENOTSUP) and
+# make install fails. Copy without -p (files get the target's default ACL).
 pkg_install -n "R" \
             -v "$R_VERSION" \
+            -p "sed -i 's/cp -p -R/cp -R/' doc/html/Makefile.in" \
             -o "--enable-memory-profiling \
 --enable-R-shlib \
 --with-blas \

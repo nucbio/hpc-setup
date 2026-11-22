@@ -15,23 +15,26 @@
 #          "meson"  - meson setup -> compile -> install, 
 #          "unpack" - unpack precompiled package (zip, tar.gz, tar.xz, tar.bz2), 
 #          "venv"   - python environment (pip python packages). 
+# -p   Pre-build hook: shell command run (eval) in the source dir after unpacking
+#      (e.g. a sed patch). Empty by default.
 
 pkg_install() {
   # Reset the global index for getopts
   local OPTIND=1
     
-  local PKG_NAME PKG_VERSION PKG_URL PKG_TYPE="conf" EXTRA_OPTS=""
+  local PKG_NAME PKG_VERSION PKG_URL PKG_TYPE="conf" EXTRA_OPTS="" PRE_BUILD=""
   
   # Parse Arguments
   # n: Name, v: Version, u: URL, t: Type, o: Options (the string you requested)
-  while getopts "n:v:u:t:o:" opt; do
+  while getopts "n:v:u:t:o:p:" opt; do
     case $opt in
       n) PKG_NAME="$OPTARG" ;;
       v) PKG_VERSION="$OPTARG" ;;
       u) PKG_URL="$OPTARG" ;;
       t) PKG_TYPE="$OPTARG" ;; 
       o) EXTRA_OPTS="$OPTARG" ;; # configuraiton options
-      *) echo "Usage: pkg_install -n name -v ver -u url [-t type] [-o 'options']"; return 1 ;;
+      p) PRE_BUILD="$OPTARG" ;;  # pre-build hook
+      *) echo "Usage: pkg_install -n name -v ver -u url [-t type] [-o 'options'] [-p 'cmd']"; return 1 ;;
     esac
   done
   
@@ -137,6 +140,15 @@ pkg_install() {
   set_build_dir "$PKG_NAME" "$PKG_VERSION"
 
   tar -xf "$PKG_ARCHIVE" -C "$PKG_SRC_DIR" --strip-components=1
+
+  # Optional pre-build hook, run in the source dir (subshell: cwd/env stay)
+  if [[ -n "$PRE_BUILD" ]]; then
+    echo "Running pre-build hook for $PKG_NAME: $PRE_BUILD"
+    ( cd "$PKG_SRC_DIR" && eval "$PRE_BUILD" ) || {
+      echo "ERROR: pre-build hook failed for $PKG_NAME"
+      return 1
+    }
+  fi
 
   cd "$PKG_BUILD_DIR" || return
   
