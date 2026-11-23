@@ -22,8 +22,6 @@ if ! command -v dorado &> /dev/null; then
     exit 1
 fi
 
-export DORADO_MODELS=$INSTALL_DIR/dorado/models
-
 for MODEL in \
   dna_r10.4.1_e8.2_400bps_sup@v4.3.0 \
   dna_r10.4.1_e8.2_400bps_sup@v5.0.0 \

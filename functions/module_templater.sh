@@ -275,6 +275,8 @@ _mt_emit_module_env() {
     env_val="${env_val//\{PKG_CONF\}/$pkg_conf}"
     env_val="${env_val//\{VERSION\}/$PKG_VERSION}"
     env_val="${env_val//\{VER_MM\}/$VER_MM}"
+    # {PKG_DIR}: unversioned package dir, for data shared across versions (e.g. models)
+    env_val="${env_val//\{PKG_DIR\}/$INSTALL_DIR/$PKG_NAME}"
 
     # Build lua expression
     if [[ -z "$env_val" ]]; then

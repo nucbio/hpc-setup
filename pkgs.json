@@ -179,7 +179,7 @@
     "module_url": "https://github.com/nanoporetech/dorado",
     "module_c_lib": false,
     "module_env": {
-      "DORADO_MODELS": "models"
+      "DORADO_MODELS": "{PKG_DIR}/models"
     },
     "module_path": {},
     "module_path_extra": "bin",
