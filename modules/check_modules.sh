@@ -8,14 +8,10 @@ source "$REPO_DIR/lua/lua.sh"
 source "$REPO_DIR/lua/luarock.sh"
 source "$REPO_DIR/core/tcl.sh"
 
-if command -v module &> /dev/null || type module &> /dev/null; then
-    echo "✓ Environment Modules is already installed"
-    echo $(module --version)
-else
-    # Module command not found - install Lmod (or load the one of a previous run)
-    echo "✗ Environment Modules not found"
-    source "$REPO_DIR/modules/modules_install.sh"
-fi
+# Always our own Lmod in $INSTALL_DIR, even if the system (HPC) already provides a
+# `module` command (it survives "module --force purge"). modules_install.sh skips the
+# build if $INSTALL_DIR/lmod/$LMOD_VERSION exists and works, and loads it instead.
+source "$REPO_DIR/modules/modules_install.sh"
 
 # Newly written modulefiles must be visible at once: a user spider cache
 export LMOD_IGNORE_CACHE=1
