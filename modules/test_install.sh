@@ -31,6 +31,11 @@ for file in "$REPO_DIR/tools/nanopore"/*.sh
     check_pkg "$(get_filename "$file")" || true
   done
 
+for file in "$REPO_DIR/tools/workflow"/*.sh
+  do
+    check_pkg "$(get_filename "$file")" || true
+  done
+
 echo "--- Verifying Legacy Nanopore Tools ---"
 module load ont-guppy nanopolish || true
 check_pkg "guppy_basecaller" || true

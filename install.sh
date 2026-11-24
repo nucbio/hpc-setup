@@ -75,6 +75,12 @@ for install_tool in $REPO_DIR/tools/nanopore/*.sh
     source $install_tool
   done
 
+# Install workflow managers (Nextflow)
+for install_tool in $REPO_DIR/tools/workflow/*.sh
+  do 
+    source $install_tool
+  done
+
 # Install CLI tools
 for install_tool in $REPO_DIR/tools/terminal/*.sh
   do 

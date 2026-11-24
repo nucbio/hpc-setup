@@ -958,6 +958,26 @@
     "module_conflict": false,
     "enabled": true
   },
+  "nextflow": {
+    "pkg_version": "26.10.7",
+    "pkg_url": "https://github.com/nextflow-io/nextflow/releases/download/v26.10.7/nextflow-26.10.7-dist",
+    "inst_type": "unpack",
+    "inst_opt": [],
+    "pkgconf": "",
+    "dependencies": [
+      "java"
+    ],
+    "module_help": "Data-driven computational pipelines (workflow manager, nf-core)",
+    "module_description": "Workflow manager for scalable and reproducible pipelines",
+    "module_category": "bioinformatics",
+    "module_url": "https://www.nextflow.io/",
+    "module_c_lib": false,
+    "module_env": {},
+    "module_path": {},
+    "module_path_extra": "bin",
+    "module_conflict": false,
+    "enabled": true
+  },
   "modkit": {
     "pkg_version": "0.6.4",
     "pkg_url": "https://github.com/nanoporetech/modkit/releases/download/v0.6.4/modkit_v0.6.4_u16_x86_64.tar.gz",
@@ -1606,7 +1626,8 @@
       "pod5",
       "bwa-mem2",
       "bedtools",
-      "minimap2"
+      "minimap2",
+      "nextflow"
     ],
     "enabled": true
   },
@@ -1672,7 +1693,8 @@
       "pod5",
       "bwa-mem2",
       "bedtools",
-      "minimap2"
+      "minimap2",
+      "nextflow"
     ],
     "enabled": true
   },
