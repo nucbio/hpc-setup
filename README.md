@@ -87,7 +87,7 @@ readline, sqlite, tcl, xz, zlib.
 pigz, dorado, duckdb, modkit, pod5, minimap2, nextflow.  
 Legacy Nanopore tools for old R9.4.1/fast5 data: ont-guppy 6.5.7, nanopolish 0.13.2 
 (not in the meta-modules; load with `module load ont-guppy` / `module load nanopolish`). 
-4. **Terminal (CLI) tools**: nvim, git, bat, eza, fdfind, ripgrep, tree, zoxide.  
+4. **Terminal (CLI) tools**: nvim, tree-sitter (nvim dependency), git, bat, eza, fdfind, ripgrep, tree, zoxide.  
 
 ## Structure
 - Downloaded archives are in `sources` directory.
